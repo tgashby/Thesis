@@ -1,0 +1,119 @@
+% 300 Paper, W '13
+
+% Two Column Format
+\documentclass[11pt]{article}
+%this allows us to specify sections to be single or multi column so that things like title page and table of contents are single column
+\usepackage{multicol}
+\usepackage{verbatim}
+
+\usepackage{setspace}
+\usepackage{url}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{letterpaper}
+
+\setcounter{secnumdepth}{5}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%
+%%% Cover Page %%%
+%%%%%%%%%%%%%%%%%%
+
+\title{\vfill Thesis Title} %\vfill gives us the black space at the top of the page
+\author{
+By Taggart Ashby \vspace{10pt} \\
+}
+
+\maketitle
+
+\vfill  %in combination with \newpage this forces the abstract to the bottom of the page
+\thispagestyle{empty} %remove page number from title page
+\newpage
+
+%end the 1 column format
+
+%start 2 column format
+\begin{multicols}{2}
+%Start numbering first page of content as page 1
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%
+%%% Abstract %%%
+%%%%%%%%%%%%%%%%
+
+\section{Abstract}
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%% Introduction %%%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+
+%%%%%%%%%%%%%%%%%%
+%%% Background %%%
+%%%%%%%%%%%%%%%%%%
+
+\section{Background}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Toolchain/Process %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tools and Processes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Implementation %%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Implentation}
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%% Assessment %%%
+%%%%%%%%%%%%%%%%%%
+
+\section{Assessment}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%% Related Work %%%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Related Work}
+
+
+%%%%%%%%%%%%%%%%%%
+%%% Conclusion %%%
+%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%% Future Work %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Future Work}
+
+
+
+\end{multicols}
+\newpage
+
+\bibliographystyle{IEEEannot}
+
+\bibliography{paper}
+
+\end{document}
