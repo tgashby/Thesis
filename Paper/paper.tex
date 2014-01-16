@@ -1,4 +1,4 @@
-% 300 Paper, W '13
+% Thesis!
 
 % Two Column Format
 \documentclass[11pt]{article}
@@ -22,7 +22,7 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\vfill Thesis Title} %\vfill gives us the black space at the top of the page
+\title{\vfill A Testing Framework for Web Application} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
 }
@@ -30,6 +30,15 @@ By Taggart Ashby \vspace{10pt} \\
 \maketitle
 
 \vfill  %in combination with \newpage this forces the abstract to the bottom of the page
+
+%%%%%%%%%%%%%%%%
+%%% Abstract 
+%%% VERY General overview of problem and solution in paper
+%%%%%%%%%%%%%%%%
+\begin{abstract}
+Our framework is the best framework because we made it and we're awesome.
+\end{abstract}
+
 \thispagestyle{empty} %remove page number from title page
 \newpage
 
@@ -40,74 +49,81 @@ By Taggart Ashby \vspace{10pt} \\
 %Start numbering first page of content as page 1
 \setcounter{page}{1}
 
-%%%%%%%%%%%%%%%%
-%%% Abstract %%%
-%%%%%%%%%%%%%%%%
-
-\section{Abstract}
-
-
-
 %%%%%%%%%%%%%%%%%%%%
-%%% Introduction %%%
+%%% Introduction/Motivation
+%%% More detailed, but still general, description of problem and why we want to solve it
 %%%%%%%%%%%%%%%%%%%%
-
 \section{Introduction}
 
 
 %%%%%%%%%%%%%%%%%%
-%%% Background %%%
+%%% Background 
+%%% Information needed for reader to know what’s going on
+%%% 	Server/Client Communication
+%%% 	Cloud services
+%%% 	Appropriate terms and definitions
 %%%%%%%%%%%%%%%%%%
-
 \section{Background}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Toolchain/Process %%%
+%%% Product 
+%%% User Manual
+%%% 	Tools (programs, IDEs, scripts)
+%%% 	Setup instructions
+%%% 	Usage
 %%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Tools and Processes}
+\section{Product}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
-%%% Implementation %%%
+%%% Implementation 
+%%% 	Why I chose the tools I chose
+%%% 	Scripts written to help out 
 %%%%%%%%%%%%%%%%%%%%%%
-
 \section{Implentation}
 
 
-
 %%%%%%%%%%%%%%%%%%
-%%% Assessment %%%
+%%% Evaluation
+%%% PX Intro
+%%%	Outline test suites
+%%% PX Test metrics/results
 %%%%%%%%%%%%%%%%%%
-
-\section{Assessment}
-
+\section{Evaluation}
 
 
 
 %%%%%%%%%%%%%%%%%%%%
-%%% Related Work %%%
+%%% Related Work 
+%%% Similar testing frameworks
+%%% 	Why they're not as good as ours
 %%%%%%%%%%%%%%%%%%%%
-
 \section{Related Work}
 
 
 %%%%%%%%%%%%%%%%%%
-%%% Conclusion %%%
+%%% Conclusion 
+%%% Summary of what they just read
+%%% Recap results
 %%%%%%%%%%%%%%%%%%
-
 \section{Conclusion}
 
 
 %%%%%%%%%%%%%%%%%%%
-%%% Future Work %%%
+%%% Future Work 
+%%% Anything we wanted to do but didn't have time to
 %%%%%%%%%%%%%%%%%%%
-
 \section{Future Work}
 
 
+%%%%%%%%%%%%%%%%%
+%%% Appendices
+%%% Actual Test Code
+%%% Anything that needs an appendix
+%%%%%%%%%%%%%%%%%
+\section{Appendices}
 
 \end{multicols}
 \newpage
@@ -115,5 +131,7 @@ By Taggart Ashby \vspace{10pt} \\
 \bibliographystyle{IEEEannot}
 
 \bibliography{paper}
+
+\nocite{*}
 
 \end{document}
