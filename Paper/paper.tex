@@ -54,7 +54,10 @@ Our framework is the best framework because we made it and we're awesome.
 %%% More detailed, but still general, description of problem and why we want to solve it
 %%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-
+Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around 2.5 billion people. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
+Like any piece of software, these web applications ought to be tested in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are the new kids on the block and there is very little conventional wisdom on how to test them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate and so there's often little time to test.
+We can see that this is not a solved problem by looking at some of the biggest web application around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths, and, honestly, it is fairly small, but those are still errors in the software that ought to be fixed.
+What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, quick to develop on, and thorough in its coverage. 
 
 %%%%%%%%%%%%%%%%%%
 %%% Background 
@@ -64,8 +67,32 @@ Our framework is the best framework because we made it and we're awesome.
 %%% 	Appropriate terms and definitions
 %%%%%%%%%%%%%%%%%%
 \section{Background}
+In an effort to make the rest of the paper more understandable and to define the terms used in the remainder of the paper, it is useful to have a section pertaining to the different concepts and technologies surrounding the web.
+If one is familiar with HTML5, JavaScript, and Testing concepts and statistics, it will likely be safe to skip this background section.
+
+\subsection{Web Application Strengths}
+Web applications are great for both developers and consumers. They have a number of characteristics that make them more desirable than shrink-wrap software. These attributes are versioning, availability, platform independence, and the ability to rapidly prototype.
+
+\subsubsection{Versioning}
+Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like an operating system that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security.
+
+\subsubsection{Availability}
+Web application are available anywhere there's internet. No need to install anything on a given device most of the time. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with you'' all the time.
+
+\subsubsection{Multi-platform}
+Very similar to the availability strength, web applications are platform independent. Whether you're on your phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems.
+
+\subsubsection{Rapid Prototyping}
+Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will outline where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
 
 
+\subsection{Web Features}
+
+
+\subsection{Why Testing is Important}
+
+
+\subsection{Client/Server Architecture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Product 
@@ -82,7 +109,7 @@ Our framework is the best framework because we made it and we're awesome.
 %%% 	Why I chose the tools I chose
 %%% 	Scripts written to help out 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Implentation}
+\section{Implementation}
 
 
 %%%%%%%%%%%%%%%%%%
