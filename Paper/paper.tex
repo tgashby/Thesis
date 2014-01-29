@@ -3,11 +3,13 @@
 % Two Column Format
 \documentclass[11pt]{article}
 %this allows us to specify sections to be single or multi column so that things like title page and table of contents are single column
-\usepackage{multicol}
+\usepackage{multicol, caption}
 \usepackage{verbatim}
 
 \usepackage{setspace}
 \usepackage{url}
+
+\usepackage{graphicx}
 
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
@@ -15,6 +17,11 @@
 
 \setcounter{secnumdepth}{5}
 
+\graphicspath{ {./images/} }
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 \begin{document}
 
@@ -101,10 +108,26 @@ Node.JS, often called simply Node, is a JavaScript API for creating and running 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
  
 \subsection{Why Testing is Important}
+I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. 
 
 \subsubsection{What is testing?}
+IEEE defines software testing as ``the process of analyzing a software item to detect the differences between existing and required conditions (that is, bugs) and to evaluate the features of a software item.'' \cite{TestingDefinition}
+Although there are a number of different types of tests and testing concepts, we will focus on Unit Testing and Continuous Integration.
+
+\paragraph{Unit Testing}
+Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What's important to remember in regards to unit testing is that it tests just one portion of the code or system rather than interactions between modules or the entire system.
+
+\paragraph{Continuous Integration}
+Continuous integration, in the context of testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it.
+One of the most important pieces of this is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool requires more than one or two interactions, it becomes much more of a nuisance and less of a helper.
 
 \subsubsection{Testing Statistics}
+It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
+
+\begin{Figure}
+	\includegraphics[width=\linewidth]{defectcost.jpg} 
+	\captionof{figure}{\cite{DefectPic}}
+\end{Figure}
 
 
 \subsection{Client/Server Architecture}
