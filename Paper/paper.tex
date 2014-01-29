@@ -197,8 +197,8 @@ function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing
 \end{lstlisting}
 
 \subsubsection{Continuous Integration}
-Continuous integration, in the context of testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it.
-One of the most important pieces of this is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool requires more than one or two interactions, it becomes much more of a nuisance and less of a helper.
+Continuous Integration (CI), in the context of testing, also known as Continuous Testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it prior to writing it. This is invaluable feedback because you can see if you're making progress in the right direction as you write code, as opposed to a situation in which you finish coding and find out you made a bad assumption or decision early on. 
+One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -213,7 +213,16 @@ I'm consistently surprised by how few people take testing seriously when it come
 
 
 \subsection{Client/Server Architecture}
+Here we'll discuss what a client is, what a server is, and how they communicate.
 
+\subsubsection{What is a Client?}
+The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client.
+
+\subsubsection{What is a Server?}
+A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client.
+
+\subsubsection{Client and Server Interactions}
+The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
