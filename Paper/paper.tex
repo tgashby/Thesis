@@ -5,6 +5,44 @@
 %this allows us to specify sections to be single or multi column so that things like title page and table of contents are single column
 \usepackage{multicol, caption}
 \usepackage{verbatim}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{frame=tb,
+  language=JavaScript,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+}
 
 \usepackage{setspace}
 \usepackage{url}
@@ -106,18 +144,59 @@ JavaScript, though not the only scripting language with web use, is the primary 
 \subsubsection{Node.JS}
 Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
- 
-\subsection{Why Testing is Important}
-I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. 
 
-\subsubsection{What is testing?}
-IEEE defines software testing as ``the process of analyzing a software item to detect the differences between existing and required conditions (that is, bugs) and to evaluate the features of a software item.'' \cite{TestingDefinition}
-Although there are a number of different types of tests and testing concepts, we will focus on Unit Testing and Continuous Integration.
+\subsection{What is testing?}
+IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
+There are a number of different types of tests and testing concept, we will just focus on Unit Testing and Continuous Integration.
 
-\paragraph{Unit Testing}
-Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What's important to remember in regards to unit testing is that it tests just one portion of the code or system rather than interactions between modules or the entire system.
+\subsubsection{Unit Testing}
+Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
-\paragraph{Continuous Integration}
+Here's a very brief example:
+\begin{lstlisting}
+// Terribly useless code whose purpose is to eventually calculate a magic number
+function addTwo (numToAddTo) {
+	return numToAddTo + 2;
+}
+
+function twoTimes (numToMultiply) {
+	var sum = 0;
+
+	for (var i = 0; i < numToMultiply; i++) {
+		sum = addTwo(sum);
+	}
+
+	return sum;
+}
+
+.... // More functions
+
+function calculateMagicNumberPartOne (startingNum) {
+	var foo = 3 + addTwo(startingNum);
+
+	return twoTimes(foo);
+}
+
+... // More functions
+
+function calculateMagicNumber (startingNum) {
+	var numSoFar = calculateMagicNumberPartOne(startingNum);
+
+	numSoFar = calculateMagicNumberPartTwo(numSoFar);
+	numSoFar = calculateMagicNumberPartThree(numSoFar);
+	... // More calculateMagicNumberPart(s)
+
+	return numSoFar;
+}
+
+function testAddTwo () ... // Unit Test
+function testTwoTimes () ... // Unit Test
+function testCalculateMagicNumberPartOne () ... // Still a Unit Test, just a whole module of functionality
+
+function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing the whole system
+\end{lstlisting}
+
+\subsubsection{Continuous Integration}
 Continuous integration, in the context of testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it.
 One of the most important pieces of this is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool requires more than one or two interactions, it becomes much more of a nuisance and less of a helper.
 
@@ -128,6 +207,9 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 	\includegraphics[width=\linewidth]{defectcost.jpg} 
 	\captionof{figure}{\cite{DefectPic}}
 \end{Figure}
+
+\subsubsection{Why Testing is Important}
+I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. 
 
 
 \subsection{Client/Server Architecture}
