@@ -7,6 +7,7 @@
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{todonotes}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -90,7 +91,7 @@ Our framework is the best framework because we made it and we're awesome.
 %end the 1 column format
 
 %start 2 column format
-\begin{multicols}{2}
+% \begin{multicols}{2}
 %Start numbering first page of content as page 1
 \setcounter{page}{1}
 
@@ -204,22 +205,26 @@ One of the most important aspects of a good piece of CI software is that it is a
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
 
 \begin{Figure}
-	\includegraphics[width=\linewidth]{defectcost.jpg} 
+	\centering
+	\includegraphics[width=0.8\linewidth]{defectcost.jpg} 
 	\captionof{figure}{\cite{DefectPic}}
 \end{Figure}
 
 \subsubsection{Why Testing is Important}
-I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. 
+I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. Many developers will leave testing to their users, i.e., wait for users to have problems and report them before developers will fix them. This is an issue for a number of reasons, a few of which are: frustrated customers are unlikely to continue using a buggy product and are dissuaded from buying future products from the same developer, certain bugs can be security loopholes that may allow users access to information they shouldn't have, in the worst cases a bug may cause damage to a person or property and the developers would be on the hook.
 
 
 \subsection{Client/Server Architecture}
-Here we'll discuss what a client is, what a server is, and how they communicate.
+Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS THE RIGHT TERM...) server-side.
+Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
-\subsubsection{What is a Client?}
-The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client.
+\subsubsection{What is the Client-side Portion?}
+\todo{Redo this paragraph...}
+The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. The client is responsible for requesting assets and then displaying them in a human-readable way. It is the client that controls the capabilities and user interface of the web application.
 
-\subsubsection{What is a Server?}
-A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client.
+\subsubsection{What is the Server-side Portion?}
+\todo{Redo this paragraph...}
+A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server's job is to ``serve'' assets, be them web pages or images, to a client that is requesting them.
 
 \subsubsection{Client and Server Interactions}
 The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
@@ -252,7 +257,6 @@ The client has limited access to resources on any given web application. This ac
 \section{Evaluation}
 
 
-
 %%%%%%%%%%%%%%%%%%%%
 %%% Related Work 
 %%% Similar testing frameworks
@@ -283,7 +287,7 @@ The client has limited access to resources on any given web application. This ac
 %%%%%%%%%%%%%%%%%
 \section{Appendices}
 
-\end{multicols}
+% \end{multicols}
 \newpage
 
 \bibliographystyle{IEEEannot}
