@@ -5,6 +5,7 @@
 *.fls
 *.log
 *.pdf
+!paper.pdf
 *.synctex.gz
 *.toc
 *.sublime-project

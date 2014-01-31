@@ -275,42 +275,45 @@ Clients communicate with the Server through a request-response architecture. Cli
 \section{Related Work}
 I was unable to find any works that attempted to bring existing technologies together to create a web testing framework. Instead, I came across a number of proprietary tools and research. For the proprietary tool an advantage of the framework I already laid out is that it is freely available and has support behind it for each individual component. There is no need to contact any paper authors to get software or support. I will, however, still outline them as they provided insight into what the problems in existing frameworks were, gaps in coverage, what was important in a framework, and inspiration and acknowledgment that this is a real problem that many people are trying to solve.
 
-I also found research into common bugs, general testing techniques, and finding bugs that greatly improved my test cases.
+I also found research into common bugs, general testing techniques, and finding bugs that greatly improved my test cases and understanding.
 
 \subsection{Testing Frameworks}
 
-\cite{FrameworkForAutomatedTesting}
+\subsubsection{``A Framework for Automated Testing of JavaScript Web Applications'' \cite{FrameworkForAutomatedTesting}}
+A collection of IBM Researchers and two university students came up with a framework called ``Artemis'' for testing web applications. What is novel about their tool is that it generates test cases automatically based on execution patterns and feedback. They have attempted to solve the problem that writing test cases by hand is both time-consuming and often difficult. Their automatic test generation lead to an average of 69\% test coverage with enough tests generated.
 
-\cite{MultiAgentSoftwareEnvironment}
+Though it was an interesting and somewhat effective method, 69\% coverage is not great and this particular framework only covers the client-side, so it was incomplete for our purposes.
 
-\cite{2LayerModel}
+\subsubsection{\cite{MultiAgentSoftwareEnvironment}}
 
-\cite{InvariantBasedUseInterfaces}
+\subsubsection{\cite{2LayerModel}}
 
-\cite{JSART}
+\subsubsection{\cite{InvariantBasedUseInterfaces}}
 
-\cite{DOMTransactions}
+\subsubsection{\cite{JSART}}
 
-\cite{TestingInPractice}
+\subsubsection{\cite{DOMTransactions}}
 
-\cite{ContractDrivenTesting}
+\subsubsection{\cite{TestingInPractice}}
 
-\cite{JAWS}
+\subsubsection{\cite{ContractDrivenTesting}}
 
-\cite{WebMate}
+\subsubsection{\cite{JAWS}}
 
-\cite{BookContinuousTesting}
+\subsubsection{\cite{WebMate}}
+
+\subsubsection{\cite{BookContinuousTesting}}
 
 
 \subsection{Finding Bugs}
-\cite{FindingBugs}
+\subsubsection{\cite{FindingBugs}}
 
-\cite{TestingWebServicesSurvey}
+\subsubsection{\cite{TestingWebServicesSurvey}}
 
-\cite{RESTfulFramework}
+\subsubsection{\cite{RESTfulFramework}}
 
 \subsection{Writing Effective Test Cases}
-\cite{GoingFaster}
+\subsubsection{\cite{GoingFaster}}
 
 %%%%%%%%%%%%%%%%%%
 %%% Conclusion 
