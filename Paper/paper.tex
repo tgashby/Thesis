@@ -137,6 +137,7 @@ Here I'll discuss some of the prevalent technologies that recently appeared in w
 
 \subsubsection{HTML5}
 The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009. \cite{EvolutionOfWeb} HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014. \cite{Plan2014} What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
+
 HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
 
 \subsubsection{JavaScript}
@@ -144,16 +145,18 @@ JavaScript, though not the only scripting language with web use, is the primary 
 
 \subsubsection{Node.JS}
 Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
+
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
 
 \subsection{What is testing?}
 IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
+
 There are a number of different types of tests and testing concept, we will just focus on Unit Testing and Continuous Integration.
 
 \subsubsection{Unit Testing}
 Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
-Here's a very brief example:
+Here's a brief example:
 \begin{lstlisting}
 // Terribly useless code whose purpose is to eventually calculate a magic number
 function addTwo (numToAddTo) {
@@ -199,6 +202,7 @@ function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing
 
 \subsubsection{Continuous Integration}
 Continuous Integration (CI), in the context of testing, also known as Continuous Testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it prior to writing it. This is invaluable feedback because you can see if you're making progress in the right direction as you write code, as opposed to a situation in which you finish coding and find out you made a bad assumption or decision early on. 
+
 One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Testing Statistics}
@@ -216,19 +220,24 @@ I'm consistently surprised by how few people take testing seriously when it come
 
 \subsection{Client/Server Architecture}
 Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS THE RIGHT TERM...) server-side.
+
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
 \subsubsection{What is the Client-side Portion?}
 First, I'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
+
 So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
+
 Client-side programming is done in a language that the browser understands, most frequently Javascript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
 
 \subsubsection{What is the Server-side Portion?}
 Once again, I'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
+
 The server-side portion of an application, then, stores all of the assets, accounts, and structure of the entire application. The server-side authenticates users, retrieves data from databases, processes large data, and send information, be it assets or results, back to the client to display to the user.
 
 \subsubsection{Client and Server Interactions}
 The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
+
 Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
