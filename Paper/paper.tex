@@ -68,7 +68,7 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\vfill A Testing Framework for Web Application} %\vfill gives us the black space at the top of the page
+\title{\vfill A Testing Framework for Web Applications} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
 }
@@ -205,6 +205,9 @@ Continuous Integration (CI), in the context of testing, also known as Continuous
 
 One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
+\subsubsection{Acceptance Testing}
+\todo{PUT INFO HERE PLEASE!!!}
+
 \subsubsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
 
@@ -284,11 +287,20 @@ A collection of IBM Researchers and two university students came up with a frame
 
 Though it was an interesting and somewhat effective method, 69\% coverage is not great and this particular framework only covers the client-side, so it was incomplete for our purposes.
 
-\subsubsection{\cite{MultiAgentSoftwareEnvironment}}
+\subsubsection{``A Multi-Agent Software Environment for Testing Web-based Applications'' \cite{MultiAgentSoftwareEnvironment}}
+Two students and a person from Lanware Limited brought AI into the web testing world with an agent-based environment for testing web applications. In order to split testing into manageable tasks for agents to carry out, they created an ontology for web testing using XML. Each agent is set up to handle one particular kind of testing with certain test data, i.e., a unit tester with data for one or two functions. This agent may then communicate with another agent who needs the results from that test, such as a test coverage agent or agent that is keeping track of test success and failure. This communication is done through a message-passing intermediary layer and a set of brokers who shuffle messages between agents.
 
-\subsubsection{\cite{2LayerModel}}
+This system is exciting and intricate but far too complex for a general web testing toolkit that just about any developer could pick up. It was important to weed techniques like this out as we wanted a fairly easy to use and understand toolkit.
 
-\subsubsection{\cite{InvariantBasedUseInterfaces}}
+\subsubsection{``A 2-Layer Model for the White-Box Testing of Web Applications'' \cite{2LayerModel}}
+A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came with a model for white-box testing of web applications. (White box testing is when you access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
+
+This 2-layer approach is interesting and provided me with some insight, but the system was made for PHP applications and I wasn't looking to implement a brand-new system and test PolyXpress with it all in one year.
+
+\subsubsection{``Invariant-Based Automatic Testing of AJAX User Interfaces'' \cite{InvariantBasedUseInterfaces}}
+Two individuals from the SOftware Engineering Research Group at Delft University in the Netherlands came up with a way to automatically test AJAX UI. The core of this idea is using a crawler to infer a flow graph. This paper outlines an plugin for an automated tool, ATUSA, for creating state validators and test suites for covering paths discovered during crawling (with a separate tool, CRAWLJAX). Their tests show that with minimal manual effort, the use of ATUSA can lead to high code coverage and error discovery. 
+
+This tool showed promise as an AJAX testing tool, but we wanted something more generic. Their crawler, CRAWLJAX, however, was very interesting and while we didn't use it, the techniques it used are used in other tools we have.
 
 \subsubsection{\cite{JSART}}
 
