@@ -302,9 +302,15 @@ Two individuals from the SOftware Engineering Research Group at Delft University
 
 This tool showed promise as an AJAX testing tool, but we wanted something more generic. Their crawler, CRAWLJAX, however, was very interesting and while we didn't use it, the techniques it used are used in other tools we have.
 
-\subsubsection{\cite{JSART}}
+\subsubsection{``JSART: JavaScript Assertion-based Regression Testing'' \cite{JSART}}
+Two students from the University of British Columbia created a tool called JSART that uses run-time code instrumentation and analysis to infer invariants that can be used for regression testing. When the code runs, JSART creates a number of test cases that will be run the next time the code executes. The point being to catch any discrepancies between old code and new code. They ran their tool on nine web systems with fairly strong results. The tool was not perfect and occasionally created inappropriate tests, but generally the tests were appropriate and useful.
 
-\subsubsection{\cite{DOMTransactions}}
+This is a useful concept that could be integrated into the toolkit at a later time.
+
+\subsubsection{``DOM Transactions for Testing JavaScript'' \cite{DOMTransactions}}
+Three people from Albert Ludwigs University in Germany came up with a way to deal with test fixtures that are built and torn down frequently. When testing JavaScript, many of one's tests will change the underlying web page in some way. This is often different from testing traditional software where components are separated. In order to test JavaScript, test fixtures for setting up the page and tearing down the page are exceptionally important. Because these fixtures are being made and torn down frequently, this paper discusses a way to utilize transactional memory to quickly get the web page into the right state without constant setup and tear down.
+
+This could be integrated with one of the existing tools we will use, but our goal was to collect existing tools that did not need alteration.
 
 \subsubsection{\cite{TestingInPractice}}
 
