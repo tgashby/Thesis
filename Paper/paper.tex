@@ -338,14 +338,25 @@ The well known book by Rady and Coffin talks about Continuous Testing and has lo
 Not all of those tools made it into the eventual final toolkit, but they were all important to look at in the context of making the overarching toolkit.
 
 \subsection{Finding Bugs}
-\subsubsection{\cite{FindingBugs}}
+One of the most important aspects of testing is actually finding the bugs in the program. A number of sources provided guidelines and suggestions for finding bugs in web applications.
+
+\subsubsection{``Finding Bugs In Dynamic Web Applications'' \cite{FindingBugs}}
+Seven researchers from the MIT Computer Science and Artificial Intelligence Lab wrote a paper addressing testing in dynamic web applications. Common testing techniques were not made to work with dynamic content that can be generated at the drop of a hat or click of a button. Therefore, common testing techniques are inadequate for testing dynamic web applications. This paper discusses ways to find bugs in these new-fangled dynamic web applications. They use a new technique and extended a tool called Apollo. This technique generates dynamic test cases based on concrete and symbolic execution. “The basic idea is to execute an application on an initial input (e.g., an unconstrained or randomly chosen input), and then on additional inputs obtained by solving constraints derived from exercised control ﬂow paths.” 
+
+Although they test PHP applications, the extension to JavaScript is fairly straightforward. We didn't use Apollo, but the techniques described within allowed for more focused and productive testing.
 
 \subsubsection{\cite{TestingWebServicesSurvey}}
+
 
 \subsubsection{\cite{RESTfulFramework}}
 
 \subsection{Writing Effective Test Cases}
-\subsubsection{\cite{GoingFaster}}
+Although not too distinct from \emph{finding bugs}, writing effective test cases is its own art form. The important of writing concise, correct, productive test cases cannot be overstated. The difference between writing one test case that effective tests multiple things and writing a single test case for every little detail is the difference between developers wanting to write tests at all and skipping it due to time constraints or frustration.
+
+\subsubsection{``Going Faster: Testing The Web Application'' \cite{GoingFaster}}
+Two employees of Evant Software wrote an article for IEEE Software regarding the testing of web applications. Mostly this paper was an overview and implementation of Test Driven Development (TDD) and eXtreme Programming, but in the middle of the article was a good section about the difficulties of testing the web and how to deal them. Some of the most useful advice was: ``First, test those parts of the server-side code that are not directly concerned with being part of the Web application, without involving Web peculiarities. ... Second, test those parts of the client-side code that have no server interaction. This is typically code that contains little or no business logic. ... Third, write functional tests of a low grain in the server-side language (for example, Java or C++) that simulate the request/response Web environment. ... Using this framework you can write walk-through tests that simulate the user moving through the UI''.
+
+TALK ABOUT WHAT MAKES THIS NICE
 
 %%%%%%%%%%%%%%%%%%
 %%% Conclusion 
