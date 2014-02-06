@@ -313,17 +313,29 @@ Three people from Albert Ludwigs University in Germany came up with a way to dea
 This could be integrated with one of the existing tools we will use, but our goal was to collect existing tools that did not need alteration.
 
 \subsubsection{``Testing Web Applications in Practice'' \cite{TestingInPractice}}
-Four students from the University of Seville, Spain published a paper with an overview of web testing. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, etc. It also describes how to test an actual web application using open-source software.
+Four students from the University of Seville, Spain published a paper with an overview of web testing. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, testing the client versus testing the server, and a few others. It also describes how to test an actual web application using PHPUnit, a library similar to JUnit, for those of you familiar with Java. When writing their tests, they suggest taking more abstract actions and breaking them up into their functional parts and testing each of those. As an example, inserting a customer into the database (albeit not that abstract) is broken into tests for the function that inserts the customer and tests for making sure the customer makes it into the database.
 
+The paper was good refresher on testing concepts and a hands-on application of those concepts. There wasn't any new information or tools to put toward our toolkit, but it was a good reminder and outlined some testing procedures.
 
-\subsubsection{\cite{ContractDrivenTesting}}
+\subsubsection{``Contract-Driven Testing of JavaScript Code'' \cite{ContractDrivenTesting}}
+Two individuals from the Albert Ludwigs University in Germany created a tool, JSConTest, that provides a framework for making contracts for a JavaScript program, allowing for guided random testing on inputs and outputs. Contracts in JSConTest are comments above each function that are of the form ``type -> type''. More complicated forms can introduce parenthesis for function types. In general, JSConTest is useful for detecting type errors on input or output based on the operations performed within a function on the input and the result being output. 
 
-\subsubsection{\cite{JAWS}}
+Although JSConTest could be useful in a toolkit, its source is no-where to be found and there were other, more robust, tools out there for our purposes.
 
-\subsubsection{\cite{WebMate}}
+\subsubsection{``JAWS: A Javascript API for the Efficient Testing and Integration of Semantic Web Services'' \cite{JAWS}}
+A researcher from Ford Motor Company published a paper regarding an API, called JAWS (Javascript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that you visit personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
 
-\subsubsection{\cite{BookContinuousTesting}}
+Another interesting API and project, but we are not focusing on SWS and so including a tool or API like JAWS would be overkill and beyond trying to keep the toolkit as simple and robust as possible.
 
+\subsubsection{``WebMate: A Tool for Testing Web 2.0 Applications'' \cite{WebMate}}
+Four people from Saarland University in Germany created a tool, WebMate, for automatically navigating web-pages with dynamic content and data. WebMate's goal is to output a usage model for testing purposes. This usage model allows tests to be focused on navigation as well as functionality. This dual usage leads to the ability to test the experience as well as the functions. In addition, WebMate can be used for Cross-Browser testing by running it on multiple browsers and comparing the results. In essence, WebMate is a web application crawler seeking to automatically suss out the layout and interaction between web pages to provide a model to the tester, be it a developer or the automatic testing capabilities of WebMate.
+
+WebMate was another interesting project that could have seen use in our toolkit if crawlers weren't already available in other, more mainstream, tools.
+
+\subsubsection{``Continuous Testing with Ruby, Rails, and JavaScript'' \cite{BookContinuousTesting}}
+The well known book by Rady and Coffin talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of my testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussing writing effective tests, which is always important.
+
+Not all of those tools made it into the eventual final toolkit, but they were all important to look at in the context of making the overarching toolkit.
 
 \subsection{Finding Bugs}
 \subsubsection{\cite{FindingBugs}}
