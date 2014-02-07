@@ -82,7 +82,7 @@ By Taggart Ashby \vspace{10pt} \\
 %%% VERY General overview of problem and solution in paper
 %%%%%%%%%%%%%%%%
 \begin{abstract}
-Our framework is the best framework because we made it and we're awesome.
+We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework for web applications.
 \end{abstract}
 
 \thispagestyle{empty} %remove page number from title page
@@ -206,7 +206,7 @@ Continuous Integration (CI), in the context of testing, also known as Continuous
 One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Acceptance Testing}
-\todo{PUT INFO HERE PLEASE!!!}
+Acceptance testing is testing to confirm that your product meets a certain specification. Often in the terms of software this is making sure that your software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or that customer that ordered the software, rather than the developers.
 
 \subsubsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -341,19 +341,20 @@ Not all of those tools made it into the eventual final toolkit, but they were al
 One of the most important aspects of testing is actually finding the bugs in the program. A number of sources provided guidelines and suggestions for finding bugs in web applications.
 
 \subsubsection{``Finding Bugs In Dynamic Web Applications'' \cite{FindingBugs}}
-Seven researchers from the MIT Computer Science and Artificial Intelligence Lab wrote a paper addressing testing in dynamic web applications. Common testing techniques were not made to work with dynamic content that can be generated at the drop of a hat or click of a button. Therefore, common testing techniques are inadequate for testing dynamic web applications. This paper discusses ways to find bugs in these new-fangled dynamic web applications. They use a new technique and extended a tool called Apollo. This technique generates dynamic test cases based on concrete and symbolic execution. “The basic idea is to execute an application on an initial input (e.g., an unconstrained or randomly chosen input), and then on additional inputs obtained by solving constraints derived from exercised control ﬂow paths.” 
+Seven researchers from the MIT Computer Science and Artificial Intelligence Lab wrote a paper addressing testing in dynamic web applications. Common testing techniques were not made to work with dynamic content that can be generated at the drop of a hat or click of a button. Therefore, common testing techniques are inadequate for testing dynamic web applications. This paper discusses ways to find bugs in these new-fangled dynamic web applications. They use a new technique and extended a tool called Apollo. This technique generates dynamic test cases based on concrete and symbolic execution. ``The basic idea is to execute an application on an initial input (e.g., an unconstrained or randomly chosen input), and then on additional inputs obtained by solving constraints derived from exercised control flow paths.''
 
 Although they test PHP applications, the extension to JavaScript is fairly straightforward. We didn't use Apollo, but the techniques described within allowed for more focused and productive testing.
 
 \subsubsection{``Testing Web Services: A Survey'' \cite{TestingWebServicesSurvey}}
-Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. 
+Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. What they note in particular is that when using web services, you rarely have access to the source code and must therefore black-box test them. Corollary to that is that you have to implicitly trust whoever made the service. They go through and discuss a number of frameworks and come to the conclusion that it's most certainly not a solved problem for the following reasons: The frequency of testing required, Testing without disrupting the operation of the service, Determining when testing is required and which operations need to be tested. Regarding the frequency of testing, web services often change in effort to make improvements, but those improvements can change the services and break tests. Testing without disrupting service is difficult because these services often limit accesses or simultaneous access of both a test and a running web application. Finally, determining when and what to test comes back to the trust issue. Some services provide their own testing metrics that include code coverage, number of tests, etc. But you have to trust that they are thoroughly testing whatever it may be.
 
-\subsubsection{\cite{RESTfulFramework}}
+\subsubsection{``A Framework for Testing RESTful Web Services'' \cite{RESTfulFramework}}
+Two people from the University of Dakota School of Aerospace Studies outline a framework for testing RESTful web services. RESTful web services, short for Representation State Transfer, are, in the context of web applications, a name for web APIs that conform to a set of constraints. In particular they must offer four request methods: GET, POST, PUT, and DELETE. These methods generally connect to a database or other storage system in order to store, retrieve, or delete entries therein.
+
+\todo{Finish reading this paper... My bad Dr. Haungs.}
 
 \subsection{Writing Effective Test Cases}
 Although not too distinct from \emph{finding bugs}, writing effective test cases is its own art form. The important of writing concise, correct, productive test cases cannot be overstated. The difference between writing one test case that effective tests multiple things and writing a single test case for every little detail is the difference between developers wanting to write tests at all and skipping it due to time constraints or frustration.
-
-MORE MORE MORE MORE
 
 \subsubsection{``Going Faster: Testing The Web Application'' \cite{GoingFaster}}
 Two employees of Evant Software wrote an article for IEEE Software regarding the testing of web applications. Mostly this paper was an overview and implementation of Test Driven Development (TDD) and eXtreme Programming, but in the middle of the article was a good section about the difficulties of testing the web and how to deal them. A few of the remarks regarding the difficulty of web testing is that often the client-side and server-side portions of web applications are written in different languages. This wasn't an issue for our application, but is still an issue for many applications. Some of the most useful advice was: ``First, test those parts of the server-side code that are not directly concerned with being part of the Web application, without involving Web peculiarities. ... Second, test those parts of the client-side code that have no server interaction. This is typically code that contains little or no business logic. ... Third, write functional tests of a low grain in the server-side language (for example, Java or C++) that simulate the request/response Web environment. ... Using this framework you can write walk-through tests that simulate the user moving through the UI''.
