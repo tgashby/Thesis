@@ -213,7 +213,7 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 
 \begin{Figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{defectcost.jpg} 
+	\includegraphics[width=0.75\linewidth]{defectcost.jpg} 
 	\captionof{figure}{\cite{DefectPic}}
 \end{Figure}
 
@@ -263,37 +263,117 @@ Clients communicate with the Server through a request-response architecture. Cli
 
 \section{Sample App and Testing Frameworks}
 
+\subsection{Assumptions and Requirements}
+In order to more thoroughly vet the many testing frameworks we came across, we had a number of assumptions about the projects we'd be looking at and requirements for those framework.
+- Node.js server because it's JS, so it's testable.
+- Something to do unit testing
+- Something to do continuous integration
+
 \subsection{Sample ToDo App}
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, I decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
 
 \subsection{Unit Testing Frameworks}
-\subsubsection{Jasmine}
-BDD
-Had to use jasmine-node (npm install jasmine-node)
+\subsubsection{Jasmine \cite{Jasmine}}
+The first of the unit testing frameworks that I looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
+
+This relates to Jasmine is the way that you write Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like english sentences. As an example, the following is a valid Jasmine test:
+\begin{lstlisting}
+describe("Arithmetic Test", function () {
+  it("should be able to compute the addition of two numbers", function () {
+    expect(1 + 2).toEqual(3);
+  });
+
+  it("should be able to subtract numbers", function () {
+    var theAnswer = 10;
+
+    expect(12 - 2).toEqual(theAnswer);
+  });
+});
+\end{lstlisting}
+The ``describe'' statement creates a test suite to collect related tests under. Each ``it'' statement is generally one test with some number of ``expect'' statements. It may not be particularly pretty, but the above code is quite readable even to someone with no coding experience.
+
+The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 \subsubsection{Mocha}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsubsection{QUnit}
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 \subsubsection{Intern}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsection{Continuous Integration Frameworks}
-\subsubsection{Jenkins}
+\subsubsection{Jenkins \cite{Jenkins}}
+Jenkins is the first of the continuous integration frameworks that I tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously, (2) monitoring executions of externally-run jobs. Generally CI frameworks like Jenkins will integrate with a source control system or just the file system to attempt to build and run a project wheneever a change is pushed or saved. The other use for a tool like Jenkins is the abilty to start services like cron jobs or similarly long-running tools and then collect the output for them and allow the developer to check into the status of them at any time.
+
+Jenkins is a series of web pages that you set up to run on a given server. Most companies give Jenkins a subdomain on their web pages. This is what it looks like:
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{jenkins.png}
+\end{Figure}
+
+Jenkins comes fairly bare-boned but is highly customizable and has a wide array of plugins available to integrate with various services, integrate with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 \subsubsection{Travis}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsubsection{Selenium}
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 \subsubsection{Semaphore}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsubsection{Nightwatchjs}
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 \subsection{Misc Frameworks}
 \subsubsection{Sauce Labs}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsubsection{Istanbul}
 
+\paragraph{Pros}
+
+\paragraph{Cons}
+
 \subsubsection{Karma}
+
+\paragraph{Pros}
+
+\paragraph{Cons}
 
 
 \subsection{Misc Tools}
