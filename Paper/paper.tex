@@ -338,7 +338,48 @@ For the assertion library I chose Chai.js because it had the most flexibility fo
 \paragraph{Cons}
 
 \subsubsection{QUnit \cite{QUnit}}
-More developer-centered, less "pretty", not BDD
+QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the ``it'' functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
+\begin{Figure}
+  \centering
+  \includegraphics[width=\linewidth]{qunitrunner.png} 
+  \captionof{figure}{Each individual spec is further broken down into the assertions within it.}
+\end{Figure}
+An interesting feature that QUnit has that I've not seen elsewhere is the ability to specify how many assertions you expect to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let you know fewer assertions were called than expected.
+
+QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
+\begin{lstlisting}
+Qunit.module("Module A"); // All code following is grouped into Module A
+test("Addition", function () {
+  equal(2 + 2, 4, "Two + Two = Four");
+  equal(3 + 5, 8, "Three + Five = Eight");
+});
+test("Subtraction", function () {
+  equal(4 - 2, 2, "Four - Two = Two");
+  equal(2 - 2, 0, "Two - Two = Zero");
+});
+
+// More tests....
+
+QUnit.module("Module B");
+// Tests under Module B
+
+// ... Etc
+\end{lstlisting}
+It is difficult to visually see where one module starts and ends and so grouping and finding the right place to add a test can be a chore.
+
+QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the ``it'' function, you call the ``asyncTest'' function instead of the ``test'' function and then call ``start()'' when you finish your asynchronous tests. Example:
+\begin{lstlisting}
+asyncTest("Async Test", function () {
+  myAsyncCall(param1, param2, function () {
+    // This callback expected to run when async returns
+
+    // Test ...
+    // Test ...
+    // ...
+    start();
+  });
+});
+\end{lstlisting}
 
 \paragraph{Pros}
 
