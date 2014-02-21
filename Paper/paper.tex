@@ -271,8 +271,11 @@ In order to more thoroughly vet the many testing frameworks we came across, we h
 
 \subsection{Sample ToDo App}
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, I decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
+One of the challenges in testing that I quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, I will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
 
 \subsection{Unit Testing Frameworks}
+The following frameworks are reviewed in chronological order of my evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
+
 \subsubsection{Jasmine \cite{Jasmine}}
 The first of the unit testing frameworks that I looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
@@ -294,24 +297,48 @@ The ``describe'' statement creates a test suite to collect related tests under. 
 
 The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
+Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, ``runs(function () \{ .... \})'', runs the asynchronous code. The second function, ``waitsFor(function () \{ ... \})'', polls a flag that is set by the first function when it completes. Finally, the third function, another ``runs(...)'', houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+
 NO WEB PAGE TESTING SO FAR
 
 \paragraph{Pros}
 
 \paragraph{Cons}
 
-\subsubsection{Mocha}
-Custom assert lib required
-- Chai.js
+\subsubsection{Mocha \cite{Mocha}}
+Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. I will outline my choice of Chai.js below.
+
+Mocha also uses the ``describe -> it(\"should...\" '' pattern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
+
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In your ``it(...)'' anonymous function you pass an additional parameter called ``done'' which you then call when you know the asynchronous call has finished. This required me to edit the code I was testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+\begin{lstlisting}
+describe("Asynch Mocha Test", function () {
+  it("look like this", function (done) {
+    myAsyncCall(param1, param2, function () {
+      // This callback expected to run when async returns
+
+      // Test ...
+      // Test ...
+      // ...
+      done();
+    });
+  });
+});
+\end{lstlisting}
 
 More setup, more flexibility.
 Better Async support.
+
+\paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
+% Intentional space here
+For the assertion library I chose Chai.js because it had the most flexibility for writing assertions that I'd found. It provides access to an Expect API, a Should API, and more general Assert API. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
 
 \paragraph{Pros}
 
 \paragraph{Cons}
 
-\subsubsection{QUnit}
+\subsubsection{QUnit \cite{QUnit}}
+More developer-centered, less "pretty", not BDD
 
 \paragraph{Pros}
 
