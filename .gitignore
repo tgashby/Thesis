@@ -8,5 +8,4 @@
 !paper.pdf
 *.synctex.gz
 *.toc
-*.sublime-project
 *.sublime-workspace
