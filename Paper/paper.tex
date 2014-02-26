@@ -407,7 +407,52 @@ Jenkins comes fairly bare-boned but is highly customizable and has a wide array 
 
 \paragraph{Cons}
 
-\subsubsection{Travis}
+\subsubsection{Travis \cite{Travis}}
+Travis is an online continuous integration, as opposed to one you start yourself, like Jenkins. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives your more processing power and access to private repositories.
+
+Travis requires that you projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. Getting a project running with Travis is fairly easy; you create a yml file in your repository, I was able to set up everything I needed in six very simple lines.
+
+Travis comes with incredibly thorough documentation and a wealth of built-in services like databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom hooks to deploy to a provider not supported natively.
+
+In order to get access to your private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
+
+From what I gathered, Travis appears to be targeted at companies, not individual developers but works great if you are willing to open-source your repositories.
+
+
+
+BREAK
+
+Semaphore
+- Public/Private doesn't matter
+- 30 Day Trial, then must pay for plan
+- GitHub Only
+- Settings done online
+- Ruby mostly, Node.js support new
+
+Magnum (Are there ANY drawbacks... This is too good to be true)
+- Public/Private doesn't matter
+- Free forever as far as I can tell....?
+- GitHub, BitBucket, GitLab, others too
+- Auto (overridable) settings
+- Too good to be true, it's in public beta right now, pricing soon.
+- Xvfb support
+
+Travis
+- Free for public
+- Paid for private
+- GitHub only
+- Requires .travis.yml file
+
+Drone.io
+- Free for public repos
+- Paid for private repos
+- GitHub, BitBucket, Google Code
+
+Jenkins
+- Free all the time forever because you set it up
+- It'll do everything....? 
+- Lots of setup
+
 
 \paragraph{Pros}
 
