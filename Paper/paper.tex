@@ -101,9 +101,28 @@ We have brought together a number of testing tools from the web and created what
 %%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around 2.5 billion people. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
-Like any piece of software, these web applications ought to be tested in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are the new kids on the block and there is very little conventional wisdom on how to test them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate and so there's often little time to test.
+Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices regarding how to test them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate and so there's a need for rapid testing.
+
 We can see that this is not a solved problem by looking at some of the biggest web application around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths, and, honestly, it is fairly small, but those are still errors in the software that ought to be fixed.
-What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, quick to develop on, and thorough in its coverage. 
+What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, quick to develop on, and thorough in its coverage.
+
+\subsection{What Has Been Done Already?}
+- Info info info
+
+\subsubsection{Why It Is Insufficient}
+- No standard
+- Info info info
+
+\subsection{Problems Still Faced/Why It's So Hard}
+- A lot of products to test against (browsers)
+- Asynchronous shennanigans
+
+\subsection{Contributions of This Thesis}
+- Framework
+- Wade through all the tools currently out there
+-- Focus in, no need to have every developer check out all 10000 tools
+-- Weigh options
+
 
 %%%%%%%%%%%%%%%%%%
 %%% Background 
@@ -140,18 +159,49 @@ The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009
 
 HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
 
-\subsubsection{JavaScript}
+- Talk about GeoLocation
+
+- TIE JS PORTION INTO THIS
+
+% \subsubsection{JavaScript}
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an often iterative environment.
 
+
+- THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'
 \subsubsection{Node.JS}
 Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
 
+
+- TIE THIS CLIENT/SERVER STUFF into Web Applications, be specific, not generic
+\subsection{Client/Server Architecture}
+Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS THE RIGHT TERM...) server-side.
+
+Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
+
+\subsubsection{What is the Client-side Portion?}
+First, I'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
+
+So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
+
+Client-side programming is done in a language that the browser understands, most frequently Javascript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
+
+\subsubsection{What is the Server-side Portion?}
+Once again, I'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
+
+The server-side portion of an application, then, stores all of the assets, accounts, and structure of the entire application. The server-side authenticates users, retrieves data from databases, processes large data, and send information, be it assets or results, back to the client to display to the user.
+
+\subsubsection{Client and Server Interactions}
+The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
+
+Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
+
+
 \subsection{What is testing?}
 IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
 
-There are a number of different types of tests and testing concept, we will just focus on Unit Testing and Continuous Integration.
+There are a number of different types of tests and testing concept, we will just focus on Unit Testing, Continuous Integration, and Acceptance Testing.
 
 \subsubsection{Unit Testing}
 Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
@@ -217,31 +267,10 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 	\captionof{figure}{\cite{DefectPic}}
 \end{Figure}
 
-\subsubsection{Why Testing is Important}
-I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. Many developers will leave testing to their users, i.e., wait for users to have problems and report them before developers will fix them. This is an issue for a number of reasons, a few of which are: frustrated customers are unlikely to continue using a buggy product and are dissuaded from buying future products from the same developer, certain bugs can be security loopholes that may allow users access to information they shouldn't have, in the worst cases a bug may cause damage to a person or property and the developers would be on the hook.
+% - CONSIDER REMOVING ALTOGETHER
+% \subsubsection{Why Testing is Important}
+% I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. Many developers will leave testing to their users, i.e., wait for users to have problems and report them before developers will fix them. This is an issue for a number of reasons, a few of which are: frustrated customers are unlikely to continue using a buggy product and are dissuaded from buying future products from the same developer, certain bugs can be security loopholes that may allow users access to information they shouldn't have, in the worst cases a bug may cause damage to a person or property and the developers would be on the hook.
 
-
-\subsection{Client/Server Architecture}
-Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS THE RIGHT TERM...) server-side.
-
-Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
-
-\subsubsection{What is the Client-side Portion?}
-First, I'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
-
-So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
-
-Client-side programming is done in a language that the browser understands, most frequently Javascript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
-
-\subsubsection{What is the Server-side Portion?}
-Once again, I'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
-
-The server-side portion of an application, then, stores all of the assets, accounts, and structure of the entire application. The server-side authenticates users, retrieves data from databases, processes large data, and send information, be it assets or results, back to the client to display to the user.
-
-\subsubsection{Client and Server Interactions}
-The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
-
-Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Product 
