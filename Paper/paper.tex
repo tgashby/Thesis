@@ -421,23 +421,36 @@ asyncTest("Async Test", function () {
 \paragraph{Cons}
 
 \subsection{Continuous Integration Frameworks}
-\subsubsection{Jenkins \cite{Jenkins}}
-Jenkins is the first of the continuous integration frameworks that I tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously, (2) monitoring executions of externally-run jobs. Generally CI frameworks like Jenkins will integrate with a source control system or just the file system to attempt to build and run a project wheneever a change is pushed or saved. The other use for a tool like Jenkins is the abilty to start services like cron jobs or similarly long-running tools and then collect the output for them and allow the developer to check into the status of them at any time.
+Continuous Integration frameworks attempt to make development easier by running specified actions, usually tests, after a change to the project. This change can be simply saving a modified file, or, more usually, an action like pushing a change to a repository.
 
-Jenkins is a series of web pages that you set up to run on a given server. Most companies give Jenkins a subdomain on their web pages. This is what it looks like:
+Continuous Integration frameworks, therefore, need to be flexible in the type of project they support, customizable in their chosen environments to support differing projects, and have a simple way to connect to repositories or file systems.
+
+\subsubsection{Jenkins \cite{Jenkins}}
+Jenkins is the first of the continuous integration frameworks that I tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
+
+Jenkins is a series of web pages that you set up to run on a given server. This is what it looks like:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
 \end{Figure}
+Most companies give Jenkins a sub-domain on their web pages.
 
-Jenkins comes fairly bare-boned but is highly customizable and has a wide array of plugins available to integrate with various services, integrate with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
+Jenkins comes bare-boned but is highly customizable and has a wide array of plugins. The plugins available integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
+
+Because Jenkins comes bare and runs on the system of your choosing, it can run any project that you set up. The downside is that there is no support out-of-the-box unless you already have the necessary compilers, interpreters, applications, and/or libraries installed on the server running Jenkins.
+
+One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Any increase in computing power will be directly usable by Jenkins. Jenkins can run as many jobs as your server can handle at one time.
+
+The other use for a tool like Jenkins is the ability to start services like cron jobs or similarly long-running tools and status monitors and then collect the output for them and allow the developer to check on them at any time.
+
+Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run your project in. However, once the server has the necessary applications and libraries, your builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
 \paragraph{Pros}
 
 \paragraph{Cons}
 
 \subsubsection{Travis \cite{Travis}}
-Travis is an online continuous integration, as opposed to one you start yourself, like Jenkins. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives your more processing power and access to private repositories.
+Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which you can monitor your builds and processes. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives you more processing power and access to private repositories.
 
 Travis requires that you projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. Getting a project running with Travis is fairly easy; you create a yml file in your repository, I was able to set up everything I needed in six very simple lines.
 
