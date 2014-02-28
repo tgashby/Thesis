@@ -330,9 +330,6 @@ Asynchronous testing using Jasmine was a bit of a chore, but there is support bu
 
 NO WEB PAGE TESTING SO FAR
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. I will outline my choice of Chai.js below.
@@ -362,9 +359,6 @@ Better Async support.
 % Intentional space here
 For the assertion library I chose Chai.js because it had the most flexibility for writing assertions that I'd found. It provides access to an Expect API, a Should API, and more general Assert API. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{QUnit \cite{QUnit}}
 QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the ``it'' functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
@@ -410,15 +404,9 @@ asyncTest("Async Test", function () {
 });
 \end{lstlisting}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Intern}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsection{Continuous Integration Frameworks}
 Continuous Integration frameworks attempt to make development easier by running specified actions, usually tests, after a change to the project. This change can be simply saving a modified file, or, more usually, an action like pushing a change to a repository.
@@ -445,21 +433,26 @@ The other use for a tool like Jenkins is the ability to start services like cron
 
 Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run your project in. However, once the server has the necessary applications and libraries, your builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Travis \cite{Travis}}
 Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which you can monitor your builds and processes. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives you more processing power and access to private repositories.
 
-Travis requires that your projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. Getting a project running with Travis is fairly easy; you just create a yml file in your repository. I was able to set up everything I needed in six very simple lines.
+Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, Python, and more. Travis has incredibly thorough documentation and a wealth of built-in services to work with your project if needed. Services like databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
-Travis comes with incredibly thorough documentation and a wealth of built-in services like databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom hooks to deploy to a provider not supported natively.
+If at any point your project requires something that Travis does not support natively, you are given the permissions necessary to install any sort of libraries or services that can be installed with apt-get on an Ubuntu machine.
+
+Travis requires that your projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. 
+
+Getting a project running with Travis is fairly easy; you just create a yml file in your repository with certain lines pertaining to the language, needed services, commands to run, etc. I was able to set up everything I needed in six simple lines.
 
 In order to get access to your private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
 
-From what I gathered, Travis appears to be targeted at companies, not individual developers but works great if you are willing to open-source your repositories.
+From what I gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
 
+\subsection{Semaphore\cite{Semaphore}}
+Semaphore is another online CI framework that connects to GitHub to bring in your projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with your public and private repositories but requires a subscription after 30 days no matter which repositories you use.
+
+Semaphore was originally designed for only Ruby applications but in January of 2014 they annouced support for Node.js and Javascript and as of February 26th they now offer support for Clojure projects.\cite{SemaphoreBlog} FEATURES, DEPLOYMENT OPTIONS, ETC
 
 
 BREAK
@@ -479,63 +472,32 @@ Magnum (Are there ANY drawbacks... This is too good to be true)
 - Too good to be true, it's in public beta right now, pricing soon.
 - Xvfb support
 
-Travis
-- Free for public
-- Paid for private
-- GitHub only
-- Requires .travis.yml file
-
 Drone.io
 - Free for public repos
 - Paid for private repos
 - GitHub, BitBucket, Google Code
 
-Jenkins
-- Free all the time forever because you set it up
-- It'll do everything....? 
-- Lots of setup
+\subsubsection{Magnum}
 
 
-\paragraph{Pros}
+\subsubsection{Drone.io}
 
-\paragraph{Cons}
 
 \subsubsection{Selenium}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
-
-\subsubsection{Semaphore}
-
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Nightwatchjs}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsection{Misc Frameworks}
 \subsubsection{Sauce Labs}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Istanbul}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 \subsubsection{Karma}
 
-\paragraph{Pros}
-
-\paragraph{Cons}
 
 
 \subsection{Misc Tools}
