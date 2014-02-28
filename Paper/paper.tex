@@ -449,20 +449,21 @@ In order to get access to your private repositories, Travis offers several prici
 
 From what I gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
 
-\subsection{Semaphore\cite{Semaphore}}
+\subsubsection{Semaphore\cite{Semaphore}}
 Semaphore is another online CI framework that connects to GitHub to bring in your projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with your public and private repositories but requires a subscription after 30 days no matter which repositories you use.
 
-Semaphore was originally designed for only Ruby applications but in January of 2014 they annouced support for Node.js and Javascript and as of February 26th they now offer support for Clojure projects.\cite{SemaphoreBlog} FEATURES, DEPLOYMENT OPTIONS, ETC
+Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and Javascript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in your repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
+
+Semaphore supports most databases and has a number of testing frameworks built-in. Once again you can use apt-get to install any missing libraries or dependencies. It would appear that deployment support is only available for Ruby projects.
+
+Semaphore's pricing scheme is different than Travis' as it focuses on an individual, not a company. Their lowest cost subscription is one project (public or private) for \$14 per month. They offer more subscriptions with the ability to have more projects and concurrent processes in higher tiers.
+
+Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
+
+\subsubsection{Magnum}
+Magnum is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. Magnum has every feature you could want for free, however, it's still in public beta and although prices haven't been released, the team making Magnum CI has already stated that there will be price tiers. It is not unreasonable, though, to believe that Magnum CI will be free for open-source projects, and that's what we care about.
 
 
-BREAK
-
-Semaphore
-- Public/Private doesn't matter
-- 30 Day Trial, then must pay for plan
-- GitHub Only
-- Settings done online
-- Ruby mostly, Node.js support new
 
 Magnum (Are there ANY drawbacks... This is too good to be true)
 - Public/Private doesn't matter
@@ -472,15 +473,12 @@ Magnum (Are there ANY drawbacks... This is too good to be true)
 - Too good to be true, it's in public beta right now, pricing soon.
 - Xvfb support
 
+
+\subsubsection{Drone.io}
 Drone.io
 - Free for public repos
 - Paid for private repos
 - GitHub, BitBucket, Google Code
-
-\subsubsection{Magnum}
-
-
-\subsubsection{Drone.io}
 
 
 \subsubsection{Selenium}
