@@ -301,6 +301,8 @@ In order to more thoroughly vet the many testing frameworks we came across, we h
 \subsection{Sample ToDo App}
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, I decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
 One of the challenges in testing that I quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, I will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
+- Screenshots
+- Example Navigation
 
 \subsection{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of my evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
@@ -329,7 +331,6 @@ The default Jasmine package had some ineptitudes in dealing with Node.js but the
 Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, ``runs(function () \{ .... \})'', runs the asynchronous code. The second function, ``waitsFor(function () \{ ... \})'', polls a flag that is set by the first function when it completes. Finally, the third function, another ``runs(...)'', houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
 NO WEB PAGE TESTING SO FAR
-
 
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. I will outline my choice of Chai.js below.
@@ -408,6 +409,16 @@ asyncTest("Async Test", function () {
 \subsubsection{Intern}
 
 
+% Browser Testing!
+\subsubsection{Selenium}
+
+
+\subsubsection{PhantomJS}
+
+
+\subsubsection{ZombieJS}
+
+
 \subsection{Continuous Integration Frameworks}
 Continuous Integration frameworks attempt to make development easier by running specified actions, usually tests, after a change to the project. This change can be simply saving a modified file, or, more usually, an action like pushing a change to a repository.
 
@@ -449,7 +460,7 @@ In order to get access to your private repositories, Travis offers several prici
 
 From what I gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
 
-\subsubsection{Semaphore\cite{Semaphore}}
+\subsubsection{Semaphore \cite{Semaphore}}
 Semaphore is another online CI framework that connects to GitHub to bring in your projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with your public and private repositories but requires a subscription after 30 days no matter which repositories you use.
 
 Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and Javascript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in your repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
@@ -460,29 +471,29 @@ Semaphore's pricing scheme is different than Travis' as it focuses on an individ
 
 Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
 
-\subsubsection{Magnum}
-Magnum is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. Magnum has every feature you could want for free, however, it's still in public beta and although prices haven't been released, the team making Magnum CI has already stated that there will be price tiers. It is not unreasonable, though, to believe that Magnum CI will be free for open-source projects, and that's what we care about.
+\subsubsection{MagnumCI \cite{MagnumCI}}
+MagnumCI is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
 
+MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on your project structure and language. All settings are overridable in a yml file if you choose.
 
+MagnumCI has all the popular databases built-in, many of which run automatically on startup. MagnumCI also has two headless browser frameworks built in for running any browser testing that needs to be done. The developer can, again, use apt-get to install missing packages. MagnumCI does not, at current, provide automatic deployment options given a successful build.
 
-Magnum (Are there ANY drawbacks... This is too good to be true)
-- Public/Private doesn't matter
-- Free forever as far as I can tell....?
-- GitHub, BitBucket, GitLab, others too
-- Auto (overridable) settings
-- Too good to be true, it's in public beta right now, pricing soon.
-- Xvfb support
+Where MagnumCI shines is in support of different repositories. MagnumCI offers support for pulling from GitHub, BitBucket, GitLab, and a few others. It does require a bit more setup to get your repositories connected, but what it comes down to is a couple lines of copied and pasted text within your repositories settings.
 
+Right now MagnumCI offers impressive features, private repositories, and extensive repository sources, all for free. It is hard to say that MagnumCI is the best because those features may end up costing money soon after this paper is completed. It is included in this review because it seems to be an up and comer that could prove quite strong.
 
-\subsubsection{Drone.io}
-Drone.io
-- Free for public repos
-- Paid for private repos
-- GitHub, BitBucket, Google Code
+\subsubsection{Drone.io \cite{DroneIO}}
+Drone.io is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.
 
+Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires you to specify your language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate built commands for you.
 
-\subsubsection{Selenium}
+Drone.io offers support for all of the databases you'd want, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
 
+Drone.io is able to connect to GitHub, BitBucket, and Google Code respositories to get your projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives you once it connects, select the language of the repository, edit the default build script, and you're ready to go.
+
+Drone.io offers unlimited free open-source repositories. The next step up offers 5 private repositories for \$25 per month and for \$50 per month you get unlimited private repositories. They also offer higher tier plans that allow for concurrently running builds.
+
+Drone.io is a strong contender because of its language support, deployment options, and ease of setup. Where it lacks is in its notification options. The only notification option at present is email while other CI frameworks offer a number of other notification options for various messaging services.
 
 \subsubsection{Nightwatchjs}
 
