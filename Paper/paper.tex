@@ -407,18 +407,41 @@ asyncTest("Async Test", function () {
 
 
 \subsubsection{Intern\cite{InternIO}}
-Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework.
-- BDD, TDD, Object Testing methods
-- Integration with Selenium
-- Distinction between non-functional and functional tests
-- Code Coverage!
+Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of your project, but caused problem with attempting to interact with a seperate server running the Node.js application. I was unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
-% Browser Testing!
+- TDD, BDD, Object methods
+Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which you had to get it yourself. Again, this gives the developer access to Expect, Assert, and Object testing methods.
+
+- Integration with Selenium
+Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern.
+
+- Distinction between non-functional and functional tests
+Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
+
+- Code Coverage!
+Intern includes configurable code coverage metrics on your tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+
+% Browser Testing! Code
 \subsubsection{Selenium\cite{Selenium}}
-- HAD TO EDIT APP.JS TO USE NEW JAR
-- HAD TO ADD NEW JAR!
+Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On it's own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
+
+Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping for you. This is the case for both of the web testing tools that will follow this description.
+
+Selenium has support for running a number of different browsers. 
+
+Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run withou the need for developers to manually click all of the HTML elements and input information in the relevant places.
+
+Selenium's node incarnation is out-of-date and as such I had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required me to edit some of the javascript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
+
+Selenium was written with maximum functionality and language flexability in mind and therefore can be incredibly verbose.
+
+The Selenium WebDriver has APIs for a variety of programming languages including: Javascript, C, Java, Python, ...
 
 \subsubsection{Nightwatchjs\cite{NightwatchJS}}
+Nightwatch is a Javascript testing library that wraps Selenium in an effort to make browser testing more concise and easier to use. Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+
+Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool.
+
 - Selenium WebDriver driver
 - Browser-only 
 
