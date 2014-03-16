@@ -82,6 +82,7 @@ By Taggart Ashby \vspace{10pt} \\
 %%% VERY General overview of problem and solution in paper
 %%%%%%%%%%%%%%%%
 \begin{abstract}
+\todo{Make this better}
 We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework for web applications.
 \end{abstract}
 
@@ -159,9 +160,9 @@ The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009
 
 HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
 
-- Talk about GeoLocation
+\todo{Talk about GeoLocation}
 
-- TIE JS PORTION INTO THIS
+\todo{TIE JS PORTION INTO THIS}
 
 % \subsubsection{JavaScript}
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an often iterative environment.
@@ -250,6 +251,8 @@ function testCalculateMagicNumberPartOne () ... // Still a Unit Test, just a who
 function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing the whole system
 \end{lstlisting}
 
+\todo{Wrap up?}
+
 \subsubsection{Continuous Integration}
 Continuous Integration (CI), in the context of testing, also known as Continuous Testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it prior to writing it. This is invaluable feedback because you can see if you're making progress in the right direction as you write code, as opposed to a situation in which you finish coding and find out you made a bad assumption or decision early on. 
 
@@ -307,6 +310,8 @@ One of the challenges in testing that I quickly came across was the asynchronous
 \subsection{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of my evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
+An important distinction that needs to be made is that in web applications there is functionality behind the scenes and there is the UI element of the web page. Unit testing frameworks 
+
 \subsubsection{Jasmine \cite{Jasmine}}
 The first of the unit testing frameworks that I looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
@@ -329,8 +334,6 @@ The ``describe'' statement creates a test suite to collect related tests under. 
 The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
 Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, ``runs(function () \{ .... \})'', runs the asynchronous code. The second function, ``waitsFor(function () \{ ... \})'', polls a flag that is set by the first function when it completes. Finally, the third function, another ``runs(...)'', houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
-
-NO WEB PAGE TESTING SO FAR
 
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. I will outline my choice of Chai.js below.
@@ -421,6 +424,11 @@ Intern's unit-test versus browser test seperation is termed, by Intern, nonfunct
 - Code Coverage!
 Intern includes configurable code coverage metrics on your tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
+\subsection{Browser and UI Testing}
+Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
+
+What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
+
 % Browser Testing! Code
 \subsubsection{Selenium\cite{Selenium}}
 Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On it's own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
@@ -438,7 +446,29 @@ Selenium was written with maximum functionality and language flexability in mind
 The Selenium WebDriver has APIs for a variety of programming languages including: Javascript, C, Java, Python, ...
 
 \subsubsection{Nightwatchjs\cite{NightwatchJS}}
-Nightwatch is a Javascript testing library that wraps Selenium in an effort to make browser testing more concise and easier to use. Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+Nightwatch is a Javascript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+
+Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
+\begin{lstlisting}
+module.exports = {
+  "Demo test Google" : function (client) {
+    client
+      .url("http://www.google.com")
+      .waitForElementVisible("body", 1000)
+      .assert.title("Google")
+      .assert.visible("input[type=text]")
+      .setValue("input[type=text]", "nightwatch")
+      .waitForElementVisible("button[name=btnG]", 1000)
+      .click("button[name=btnG]")
+      .pause(1000)
+      .assert.containsText("#main", "The Night Watch")
+      .end();
+  }
+};
+\end{lstlisting}
+As you can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. The same code in straight selenium is quite a bit more verbose.
+
+\todo{INCLUDE SELENIUM CODE TO DO THIS HERE}
 
 Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool.
 
