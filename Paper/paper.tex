@@ -472,8 +472,11 @@ As you can see, just reading the code line by line paints a picture of exactly w
 
 Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool.
 
-- Selenium WebDriver driver
-- Browser-only 
+Nightwatch is Node.js module, and as such can easily installed and run via npm and the command-line.
+
+Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if you want to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
+
+Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
 \subsubsection{PhantomJS\cite{PhantomJS}}
 Too much.
