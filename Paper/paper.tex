@@ -111,6 +111,8 @@ What this all boils down to is that there needs to be a framework in place for t
 
 \subsection{What Has Been Done Already?}
 Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers did not come together to work on the problem of testing but rather came up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools gained traction and become larger, more general, tools. 
+
+\todo{What goes here?}
 - Info info info
 
 \subsubsection{Why It Is Insufficient}
@@ -121,14 +123,31 @@ The problem that followed was that many of the tools attempted to remedy the sam
 
 \subsection{Problems Still Faced/Why It's So Hard}
 - A lot of products to test against (browsers)
+Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
+
+In the very beginning, web applications were easy to write and test because the only code was straight HTML with a common set of HTML tags. It didn't matter what browser you viewed the content in because it was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on a couple different browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, you want to target as many of those platforms as possible with a single code-base to save yourself time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
+
 - Asynchronous shennanigans
+The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting UI that had not before been seen. This set of features and UI improvements came with an, albeit necessary, complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, data loading that doesn't hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
+
+There is no overarching solution to these problems, but in order to understand the motivations behind this thesis, one must understand the problems facing web application developers.
 
 \subsection{Contributions of This Thesis}
 - Framework
+The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a single place to look for their testing needs. There are plenty of strong tools available and I hope to gather a subset of those tools to cover as much of testing spectrum as possible in an effort to save other developers time and energy in having to look at them all individually.
 - Wade through all the tools currently out there
 -- Focus in, no need to have every developer check out all 10000 tools
 -- Weigh options
 
+\subsection{Application Defaults \todo{This title sucks}}
+- Node.js
+- Browser based
+- Javascript
+- Database
+- Open-source
+
+\subsection{Tool Requirements \todo{Move this section elsewhere}}
+- Free
 
 %%%%%%%%%%%%%%%%%%
 %%% Background 
