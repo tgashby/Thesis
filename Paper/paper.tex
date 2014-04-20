@@ -68,7 +68,7 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\vfill A Testing Framework for Web Applications} %\vfill gives us the black space at the top of the page
+\title{\vfill A Survey of Web Testing Frameworks and a Workflow for Testing Javascript Applications} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
 }
@@ -83,7 +83,9 @@ By Taggart Ashby \vspace{10pt} \\
 %%%%%%%%%%%%%%%%
 \begin{abstract}
 \todo{Make this better}
-We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework for web applications.
+Web applications are quickly replacing standalone applications. As with any type of applicaiton, these web applications need to be tested to ensure proper functionality and reliability. There have been substantial efforts to create tools to help with the testing of web applicaitons but there is, as of yet, no standard or recommended workflow to insure speed of development and strength of application.
+
+We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework and workflow for javascript web applications.
 \end{abstract}
 
 \thispagestyle{empty} %remove page number from title page
@@ -134,20 +136,10 @@ There is no overarching solution to these problems, but in order to understand t
 
 \subsection{Contributions of This Thesis}
 - Framework
-The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a single place to look for their testing needs. There are plenty of strong tools available and I hope to gather a subset of those tools to cover as much of testing spectrum as possible in an effort to save other developers time and energy in having to look at them all individually.
+The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a single place to look for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of testing spectrum as possible in an effort to save other developers time and energy in having to look at them all individually.
 - Wade through all the tools currently out there
 -- Focus in, no need to have every developer check out all 10000 tools
 -- Weigh options
-
-\subsection{Application Defaults \todo{This title sucks}}
-- Node.js
-- Browser based
-- Javascript
-- Database
-- Open-source
-
-\subsection{Tool Requirements \todo{Move this section elsewhere}}
-- Free
 
 %%%%%%%%%%%%%%%%%%
 %%% Background 
@@ -177,7 +169,7 @@ Web applications are fantastic for rapid prototyping because of all of the stren
 
 
 \subsection{Web Features}
-Here I'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones.
+Here we'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones.
 
 \subsubsection{HTML5}
 The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009. \cite{EvolutionOfWeb} HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014. \cite{Plan2014} What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
@@ -189,7 +181,7 @@ HTML5 brings a number of new features including: audio and video tags, the canva
 \todo{TIE JS PORTION INTO THIS}
 
 % \subsubsection{JavaScript}
-JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an often iterative environment.
+JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
 
 - THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'
@@ -206,14 +198,14 @@ Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS T
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
 \subsubsection{What is the Client-side Portion?}
-First, I'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
+First, we'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
 
 So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
 
 Client-side programming is done in a language that the browser understands, most frequently Javascript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
 
 \subsubsection{What is the Server-side Portion?}
-Once again, I'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
+Once again, we'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
 
 The server-side portion of an application, then, stores all of the assets, accounts, and structure of the entire application. The server-side authenticates users, retrieves data from databases, processes large data, and send information, be it assets or results, back to the client to display to the user.
 
@@ -296,42 +288,28 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 
 % - CONSIDER REMOVING ALTOGETHER
 % \subsubsection{Why Testing is Important}
-% I'm consistently surprised by how few people take testing seriously when it comes to non-trivial applications. Many developers will leave testing to their users, i.e., wait for users to have problems and report them before developers will fix them. This is an issue for a number of reasons, a few of which are: frustrated customers are unlikely to continue using a buggy product and are dissuaded from buying future products from the same developer, certain bugs can be security loopholes that may allow users access to information they shouldn't have, in the worst cases a bug may cause damage to a person or property and the developers would be on the hook.
+% We're consistently surprised by how few people take testing seriously when it comes to non-trivial applications. Many developers will leave testing to their users, i.e., wait for users to have problems and report them before developers will fix them. This is an issue for a number of reasons, a few of which are: frustrated customers are unlikely to continue using a buggy product and are dissuaded from buying future products from the same developer, certain bugs can be security loopholes that may allow users access to information they shouldn't have, in the worst cases a bug may cause damage to a person or property and the developers would be on the hook.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Product 
-%%% User Manual
-%%% 	Tools (programs, IDEs, scripts)
-%%% 	Setup instructions
-%%% 	Usage
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Product}
-
-\section{Chosen Toolset}
-- Unit Testing: Mocha w/ Chai
-- Coverage: Istanbul
-- CI: Travis
-- Browser Testing: Nightwatch
-- Task Runner: Grunt
-
-\section{Setup}
-
-\section{Workflow}
-- Unit Testing on save
-- CI used for running browser tests
-
-- 'Manually' instantiate Sauce Labs?
 
 %%%%%%%%%%%%%%%%%%%%%%
-%%% Implementation 
-%%% 	Why I chose the tools I chose
-%%% 	Scripts written to help out 
+%%% Sample App 
+%%%   Talk about test app
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Implementation}
-
-
 \section{Sample App and Testing Frameworks}
+
+\subsection{Sample ToDo App}
+In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, We decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
+One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, we will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
+- Screenshots
+- Example Navigation
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Testing Frameworks
+%%%   Talk about the various frameworks
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Testing Frameworks}
+
 
 \subsection{Assumptions and Requirements}
 In order to more thoroughly vet the many testing frameworks we came across, we had a number of assumptions about the projects we'd be looking at and requirements for those framework.
@@ -339,19 +317,28 @@ In order to more thoroughly vet the many testing frameworks we came across, we h
 - Something to do unit testing
 - Something to do continuous integration
 
-\subsection{Sample ToDo App}
-In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, I decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
-One of the challenges in testing that I quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, I will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
-- Screenshots
-- Example Navigation
+\subsubsection{The Average Web Application}
+In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, Javascript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
+
+\todo{Need some sources and facts about Node.js popularity, average web application set up, etc. Can we back up our reasoning here?}
+
+- Node.js
+- Browser based
+- Javascript
+- Database
+- Open-source
+
+\subsubsection{Tool Requirements \todo{Move this section elsewhere}}
+Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at the least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. Occasionally the cost of tools will be discussed but in general we didn't review tools that did not offer a free option.
+- Free
 
 \subsection{Unit Testing Frameworks}
-The following frameworks are reviewed in chronological order of my evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
+The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
 An important distinction that needs to be made is that in web applications there is functionality behind the scenes and there is the UI element of the web page. Unit testing frameworks 
 
 \subsubsection{Jasmine \cite{Jasmine}}
-The first of the unit testing frameworks that I looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
+The first of the unit testing frameworks that we looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
 This relates to Jasmine is the way that you write Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like english sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
@@ -374,11 +361,11 @@ The default Jasmine package had some ineptitudes in dealing with Node.js but the
 Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, ``runs(function () \{ .... \})'', runs the asynchronous code. The second function, ``waitsFor(function () \{ ... \})'', polls a flag that is set by the first function when it completes. Finally, the third function, another ``runs(...)'', houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
 \subsubsection{Mocha \cite{Mocha}}
-Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. I will outline my choice of Chai.js below.
+Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
 Mocha also uses the ``describe -> it(\"should...\" '' pattern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
 
-Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In your ``it(...)'' anonymous function you pass an additional parameter called ``done'' which you then call when you know the asynchronous call has finished. This required me to edit the code I was testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In your ``it(...)'' anonymous function you pass an additional parameter called ``done'' which you then call when you know the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
   it("look like this", function (done) {
@@ -399,7 +386,7 @@ Better Async support.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
 % Intentional space here
-For the assertion library I chose Chai.js because it had the most flexibility for writing assertions that I'd found. It provides access to an Expect API, a Should API, and more general Assert API. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js because it had the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and more general Assert API. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
 
 
 \subsubsection{QUnit \cite{QUnit}}
@@ -409,7 +396,7 @@ QUnit is an Assertion style framework developed by the jQuery Foundation, the ma
   \includegraphics[width=\linewidth]{qunitrunner.png} 
   \captionof{figure}{Each individual spec is further broken down into the assertions within it.}
 \end{Figure}
-An interesting feature that QUnit has that I've not seen elsewhere is the ability to specify how many assertions you expect to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let you know fewer assertions were called than expected.
+An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions you expect to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let you know fewer assertions were called than expected.
 
 QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
 \begin{lstlisting}
@@ -446,9 +433,8 @@ asyncTest("Async Test", function () {
 });
 \end{lstlisting}
 
-
 \subsubsection{Intern\cite{InternIO}}
-Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of your project, but caused problem with attempting to interact with a seperate server running the Node.js application. I was unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
+Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of your project, but caused problem with attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
 - TDD, BDD, Object methods
 Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which you had to get it yourself. Again, this gives the developer access to Expect, Assert, and Object testing methods.
@@ -477,7 +463,7 @@ Selenium has support for running a number of different browsers.
 
 Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run withou the need for developers to manually click all of the HTML elements and input information in the relevant places.
 
-Selenium's node incarnation is out-of-date and as such I had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required me to edit some of the javascript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
+Selenium's node incarnation is out-of-date and as such we had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the javascript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
 
 Selenium was written with maximum functionality and language flexability in mind and therefore can be incredibly verbose.
 
@@ -533,7 +519,7 @@ Continuous Integration frameworks attempt to make development easier by running 
 Continuous Integration frameworks, therefore, need to be flexible in the type of project they support, customizable in their chosen environments to support differing projects, and have a simple way to connect to repositories or file systems.
 
 \subsubsection{Jenkins \cite{Jenkins}}
-Jenkins is the first of the continuous integration frameworks that I tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
+Jenkins is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
 Jenkins is a series of web pages that you set up to run on a given server. This is what it looks like:
 \begin{Figure}
@@ -552,7 +538,6 @@ The other use for a tool like Jenkins is the ability to start services like cron
 
 Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run your project in. However, once the server has the necessary applications and libraries, your builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
-
 \subsubsection{Travis \cite{Travis}}
 Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which you can monitor your builds and processes. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives you more processing power and access to private repositories.
 
@@ -562,11 +547,11 @@ If at any point your project requires something that Travis does not support nat
 
 Travis requires that your projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. 
 
-Getting a project running with Travis is fairly easy; you just create a yml file in your repository with certain lines pertaining to the language, needed services, commands to run, etc. I was able to set up everything I needed in six simple lines.
+Getting a project running with Travis is fairly easy; you just create a yml file in your repository with certain lines pertaining to the language, needed services, commands to run, etc. We were able to set up everything we needed in six simple lines.
 
 In order to get access to your private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
 
-From what I gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
+From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
 
 \subsubsection{Semaphore \cite{Semaphore}}
 Semaphore is another online CI framework that connects to GitHub to bring in your projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with your public and private repositories but requires a subscription after 30 days no matter which repositories you use.
@@ -613,11 +598,50 @@ Drone.io is a strong contender because of its language support, deployment optio
 
 \subsubsection{Karma}
 
-
+\subsubsection{Grunt.js}
+- Task Runner
+- Watch functionality
+- Easy setup
 
 \subsection{Misc Tools}
-\subsection{Node Inspector}
+\subsubsection{Node Inspector}
 Fantastic for debugging node.js server-side code!
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%% Implementation 
+%%%   Why we chose the tools we chose
+%%%   Scripts written to help out 
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementation}
+
+\subsection{Chosen Toolset}
+
+- Unit Testing: Mocha w/ Chai
+- Coverage: Istanbul
+- CI: MagnumCI
+- Browser Testing: Nightwatch
+- Task Runner: Grunt
+- Package Manager: NPM, Bower
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Product 
+%%% User Manual
+%%%   Tools (programs, IDEs, scripts)
+%%%   Setup instructions
+%%%   Usage
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Product}
+
+\subsection{Setup}
+
+- Note OS X 'ulimit' issue with Grunt-watch
+
+\subsection{Workflow}
+- Unit Testing on save
+- CI used for running browser tests
+
+- 'Manually' instantiate Sauce Labs?
 
 
 %%%%%%%%%%%%%%%%%%
@@ -628,6 +652,23 @@ Fantastic for debugging node.js server-side code!
 %%%%%%%%%%%%%%%%%%
 \section{Evaluation}
 
+\subsection{PolyXpress (PX)}
+
+\subsubsection{PolyXpress Author}
+Our tests covered the Authoring portion of PX.
+
+\subsection{Our Setup}
+- 15-inch MacBook Pro (Late 2008 model)
+-- Processor  2.53 GHz Intel Core 2 Duo
+-- Memory  4 GB 1067 MHz DDR3
+-- Graphics  NVIDIA GeForce 9400M 256 MB
+--- Not a particularly powerful computer, just your average everyday laptop.
+
+- OS 10.9.2
+-- Terminal
+- Sublime w/ plugins
+- Netbeans
+
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Related Work 
@@ -635,9 +676,9 @@ Fantastic for debugging node.js server-side code!
 %%% 	Why they're not as good as ours
 %%%%%%%%%%%%%%%%%%%%
 \section{Related Work}
-I was unable to find any works that attempted to bring existing technologies together to create a web testing framework. Instead, I came across a number of proprietary tools and research. For the proprietary tool an advantage of the framework I already laid out is that it is freely available and has support behind it for each individual component. There is no need to contact any paper authors to get software or support. I will, however, still outline them as they provided insight into what the problems in existing frameworks were, gaps in coverage, what was important in a framework, and inspiration and acknowledgment that this is a real problem that many people are trying to solve.
+We were unable to find any works that attempted to bring existing technologies together to create a web testing framework. Instead, we came across a number of proprietary tools and research. Compared to these proprietary tools, the framework we already laid out is free and each part is supported by a community. There is no need to contact any paper authors to get software or support. We will, however, still outline them as they provided insight into what the problems in existing frameworks were, gaps in coverage, what was important in a framework, and inspiration and acknowledgment that this is a real problem that many people are trying to solve.
 
-I also found research into common bugs, general testing techniques, and finding bugs that greatly improved my test cases and understanding.
+We also found research into common bugs, general testing techniques, and finding bugs that greatly improved our test cases and understanding.
 
 \subsection{Testing Frameworks}
 
@@ -654,7 +695,7 @@ This system is exciting and intricate but far too complex for a general web test
 \subsubsection{``A 2-Layer Model for the White-Box Testing of Web Applications'' \cite{2LayerModel}}
 A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came with a model for white-box testing of web applications. (White box testing is when you access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
 
-This 2-layer approach is interesting and provided me with some insight, but the system was made for PHP applications and I wasn't looking to implement a brand-new system and test PolyXpress with it all in one year.
+This 2-layer approach is interesting and provided us with some insight, but the system was made for PHP applications and we weren't looking to implement a brand-new system and test PolyXpress with it all in one year.
 
 \subsubsection{``Invariant-Based Automatic Testing of AJAX User Interfaces'' \cite{InvariantBasedUseInterfaces}}
 Two individuals from the SOftware Engineering Research Group at Delft University in the Netherlands came up with a way to automatically test AJAX UI. The core of this idea is using a crawler to infer a flow graph. This paper outlines an plugin for an automated tool, ATUSA, for creating state validators and test suites for covering paths discovered during crawling (with a separate tool, CRAWLJAX). Their tests show that with minimal manual effort, the use of ATUSA can lead to high code coverage and error discovery. 
@@ -692,7 +733,7 @@ Four people from Saarland University in Germany created a tool, WebMate, for aut
 WebMate was another interesting project that could have seen use in our toolkit if crawlers weren't already available in other, more mainstream, tools.
 
 \subsubsection{``Continuous Testing with Ruby, Rails, and JavaScript'' \cite{BookContinuousTesting}}
-The well known book by Rady and Coffin talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of my testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussing writing effective tests, which is always important.
+The well known book by Rady and Coffin talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of our testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussed writing effective tests, which is always important.
 
 Not all of those tools made it into the eventual final toolkit, but they were all important to look at in the context of making the overarching toolkit.
 
@@ -733,6 +774,9 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 %%% Anything we wanted to do but didn't have time to
 %%%%%%%%%%%%%%%%%%%
 \section{Future Work}
+
+-- Extension to all of PX?
+-- Extension to non-proprietary open-source project
 
 
 %%%%%%%%%%%%%%%%%
