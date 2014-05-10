@@ -112,34 +112,34 @@ We can see that this is not a solved problem by looking at some of the biggest w
 What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, quick to develop on, and thorough in its coverage.
 
 \subsection{What Has Been Done Already?}
-Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers did not come together to work on the problem of testing but rather came up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools gained traction and become larger, more general, tools. 
+Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
 
 \todo{What goes here?}
-- Info info info
+\todo{Info info info}
 
 \subsubsection{Why It Is Insufficient}
-- No standard
+% - No standard
 The problem that followed was that many of the tools attempted to remedy the same problems and so a developer would have to decide between a number of similar tools. Having to wade through a sea of similar tools is time-consuming and that can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
 
-- Info info info
+\todo{Info info info}
 
 \subsection{Problems Still Faced/Why It's So Hard}
-- A lot of products to test against (browsers)
+% - A lot of products to test against (browsers)
 Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
 
 In the very beginning, web applications were easy to write and test because the only code was straight HTML with a common set of HTML tags. It didn't matter what browser you viewed the content in because it was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on a couple different browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, you want to target as many of those platforms as possible with a single code-base to save yourself time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
-- Asynchronous shennanigans
+% - Asynchronous shennanigans
 The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting UI that had not before been seen. This set of features and UI improvements came with an, albeit necessary, complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, data loading that doesn't hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
 
 There is no overarching solution to these problems, but in order to understand the motivations behind this thesis, one must understand the problems facing web application developers.
 
 \subsection{Contributions of This Thesis}
-- Framework
+%- Framework
 The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a single place to look for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of testing spectrum as possible in an effort to save other developers time and energy in having to look at them all individually.
-- Wade through all the tools currently out there
--- Focus in, no need to have every developer check out all 10000 tools
--- Weigh options
+%- Wade through all the tools currently out there
+%-- Focus in, no need to have every developer check out all 10000 tools
+%-- Weigh options
 
 %%%%%%%%%%%%%%%%%%
 %%% Background 
@@ -183,16 +183,16 @@ HTML5 brings a number of new features including: audio and video tags, the canva
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
 
-- THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'
+\todo{THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'}
 \subsubsection{Node.JS}
 Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
 
 
-- TIE THIS CLIENT/SERVER STUFF into Web Applications, be specific, not generic
+\todo{TIE THIS CLIENT/SERVER STUFF into Web Applications, be specific, not generic}
 \subsection{Client/Server Architecture}
-Web applications have a user-facing client-side and a ``rear-facing'' (IS THIS THE RIGHT TERM...) server-side.
+Web applications have a user-facing client-side and a ``rear-facing'' \todo{IS THIS THE RIGHT TERM...} server-side.
 
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
@@ -301,8 +301,8 @@ What we see here is that the earlier a defect is introduced the more it costs to
 \subsection{Sample ToDo App}
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, We decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
 One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, we will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
-- Screenshots
-- Example Navigation
+\todo{- Screenshots}
+\todo{- Example Navigation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -314,24 +314,24 @@ One of the challenges in testing that we quickly came across was the asynchronou
 
 \subsection{Assumptions and Requirements}
 In order to more thoroughly vet the many testing frameworks we came across, we had a number of assumptions about the projects we'd be looking at and requirements for those framework.
-- Node.js server because it's JS, so it's testable.
-- Something to do unit testing
-- Something to do continuous integration
+%- Node.js server because it's JS, so it's testable.
+%- Something to do unit testing
+%- Something to do continuous integration
 
 \subsubsection{The Average Web Application}
 In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, Javascript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
 
 \todo{Need some sources and facts about Node.js popularity, average web application set up, etc. Can we back up our reasoning here?}
 
-- Node.js
-- Browser based
-- Javascript
-- Database
-- Open-source
+%- Node.js
+%- Browser based
+%- Javascript
+%- Database
+%- Open-source
 
 \subsubsection{Tool Requirements \todo{Move this section elsewhere}}
 Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at the least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. Occasionally the cost of tools will be discussed but in general we didn't review tools that did not offer a free option.
-- Free
+%- Free
 
 \subsection{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
@@ -382,8 +382,8 @@ describe("Asynch Mocha Test", function () {
 });
 \end{lstlisting}
 
-More setup, more flexibility.
-Better Async support.
+%- More setup, more flexibility.
+%- Better Async support.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
 % Intentional space here
@@ -437,16 +437,16 @@ asyncTest("Async Test", function () {
 \subsubsection{Intern\cite{InternIO}}
 Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of your project, but caused problem with attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
-- TDD, BDD, Object methods
+%- TDD, BDD, Object methods
 Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which you had to get it yourself. Again, this gives the developer access to Expect, Assert, and Object testing methods.
 
-- Integration with Selenium
+%- Integration with Selenium
 Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern.
 
-- Distinction between non-functional and functional tests
+%- Distinction between non-functional and functional tests
 Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
-- Code Coverage!
+%- Code Coverage!
 Intern includes configurable code coverage metrics on your tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
 \subsection{Browser and UI Testing}
@@ -493,9 +493,33 @@ module.exports = {
 \end{lstlisting}
 As you can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. The same code in straight selenium is quite a bit more verbose.
 
-\todo{INCLUDE SELENIUM CODE TO DO THIS HERE}
+\begin{lstlisting}
+var assert = require('chai').assert,
+    test = require('selenium-webdriver/testing'),
+    webdriver = require('selenium-webdriver');
 
-Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool.
+test.describe('Google Search', function() {
+  test.it('should work', function() {
+    var driver = new webdriver.Builder().
+        withCapabilities(webdriver.Capabilities.chrome()).
+        build();
+
+    driver.get('http://www.google.com');
+    driver.findElement(webdriver.By.name('q')).sendKeys('nightwatch');
+    driver.findElement(webdriver.By.name('btnG')).click();
+
+    driver.sleep(1000);
+    driver.findElement(webdriver.By.id('main')).getText().then(function (text) {
+        assert.isTrue(text.indexOf("The Night Watch") !== -1);
+        driver.quit();
+    });
+  });
+});
+\end{lstlisting}
+
+In addition to being more verbose, I've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command.
+
+Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool that supports unit-testing, such as Mocha, Jasmine, or any of the others outlined above.
 
 Nightwatch is Node.js module, and as such can easily installed and run via npm and the command-line.
 
@@ -504,15 +528,15 @@ Though a small feature, Nightwatch has the ability to either assert or verify te
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
 \subsubsection{PhantomJS\cite{PhantomJS}}
-Too much.
-- Really great though, could be useful if needed.
-- Slow
-- FULL DOM/Browser emulation
+% Too much.
+%- Really great though, could be useful if needed.
+%- Slow
+%- FULL DOM/Browser emulation
 
 \subsubsection{ZombieJS\cite{ZombieJS}}
-- Lightweight
-- Headless
-- NOT Full DOM emulation
+%- Lightweight
+%- Headless
+%- NOT Full DOM emulation
 
 \subsection{Continuous Integration Frameworks}
 Continuous Integration frameworks attempt to make development easier by running specified actions, usually tests, after a change to the project. This change can be simply saving a modified file, or, more usually, an action like pushing a change to a repository.
@@ -616,13 +640,12 @@ Fantastic for debugging node.js server-side code!
 \section{Implementation}
 
 \subsection{Chosen Toolset}
-
-- Unit Testing: Mocha w/ Chai
-- Coverage: Istanbul
-- CI: MagnumCI
-- Browser Testing: Nightwatch
-- Task Runner: Grunt
-- Package Manager: NPM, Bower
+% - Unit Testing: Mocha w/ Chai
+% - Coverage: Istanbul
+% - CI: MagnumCI
+% - Browser Testing: Nightwatch
+% - Task Runner: Grunt
+% - Package Manager: NPM, Bower
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -636,13 +659,13 @@ Fantastic for debugging node.js server-side code!
 
 \subsection{Setup}
 
-- Note OS X 'ulimit' issue with Grunt-watch
+% - Note OS X 'ulimit' issue with Grunt-watch
 
 \subsection{Workflow}
-- Unit Testing on save
-- CI used for running browser tests
+% - Unit Testing on save
+% - CI used for running browser tests
 
-- 'Manually' instantiate Sauce Labs?
+% - 'Manually' instantiate Sauce Labs?
 
 
 %%%%%%%%%%%%%%%%%%
@@ -659,16 +682,16 @@ Fantastic for debugging node.js server-side code!
 Our tests covered the Authoring portion of PX.
 
 \subsection{Our Setup}
-- 15-inch MacBook Pro (Late 2008 model)
--- Processor  2.53 GHz Intel Core 2 Duo
--- Memory  4 GB 1067 MHz DDR3
--- Graphics  NVIDIA GeForce 9400M 256 MB
---- Not a particularly powerful computer, just your average everyday laptop.
+% - 15-inch MacBook Pro (Late 2008 model)
+% -- Processor  2.53 GHz Intel Core 2 Duo
+% -- Memory  4 GB 1067 MHz DDR3
+% -- Graphics  NVIDIA GeForce 9400M 256 MB
+% --- Not a particularly powerful computer, just your average everyday laptop.
 
-- OS 10.9.2
--- Terminal
-- Sublime w/ plugins
-- Netbeans
+% - OS 10.9.2
+% -- Terminal
+% - Sublime w/ plugins
+% - Netbeans
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -776,8 +799,8 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 %%%%%%%%%%%%%%%%%%%
 \section{Future Work}
 
--- Extension to all of PX?
--- Extension to non-proprietary open-source project
+% -- Extension to all of PX?
+% -- Extension to non-proprietary open-source project
 
 
 %%%%%%%%%%%%%%%%%
@@ -786,6 +809,10 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 %%% Anything that needs an appendix
 %%%%%%%%%%%%%%%%%
 \section{Appendices}
+
+\subsection{ToDo App Test Code}
+
+\subsection{PolyXpress Test Code}
 
 % \end{multicols}
 \newpage
