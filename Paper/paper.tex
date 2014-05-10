@@ -220,7 +220,7 @@ IEEE defines software testing as ``the dynamic verification of the behavior of a
 There are a number of different types of tests and testing concept, we will just focus on Unit Testing, Continuous Integration, and Acceptance Testing.
 
 \subsubsection{Unit Testing}
-Unit testing is the testing of specific functions and functionality. Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
+Unit testing is the testing of specific functions and functionality, or ``test units.'' Test units are ``A set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures taht satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
 Here's a brief example:
 \begin{lstlisting}
@@ -266,12 +266,12 @@ function testCalculateMagicNumberPartOne () ... // Still a Unit Test, just a who
 function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing the whole system
 \end{lstlisting}
 
-\todo{Wrap up?}
+Unit tests are important because they are done in isolation from one another. The purpose of a unit test is to ensure that once individual modules are put together, the developer need only focus on the interaction between them instead of their individual functionality. Without the assurances of prior unit tests, integration would be a more stressful and mysterious proposition.
 
 \subsubsection{Continuous Integration}
-Continuous Integration (CI), in the context of testing, also known as Continuous Testing, is the term for a piece of software or service that continually runs tests on your code as you develop. The purpose of this is to make sure that new code is not breaking old tests and that new code is passing any tests you've written for it prior to writing it. This is invaluable feedback because you can see if you're making progress in the right direction as you write code, as opposed to a situation in which you finish coding and find out you made a bad assumption or decision early on. 
+The original definition of Continuous Integration involves the idea of developers committing from their  branches to a master branch daily so that changes are continuously integrated in an effort to make sure all branches can, in fact, be integrated. It has since evolved into a more general idea of a tool that runs commands after each commit to a repository. This commands generally encompass running unit tests, integration tests, user interface tests, and also often publishing and disseminating notifications to interested parties. This is invaluable feedback because the developer can see if they're making progress in the right direction as they write code, as opposed to a situation in which the developer finishes coding and finds out they've made a bad assumption or decision between this commit and the last. 
 
-One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
+One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides, perhaps, ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Acceptance Testing}
 Acceptance testing is testing to confirm that your product meets a certain specification. Often in the terms of software this is making sure that your software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or that customer that ordered the software, rather than the developers.
