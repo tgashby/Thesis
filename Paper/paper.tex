@@ -299,6 +299,7 @@ What we see here is that the earlier a defect is introduced the more it costs to
 \section{Sample App and Testing Frameworks}
 
 \subsection{Sample ToDo App}
+<<<<<<< HEAD
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, We decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Here is a brief preview of the app:
 
 \begin{Figure}
@@ -385,7 +386,7 @@ Asynchronous testing using Jasmine was a bit of a chore, but there is support bu
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha also uses the ``describe -> it(\"should...\" '' pattern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
+Mocha also uses the ``describe -> it(\"should...\" '' patftern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
 
 Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In your ``it(...)'' anonymous function you pass an additional parameter called ``done'' which you then call when you know the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
