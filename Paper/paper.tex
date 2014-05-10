@@ -127,7 +127,7 @@ The problem that followed was that many of the tools attempted to remedy the sam
 % - A lot of products to test against (browsers)
 Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
 
-In the very beginning, web applications were easy to write and test because the only code was straight HTML with a common set of HTML tags. It didn't matter what browser you viewed the content in because it was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on a couple different browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, you want to target as many of those platforms as possible with a single code-base to save yourself time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
+In the very beginning, web applications were easy to write and test because the only code was straight HTML with a common set of HTML tags. It didn't matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on a couple different browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save oneself time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
 The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting UI that had not before been seen. This set of features and UI improvements came with an, albeit necessary, complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, data loading that doesn't hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
@@ -159,10 +159,10 @@ Web applications are great for both developers and consumers. They have a number
 Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like an operating system that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security.
 
 \subsubsection{Availability}
-Web application are available anywhere there's internet. No need to install anything on a given device most of the time. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with you'' all the time.
+Web application are available anywhere there's internet. No need to install anything on a given device most of the time. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user all the time.
 
 \subsubsection{Multi-platform}
-Very similar to the availability strength, web applications are platform independent. Whether you're on your phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems.
+Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems.
 
 \subsubsection{Rapid Prototyping}
 Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will outline where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
@@ -197,7 +197,7 @@ Web applications have a user-facing client-side and a ``rear-facing'' \todo{IS T
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
 \subsubsection{What is the Client-side Portion?}
-First, we'll address what a client is. The simple answer is: You. Your phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service you're using to communicate with the web is the client. 
+First, we'll address what a client is. The simple answer is: The User. The User's phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service being using to communicate with the web is the client. 
 
 So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
 
@@ -274,7 +274,9 @@ The original definition of Continuous Integration involves the idea of developer
 One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides, perhaps, ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Acceptance Testing}
-Acceptance testing is testing to confirm that your product meets a certain specification. Often in the terms of software this is making sure that your software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or that customer that ordered the software, rather than the developers.
+Acceptance testing is testing to confirm that the product meets a certain specification. Often this is making sure that the software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or customer that ordered the software, rather than the developers.
+
+In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a seperate language that is more like english than code. The traditional User Story template is: ``As a <role>, I want <goal/desire> so that <benefit>.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
 
 \subsubsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -299,7 +301,6 @@ What we see here is that the earlier a defect is introduced the more it costs to
 \section{Sample App and Testing Frameworks}
 
 \subsection{Sample ToDo App}
-<<<<<<< HEAD
 In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, We decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Here is a brief preview of the app:
 
 \begin{Figure}
@@ -330,8 +331,9 @@ One of the challenges in testing that we quickly came across was the asynchronou
 \section{Testing Frameworks}
 
 
-\subsection{Assumptions and Requirements}
-In order to more thoroughly vet the many testing frameworks we came across, we had a number of assumptions about the projects we'd be looking at and requirements for those framework.
+% NOT SURE I NEED THIS SECTION AT ALL
+% \subsection{Assumptions and Requirements}
+% In order to more thoroughly vet the many testing frameworks we came across, we had a number of assumptions about the projects we'd be looking at and requirements for those framework. 
 %- Node.js server because it's JS, so it's testable.
 %- Something to do unit testing
 %- Something to do continuous integration
@@ -339,11 +341,14 @@ In order to more thoroughly vet the many testing frameworks we came across, we h
 \subsubsection{The Average Web Application}
 In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, Javascript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
 
-Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with. 
+\todo{THIS IS LAME}
+Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with.
 
-Javascript was chosen because it used in over 87\% of all websites. \cite{JSUsage} Web applications tend to keep track of users which most often constitutes the use of a database behind the scenes to store users and update them as necessary.
+Javascript was chosen because it used in over 87\% of all websites. \cite{JSUsage} 
 
 Many web applications use Cloud Services for a number of things, most often they're used for storage of the web content that's being hosted.
+
+Web applications tend to keep track of users which most often constitutes the use of a database behind the scenes to store users and update them as necessary.
 
 %- Node.js
 %- Browser based
@@ -351,8 +356,11 @@ Many web applications use Cloud Services for a number of things, most often they
 %- Database
 %- Open-source
 
-\subsubsection{Tool Requirements \todo{Move this section elsewhere}}
-Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at the least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. Occasionally the cost of tools will be discussed but in general we didn't review tools that did not offer a free option.
+\subsubsection{Tool Requirements}
+\todo{Move this section elsewhere}
+Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. 
+
+Occasionally the cost of tools will be discussed but in general we did not review tools that did not offer a free option.
 %- Free
 
 \subsection{Unit Testing Frameworks}
@@ -363,7 +371,7 @@ An important distinction that needs to be made is that in web applications there
 \subsubsection{Jasmine \cite{Jasmine}}
 The first of the unit testing frameworks that we looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
-This relates to Jasmine is the way that you write Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like english sentences. As an example, the following is a valid Jasmine test:
+This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like english sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
 describe("Arithmetic Test", function () {
   it("should be able to compute the addition of two numbers", function () {
@@ -388,7 +396,7 @@ Mocha is another BDD testing framework that is almost identical to Jasmine. Unli
 
 Mocha also uses the ``describe -> it(\"should...\" '' patftern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
 
-Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In your ``it(...)'' anonymous function you pass an additional parameter called ``done'' which you then call when you know the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the ``it(...)'' anonymous function, there is passed an additional parameter called ``done'' which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
   it("look like this", function (done) {
@@ -419,7 +427,7 @@ QUnit is an Assertion style framework developed by the jQuery Foundation, the ma
   \includegraphics[width=\linewidth]{qunitrunner.png} 
   \captionof{figure}{Each individual spec is further broken down into the assertions within it.}
 \end{Figure}
-An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions you expect to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let you know fewer assertions were called than expected.
+An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
 
 QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
 \begin{lstlisting}
@@ -442,7 +450,7 @@ QUnit.module("Module B");
 \end{lstlisting}
 It is difficult to visually see where one module starts and ends and so grouping and finding the right place to add a test can be a chore.
 
-QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the ``it'' function, you call the ``asyncTest'' function instead of the ``test'' function and then call ``start()'' when you finish your asynchronous tests. Example:
+QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the ``it'' function, the developer calls the ``asyncTest'' function instead. Finally, the developer calls ``start()'' when the asynchronous test is finished. Example:
 \begin{lstlisting}
 asyncTest("Async Test", function () {
   myAsyncCall(param1, param2, function () {
@@ -457,10 +465,10 @@ asyncTest("Async Test", function () {
 \end{lstlisting}
 
 \subsubsection{Intern\cite{InternIO}}
-Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of your project, but caused problem with attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
+Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
 %- TDD, BDD, Object methods
-Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which you had to get it yourself. Again, this gives the developer access to Expect, Assert, and Object testing methods.
+Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. Again, this gives the developer access to Expect, Assert, and Object testing methods.
 
 %- Integration with Selenium
 Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern.
@@ -469,7 +477,7 @@ Intern uses the WebDriver API to communicate with Selenium to drive the automate
 Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
-Intern includes configurable code coverage metrics on your tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
 \subsection{Browser and UI Testing}
 Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
@@ -480,7 +488,7 @@ What's important in browser testing is repeatability and being able to test on m
 \subsubsection{Selenium\cite{Selenium}}
 Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On it's own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
-Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping for you. This is the case for both of the web testing tools that will follow this description.
+Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for both of the web testing tools that will follow this description.
 
 Selenium has support for running a number of different browsers. 
 
@@ -513,7 +521,7 @@ module.exports = {
   }
 };
 \end{lstlisting}
-As you can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. The same code in straight selenium is quite a bit more verbose.
+As one can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. The same code in straight selenium is quite a bit more verbose.
 
 \begin{lstlisting}
 var assert = require('chai').assert,
@@ -545,7 +553,7 @@ Nightwatch does not, however, support unit-testing without the browser and there
 
 Nightwatch is Node.js module, and as such can easily installed and run via npm and the command-line.
 
-Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if you want to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
+Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if the developer wants to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
 
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
@@ -568,7 +576,7 @@ Continuous Integration frameworks, therefore, need to be flexible in the type of
 \subsubsection{Jenkins \cite{Jenkins}}
 Jenkins is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
-Jenkins is a series of web pages that you set up to run on a given server. This is what it looks like:
+Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
@@ -577,35 +585,35 @@ Most companies give Jenkins a sub-domain on their web pages.
 
 Jenkins comes bare-boned but is highly customizable and has a wide array of plugins. The plugins available integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
 
-Because Jenkins comes bare and runs on the system of your choosing, it can run any project that you set up. The downside is that there is no support out-of-the-box unless you already have the necessary compilers, interpreters, applications, and/or libraries installed on the server running Jenkins.
+Because Jenkins comes bare and runs on the system of the devloper's choosing, it can run any project that is set up. The downside is that there is no support out-of-the-box unless the system already has the necessary compilers, interpreters, applications, and/or libraries installed.
 
-One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Any increase in computing power will be directly usable by Jenkins. Jenkins can run as many jobs as your server can handle at one time.
+One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Any increase in computing power will be directly usable by Jenkins. Jenkins can run as many jobs as the server can handle at one time.
 
 The other use for a tool like Jenkins is the ability to start services like cron jobs or similarly long-running tools and status monitors and then collect the output for them and allow the developer to check on them at any time.
 
-Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run your project in. However, once the server has the necessary applications and libraries, your builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
+Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run a project in. However, once the server has the necessary applications and libraries, the builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
 \subsubsection{Travis \cite{Travis}}
-Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which you can monitor your builds and processes. Travis has a free version which is fully-featured but requires your project to be open-source and a paid version which gives you more processing power and access to private repositories.
+Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the deveoper more processing power and access to private repositories.
 
-Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, Python, and more. Travis has incredibly thorough documentation and a wealth of built-in services to work with your project if needed. Services like databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
+Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects if needed. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
-If at any point your project requires something that Travis does not support natively, you are given the permissions necessary to install any sort of libraries or services that can be installed with apt-get on an Ubuntu machine.
+If at any point the project requires something that Travis does not support natively, Travis gives the permissions necessary to install any sort of libraries or services that can be installed with apt-get on an Ubuntu machine.
 
-Travis requires that your projects be hosted on GitHub, but by doing so the setup is incredibly easy. You sign into Travis using your GitHub credentials and Travis pulls up all of your repositories automatically. 
+Travis requires that projects be hosted on GitHub, but by doing so the setup is incredibly easy. The developer signs into Travis using GitHub credentials and Travis pulls up all of the developer's repositories automatically. 
 
-Getting a project running with Travis is fairly easy; you just create a yml file in your repository with certain lines pertaining to the language, needed services, commands to run, etc. We were able to set up everything we needed in six simple lines.
+Getting a project running with Travis is fairly easy; just create a yml file in the repository with certain lines pertaining to the language, needed services, commands to run, etc. We were able to set up everything we needed in six simple lines.
 
-In order to get access to your private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
+In order to get access to private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
 
-From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires you to host your projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require you to have your own server, comes with impressive built-in features, and works wonderfully if you are willing to open-source your repositories and put them on GitHub.
+From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require it's own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
 
 \subsubsection{Semaphore \cite{Semaphore}}
-Semaphore is another online CI framework that connects to GitHub to bring in your projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with your public and private repositories but requires a subscription after 30 days no matter which repositories you use.
+Semaphore is another online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
-Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and Javascript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in your repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
+Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and Javascript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
-Semaphore supports most databases and has a number of testing frameworks built-in. Once again you can use apt-get to install any missing libraries or dependencies. It would appear that deployment support is only available for Ruby projects.
+Semaphore supports most databases and has a number of testing frameworks built-in. Once again any missing libraries or dependencies can be installed using apt-get. It would appear that deployment support is only available for Ruby projects.
 
 Semaphore's pricing scheme is different than Travis' as it focuses on an individual, not a company. Their lowest cost subscription is one project (public or private) for \$14 per month. They offer more subscriptions with the ability to have more projects and concurrent processes in higher tiers.
 
@@ -614,24 +622,24 @@ Semaphore is still ruby-centric and requires a subscription. As our goal is to f
 \subsubsection{MagnumCI \cite{MagnumCI}}
 MagnumCI is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
 
-MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on your project structure and language. All settings are overridable in a yml file if you choose.
+MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are overridable in a yml file.
 
 MagnumCI has all the popular databases built-in, many of which run automatically on startup. MagnumCI also has two headless browser frameworks built in for running any browser testing that needs to be done. The developer can, again, use apt-get to install missing packages. MagnumCI does not, at current, provide automatic deployment options given a successful build.
 
-Where MagnumCI shines is in support of different repositories. MagnumCI offers support for pulling from GitHub, BitBucket, GitLab, and a few others. It does require a bit more setup to get your repositories connected, but what it comes down to is a couple lines of copied and pasted text within your repositories settings.
+Where MagnumCI shines is in support of different repositories. MagnumCI offers support for pulling from GitHub, BitBucket, GitLab, and a few others. It does require a bit more setup to get repositories connected, but what it comes down to is a couple lines of copied and pasted text within the repositories' settings.
 
 Right now MagnumCI offers impressive features, private repositories, and extensive repository sources, all for free. It is hard to say that MagnumCI is the best because those features may end up costing money soon after this paper is completed. It is included in this review because it seems to be an up and comer that could prove quite strong.
 
 \subsubsection{Drone.io \cite{DroneIO}}
 Drone.io is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.
 
-Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires you to specify your language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate built commands for you.
+Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires the developer to specify language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate built commands.
 
-Drone.io offers support for all of the databases you'd want, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
+Drone.io offers support for most of the databases we've heard of, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
 
-Drone.io is able to connect to GitHub, BitBucket, and Google Code respositories to get your projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives you once it connects, select the language of the repository, edit the default build script, and you're ready to go.
+Drone.io is able to connect to GitHub, BitBucket, and Google Code respositories to get projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives once it connects, select the language of the repository, edit the default build script, and the project is ready to go.
 
-Drone.io offers unlimited free open-source repositories. The next step up offers 5 private repositories for \$25 per month and for \$50 per month you get unlimited private repositories. They also offer higher tier plans that allow for concurrently running builds.
+Drone.io offers unlimited free open-source repositories. The next step up offers 5 private repositories for \$25 per month and for \$50 per month, unlimited private repositories. They also offer higher tier plans that allow for concurrently running builds.
 
 Drone.io is a strong contender because of its language support, deployment options, and ease of setup. Where it lacks is in its notification options. The only notification option at present is email while other CI frameworks offer a number of other notification options for various messaging services.
 
@@ -739,7 +747,7 @@ Two students and a person from Lanware Limited brought AI into the web testing w
 This system is exciting and intricate but far too complex for a general web testing toolkit that just about any developer could pick up. It was important to weed techniques like this out as we wanted a fairly easy to use and understand toolkit.
 
 \subsubsection{``A 2-Layer Model for the White-Box Testing of Web Applications'' \cite{2LayerModel}}
-A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came with a model for white-box testing of web applications. (White box testing is when you access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
+A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came with a model for white-box testing of web applications. (White box testing is when the developer is given access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
 
 This 2-layer approach is interesting and provided us with some insight, but the system was made for PHP applications and we weren't looking to implement a brand-new system and test PolyXpress with it all in one year.
 
@@ -759,7 +767,7 @@ Three people from Albert Ludwigs University in Germany came up with a way to dea
 This could be integrated with one of the existing tools we will use, but our goal was to collect existing tools that did not need alteration.
 
 \subsubsection{``Testing Web Applications in Practice'' \cite{TestingInPractice}}
-Four students from the University of Seville, Spain published a paper with an overview of web testing. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, testing the client versus testing the server, and a few others. It also describes how to test an actual web application using PHPUnit, a library similar to JUnit, for those of you familiar with Java. When writing their tests, they suggest taking more abstract actions and breaking them up into their functional parts and testing each of those. As an example, inserting a customer into the database (albeit not that abstract) is broken into tests for the function that inserts the customer and tests for making sure the customer makes it into the database.
+Four students from the University of Seville, Spain published a paper with an overview of web testing. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, testing the client versus testing the server, and a few others. It also describes how to test an actual web application using PHPUnit, a library similar to JUnit, for those developers familiar with Java. When writing their tests, they suggest taking more abstract actions and breaking them up into their functional parts and testing each of those. As an example, inserting a customer into the database (albeit not that abstract) is broken into tests for the function that inserts the customer and tests for making sure the customer makes it into the database.
 
 The paper was good refresher on testing concepts and a hands-on application of those concepts. There wasn't any new information or tools to put toward our toolkit, but it was a good reminder and outlined some testing procedures.
 
@@ -769,7 +777,7 @@ Two individuals from the Albert Ludwigs University in Germany created a tool, JS
 Although JSConTest could be useful in a toolkit, its source is no-where to be found and there were other, more robust, tools out there for our purposes.
 
 \subsubsection{``JAWS: A Javascript API for the Efficient Testing and Integration of Semantic Web Services'' \cite{JAWS}}
-A researcher from Ford Motor Company published a paper regarding an API, called JAWS (Javascript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that you visit personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
+A researcher from Ford Motor Company published a paper regarding an API, called JAWS (Javascript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that one visits personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
 
 Another interesting API and project, but we are not focusing on SWS and so including a tool or API like JAWS would be overkill and beyond trying to keep the toolkit as simple and robust as possible.
 
@@ -792,7 +800,7 @@ Seven researchers from the MIT Computer Science and Artificial Intelligence Lab 
 Although they test PHP applications, the extension to JavaScript is fairly straightforward. We didn't use Apollo, but the techniques described within allowed for more focused and productive testing.
 
 \subsubsection{``Testing Web Services: A Survey'' \cite{TestingWebServicesSurvey}}
-Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. What they note in particular is that when using web services, you rarely have access to the source code and must therefore black-box test them. Corollary to that is that you have to implicitly trust whoever made the service. They go through and discuss a number of frameworks and come to the conclusion that it's most certainly not a solved problem for the following reasons: The frequency of testing required, Testing without disrupting the operation of the service, Determining when testing is required and which operations need to be tested. Regarding the frequency of testing, web services often change in effort to make improvements, but those improvements can change the services and break tests. Testing without disrupting service is difficult because these services often limit accesses or simultaneous access of both a test and a running web application. Finally, determining when and what to test comes back to the trust issue. Some services provide their own testing metrics that include code coverage, number of tests, etc. But you have to trust that they are thoroughly testing whatever it may be.
+Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. What they note in particular is that when using web services, the developer rarely has access to the source code and must therefore black-box test them. Corollary to that is that the developer has to implicitly trust whoever made the service. They go through and discuss a number of frameworks and come to the conclusion that it's most certainly not a solved problem for the following reasons: The frequency of testing required, Testing without disrupting the operation of the service, Determining when testing is required and which operations need to be tested. Regarding the frequency of testing, web services often change in effort to make improvements, but those improvements can change the services and break tests. Testing without disrupting service is difficult because these services often limit accesses or simultaneous access of both a test and a running web application. Finally, determining when and what to test comes back to the trust issue. Some services provide their own testing metrics that include code coverage, number of tests, etc, but the developer must trust that the service is thoroughly tested, not just tested enough to provide interesting metrics.
 
 \subsubsection{``A Framework for Testing RESTful Web Services'' \cite{RESTfulFramework}}
 Two people from the University of Dakota School of Aerospace Studies outline a framework for testing RESTful web services. RESTful web services, short for Representation State Transfer, are, in the context of web applications, a name for web APIs that conform to a set of constraints. In particular they must offer four request methods: GET, POST, PUT, and DELETE. These methods generally connect to a database or other storage system in order to store, retrieve, or delete entries therein.
