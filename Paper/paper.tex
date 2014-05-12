@@ -136,7 +136,9 @@ There is no overarching solution to these problems, but in order to understand t
 
 \subsection{Contributions of This Thesis}
 %- Framework
-The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a single place to look for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of testing spectrum as possible in an effort to save other developers time and energy in having to look at them all individually.
+The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a toolkit for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of the testing spectrum as possible. 
+
+In addition to creating a single framework, we've set out to weigh the options between the most popular frameworks so that a developer need not just blindly trust our recommendations. Since every project is unique, a single set of tools cannot possibly cover the gamut. In addition to the single set of recommendations, the most popular tools are discussed so that the devloper is free to pick and choose as they see fit.
 %- Wade through all the tools currently out there
 %-- Focus in, no need to have every developer check out all 10000 tools
 %-- Weigh options
@@ -149,7 +151,7 @@ The goal of this thesis is to bring together tools that are already available fo
 %%% 	Appropriate terms and definitions
 %%%%%%%%%%%%%%%%%%
 \section{Background}
-In an effort to make the rest of the paper more understandable and to define the terms used in the remainder of the paper, it is useful to have a section pertaining to the different concepts and technologies surrounding the web.
+In an effort to make the rest of the paper more understandable and to define the terms used in the remainder of the paper, we will outline the various concepts and technologies surrounding the web.
 If one is familiar with HTML5, JavaScript, and Testing concepts and statistics, it will likely be safe to skip this background section.
 
 \subsection{Web Application Strengths}
@@ -175,17 +177,13 @@ The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009
 
 HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
 
-\todo{Talk about GeoLocation}
+As the web is being increasingly used on mobile devices, HTML5 also introduces geolocation functionality. This funcationality requires user approval, but once that approval is gained, the web application has access to a rough idea of where the user is located. When used on devices that have GPS, such as phones and tablets, this area is more defined and a stronger lock on the user's position can be obtained. This geolocation functionality has opened the door for brand new types of web applications that can much more closely tie in with what the user is seeing or the area that they are in. For example, ads can be more targeted or an application can display distances to nearby points of interest.
 
-\todo{TIE JS PORTION INTO THIS}
+JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML5 when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
-% \subsubsection{JavaScript}
-JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
-
-
-\todo{THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'}
-\subsubsection{Node.JS}
-Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
+%\todo{THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'}
+\paragraph{Node.JS}
+As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation applicaiton. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
 
@@ -360,7 +358,7 @@ Web applications tend to keep track of users which most often constitutes the us
 \todo{Move this section elsewhere}
 Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. 
 
-Occasionally the cost of tools will be discussed but in general we did not review tools that did not offer a free option.
+Occasionally the cost of tools will be discussed but in general we did not review tools that only offered paid options.
 %- Free
 
 \subsection{Unit Testing Frameworks}
@@ -412,12 +410,10 @@ describe("Asynch Mocha Test", function () {
 });
 \end{lstlisting}
 
-%- More setup, more flexibility.
-%- Better Async support.
+Overall Mocha offered more flexibilty at the cost of additional setup and better asynchronous support. This increased flexibility came in the way of being able to select our own assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than a chain of method calls.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
-% Intentional space here
-For the assertion library we chose Chai.js because it had the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and more general Assert API. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of ``expect(myVar).to.equal(10);'' or ``expect(myArr).to.have.length(10);''. The Should API has assertions of the form ``myVar.should.be.a(\'number\');'' or ``myArr.should.have.length(10);''. Finally, the Assert API has the more tried and true ``assert.equal(myVar, 10);'' and ``assert.lengthOf(myArr, 10);''. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
 
 
 \subsubsection{QUnit \cite{QUnit}}
@@ -464,20 +460,26 @@ asyncTest("Async Test", function () {
 });
 \end{lstlisting}
 
+QUnit was a particularly strong contender when we saw the table that was produced after running the tests but its shortcomings led us to keep looking elsewhere. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself.
+
 \subsubsection{Intern\cite{InternIO}}
 Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
 %- TDD, BDD, Object methods
-Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. Again, this gives the developer access to Expect, Assert, and Object testing methods.
+Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Intern's Object testing methods.
+
+\todo{Add test code here!}
 
 %- Integration with Selenium
-Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern.
+Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern. Selenium and the WebDriver API will be discussed in more detail in the next section ``Browser and UI Testing''.
 
 %- Distinction between non-functional and functional tests
 Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
 Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+
+Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a seperate server that served normal HTML pages, Intern.io would have likely been our go-to tool for all of our testing needs.
 
 \subsection{Browser and UI Testing}
 Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
@@ -498,7 +500,7 @@ Selenium's node incarnation is out-of-date and as such we had to change the sele
 
 Selenium was written with maximum functionality and language flexability in mind and therefore can be incredibly verbose.
 
-The Selenium WebDriver has APIs for a variety of programming languages including: Javascript, C, Java, Python, ...
+The Selenium WebDriver has APIs for a variety of programming languages including: Javascript, C, Java, and Python.
 
 \subsubsection{Nightwatchjs\cite{NightwatchJS}}
 Nightwatch is a Javascript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
@@ -521,8 +523,9 @@ module.exports = {
   }
 };
 \end{lstlisting}
-As one can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. The same code in straight selenium is quite a bit more verbose.
+As one can see, just reading the code line by line paints a picture of exactly what is happening and what is being checked for. 
 
+The same code in normal Selenium is quite a bit more verbose:
 \begin{lstlisting}
 var assert = require('chai').assert,
     test = require('selenium-webdriver/testing'),
@@ -548,8 +551,6 @@ test.describe('Google Search', function() {
 \end{lstlisting}
 
 In addition to being more verbose, I've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command.
-
-Nightwatch does not, however, support unit-testing without the browser and therefore can only be used in combination with another testing tool that supports unit-testing, such as Mocha, Jasmine, or any of the others outlined above.
 
 Nightwatch is Node.js module, and as such can easily installed and run via npm and the command-line.
 
