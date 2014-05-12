@@ -465,10 +465,65 @@ QUnit was a particularly strong contender when we saw the table that was produce
 \subsubsection{Intern\cite{InternIO}}
 Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
-%- TDD, BDD, Object methods
-Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Intern's Object testing methods.
+%-AMD
+Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be ``require(...)''. Instead of seperately requiring modules, the entire program is wrapped in a ``define([...])'' block that passes modules as parameters to an overarching function. That will make more sense after an example:
+\begin{lstlisting}
+// Intern
+define([
+    'intern!object',
+    'intern/chai!assert',
+    'app/hello'
+], function (registerSuite, assert, hello) {
+  // Test code here
+});
 
-\todo{Add test code here!}
+// CommonJS, what Node.js uses 
+var registerSuite = require('intern/object');
+var assert = require('intern/chai/assert');
+var hello = require('app/hello');
+
+// Test code here
+
+// Another way to write CommonJS so that it's not global scope, used frequently
+(function () {
+  var registerSuite = require('intern/object');
+  var assert = require('intern/chai/assert');
+  var hello = require('app/hello');
+
+  // Test code here
+} ());
+\end{lstlisting}
+
+Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addtiion to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep out CommonJS format because of the maturity of the evaluation project.
+
+%- TDD, BDD, Object methods
+Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces effect how the general layout of test code looks. Here's a very quick example of the different layouts:
+\begin{lstlisting}
+// TDD
+suite('TDD Suite', function () {
+  test('test 1', function () {
+    ...
+  });
+}
+
+// BDD
+describe('BDD Suite', function () {
+  it('should be test 1', function () {
+    ...
+  });
+}
+
+// Object
+registerSuite({
+  name: 'Object Suite', 
+
+  'test 1' : function () {
+    ...
+  }
+)
+\end{lstlisting}
+
+The ability to mix assertion styles with testing interfaces provides the most diverse ways of writing tests that we've found. Some testing interfaces seems to fit better with certain assertion styles, but there's no restrictions on which can be used with which.
 
 %- Integration with Selenium
 Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern. Selenium and the WebDriver API will be discussed in more detail in the next section ``Browser and UI Testing''.
@@ -479,14 +534,13 @@ Intern's unit-test versus browser test seperation is termed, by Intern, nonfunct
 %- Code Coverage!
 Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
-Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a seperate server that served normal HTML pages, Intern.io would have likely been our go-to tool for all of our testing needs.
+Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a seperate server that served normal HTML pages, Intern would have likely been our go-to tool for all of our testing needs.
 
 \subsection{Browser and UI Testing}
 Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
 
 What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
 
-% Browser Testing! Code
 \subsubsection{Selenium\cite{Selenium}}
 Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On it's own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
@@ -558,13 +612,55 @@ Though a small feature, Nightwatch has the ability to either assert or verify te
 
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
-\subsubsection{PhantomJS\cite{PhantomJS}}
+\todo{How important is having these? Mention as an option but don't go into detail?}
+\subsubsection{Headless Browsers}
+In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the enjoyment of watching the tests execute.
+
+Nonetheless, we still looked at two options that we will outline briefly below for other developer's reference.
+
+\paragraph{PhantomJS\cite{PhantomJS}}
+The reigning king of headless browsers is PhantomJS. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinuishable from a normal browser to any testing code.
+
+There are, however, a couple problems with PhantomJS. It is generally fairly verbose when it comes to writing the scripts that run your commands. It is also not a testing tool, it is a headless WebKit. The distinction here is that PhantomJS does not have any assert functionality built-in and thus requires the developer to find and use their own assertion library.
+
+The difference between PhantomJS and ZombieJS, which I talk about in the next section, is akin to the difference between Selenium and Nightwatch. PhantomJS is heavier duty and requires an additional set of testing tools whereas ZombieJS is lightweight and has assertions built-in.
 % Too much.
 %- Really great though, could be useful if needed.
 %- Slow
 %- FULL DOM/Browser emulation
 
-\subsubsection{ZombieJS\cite{ZombieJS}}
+\paragraph{ZombieJS\cite{ZombieJS}}
+ZombieJS is often the other go-to for headless browsers. ZombieJS is not a WebKit implementation but rather a simple DOM emulator. This means that certain tests may not be as accurate as they could be with PhantomJS.
+
+Where ZombieJS shines is in its simplicity and brevity. Much like Nightwatch, calls are chained together to create a flow of calls that generally end with assertions.
+
+\begin{lstlisting}
+// Zombie.js website's example code
+var Browser = require("zombie");
+var assert = require("assert");
+
+// Load the page from localhost
+browser = new Browser()
+browser.visit("http://localhost:3000/", function () {
+
+  // Fill email, password and submit form
+  browser.
+    fill("email", "zombie@underworld.dead").
+    fill("password", "eat-the-living").
+    pressButton("Sign Me Up!", function() {
+
+      // Form submitted, new page loaded.
+      assert.ok(browser.success);
+      assert.equal(browser.text("title"), "Welcome To Brains Depot");
+
+    })
+});
+\end{lstlisting}
+
+Developers like ZombieJS syntax so much that there exists a wrapper that uses ZombieJS's API around PhantomJS. \cite{ZombiePhantom}
+
+ZombieJS offers a lightweight solution to headless browser testing, but does not have the same depth of features as PhantomJS or the same assurances that your tests do exactly what they would do in a browser with a head.
+
 %- Lightweight
 %- Headless
 %- NOT Full DOM emulation
@@ -653,6 +749,7 @@ Drone.io is a strong contender because of its language support, deployment optio
 
 
 \subsubsection{Karma}
+
 
 \subsubsection{Grunt.js}
 - Task Runner
@@ -832,6 +929,7 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 
 % -- Extension to all of PX?
 % -- Extension to non-proprietary open-source project
+% -- Headless browsers
 
 
 %%%%%%%%%%%%%%%%%
