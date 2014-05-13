@@ -410,7 +410,7 @@ describe("Asynch Mocha Test", function () {
 });
 \end{lstlisting}
 
-Overall Mocha offered more flexibilty at the cost of additional setup and better asynchronous support. This increased flexibility came in the way of being able to select our own assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than a chain of method calls.
+Overall Mocha offered more flexibilty and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than a chain of method calls.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
 For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of ``expect(myVar).to.equal(10);'' or ``expect(myArr).to.have.length(10);''. The Should API has assertions of the form ``myVar.should.be.a(\'number\');'' or ``myArr.should.have.length(10);''. Finally, the Assert API has the more tried and true ``assert.equal(myVar, 10);'' and ``assert.lengthOf(myArr, 10);''. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
@@ -730,7 +730,7 @@ Right now MagnumCI offers impressive features, private repositories, and extensi
 \subsubsection{Drone.io \cite{DroneIO}}
 Drone.io is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.
 
-Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires the developer to specify language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate built commands.
+Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires the developer to specify language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate build commands.
 
 Drone.io offers support for most of the databases we've heard of, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
 
@@ -742,23 +742,41 @@ Drone.io is a strong contender because of its language support, deployment optio
 
 
 \subsection{Misc Frameworks}
-\subsubsection{Sauce Labs}
+In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that didn't quite fit into any of the above categories.
 
+\subsubsection{Sauce Labs\cite{SauceLabs}}
+Sauce Labs is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, Javascript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their Javascript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
 
-\subsubsection{Istanbul}
+Every CI framework we looked at had built-in configurations for Sauce Labs so that one of the CI steps could be running your tests on Sauce Labs.
 
+Sauce Labs is an incredibly helpful tool for making sure a web application behaves as expected on a wide spectrum of devices and configurations and saves the developer the hassle of acquiring multiple devices, operating systems, and browsers.
 
-\subsubsection{Karma}
+\subsubsection{Istanbul\cite{Istanbul}}
+As already mentioned briefly, IStanbul is a tool used for code coverage metrics. It was built into Intern.io but getting it running with other frameworks is easy as well.
 
+Getting Istanbul to output code coverage is as easy as installing it and then calling the ``istanbul'' function from the commandline with your test executable.
+For example: ``istanbul cover mocha -- . -R spec'' will run the mocha tests in the current directory and output coverage statistics. To break that down a little further:
 
-\subsubsection{Grunt.js}
-- Task Runner
-- Watch functionality
-- Easy setup
+``istanbul cover'' tells istanbul to run coverage on the tests.
+
+``mocha --'' specifies that the executable to be run is mocha and that the developer is done giving commandline args to istanbul, that's the ``--''
+
+Finally, ``. -R spec'' is just the flags for the mocha command to run the appropriate test suites.
+
+Istanbul offers an incredibly easy way to get code-coverage on your tests and is painless to get working right away.
+
+\subsubsection{Grunt.js\cite{GruntJS}}
+Grunt.js is a task-runner for Javascript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the ``grunt'' command.
+
+Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: ``jshint'' for linting, ``uglify'' for code minimization, and ``watch'' for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
+
+Of particular interest is that last feature, ``watch''. We are particularly fond of grunt's ``watch'' capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
 \subsection{Misc Tools}
-\subsubsection{Node Inspector}
-Fantastic for debugging node.js server-side code!
+\subsubsection{Node Inspector\cite{NodeInspector}}
+Node Inspector is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running ``node-debug'' instead of ``node'' when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
+
+Currently Node Inspector only runs on Chrome and Opera but since those browsers are available on all OSes, it shouldn't be a problem for developers to use.
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%% Implementation 
@@ -768,12 +786,49 @@ Fantastic for debugging node.js server-side code!
 \section{Implementation}
 
 \subsection{Chosen Toolset}
-% - Unit Testing: Mocha w/ Chai
-% - Coverage: Istanbul
-% - CI: MagnumCI
-% - Browser Testing: Nightwatch
-% - Task Runner: Grunt
-% - Package Manager: NPM, Bower
+After evaluating a number of different combinations and tools, we came to the following setup:
+\begin{itemize}
+  \item Unit Testing: Mocha with Chai.js
+  \item Continuous Integration: MagnumCI
+  \item Browser Testing: Nightwatch
+  \item Misc:
+    \begin{itemize}
+      \item Coverage: Istanbul
+      \item Task Runner: Grunt
+      \item Package Manager: NPM (sort of a given when working with Node.js)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Mocha with Chai.js}
+Our choice of using Mocha with Chai.js was made because Mocha offers the flexibility of choosing one's own assertion library while still being structured in a way that all developers can read the code.
+
+Mocha was chosen over Jasmine because of Mocha's additional flexibility and the way that Mocha handles asynchronous tests.
+
+Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although we loved QUnit's output, the ability to scan code more efficiently won out in the end.
+
+The final decision came down to Mocha versus Intern. Mocha was eventually chosen over Intern because of the setup requirements and learning curve of Intern. Although Mocha requires a seperate assertion library, the setup and learning curve for one assertion library was much simpler than the setup and learning curve of all of the various ways to define and write tests in Intern. Perhaps with more time and patience we would have chosen Intern, but Mocha served our needs well and offered just enough flexibility to allow us comfort without giving us too many options.
+
+\subsubsection{MagnumCI}
+With all of the features that MagnumCI currently offers for free, we couldn't pass it up. We are still confident that the features needed by an open-source developer will continue to be free after MagnumCI ends its open-beta period.
+
+Quite frankly, we didn't have the time or interest in setting up our own Jenkins server. Given enough resources and time, Jenkins will surely beat all of the rest of the CI frameworks, however, there's something to be said for ease of setup and total time to first interaction with the tool.
+
+MagnumCI was chosen over Travis because our evaluation application was not on GitHub. Travis is still an incredible CI framework that has some of the best documentation we've seen.
+
+Semaphore was out of the running due to its lack of support for JavaScript and Node.js projects as well as the GitHub requirement.
+
+Drone.io, while offering a number of repository location options, did not offer the ability for a repository to be hosted at a custom location.
+
+Overall, the CI frameworks were all impressive and usable. The main driving factor was simply that we didn't have our application on any of the more common repositories and at the time of this writing our application was closed-source. We have every intention of opening it to the public as soon as we get a version that is polished.
+
+\subsubsection{Nightwatch}
+The choice for Nightwatch was an easy one. First and foremost there were not very many options and the options we did have sorted themselves out.
+
+Nightwatch, being a wrapper around Selenium already, was chosen over Selenium because of its concise way to express tests. We have yet to come across any situation that is not covered with Nightwatch as the developer of Nightwatch has seemed to implement nearly all WebDriver calls, even if some are undocumented.
+
+Nightwatch was chosen over Intern's UI testing tool because of the issue with Intern running its own server. If Intern did not impose its own server for what it calls ``functional'' testing, we would probably have gone with Intern for both Unit and UI testing but it did not make sense for us to split up Intern's functionality since we couldn't use it all.
+
+\subsubsection{Miscellaneous Tools}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
