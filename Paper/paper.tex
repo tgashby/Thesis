@@ -71,6 +71,7 @@
 \title{\vfill A Survey of Web Testing Frameworks and a Workflow for Testing Javascript Applications} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
+Computer Science Department, California Polytechnic State University, San Luis Obispo
 }
 
 \maketitle
@@ -392,7 +393,41 @@ Asynchronous testing using Jasmine was a bit of a chore, but there is support bu
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha also uses the ``describe -> it(\"should...\" '' patftern to create tests. There is no standard for writing expectation though, as each assertion library is likely to be slightly different.
+Mocha, by default, also uses the ``describe -> it(\"should...\" '' pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code the way they want to in addition to a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
+\begin{lstlisting}
+// BDD (default)
+describe('BDD Suite', function () {
+  it('should be test 1', function () {
+    ...
+  });
+});
+
+// TDD
+suite('TDD Suite', function () {
+  test('test 1', function () {
+    ...
+  });
+));
+
+// Exports
+module.exports = {
+  'Exports Suite': {
+    
+    'test 1': function () {
+      ...
+    }
+
+  }
+};
+
+// QUnit
+suite('QUnit Suite');
+
+test('test 1', function () {
+  ...
+});
+\end{lstlisting}
+The developer doesn't gain anything by using one interface over another except the ability to write tests in a way that makes sense to them. There is no standard for writing assertions, as each assertion library is likely to be slightly different.
 
 Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the ``it(...)'' anonymous function, there is passed an additional parameter called ``done'' which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
@@ -806,7 +841,7 @@ Mocha was chosen over Jasmine because of Mocha's additional flexibility and the 
 
 Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although we loved QUnit's output, the ability to scan code more efficiently won out in the end.
 
-The final decision came down to Mocha versus Intern. Mocha was eventually chosen over Intern because of the setup requirements and learning curve of Intern. Although Mocha requires a seperate assertion library, the setup and learning curve for one assertion library was much simpler than the setup and learning curve of all of the various ways to define and write tests in Intern. Perhaps with more time and patience we would have chosen Intern, but Mocha served our needs well and offered just enough flexibility to allow us comfort without giving us too many options.
+The final decision came down to Mocha versus Intern. Mocha was eventually chosen over Intern because of the ability to choose an assertion library and because of the issues we had with Intern. Both frameworks offer impressive flexibility regarding the way in which tests can be structured and written. Mocha ended up allowing for a bit more flexibility and caused no problems for us. Perhaps with more time and patience we would have chosen Intern, but Mocha served our needs well.
 
 \subsubsection{MagnumCI}
 With all of the features that MagnumCI currently offers for free, we couldn't pass it up. We are still confident that the features needed by an open-source developer will continue to be free after MagnumCI ends its open-beta period.
@@ -829,7 +864,13 @@ Nightwatch, being a wrapper around Selenium already, was chosen over Selenium be
 Nightwatch was chosen over Intern's UI testing tool because of the issue with Intern running its own server. If Intern did not impose its own server for what it calls ``functional'' testing, we would probably have gone with Intern for both Unit and UI testing but it did not make sense for us to split up Intern's functionality since we couldn't use it all.
 
 \subsubsection{Miscellaneous Tools}
+Generally the miscellaneous tools were chosen because they were already integrated into our project or were the obvious choices for other reasons.
 
+Istanbul was chosen because we had seen it in use with Intern and after minimal research found that it was easy to set up and get running.
+
+Grunt was already a part of the evaluation application prior to the testing effort we set out on. With a bit of looking into Grunt, it was an obvious choice to keep it as our new functionality was easily integrated into the existing grunt scripts.
+
+NPM is the go-to choice for acquiring modules for Node.js applications.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Product 
@@ -840,12 +881,63 @@ Nightwatch was chosen over Intern's UI testing tool because of the issue with In
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Product}
 
-\subsection{Setup}
+\subsection{Our Setup}
+The following are the specs of the laptop that we used for the entirely of this research and implementation:
+\begin{itemize}
+  \item Model: 15-inch Macbook Pro, Late 2008
+  \item OS: OS X 10.9.2, Mavericks
+  \item Processor: 2.53 GHz Intel Core 2 Duo
+  \item Memory: 4 GB 1067 MHz DDR3
+  \item Graphics: NVIDIA GeForce 9400M 256 MB
+\end{itemize}
+The point of listing the laptop specs is to show that our research and workflow can be used on a very run-of-the-mill laptop with generally sub-standard specs. Or at the very least, an average, everyday laptop.
 
-% - Note OS X 'ulimit' issue with Grunt-watch
+To carry out the development we used a combination of the OS X terminal, Sublime Text, and Netbeans. The terminal was used mainly for starting Node services, testing tools, Grunt scripts, and updating modules. Sublime Text was used to write the unit tests and the UI tests. Netbeans was used to look at the overall project as it had already been set up in Netbeans and was easy to browse therein.
+
+\subsection{Tool Setup}
+Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then knowing the right commands.
+
+We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules, instead of using the command by itself the developer would just need to supply the full path to the executable, which is generally ``PATH\_TO\_REPO/node\_modules/MODULE\_NAME/bin/MODULE\_NAME'' or something similar.
+
+\subsubsection{Setting up Mocha}
+To install Mocha, type into the terminal: ``npm install -g mocha''. The ``-g'' means to install the module globally.
+
+Next, to install Chai, type into the terminal: ``npm install -g chai''.
+
+To get Chai running with Mocha, just ``require(...)'' the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: ``var assert = require(\'chai\').assert;''
+
+After the tests have been written, the developer can run them using the ``mocha'' command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being ``-R''. The ``-R'' arguments allows the developer to specify how the test results will be formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters.
+
+\subsubsection{Setting up MagnumCI}
+Setting up MagnumCI is painless. Visit ``magnum-ci.com'', create an account, sign in, click on ``Add a New Project''.
+
+Here is the new project page:
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{magnumCI_new_project.png}
+\end{Figure}
+
+Fill out the fields with the appropriate values for a given project and click ``Create Project''. Depending on what the setup is for your project, you'll see slightly varying web pages after you create your project. One thing in common, though, is the button at the bottom of the steps list that says ``Customize Build''. After following the instructions, click ``Customize Build'':
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
+\end{Figure}
+There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecing the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then ``npm install -g'' in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run nightwatch using ``nightwatch -c nightwatch.json'' (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
+\end{Figure}
+After that setup, our project is ready to go. Anytime we commit from then on, MagnumCI will run and notify us of successful and unsuccessful builds.
+
+\subsubsection{Setting up Nightwatch}
+
+\subsubsection{Setting up Istanbul}
+
+\subsubsection{Setting up Grunt}
 
 \subsection{Workflow}
 % - Unit Testing on save
+% - Note OS X 'ulimit' issue with Grunt-watch
 % - CI used for running browser tests
 
 % - 'Manually' instantiate Sauce Labs?
@@ -859,22 +951,11 @@ Nightwatch was chosen over Intern's UI testing tool because of the issue with In
 %%%%%%%%%%%%%%%%%%
 \section{Evaluation}
 
-\subsection{PolyXpress (PX)}
+\subsection{PolyXpress (PX)\cite{PX}}
+Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.'' We've found that PolyXpress is best described as a scavengar hunt application. Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture.
 
 \subsubsection{PolyXpress Author}
 Our tests covered the Authoring portion of PX.
-
-\subsection{Our Setup}
-% - 15-inch MacBook Pro (Late 2008 model)
-% -- Processor  2.53 GHz Intel Core 2 Duo
-% -- Memory  4 GB 1067 MHz DDR3
-% -- Graphics  NVIDIA GeForce 9400M 256 MB
-% --- Not a particularly powerful computer, just your average everyday laptop.
-
-% - OS 10.9.2
-% -- Terminal
-% - Sublime w/ plugins
-% - Netbeans
 
 
 %%%%%%%%%%%%%%%%%%%%
