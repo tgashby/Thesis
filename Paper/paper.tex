@@ -1020,12 +1020,10 @@ Our gruntfile is more complex than just that, but those are the parts that make 
 
 Once that setup is done, the developer just runs \lstinline{grunt --force test} once which will execute the tests and then watch for changes and continue testing on save. The \lstinline{--force} flag is used so that the grunt task continues after ``failure'' which would occur if any tests did not pass.
 
+For running the browser tests, we recommend using your CI tool. With some setup on your CI of choice, you can get Nightwatch running. Most CI setups have either Firefox pre-installed or Xvfb (a windowless X11 process) and all that's required is to install firefox if needed and start the selenium server using Xvfb is needed. For the CI setup, after installing all the prerequisites, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} or something more suited to the developer's liking. Make sure the \lstinline{DISPLAY} environment variable is exported, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then start your selenium server, \lstinline{java -jar path/to/selenium.jar} and it's all set. Finally, run Nightwatch and rejoice.
+
 % - Unit Testing on save
-% - Note OS X 'ulimit' issue with Grunt-watch
 % - CI used for running browser tests
-
-% - 'Manually' instantiate Sauce Labs?
-
 
 %%%%%%%%%%%%%%%%%%
 %%% Evaluation
@@ -1036,7 +1034,7 @@ Once that setup is done, the developer just runs \lstinline{grunt --force test} 
 \section{Evaluation}
 
 \subsection{PolyXpress (PX)\cite{PX}}
-Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.'' We've found that PolyXpress is best described as a scavengar hunt application. Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture.
+Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.'' Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Because the application requires physical movement, it works solely on devices with GPS, generally phones and tablets only. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
 
 \subsubsection{PolyXpress Author}
 Our tests covered the Authoring portion of PX.
@@ -1161,7 +1159,84 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 
 \subsection{ToDo App Test Code}
 
+\subsection{PolyXpress Player Screenshots}
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_stories.png}
+  \captionof{figure}{Story selection}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_chapter_pane.png}
+  \captionof{figure}{Chapter pane with approximate distances to each chapter}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_chap_instructions.png}
+  \captionof{figure}{Each page and element of PolyXpress has instructions, here they are for Chapters}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_chapter_locs.png}
+  \captionof{figure}{A map of the chapter location in relation to the player}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_marketplace.png}
+  \captionof{figure}{PolyXpress marketplace, to find other published stories}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_player_loc.png}
+  \captionof{figure}{A map centered around the player}
+\end{Figure}
+
+\subsection{PolyXpress Author Screenshots}
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_author_home.png}
+  \captionof{figure}{PolyXpress Authoring Tool}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_create_event.png}
+  \captionof{figure}{Form to create an Event}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_create_event2.png}
+  \captionof{figure}{Bottom of form to create an Event}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_create_chap.png}
+  \captionof{figure}{Form for creating Chapters}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_create_chap2.png}
+  \captionof{figure}{Events are selected manually for inclusion in Chapters}
+\end{Figure}
+
+\begin{Figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{px_create_story.png}
+  \captionof{figure}{Story creation asks if the user wants their story published}
+\end{Figure}
+
 \subsection{PolyXpress Test Code}
+
+
+% - Note OS X 'ulimit' issue with Grunt-watch
 
 % \end{multicols}
 \newpage
