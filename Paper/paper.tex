@@ -384,16 +384,16 @@ describe("Arithmetic Test", function () {
   });
 });
 \end{lstlisting}
-The ``describe'' statement creates a test suite to collect related tests under. Each ``it'' statement is generally one test with some number of ``expect'' statements. It may not be particularly pretty, but the above code is quite readable even to someone with no coding experience.
+The \lstinline{describe} statement creates a test suite to collect related tests under. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. It may not be particularly pretty, but the above code is quite readable even to someone with no coding experience.
 
 The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
-Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, ``runs(function () \{ .... \})'', runs the asynchronous code. The second function, ``waitsFor(function () \{ ... \})'', polls a flag that is set by the first function when it completes. Finally, the third function, another ``runs(...)'', houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, polls a flag that is set by the first function when it completes. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha, by default, also uses the ``describe -> it(\"should...\" '' pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code the way they want to in addition to a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
+Mocha, by default, also uses the \lstinline{describe -> it(\"should...\"} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code the way they want to in addition to a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
 \begin{lstlisting}
 // BDD (default)
 describe('BDD Suite', function () {
@@ -429,7 +429,7 @@ test('test 1', function () {
 \end{lstlisting}
 The developer doesn't gain anything by using one interface over another except the ability to write tests in a way that makes sense to them. There is no standard for writing assertions, as each assertion library is likely to be slightly different.
 
-Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the ``it(...)'' anonymous function, there is passed an additional parameter called ``done'' which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is passed an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
   it("look like this", function (done) {
@@ -448,11 +448,11 @@ describe("Asynch Mocha Test", function () {
 Overall Mocha offered more flexibilty and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than a chain of method calls.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
-For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of ``expect(myVar).to.equal(10);'' or ``expect(myArr).to.have.length(10);''. The Should API has assertions of the form ``myVar.should.be.a(\'number\');'' or ``myArr.should.have.length(10);''. Finally, the Assert API has the more tried and true ``assert.equal(myVar, 10);'' and ``assert.lengthOf(myArr, 10);''. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a(\'number\');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
 
 
 \subsubsection{QUnit \cite{QUnit}}
-QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the ``it'' functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
+QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
 \begin{Figure}
   \centering
   \includegraphics[width=\linewidth]{qunitrunner.png} 
@@ -481,7 +481,7 @@ QUnit.module("Module B");
 \end{lstlisting}
 It is difficult to visually see where one module starts and ends and so grouping and finding the right place to add a test can be a chore.
 
-QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the ``it'' function, the developer calls the ``asyncTest'' function instead. Finally, the developer calls ``start()'' when the asynchronous test is finished. Example:
+QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the \lstinline{it} function, the developer calls the \lstinline{asyncTest} function instead. Finally, the developer calls \lstinline{start()} when the asynchronous test is finished. Example:
 \begin{lstlisting}
 asyncTest("Async Test", function () {
   myAsyncCall(param1, param2, function () {
@@ -501,7 +501,7 @@ QUnit was a particularly strong contender when we saw the table that was produce
 Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
 %-AMD
-Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be ``require(...)''. Instead of seperately requiring modules, the entire program is wrapped in a ``define([...])'' block that passes modules as parameters to an overarching function. That will make more sense after an example:
+Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be \lstinline{require(...)}. Instead of seperately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
 \begin{lstlisting}
 // Intern
 define([
@@ -789,27 +789,27 @@ Sauce Labs is an incredibly helpful tool for making sure a web application behav
 \subsubsection{Istanbul\cite{Istanbul}}
 As already mentioned briefly, IStanbul is a tool used for code coverage metrics. It was built into Intern.io but getting it running with other frameworks is easy as well.
 
-Getting Istanbul to output code coverage is as easy as installing it and then calling the ``istanbul'' function from the commandline with your test executable.
-For example: ``istanbul cover mocha -- . -R spec'' will run the mocha tests in the current directory and output coverage statistics. To break that down a little further:
+Getting Istanbul to output code coverage is as easy as installing it and then calling the \lstinline{istanbul} function from the commandline with your test executable.
+For example: \lstinline{istanbul cover mocha -- . -R spec} will run the mocha tests in the current directory and output coverage statistics. To break that down a little further:
 
-``istanbul cover'' tells istanbul to run coverage on the tests.
+\lstinline{istanbul cover} tells istanbul to run coverage on the tests.
 
-``mocha --'' specifies that the executable to be run is mocha and that the developer is done giving commandline args to istanbul, that's the ``--''
+\lstinline{mocha --} specifies that the executable to be run is mocha and that the developer is done giving commandline args to istanbul, that's the \lstinline{--}
 
-Finally, ``. -R spec'' is just the flags for the mocha command to run the appropriate test suites.
+Finally, \lstinline{. -R spec} is just the flags for the mocha command to run the appropriate test suites.
 
 Istanbul offers an incredibly easy way to get code-coverage on your tests and is painless to get working right away.
 
 \subsubsection{Grunt.js\cite{GruntJS}}
-Grunt.js is a task-runner for Javascript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the ``grunt'' command.
+Grunt.js is a task-runner for Javascript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
 
-Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: ``jshint'' for linting, ``uglify'' for code minimization, and ``watch'' for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
+Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
 
-Of particular interest is that last feature, ``watch''. We are particularly fond of grunt's ``watch'' capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
+Of particular interest is that last feature, \lstinline{watch}. We are particularly fond of grunt's \lstinline{watch} capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
 \subsection{Misc Tools}
 \subsubsection{Node Inspector\cite{NodeInspector}}
-Node Inspector is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running ``node-debug'' instead of ``node'' when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
+Node Inspector is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running \lstinline{node-debug} instead of \lstinline{node} when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
 
 Currently Node Inspector only runs on Chrome and Opera but since those browsers are available on all OSes, it shouldn't be a problem for developers to use.
 
@@ -897,16 +897,16 @@ To carry out the development we used a combination of the OS X terminal, Sublime
 \subsection{Tool Setup}
 Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then knowing the right commands.
 
-We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules, instead of using the command by itself the developer would just need to supply the full path to the executable, which is generally ``PATH\_TO\_REPO/node\_modules/MODULE\_NAME/bin/MODULE\_NAME'' or something similar.
+We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules, instead of using the command by itself the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH\_TO\_REPO/node\_modules/MODULE\_NAME/bin/MODULE\_NAME} or something similar.
 
 \subsubsection{Setting up Mocha}
-To install Mocha, type into the terminal: ``npm install -g mocha''. The ``-g'' means to install the module globally.
+To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally.
 
-Next, to install Chai, type into the terminal: ``npm install -g chai''.
+Next, to install Chai, type into the terminal: \lstinline{npm install -g chai}.
 
-To get Chai running with Mocha, just ``require(...)'' the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: ``var assert = require(\'chai\').assert;''
+To get Chai running with Mocha, just \lstinline{require(...)} the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: \lstinline{var assert = require(\'chai\').assert;}
 
-After the tests have been written, the developer can run them using the ``mocha'' command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being ``-R''. The ``-R'' arguments allows the developer to specify how the test results will be formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters.
+After the tests have been written, the developer can run them using the \lstinline{mocha} command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being \lstinline{-R}. The \lstinline{-R} arguments allows the developer to specify how the test results will be formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters.
 
 \subsubsection{Setting up MagnumCI}
 Setting up MagnumCI is painless. Visit ``magnum-ci.com'', create an account, sign in, click on ``Add a New Project''.
@@ -922,7 +922,7 @@ Fill out the fields with the appropriate values for a given project and click ``
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
 \end{Figure}
-There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecing the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then ``npm install -g'' in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run nightwatch using ``nightwatch -c nightwatch.json'' (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
+There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecing the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
@@ -930,12 +930,96 @@ There are a number of configuration options and panes that can be accessed on th
 After that setup, our project is ready to go. Anytime we commit from then on, MagnumCI will run and notify us of successful and unsuccessful builds.
 
 \subsubsection{Setting up Nightwatch}
+Installing Nightwatch consists of just installing another npm module. \lstinline{npm install -g nightwatch}. In addition to Nightwatch, the developer needs Selenium. The easiest way is to just download the jar straight from the Google repository here: ``http://selenium-release.storage.googleapis.com/index.html''. Once the developer has the JAR and places it somewhere, Nightwatch is ready to be configured and run. Nightwatch configuration happens in a json file that is pointed to when the developer executes Nightwatch. 
+
+The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src\_folders} attribute to specify a source directory, and the \lstinline{test\_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
+
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path\_to\_nightwatch\_config}. This will use the \lstinline{src\_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their devloper guide. \cite{NightwatchJS}
 
 \subsubsection{Setting up Istanbul}
+As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests.
 
 \subsubsection{Setting up Grunt}
+Getting Grunt set up just the way the developer wants it is likely the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a Javascript file called ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''.
+
+Here is an example Gruntfile:
+\begin{lstlisting}
+// 1) Wrapper Function
+module.exports = function(grunt) {
+
+  // 2) Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      build: {
+        src: 'src/<%= pkg.name %>.js',
+        dest: 'build/<%= pkg.name %>.min.js'
+      }
+    }
+  });
+
+  // 3) Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  // 4) Default task(s).
+  grunt.registerTask('default', ['uglify']);
+
+};
+\end{lstlisting}
+
+A more complicatied Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
 
 \subsection{Workflow}
+In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of devlopement.
+
+What we recommend is a unit test suite that runs on save. While this may seem excessive, it provides invaluable, instant feedback for regression assurance and new functionality. The way to set this up with the above tools is have a grunt task that watches for changes in certain files and runs a script when the files change. Here's what our Grunt task looks like:
+\begin{lstlisting}
+module.exports = function(grunt)
+{
+  grunt.initconfig({
+    watch: {
+      test: {
+          options: {
+              spawn: false
+          },
+          files: ['**/*.js'],
+          tasks: ['mochaTest']
+      }
+    },
+    mochaTest: {
+      test: {
+          options: {
+              reporter: 'spec',
+              clearRequireCache: true
+          },
+          src: ['../../../../NetBeans/PolyXpressAuthor/test/unit/functional/*.js']
+      }
+    }
+  });
+
+  var defaultTestSrc = grunt.config('mochaTest.test.src');
+  grunt.event.on('watch', function(action, filepath) {
+      grunt.config('mochaTest.test.src', defaultTestSrc);
+      if (filepath.match('test/functional')) {
+        grunt.config('mochaTest.test.src', filepath);
+      }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha-test');
+
+  // Register the mocha test task
+  grunt.registerTask('test', ['mochaTest', 'watch:test']);
+}
+\end{lstlisting}
+
+Our gruntfile is more complex than just that, but those are the parts that make the test-on-save functionality work. As we said earlier, Grunt has a lot of plugins that are available. We use one here to make our lives easier, \lstinline{grunt-mocha-test}. It is installed, once again, through npm and gives us access to the now-built-in task \lstinline{mochaTest}. The run-on-save functionality comes from the \lstinline{watch} tasks which has \lstinline{mochaTest} in its \lstinline{tasks} array.
+
+Once that setup is done, the developer just runs \lstinline{grunt --force test} once which will execute the tests and then watch for changes and continue testing on save. The \lstinline{--force} flag is used so that the grunt task continues after ``failure'' which would occur if any tests did not pass.
+
 % - Unit Testing on save
 % - Note OS X 'ulimit' issue with Grunt-watch
 % - CI used for running browser tests
@@ -1066,7 +1150,7 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 % -- Extension to all of PX?
 % -- Extension to non-proprietary open-source project
 % -- Headless browsers
-
+% -- Sauce Labs
 
 %%%%%%%%%%%%%%%%%
 %%% Appendices
