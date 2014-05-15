@@ -972,6 +972,11 @@ module.exports = function(grunt) {
 
 A more complicatied Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
 
+\subsubsection{Writing Unit Tests for Web Applications}
+Writing unit tests for normal applications can be quite challenging. When there is the added overhead of network communication, it becomes exceptionally difficult to test units in isolation, i.e. without having to worry about bugs and time related to network code.
+
+\todo{Expand}
+
 \subsection{Workflow}
 In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of devlopement.
 
@@ -1036,9 +1041,24 @@ For running the browser tests, we recommend using your CI tool. With some setup 
 \subsection{PolyXpress (PX)\cite{PX}}
 Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.'' Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Because the application requires physical movement, it works solely on devices with GPS, generally phones and tablets only. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
 
-\subsubsection{PolyXpress Author}
-Our tests covered the Authoring portion of PX.
+PolyXpress consists of three smaller application: 1) The Player. 2) The Author. 3) The PointKBFinder.
 
+The Player is what the user open to actively complete stories. Using the Player, the user travels around and get notification when things are within range and can explore the story further. When the user opens the Player they can choose which story they want to play, including any they've made. The Player also gives them access to the PX Marketplace where all other public stories are available for download.
+
+The Author is a tool to create one's own stories. Because our tests revolved around the Author, we'll be discussing it in depth in the following section, so to avoid redundency, we'll say nothing else here.
+
+The PointFinder is a tool a user can use to select GPS points based on their current location. Setting points when authoring stories can be done by clicking on a map or using points saved in the PointFinder.
+
+\subsubsection{PolyXpress Author}
+Our tests covered the Authoring portion of PolyXpress. PolyXpress is a completely open application where users can publish and share their stories with the world of just among friends. 
+
+PolyXpress is meant for the general public and so there's no convuluted programming involved to create a story, it's all done through the application's Authoring tool. Screen captures of the authoring tool are in the appendix once again. The flow for creating a story is to create the Events first, the Chapters second, and finally tie it all together and create a Story. The flow is this way because the tool offers lists of existing Events in the Chapter creation page and lists of existing Chapters in the Story creation page. Doing the flow out of order or backwards would require a lot of editting of elements already created.
+
+An Event consists of a title, a list of authors, a list of keywords, a version number, whether or not it's a recurring event, a geographical location (either entered manually as latitude and longitude, or using a map and clicking), a range at which this event can be triggered, and a number of assets to show the user when this event is triggered.
+
+A Chapter consists of almost all the same things as an Event with the addition of an overview, an image, and a list of Events associated with that Chapter.
+
+A Story consists of most of the same things as a Chapter except that the list of Events is a list of Chapters and the user chooses whether or not they want to publish this story. If the user chooses to share the story with the world, it is placed in the marketplace, otherwise it is stored within their own list of stories and is inaccesible to anyone else.
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Related Work 
