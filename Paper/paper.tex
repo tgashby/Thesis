@@ -302,7 +302,7 @@ What we see here is that the earlier a defect is introduced the more it costs to
 \section{Sample App and Testing Frameworks}
 
 \subsection{Sample ToDo App}
-In order to test out the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, We decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Here is a brief preview of the app:
+In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, we decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Here is a brief preview of the app:
 
 \begin{Figure}
   \centering
@@ -329,7 +329,7 @@ One of the challenges in testing that we quickly came across was the asynchronou
 %%% Testing Frameworks
 %%%   Talk about the various frameworks
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Testing Frameworks}
+\subsection{Testing Frameworks}
 
 
 % NOT SURE I NEED THIS SECTION AT ALL
@@ -345,7 +345,7 @@ In an effort to create a good workflow and collection of tools, we have chosen t
 \todo{THIS IS LAME}
 Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with.
 
-JavaScript was chosen because it used in over 87\% of all websites. \cite{JSUsage} 
+JavaScript was chosen because it used in over 87\% of all websites. \cite{JSUsage} We also chose JavaScript because the rest of our application was written in JavaScript and we wanted to keep things as constant as possible.
 
 Many web applications use Cloud Services for a number of things, most often they're used for storage of the web content that's being hosted.
 
@@ -367,12 +367,12 @@ Occasionally the cost of tools will be discussed but in general we did not revie
 \subsection{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
-An important distinction that needs to be made is that in web applications there is functionality behind the scenes and there is the UI element of the web page. Unit testing frameworks 
+An important distinction that needs to be made is that in web applications there is functionality behind the scenes and there is the UI element of the web page. Unit testing frameworks are aimed at the functionality behind the scenes.
 
 \subsubsection{Jasmine \cite{Jasmine}}
 The first of the unit testing frameworks that we looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
-This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like english sentences. As an example, the following is a valid Jasmine test:
+This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like English sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
 describe("Arithmetic Test", function () {
   it("should be able to compute the addition of two numbers", function () {
@@ -390,12 +390,42 @@ The \lstinline{describe} statement creates a test suite to collect related tests
 
 The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
-Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, polls a flag that is set by the first function when it completes. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+
+\begin{lstlisting}
+describe("Asynchronous specs", function() {
+  var value, flag;
+
+  it("should support async execution of test preparation and expectations", function() {
+    runs(function() {
+      flag = false;
+      value = 0;
+
+      setTimeout(function() {
+        flag = true;
+      }, 500);
+    });
+
+    waitsFor(function() {
+      value++;
+      return flag;
+    }, "The Value should be incremented", 750);
+
+    runs(function() {
+      expect(value).toBeGreaterThan(0);
+    });
+  });
+});
+\end{lstlisting}
+
+The above test merely sets the \lstinline{flag} to true after half of a second, thus fulfilling the \lstinline{waitsFor} function and finally the assertions are run in the final \lstinline{runs} function.
+
+Jasmine is an interesting take on testing that we'd not see before, the BDD system in particular. We like the way assertions and tests are written in such a stylized manner. The asynchronous support is there but a bit tedious.
 
 \subsubsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha, by default, also uses the \lstinline{describe -> it(\"should...\"} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code the way they want to in addition to a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
+Mocha, by default, also uses the \lstinline{describe -> it(\"should...\"} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code as well as a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
 \begin{lstlisting}
 // BDD (default)
 describe('BDD Suite', function () {
@@ -431,7 +461,7 @@ test('test 1', function () {
 \end{lstlisting}
 The developer doesn't gain anything by using one interface over another except the ability to write tests in a way that makes sense to them. There is no standard for writing assertions, as each assertion library is likely to be slightly different.
 
-Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is passed an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the async calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is passed an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the asynchronous calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
   it("look like this", function (done) {
@@ -447,10 +477,10 @@ describe("Asynch Mocha Test", function () {
 });
 \end{lstlisting}
 
-Overall Mocha offered more flexibilty and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than a chain of method calls.
+Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own testing interface and assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
 
 \paragraph{Assertion Library of Choice: Chai.js \cite{Chaijs}}
-For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a(\'number\');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibilty led to a nice developer experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a(\'number\');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
 
 
 \subsubsection{QUnit \cite{QUnit}}
@@ -500,10 +530,10 @@ asyncTest("Async Test", function () {
 QUnit was a particularly strong contender when we saw the table that was produced after running the tests but its shortcomings led us to keep looking elsewhere. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself.
 
 \subsubsection{Intern\cite{InternIO}}
-Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a seperate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
+Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a separate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
 
 %-AMD
-Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be \lstinline{require(...)}. Instead of seperately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
+Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be \lstinline{require(...)}. Instead of separately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
 \begin{lstlisting}
 // Intern
 define([
@@ -531,7 +561,7 @@ var hello = require('app/hello');
 } ());
 \end{lstlisting}
 
-Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addtiion to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep out CommonJS format because of the maturity of the evaluation project.
+Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because of the maturity of the evaluation project.
 
 %- TDD, BDD, Object methods
 Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces effect how the general layout of test code looks. Here's a very quick example of the different layouts:
@@ -560,18 +590,18 @@ registerSuite({
 )
 \end{lstlisting}
 
-The ability to mix assertion styles with testing interfaces provides the most diverse ways of writing tests that we've found. Some testing interfaces seems to fit better with certain assertion styles, but there's no restrictions on which can be used with which.
+The ability to mix assertion styles with testing interfaces provides a diverse way of writing tests. Some testing interfaces seems to fit better with certain assertion styles, but there's no restrictions on which can be used with which.
 
 %- Integration with Selenium
-Intern uses the WebDriver API to communicate with Selenium to drive the automated broswer testing portion of Intern. Selenium and the WebDriver API will be discussed in more detail in the next section ``Browser and UI Testing''.
+Intern uses the WebDriver API to communicate with Selenium to drive the automated browser testing portion of Intern. Selenium and the WebDriver API will be discussed in more detail in the next section ``Browser and UI Testing''.
 
 %- Distinction between non-functional and functional tests
-Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
+Intern's unit-test versus browser test separation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
 Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
-Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a seperate server that served normal HTML pages, Intern would have likely been our go-to tool for all of our testing needs.
+Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a separate server that served normal HTML pages, Intern would have likely been our go-to tool for all of our testing needs.
 
 \subsection{Browser and UI Testing}
 Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
@@ -596,7 +626,7 @@ The Selenium WebDriver has APIs for a variety of programming languages including
 \subsubsection{Nightwatchjs\cite{NightwatchJS}}
 Nightwatch is a JavaScript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
 
-Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
+Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to Google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
 \begin{lstlisting}
 module.exports = {
   "Demo test Google" : function (client) {
@@ -656,7 +686,7 @@ In an attempt to speed up UI testing, which is notoriously slow, there have been
 Nonetheless, we still looked at two options that we will outline briefly below for other developer's reference.
 
 \paragraph{PhantomJS\cite{PhantomJS}}
-The reigning king of headless browsers is PhantomJS. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinuishable from a normal browser to any testing code.
+The reigning king of headless browsers is PhantomJS. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
 
 There are, however, a couple problems with PhantomJS. It is generally fairly verbose when it comes to writing the scripts that run your commands. It is also not a testing tool, it is a headless WebKit. The distinction here is that PhantomJS does not have any assert functionality built-in and thus requires the developer to find and use their own assertion library.
 
@@ -719,7 +749,7 @@ Most companies give Jenkins a sub-domain on their web pages.
 
 Jenkins comes bare-boned but is highly customizable and has a wide array of plugins. The plugins available integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
 
-Because Jenkins comes bare and runs on the system of the devloper's choosing, it can run any project that is set up. The downside is that there is no support out-of-the-box unless the system already has the necessary compilers, interpreters, applications, and/or libraries installed.
+Because Jenkins comes bare and runs on the system of the developer's choosing, it can run any project that is set up. The downside is that there is no support out-of-the-box unless the system already has the necessary compilers, interpreters, applications, and/or libraries installed.
 
 One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Any increase in computing power will be directly usable by Jenkins. Jenkins can run as many jobs as the server can handle at one time.
 
@@ -728,7 +758,7 @@ The other use for a tool like Jenkins is the ability to start services like cron
 Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run a project in. However, once the server has the necessary applications and libraries, the builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
 \subsubsection{Travis \cite{Travis}}
-Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the deveoper more processing power and access to private repositories.
+Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
 
 Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects if needed. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
@@ -756,7 +786,7 @@ Semaphore is still ruby-centric and requires a subscription. As our goal is to f
 \subsubsection{MagnumCI \cite{MagnumCI}}
 MagnumCI is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
 
-MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are overridable in a yml file.
+MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a yml file.
 
 MagnumCI has all the popular databases built-in, many of which run automatically on startup. MagnumCI also has two headless browser frameworks built in for running any browser testing that needs to be done. The developer can, again, use apt-get to install missing packages. MagnumCI does not, at current, provide automatic deployment options given a successful build.
 
@@ -771,7 +801,7 @@ Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node
 
 Drone.io offers support for most of the databases we've heard of, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
 
-Drone.io is able to connect to GitHub, BitBucket, and Google Code respositories to get projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives once it connects, select the language of the repository, edit the default build script, and the project is ready to go.
+Drone.io is able to connect to GitHub, BitBucket, and Google Code repositories to get projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives once it connects, select the language of the repository, edit the default build script, and the project is ready to go.
 
 Drone.io offers unlimited free open-source repositories. The next step up offers 5 private repositories for \$25 per month and for \$50 per month, unlimited private repositories. They also offer higher tier plans that allow for concurrently running builds.
 
@@ -796,7 +826,7 @@ For example: \lstinline{istanbul cover mocha -- . -R spec} will run the mocha te
 
 \lstinline{istanbul cover} tells istanbul to run coverage on the tests.
 
-\lstinline{mocha --} specifies that the executable to be run is mocha and that the developer is done giving commandline args to istanbul, that's the \lstinline{--}
+\lstinline{mocha --} specifies that the executable to be run is mocha and that the developer is done giving commandline arguments to istanbul, that's the \lstinline{--}
 
 Finally, \lstinline{. -R spec} is just the flags for the mocha command to run the appropriate test suites.
 
@@ -924,7 +954,7 @@ Fill out the fields with the appropriate values for a given project and click ``
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
 \end{Figure}
-There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecing the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
+There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecting the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
@@ -936,7 +966,7 @@ Installing Nightwatch consists of just installing another npm module. \lstinline
 
 The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src\_folders} attribute to specify a source directory, and the \lstinline{test\_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
-To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path\_to\_nightwatch\_config}. This will use the \lstinline{src\_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their devloper guide. \cite{NightwatchJS}
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path\_to\_nightwatch\_config}. This will use the \lstinline{src\_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their developer guide. \cite{NightwatchJS}
 
 \subsubsection{Setting up Istanbul}
 As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests.
@@ -972,10 +1002,10 @@ module.exports = function(grunt) {
 };
 \end{lstlisting}
 
-A more complicatied Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
+A more complicated Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
 
 \subsection{Workflow}
-In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of devlopement.
+In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of development.
 
 What we recommend is a unit test suite that runs on save. While this may seem excessive, it provides invaluable, instant feedback for regression assurance and new functionality. The way to set this up with the above tools is have a grunt task that watches for changes in certain files and runs a script when the files change. Here's what our Grunt task looks like:
 \begin{lstlisting}
@@ -1022,7 +1052,7 @@ Our gruntfile is more complex than just that, but those are the parts that make 
 
 Once that setup is done, the developer just runs \lstinline{grunt --force test} once which will execute the tests and then watch for changes and continue testing on save. The \lstinline{--force} flag is used so that the grunt task continues after ``failure'' which would occur if any tests did not pass.
 
-For running the browser tests, we recommend using your CI tool. With some setup on your CI of choice, you can get Nightwatch running. Most CI setups have either Firefox pre-installed or Xvfb (a windowless X11 process) and all that's required is to install firefox if needed and start the selenium server using Xvfb is needed. For the CI setup, after installing all the prerequisites, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} or something more suited to the developer's liking. Make sure the \lstinline{DISPLAY} environment variable is exported, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then start your selenium server, \lstinline{java -jar path/to/selenium.jar} and it's all set. Finally, run Nightwatch and rejoice.
+For running the browser tests, we recommend using your CI tool. With some setup on your CI of choice, you can get Nightwatch running. Most CI setups have either Firefox pre-installed or Xvfb (a windowless X11 process) and all that's required is to install Firefox if needed and start the selenium server using Xvfb is needed. For the CI setup, after installing all the prerequisites, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} or something more suited to the developer's liking. Make sure the \lstinline{DISPLAY} environment variable is exported, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then start your selenium server, \lstinline{java -jar path/to/selenium.jar} and it's all set. Finally, run Nightwatch and rejoice.
 
 % - Unit Testing on save
 % - CI used for running browser tests
@@ -1042,20 +1072,20 @@ PolyXpress consists of three smaller application: 1) The Player. 2) The Author. 
 
 The Player is what the user open to actively complete stories. Using the Player, the user travels around and get notification when things are within range and can explore the story further. When the user opens the Player they can choose which story they want to play, including any they've made. The Player also gives them access to the PX Marketplace where all other public stories are available for download.
 
-The Author is a tool to create one's own stories. Because our tests revolved around the Author, we'll be discussing it in depth in the following section, so to avoid redundency, we'll say nothing else here.
+The Author is a tool to create one's own stories. Because our tests revolved around the Author, we'll be discussing it in depth in the following section, so to avoid redundancy, we'll say nothing else here.
 
 The PointFinder is a tool a user can use to select GPS points based on their current location. Setting points when authoring stories can be done by clicking on a map or using points saved in the PointFinder.
 
 \subsubsection{PolyXpress Author}
 Our tests covered the Authoring portion of PolyXpress. PolyXpress is a completely open application where users can publish and share their stories with the world of just among friends. 
 
-PolyXpress is meant for the general public and so there's no convuluted programming involved to create a story, it's all done through the application's Authoring tool. Screen captures of the authoring tool are in the appendix once again. The flow for creating a story is to create the Events first, the Chapters second, and finally tie it all together and create a Story. The flow is this way because the tool offers lists of existing Events in the Chapter creation page and lists of existing Chapters in the Story creation page. Doing the flow out of order or backwards would require a lot of editting of elements already created.
+PolyXpress is meant for the general public and so there's no convoluted programming involved to create a story, it's all done through the application's Authoring tool. Screen captures of the authoring tool are in the appendix once again. The flow for creating a story is to create the Events first, the Chapters second, and finally tie it all together and create a Story. The flow is this way because the tool offers lists of existing Events in the Chapter creation page and lists of existing Chapters in the Story creation page. Doing the flow out of order or backwards would require a lot of editing of elements already created.
 
 An Event consists of a title, a list of authors, a list of keywords, a version number, whether or not it's a recurring event, a geographical location (either entered manually as latitude and longitude, or using a map and clicking), a range at which this event can be triggered, and a number of assets to show the user when this event is triggered.
 
 A Chapter consists of almost all the same things as an Event with the addition of an overview, an image, and a list of Events associated with that Chapter.
 
-A Story consists of most of the same things as a Chapter except that the list of Events is a list of Chapters and the user chooses whether or not they want to publish this story. If the user chooses to share the story with the world, it is placed in the marketplace, otherwise it is stored within their own list of stories and is inaccesible to anyone else.
+A Story consists of most of the same things as a Chapter except that the list of Events is a list of Chapters and the user chooses whether or not they want to publish this story. If the user chooses to share the story with the world, it is placed in the marketplace, otherwise it is stored within their own list of stories and is inaccessible to anyone else.
 
 In regards to the underlying code, the Author tool is made up of three parts, the Controller, the Model, and the Server. The Model is more-or-less just a list that stores events, chapters, and stories and has retrieval and insertion methods. The Controller orchestrates the interactions between the Server and Model and the web page. The Server stores and retrieves information from the backing database.
 
@@ -1184,7 +1214,7 @@ Although PolyXpress is a complex application that has been used by people outsid
 The notion of headless browsers is extremely interesting and worth of exploration. PhantomJS appeared to be quite promising for a full DOM implementation or ZombieJS for more simple DOM emulation. A side-by-side comparison of tests running through a full-fledged browser and tests running through a headless browser would be interesting and enlightening as to whether or not headless browsers could have a real place in a testing framework.
 
 \paragraph{Sauce Labs}
-Sauce Labs, the online web testing site, offered a phenonemal set of features that we did not have time to take advantage of. The ability to test web applications across multiple browsers and browser configurations without having to set all of them up is incredibly enticing.
+Sauce Labs, the online web testing site, offered a phenomenal set of features that we did not have time to take advantage of. The ability to test web applications across multiple browsers and browser configurations without having to set all of them up is incredibly enticing.
 
 % -- Extension to all of PX?
 % -- Extension to non-proprietary open-source project
