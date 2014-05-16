@@ -7,7 +7,7 @@
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{todonotes}
+\usepackage[disable]{todonotes}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -68,7 +68,7 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\vfill A Survey of Web Testing Frameworks and a Workflow for Testing Javascript Applications} %\vfill gives us the black space at the top of the page
+\title{\vfill A Survey of Web Testing Frameworks and Workflow for Testing Javascript Applications} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
 Computer Science Department, California Polytechnic State University, San Luis Obispo
@@ -84,9 +84,9 @@ Computer Science Department, California Polytechnic State University, San Luis O
 %%%%%%%%%%%%%%%%
 \begin{abstract}
 \todo{Make this better}
-Web applications are quickly replacing standalone applications. As with any type of applicaiton, these web applications need to be tested to ensure proper functionality and reliability. There have been substantial efforts to create tools to help with the testing of web applicaitons but there is, as of yet, no standard or recommended workflow to insure speed of development and strength of application.
+Web applications are quickly replacing standalone applications. As with any type of application, these web applications need to be tested to ensure proper functionality and reliability. There have been substantial efforts to create tools to help with the testing of web applications but there is, as of yet, no standard set of tools or recommended workflow to insure speed of development and strength of application.
 
-We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework and workflow for javascript web applications.
+We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework and workflow for Javascript web applications.
 \end{abstract}
 
 \thispagestyle{empty} %remove page number from title page
@@ -104,23 +104,25 @@ We have brought together a number of testing tools from the web and created what
 %%% More detailed, but still general, description of problem and why we want to solve it
 %%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around 2.5 billion people. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
+Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around two and a half billion. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
 
-Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices regarding how to test them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate and so there's a need for rapid testing.
+Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices for testing them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate, leading to a need for rapid testing.
 
-We can see that this is not a solved problem by looking at some of the biggest web application around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths, and, honestly, it is fairly small, but those are still errors in the software that ought to be fixed.
+We have found that this is not a solved problem by looking at some of the biggest web application around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths, and, honestly, it is fairly small, but those are still errors in the software that ought to be fixed.
 
-What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, quick to develop on, and thorough in its coverage.
+What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, allows for quick development, and is thorough in its coverage.
 
 \subsection{What Has Been Done Already?}
 Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
+
+This thesis will explore some of the most popular tools with the end goal being to gather the best tools out there and collect them in one place.
 
 \todo{What goes here?}
 \todo{Info info info}
 
 \subsubsection{Why It Is Insufficient}
 % - No standard
-The problem that followed was that many of the tools attempted to remedy the same problems and so a developer would have to decide between a number of similar tools. Having to wade through a sea of similar tools is time-consuming and that can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
+The problem with proprietary tools is that many of the tools attempt to remedy the same problems. A developer has to decide between a number of similar tools that all solve similar problems. Having to wade through a sea of similar tools is time-consuming, which can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
 
 \todo{Info info info}
 
@@ -128,10 +130,10 @@ The problem that followed was that many of the tools attempted to remedy the sam
 % - A lot of products to test against (browsers)
 Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
 
-In the very beginning, web applications were easy to write and test because the only code was straight HTML with a common set of HTML tags. It didn't matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on a couple different browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save oneself time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
+In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It didn't matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
-The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting UI that had not before been seen. This set of features and UI improvements came with an, albeit necessary, complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, data loading that doesn't hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
+The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
 
 There is no overarching solution to these problems, but in order to understand the motivations behind this thesis, one must understand the problems facing web application developers.
 
@@ -139,7 +141,7 @@ There is no overarching solution to these problems, but in order to understand t
 %- Framework
 The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a toolkit for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of the testing spectrum as possible. 
 
-In addition to creating a single framework, we've set out to weigh the options between the most popular frameworks so that a developer need not just blindly trust our recommendations. Since every project is unique, a single set of tools cannot possibly cover the gamut. In addition to the single set of recommendations, the most popular tools are discussed so that the devloper is free to pick and choose as they see fit.
+In addition to creating a single framework, we've set out to weigh the options between the most popular frameworks so that a developer need not just blindly trust our recommendations. Since every project is unique, a single set of tools cannot possibly cover the gamut. In addition to the single set of recommendations, the most popular tools are discussed so that the developer is free to pick and choose as they see fit.
 %- Wade through all the tools currently out there
 %-- Focus in, no need to have every developer check out all 10000 tools
 %-- Weigh options
