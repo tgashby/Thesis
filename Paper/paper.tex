@@ -68,7 +68,7 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\vfill A Survey of Web Testing Frameworks and Workflow for Testing Javascript Applications} %\vfill gives us the black space at the top of the page
+\title{\vfill A Survey of Web Testing Frameworks and Workflow for Testing JavaScript Applications} %\vfill gives us the black space at the top of the page
 \author{
 By Taggart Ashby \vspace{10pt} \\
 Computer Science Department, California Polytechnic State University, San Luis Obispo
@@ -86,7 +86,7 @@ Computer Science Department, California Polytechnic State University, San Luis O
 \todo{Make this better}
 Web applications are quickly replacing standalone applications. As with any type of application, these web applications need to be tested to ensure proper functionality and reliability. There have been substantial efforts to create tools to help with the testing of web applications but there is, as of yet, no standard set of tools or recommended workflow to insure speed of development and strength of application.
 
-We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework and workflow for Javascript web applications.
+We have brought together a number of testing tools from the web and created what we feel is a fully-featured, easy to use, testing framework and workflow for JavaScript web applications.
 \end{abstract}
 
 \thispagestyle{empty} %remove page number from title page
@@ -133,7 +133,7 @@ Testing web applications is difficult. The web offers an impressive set of featu
 In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It didn't matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
-The addition of Javascript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
+The addition of JavaScript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
 
 There is no overarching solution to these problems, but in order to understand the motivations behind this thesis, one must understand the problems facing web application developers.
 
@@ -158,19 +158,19 @@ In an effort to make the rest of the paper more understandable and to define the
 If one is familiar with HTML5, JavaScript, and Testing concepts and statistics, it will likely be safe to skip this background section.
 
 \subsection{Web Application Strengths}
-Web applications are great for both developers and consumers. They have a number of characteristics that make them more desirable than shrink-wrap software. These attributes are versioning, availability, platform independence, and the ability to rapidly prototype.
+Web applications are great for both developers and consumers. They have a number of characteristics that make them more desirable than shrink-wrap software. These attributes include versioning, availability, platform independence, and the ability to rapidly prototype.
 
 \subsubsection{Versioning}
 Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like an operating system that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security.
 
 \subsubsection{Availability}
-Web application are available anywhere there's internet. No need to install anything on a given device most of the time. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user all the time.
+Web application are available anywhere there's internet. There is no need to install anything on a given device. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user all the time. This instant and continuous availability means that users only have to know how to use a web browser in order to access the application.
 
 \subsubsection{Multi-platform}
-Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems.
+Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems. This also means that the developer need not, generally, worry about hardware configurations, conflicting software, and other problems that can arise in desktop applications.
 
 \subsubsection{Rapid Prototyping}
-Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will outline where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
+Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will record where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
 
 \subsection{Web Features}
 Here we'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones.
@@ -180,13 +180,13 @@ The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009
 
 HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
 
-As the web is being increasingly used on mobile devices, HTML5 also introduces geolocation functionality. This funcationality requires user approval, but once that approval is gained, the web application has access to a rough idea of where the user is located. When used on devices that have GPS, such as phones and tablets, this area is more defined and a stronger lock on the user's position can be obtained. This geolocation functionality has opened the door for brand new types of web applications that can much more closely tie in with what the user is seeing or the area that they are in. For example, ads can be more targeted or an application can display distances to nearby points of interest.
+As the web is being increasingly used on mobile devices, HTML5 also introduces geolocation functionality. This functionality requires user approval, but once that approval is gained, the web application has access to a rough idea of where the user is located. When used on devices that have GPS, such as phones and tablets, this area is more defined and a stronger lock on the user's position can be obtained. This geolocation functionality has opened the door for brand new types of web applications that can much more closely tie in with what the user is seeing or the area that they are in. For example, advertisements can be more targeted or an application can display distances to nearby points of interest.
 
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML5 when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
 %\todo{THIS NEEDS TO MOVE OR CHANGE SUBSECTION TO `WEB APPLICATIONS'}
 \paragraph{Node.JS}
-As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation applicaiton. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
+As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation application. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
 
@@ -202,7 +202,7 @@ First, we'll address what a client is. The simple answer is: The User. The User'
 
 So now that the client has been clarified, what is the client-side portion of an application? The client-side portion interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server-side.
 
-Client-side programming is done in a language that the browser understands, most frequently Javascript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
+Client-side programming is done in a language that the browser understands, most frequently JavaScript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
 
 \subsubsection{What is the Server-side Portion?}
 Once again, we'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
@@ -215,13 +215,13 @@ The client has limited access to resources on any given web application. This ac
 Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
 
 
-\subsection{What is testing?}
+\subsection{What is Testing?}
 IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
 
-There are a number of different types of tests and testing concept, we will just focus on Unit Testing, Continuous Integration, and Acceptance Testing.
+There are a number of different types of tests and testing concepts, we will just focus on Unit Testing, Continuous Integration, and Acceptance Testing.
 
 \subsubsection{Unit Testing}
-Unit testing is the testing of specific functions and functionality, or ``test units.'' Test units are ``A set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures taht satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
+Unit testing is the testing of specific functions and functionality, or ``test units.'' Test units are ``A set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures that satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
 Here's a brief example:
 \begin{lstlisting}
@@ -270,14 +270,14 @@ function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing
 Unit tests are important because they are done in isolation from one another. The purpose of a unit test is to ensure that once individual modules are put together, the developer need only focus on the interaction between them instead of their individual functionality. Without the assurances of prior unit tests, integration would be a more stressful and mysterious proposition.
 
 \subsubsection{Continuous Integration}
-The original definition of Continuous Integration involves the idea of developers committing from their  branches to a master branch daily so that changes are continuously integrated in an effort to make sure all branches can, in fact, be integrated. It has since evolved into a more general idea of a tool that runs commands after each commit to a repository. This commands generally encompass running unit tests, integration tests, user interface tests, and also often publishing and disseminating notifications to interested parties. This is invaluable feedback because the developer can see if they're making progress in the right direction as they write code, as opposed to a situation in which the developer finishes coding and finds out they've made a bad assumption or decision between this commit and the last. 
+The original definition of Continuous Integration involves the idea of developers committing from their  branches to a master branch daily so that changes are continuously integrated in an effort to make sure all branches can, in fact, be integrated. It has since evolved into a more general idea of a tool that runs commands after each commit to a repository. These commands generally encompass running unit tests, integration tests, user interface tests, and also often publishing and disseminating notifications to interested parties. This is invaluable feedback because the developer can see if they're making progress in the right direction as they write code, as opposed to a situation in which the developer finishes coding and finds out they've made a bad assumption or decision between this commit and the last. 
 
 One of the most important aspects of a good piece of CI software is that it is automatic. There should be no need for a developer to do anything besides, perhaps, ``turn it on'' and start coding. As soon as a tool, CI or otherwise, requires more than one or two interactions to run, it becomes more of a nuisance and less of an asset.
 
 \subsubsection{Acceptance Testing}
 Acceptance testing is testing to confirm that the product meets a certain specification. Often this is making sure that the software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or customer that ordered the software, rather than the developers.
 
-In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a seperate language that is more like english than code. The traditional User Story template is: ``As a <role>, I want <goal/desire> so that <benefit>.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
+In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a separate language that is more like English than code. The traditional User Story template is: ``As a <role>, I want <goal/desire> so that <benefit>.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
 
 \subsubsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -288,7 +288,7 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 	\captionof{figure}{\cite{DefectPic}}
 \end{Figure}
 
-What we see here is that the earlier a defect is introduced the more it costs to fix it later. Of particular note is that the costs are roughly exponential, not linear. The longer a bug lies undetected, the increasingly harder it becomes to fix that bug. On the flip side, it's relatively easy to fix a bug that was introduced in the same stage that it is found, e.g. introducing a coding bug during ``Construction'' and fixing it while still writing code, prior to the ``System Test'' phase. 
+What we see here is that the earlier a defect is introduced the more it costs to fix it later. Of particular note is that the costs are roughly exponential, not linear. It's relatively easy to fix a bug that was introduced in the same stage that it is found, e.g. introducing a coding bug during ``Construction'' and fixing it while still writing code, prior to the ``System Test'' phase. The longer a bug lies undetected, the increasingly harder it becomes to fix that bug. 
 
 % - CONSIDER REMOVING ALTOGETHER
 % \subsubsection{Why Testing is Important}
@@ -340,12 +340,12 @@ One of the challenges in testing that we quickly came across was the asynchronou
 %- Something to do continuous integration
 
 \subsubsection{The Average Web Application}
-In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, Javascript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
+In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, JavaScript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
 
 \todo{THIS IS LAME}
 Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with.
 
-Javascript was chosen because it used in over 87\% of all websites. \cite{JSUsage} 
+JavaScript was chosen because it used in over 87\% of all websites. \cite{JSUsage} 
 
 Many web applications use Cloud Services for a number of things, most often they're used for storage of the web content that's being hosted.
 
@@ -353,7 +353,7 @@ Web applications tend to keep track of users which most often constitutes the us
 
 %- Node.js
 %- Browser based
-%- Javascript
+%- JavaScript
 %- Database
 %- Open-source
 
@@ -569,7 +569,7 @@ Intern uses the WebDriver API to communicate with Selenium to drive the automate
 Intern's unit-test versus browser test seperation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
-Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another Javascript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
 Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a seperate server that served normal HTML pages, Intern would have likely been our go-to tool for all of our testing needs.
 
@@ -585,16 +585,16 @@ Generally, all browser testing tools will be using Selenium behind the scenes an
 
 Selenium has support for running a number of different browsers. 
 
-Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run withou the need for developers to manually click all of the HTML elements and input information in the relevant places.
+Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run without the need for developers to manually click all of the HTML elements and input information in the relevant places.
 
-Selenium's node incarnation is out-of-date and as such we had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the javascript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
+Selenium's node incarnation is out-of-date and as such we had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the JavaScript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
 
-Selenium was written with maximum functionality and language flexability in mind and therefore can be incredibly verbose.
+Selenium was written with maximum functionality and language flexibility in mind and therefore can be incredibly verbose.
 
-The Selenium WebDriver has APIs for a variety of programming languages including: Javascript, C, Java, and Python.
+The Selenium WebDriver has APIs for a variety of programming languages including: JavaScript, C, Java, and Python.
 
 \subsubsection{Nightwatchjs\cite{NightwatchJS}}
-Nightwatch is a Javascript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+Nightwatch is a JavaScript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
 
 Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
 \begin{lstlisting}
@@ -745,7 +745,7 @@ From what we gathered, Travis appears to be targeted at companies, not individua
 \subsubsection{Semaphore \cite{Semaphore}}
 Semaphore is another online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
-Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and Javascript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
+Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
 Semaphore supports most databases and has a number of testing frameworks built-in. Once again any missing libraries or dependencies can be installed using apt-get. It would appear that deployment support is only available for Ruby projects.
 
@@ -782,7 +782,7 @@ Drone.io is a strong contender because of its language support, deployment optio
 In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that didn't quite fit into any of the above categories.
 
 \subsubsection{Sauce Labs\cite{SauceLabs}}
-Sauce Labs is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, Javascript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their Javascript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
+Sauce Labs is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, JavaScript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their JavaScript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
 
 Every CI framework we looked at had built-in configurations for Sauce Labs so that one of the CI steps could be running your tests on Sauce Labs.
 
@@ -803,7 +803,7 @@ Finally, \lstinline{. -R spec} is just the flags for the mocha command to run th
 Istanbul offers an incredibly easy way to get code-coverage on your tests and is painless to get working right away.
 
 \subsubsection{Grunt.js\cite{GruntJS}}
-Grunt.js is a task-runner for Javascript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
+Grunt.js is a task-runner for JavaScript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
 
 Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
 
@@ -942,7 +942,7 @@ To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch 
 As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests.
 
 \subsubsection{Setting up Grunt}
-Getting Grunt set up just the way the developer wants it is likely the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a Javascript file called ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''.
+Getting Grunt set up just the way the developer wants it is likely the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a JavaScript file called ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''.
 
 Here is an example Gruntfile:
 \begin{lstlisting}
@@ -1120,8 +1120,8 @@ Two individuals from the Albert Ludwigs University in Germany created a tool, JS
 
 Although JSConTest could be useful in a toolkit, its source is no-where to be found and there were other, more robust, tools out there for our purposes.
 
-\subsubsection{``JAWS: A Javascript API for the Efficient Testing and Integration of Semantic Web Services'' \cite{JAWS}}
-A researcher from Ford Motor Company published a paper regarding an API, called JAWS (Javascript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that one visits personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
+\subsubsection{``JAWS: A JavaScript API for the Efficient Testing and Integration of Semantic Web Services'' \cite{JAWS}}
+A researcher from Ford Motor Company published a paper regarding an API, called JAWS (JavaScript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that one visits personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
 
 Another interesting API and project, but we are not focusing on SWS and so including a tool or API like JAWS would be overkill and beyond trying to keep the toolkit as simple and robust as possible.
 
