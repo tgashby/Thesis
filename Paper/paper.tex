@@ -609,15 +609,15 @@ Web applications, for the most part, require user input in order to be useful. T
 What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
 
 \subsubsection{Selenium\cite{Selenium}}
-Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On it's own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
+Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
-Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for both of the web testing tools that will follow this description.
+Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for the web testing tools that will follow this description.
 
-Selenium has support for running a number of different browsers. 
+Selenium has support for running a number of different browsers. Out of the box it comes with support for Firefox but getting Chrome and Safari running takes minimal effort.
 
 Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run without the need for developers to manually click all of the HTML elements and input information in the relevant places.
 
-Selenium's node incarnation is out-of-date and as such we had to change the selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the JavaScript files that ran Selenium from the console using node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
+Selenium's Node incarnation is out-of-date and as such we had to change the Selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the JavaScript files that ran Selenium from the console using Node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
 
 Selenium was written with maximum functionality and language flexibility in mind and therefore can be incredibly verbose.
 
@@ -673,7 +673,7 @@ test.describe('Google Search', function() {
 
 In addition to being more verbose, I've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command.
 
-Nightwatch is Node.js module, and as such can easily installed and run via npm and the command-line.
+Nightwatch is a Node.js module, and as such can easily installed and run via npm and the commandline.
 
 Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if the developer wants to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
 
@@ -784,7 +784,7 @@ Semaphore's pricing scheme is different than Travis' as it focuses on an individ
 Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
 
 \subsubsection{MagnumCI \cite{MagnumCI}}
-MagnumCI is another online CI, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
+MagnumCI is another online CI framework, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
 
 MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a yml file.
 
@@ -809,7 +809,7 @@ Drone.io is a strong contender because of its language support, deployment optio
 
 
 \subsection{Misc Frameworks}
-In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that didn't quite fit into any of the above categories.
+In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that did not quite fit into any of the above categories.
 
 \subsubsection{Sauce Labs\cite{SauceLabs}}
 Sauce Labs is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, JavaScript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their JavaScript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
@@ -839,7 +839,6 @@ Grunt is widely supported and has all kinds of built-in or installable plugins t
 
 Of particular interest is that last feature, \lstinline{watch}. We are particularly fond of grunt's \lstinline{watch} capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
-\subsection{Misc Tools}
 \subsubsection{Node Inspector\cite{NodeInspector}}
 Node Inspector is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running \lstinline{node-debug} instead of \lstinline{node} when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
 
