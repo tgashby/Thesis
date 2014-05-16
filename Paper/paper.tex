@@ -972,11 +972,6 @@ module.exports = function(grunt) {
 
 A more complicatied Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
 
-\subsubsection{Writing Unit Tests for Web Applications}
-Writing unit tests for normal applications can be quite challenging. When there is the added overhead of network communication, it becomes exceptionally difficult to test units in isolation, i.e. without having to worry about bugs and time related to network code.
-
-\todo{Expand}
-
 \subsection{Workflow}
 In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of devlopement.
 
@@ -1059,6 +1054,17 @@ An Event consists of a title, a list of authors, a list of keywords, a version n
 A Chapter consists of almost all the same things as an Event with the addition of an overview, an image, and a list of Events associated with that Chapter.
 
 A Story consists of most of the same things as a Chapter except that the list of Events is a list of Chapters and the user chooses whether or not they want to publish this story. If the user chooses to share the story with the world, it is placed in the marketplace, otherwise it is stored within their own list of stories and is inaccesible to anyone else.
+
+In regards to the underlying code, the Author tool is made up of three parts, the Controller, the Model, and the Server. The Model is more-or-less just a list that stores events, chapters, and stories and has retrieval and insertion methods. The Controller orchestrates the interactions between the Server and Model and the web page. The Server stores and retrieves information from the backing database.
+
+\subsubsection{Writing Unit Tests for Web Applications}
+Writing unit tests for normal applications can be quite challenging. When there is the added overhead of network communication, it becomes exceptionally difficult to test units in isolation, i.e. without having to worry about bugs and time related to network code. There is also the issue of asynchronous calls that we talked about earlier. Although the testing frameworks offer solutions, the developer still must recognize and properly write tests for asynchronous calls.
+
+The goal of a unit test, is to test the function, module, ``unit'' in isolation. While that sounds great in theory, things tend to get messier when it comes to the actual code. The method we used to alleviate this issue was with mock functions and objects. Mocks are stand-in pieces of code that get called instead of the real implementation. Mocks are highly controlled and often just simply return the same value regardless of parameters or prior calls.
+
+Most of our mocks were used in the Controller unit tests because the controller continually reaches into the Model and the Server. In order to test the Controller in isolation, we had to mock almost an entire new Model and new Server. This mock kept track of previous data, parameters, and calls in order to test that certain calls were made and made in the right order within the Controller.
+
+All of the unit testing code for the PolyXpress Author is available in the appendix.
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Related Work 
@@ -1157,13 +1163,26 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 %%% Recap results
 %%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-
+It is our hope that after reading through the tools and workflow described here, any developer would be able to hone in on the tools they want without having to scour the web for the best tool for their job. We feel that we've covered all of the latest and greatest tools that offered support and ease of use to new developers.
 
 %%%%%%%%%%%%%%%%%%%
 %%% Future Work 
 %%% Anything we wanted to do but didn't have time to
 %%%%%%%%%%%%%%%%%%%
 \section{Future Work}
+Given unlimited time and resources, we would have implemented a number of other things.
+
+\paragraph{Full PX coverage}
+It's no surprise that given enough time we'd like to extend this to all of PolyXpress so that when new code is written, it doesn't matter which part of the codebase the developer is in, they'll have tests for all of it.
+
+\paragraph{``Real-world'' Evaluation}
+Although PolyXpress is a complex application that has been used by people outside of Cal Poly, it would have been nice to try out our framework on an existing open-source project and on a brand new project to see how the workflow would go on an established project or from the ground up.
+
+\paragraph{Headless Browsers}
+The notion of headless browsers is extremely interesting and worth of exploration. PhantomJS appeared to be quite promising for a full DOM implementation or ZombieJS for more simple DOM emulation. A side-by-side comparison of tests running through a full-fledged browser and tests running through a headless browser would be interesting and enlightening as to whether or not headless browsers could have a real place in a testing framework.
+
+\paragraph{Sauce Labs}
+Sauce Labs, the online web testing site, offered a phenonemal set of features that we did not have time to take advantage of. The ability to test web applications across multiple browsers and browser configurations without having to set all of them up is incredibly enticing.
 
 % -- Extension to all of PX?
 % -- Extension to non-proprietary open-source project
@@ -1178,6 +1197,8 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 \section{Appendices}
 
 \subsection{ToDo App Test Code}
+
+What should I show here? I have the same tests but for different frameworks... Should I show all of them?
 
 \subsection{PolyXpress Player Screenshots}
 \begin{Figure}
@@ -1255,6 +1276,26 @@ This step-by-step walkthrough of how to test was an excellent starting point to 
 
 \subsection{PolyXpress Test Code}
 
+\subsubsection{Author Model Unit Test}
+...
+
+\subsubsection{Author Controller Unit Test}
+...
+
+\subsubsection{Author Server Unit Test}
+...
+
+\subsubsection{Author Home Page UI Test}
+...
+
+\subsubsection{Author Event Page UI Test}
+...
+
+\subsubsection{Author Chapter Page UI Test}
+...
+
+\subsubsection{Author Story Page UI Test}
+...
 
 % - Note OS X 'ulimit' issue with Grunt-watch
 
