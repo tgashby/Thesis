@@ -4,6 +4,7 @@
 \documentclass[12pt]{ucthesis}
 %this allows us to specify sections to be single or multi column so that things like title page and table of contents are single column
 \usepackage{listings}
+\usepackage{placeins}
 \usepackage{caption}
 \usepackage[disable]{todonotes}
 \usepackage{url}
@@ -912,6 +913,47 @@ Node Inspector is a GitHub project for debugging Node.js server-side code. The i
 
 Currently Node Inspector only runs on Chrome and Opera but since those browsers are available on all OSes, it shouldn't be a problem for developers to use.
 
+\section{Framework Decision Matrices}
+
+\FloatBarrier
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Framework & Async Support & Free & Separate Server & Assertion Styles & Test Interfaces & Reporters \\ \hline
+Jasmine   & X             & X    &                 &                  &                 &           \\ \hline
+Mocha     & X             & X    &                 & X*               & X               & X         \\ \hline
+Qunit     & X             & X    &                 &                  &                 &           \\ \hline
+Intern    & X             & X    & X               & X                & X               & X         \\ \hline
+\end{tabular}
+}
+\captionof{table}{Decision Matrix for Unit Testing Frameworks}
+\end{table}
+\FloatBarrier
+\footnotesize
+
+* Mocha requires a separate assertion, which leaves the options for assertion styles entirely up to the developer.
+
+\FloatBarrier
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Framework & Free & GitHub & Other Repos & Multi-Language & Online & Beta \\ \hline
+Jenkins   & X    & X*     & X*          & X*             & X*     &      \\ \hline
+Travis    & X    & X      &             & X              & X      &      \\ \hline
+Semaphore &      & X      &             & X              & X      &      \\ \hline
+MagnumCI  & X    & X      & X           & X              & X      & X    \\ \hline
+Drone.io  & X    & X      & X           & X              & X      &      \\ \hline
+\end{tabular}
+}
+\captionof{table}{Decision Matrix for Continuous Integration Frameworks}
+\end{table}
+\FloatBarrier
+
+* Jenkins has the ability to do all of the things listed with enough time devoted to setup.
+
+\normalsize
 %%%%%%%%%%%%%%%%%%%%%%
 %%% Implementation 
 %%%   Why we chose the tools we chose
