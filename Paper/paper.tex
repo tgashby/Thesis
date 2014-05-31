@@ -4,6 +4,7 @@
 \documentclass[12pt]{ucthesis}
 %this allows us to specify sections to be single or multi column so that things like title page and table of contents are single column
 \usepackage{listings}
+\usepackage{caption}
 \usepackage[disable]{todonotes}
 \usepackage{url}
 \usepackage{graphicx}
@@ -20,7 +21,7 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, this},
   keywordstyle=\color{blue}\bfseries,
   ndkeywords={class, export, boolean, throw, implements, import, this},
   ndkeywordstyle=\color{darkgray}\bfseries,
@@ -33,6 +34,7 @@
   morestring=[b]',
   morestring=[b]"
 }
+
 
 \lstset{frame=tb,
   language=JavaScript,
@@ -47,9 +49,13 @@
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
-  breakatwhitespace=true
+  breakatwhitespace=true,
   tabsize=3
 }
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 \titleformat{\chapter}[display]% NEW
     {\normalfont\begin{center}}{\chaptertitlename\ \thechapter}{12pt}{}% NEW
@@ -72,17 +78,14 @@
 \graphicspath{ {./images/} }
 
 % Different font in captions (single-spaced, bold) ------------
-\newcommand{\captionfonts
-\captionfonts}{\small\bf\ssp}
+\newcommand{\captionfonts}{\small\bf\ssp}
 
 \makeatletter  % Allow the use of @ in command names
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
-  \sbox\@tempboxa{{\captionfonts
-\captionfonts #1: #2}}%
+  \sbox\@tempboxa{{\captionfonts #1: #2}}%
   \ifdim \wd\@tempboxa >\hsize
-    {\captionfonts
-\captionfonts #1: #2\par}
+    {\captionfonts #1: #2\par}
   \else
     \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
   \fi
@@ -337,13 +340,11 @@ In an effort to automate this, some developers create ``User Stories'' which are
 \subsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
 
-\begin{figure}
-	\begin{center}
+\begin{Figure}
+  \centering
 	\includegraphics[width=0.75\linewidth]{defectcost.jpg} 
-	\captionfonts
-\caption[figure]{Illustration relating phase bug found in with effort required to fix.}
-\end{center}
-\end{figure}
+	\captionof{figure}{Illustration relating phase bug found in with effort required to fix.}
+\end{Figure}
 
 What we see here is that the earlier a defect is introduced the more it costs to fix it later. Of particular note is that the costs are roughly exponential, not linear. It's relatively easy to fix a bug that was introduced in the same stage that it is found, e.g. introducing a coding bug during ``Construction'' and fixing it while still writing code, prior to the ``System Test'' phase. The longer a bug lies undetected, the increasingly harder it becomes to fix that bug. 
 
@@ -362,29 +363,29 @@ In the following chapter we will discuss the testing frameworks that we looked a
 \section{ToDo App}
 In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, making tasks as completed, and viewing completed tasks. Here is a brief preview of the application:
 
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.75\linewidth]{todo_home.png}
-  \captionfonts
-\caption[todo]{ToDo app home page, simple three-button naviagation}
-  \end{center}
-\end{figure}
+  
+\captionof{figure}{ToDo app home page, simple three-button naviagation}
+  
+\end{Figure}
 
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.75\linewidth]{todo_some_tasks.png}
-  \captionfonts
-\caption[figure]{ToDo app task page}
-  \end{center}
-\end{figure}
+  
+\captionof{figure}{ToDo app task page}
+  
+\end{Figure}
 
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.75\linewidth]{todo_completed.png}
-  \captionfonts
-\caption[figure]{ToDo app completed tasks page}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{ToDo app completed tasks page}
+
+\end{Figure}
 
 In addition to the simplicity and ease of understanding, this application was selected because it included Node.js as we wanted to see if the tools would be able to handle our final evaluation application.
 One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. As many web application feature asynchronous calls, we will be discussing how the following frameworks deal with asynchronous test support.
@@ -489,7 +490,7 @@ Jasmine is an interesting take on testing that we'd not see before, the BDD syst
 \subsection{Mocha \cite{Mocha}}
 Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha, by default, also uses the \lstinline{describe -> it(\"should...\"} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code as well as a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
+Mocha, by default, also uses the \lstinline{describe -> it("should..."} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code as well as a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
 \begin{lstlisting}
 // BDD (default)
 describe('BDD Suite', function () {
@@ -544,18 +545,18 @@ describe("Asynch Mocha Test", function () {
 Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own testing interface and assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
 
 \subsubsection{Assertion Library of Choice: Chai.js \cite{Chaijs}}
-For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a(\'number\');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
 
 
 \subsection{QUnit \cite{QUnit}}
 QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=\linewidth]{qunitrunner.png} 
-  \captionfonts
-\caption[figure]{Each individual spec is further broken down into the assertions within it.}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Each individual spec is further broken down into the assertions within it.}
+
+\end{Figure}
 An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
 
 QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
@@ -807,11 +808,11 @@ Continuous Integration frameworks, therefore, need to be flexible in the type of
 Jenkins is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
 Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
-\begin{figure}
-  \begin{center}
+\begin{Figure}[!ht]
+  \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
-\end{center}
-\end{figure}
+
+\end{Figure}
 Most companies give Jenkins a sub-domain on their web pages.
 
 Jenkins comes bare-boned but is highly customizable and has a wide array of plugins. The plugins available integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
@@ -995,14 +996,14 @@ To carry out the development we used a combination of the OS X terminal, Sublime
 \section{Tool Setup}
 Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then knowing the right commands.
 
-We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH\_TO\_REPO/node\_modules/MODULE\_NAME/bin/MODULE\_NAME} or something similar.
+We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH_TO_REPO/node_modules/MODULE_NAME/bin/MODULE_NAME} or something similar.
 
 \subsection{Setting up Mocha}
 To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally.
 
 Next, to install Chai, type into the terminal: \lstinline{npm install -g chai}.
 
-To get Chai running with Mocha, just \lstinline{require(...)} the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: \lstinline{var assert = require(\'chai\').assert;}
+To get Chai running with Mocha, just \lstinline{require(...)} the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: \lstinline{var assert = require('chai').assert;}
 
 After the tests have been written, the developer can run them using the \lstinline{mocha} command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being \lstinline{-R}. The \lstinline{-R} arguments allows the developer to specify how the test results will be formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters.
 
@@ -1010,32 +1011,32 @@ After the tests have been written, the developer can run them using the \lstinli
 Setting up MagnumCI is painless. Visit ``magnum-ci.com'', create an account, sign in, click on ``Add a New Project''.
 
 Here is the new project page:
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_new_project.png}
-\end{center}
-\end{figure}
+
+\end{Figure}
 
 Fill out the fields with the appropriate values for a given project and click ``Create Project''. Depending on what the setup is for your project, you'll see slightly varying web pages after you create your project. One thing in common, though, is the button at the bottom of the steps list that says ``Customize Build''. After following the instructions, click ``Customize Build'':
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
-\end{center}
-\end{figure}
+
+\end{Figure}
 There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecting the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
-\end{center}
-\end{figure}
+
+\end{Figure}
 After that setup, our project is ready to go. Anytime we commit from then on, MagnumCI will run and notify us of successful and unsuccessful builds.
 
 \subsection{Setting up Nightwatch}
 Installing Nightwatch consists of just installing another npm module. \lstinline{npm install -g nightwatch}. In addition to Nightwatch, the developer needs Selenium. The easiest way is to just download the jar straight from the Google repository here: ``http://selenium-release.storage.googleapis.com/index.html''. Once the developer has the JAR and places it somewhere, Nightwatch is ready to be configured and run. Nightwatch configuration happens in a json file that is pointed to when the developer executes Nightwatch. 
 
-The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src\_folders} attribute to specify a source directory, and the \lstinline{test\_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
+The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src_folders} attribute to specify a source directory, and the \lstinline{test_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
-To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path\_to\_nightwatch\_config}. This will use the \lstinline{src\_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their developer guide. \cite{NightwatchJS}
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their developer guide. \cite{NightwatchJS}
 
 \subsection{Setting up Istanbul}
 As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests.
@@ -1302,102 +1303,102 @@ Sauce Labs, the online web testing site, offered a phenomenal set of features th
 What should I show here? I have the same tests but for different frameworks... Should I show all of them?
 
 \section{PolyXpress Player Screenshots}
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_stories.png}
-  \captionfonts
-\caption[figure]{Story selection}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Story selection}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_chapter_pane.png}
-  \captionfonts
-\caption[figure]{Chapter pane with approximate distances to each chapter}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Chapter pane with approximate distances to each chapter}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_chap_instructions.png}
-  \captionfonts
-\caption[figure]{Each page and element of PolyXpress has instructions, here they are for Chapters}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Each page and element of PolyXpress has instructions, here they are for Chapters}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_chapter_locs.png}
-  \captionfonts
-\caption[figure]{A map of the chapter location in relation to the player}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{A map of the chapter location in relation to the player}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_marketplace.png}
-  \captionfonts
-\caption[figure]{PolyXpress marketplace, to find other published stories}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{PolyXpress marketplace, to find other published stories}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_player_loc.png}
-  \captionfonts
-\caption[figure]{A map centered around the player}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{A map centered around the player}
+
+\end{Figure}
 
 \section{PolyXpress Author Screenshots}
-\begin{figure}
-  \begin{center}
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_author_home.png}
-  \captionfonts
-\caption[figure]{PolyXpress Authoring Tool}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{PolyXpress Authoring Tool}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_create_event.png}
-  \captionfonts
-\caption[figure]{Form to create an Event}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Form to create an Event}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_create_event2.png}
-  \captionfonts
-\caption[figure]{Bottom of form to create an Event}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Bottom of form to create an Event}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_create_chap.png}
-  \captionfonts
-\caption[figure]{Form for creating Chapters}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Form for creating Chapters}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_create_chap2.png}
-  \captionfonts
-\caption[figure]{Events are selected manually for inclusion in Chapters}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Events are selected manually for inclusion in Chapters}
 
-\begin{figure}
-  \begin{center}
+\end{Figure}
+
+\begin{Figure}
+  \centering
   \includegraphics[width=0.65\linewidth]{px_create_story.png}
-  \captionfonts
-\caption[figure]{Story creation asks if the user wants their story published}
-\end{center}
-\end{figure}
+  
+\captionof{figure}{Story creation asks if the user wants their story published}
+
+\end{Figure}
 
 \section{PolyXpress Test Code}
 
