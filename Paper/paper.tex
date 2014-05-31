@@ -140,24 +140,20 @@ We have brought together a number of testing tools from the web and created what
 \chapter{Introduction}
 Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around two and a half billion. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
 
-Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices for testing them. Their dynamic nature and network communication require a different testing toolkit than their predecessors. In addition, web applications are being produced at an incredible rate, leading to a need for rapid testing.
+Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices for testing them. Their dynamic and distributed nature require a different testing toolkit than their predecessors. In addition, web applications are being produced in high volume and with quick development times, leading to a need for rapid testing.
 
-We have found that this is not a solved problem by looking at some of the biggest web application around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths, and, honestly, it is fairly small, but those are still errors in the software that ought to be fixed.
-
-What this all boils down to is that there needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, allows for quick development, and is thorough in its coverage.
+We have found that this is not a solved problem by looking at some of the biggest web applications around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths but every error is an opportunity for malfunction and customer dissatisfaction.
 
 \section{What Has Been Done Already?}
 Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
 
-This thesis will explore some of the most popular tools with the end goal being to gather the best tools out there and collect them in one place.
+Many of these tools are targeted at solving one or two phases of the testing cycle but do not cover all phases. In addition, some of the tools overlap or require tight coupling that prevents them from being used in combination with one another. Having to wade through a sea of similar tools or try to force tools to work together is time-consuming, which can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
+
+Even the tools that already exist suffer from additional problems regarding their stages of development and amount of support. As will be discussed later, we've found tools that are in their beta stages that show incredible promise as well as mature tools that are widely used that leave much to be desired. These problems effect both industry tools as well as independent developers.
+
+There needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, allows for quick development, and is thorough in its coverage. This thesis will explore some of the most popular tools with the end goal being to gather the best tools out there and collect them in one place. We will attempt to gather tools that work well together and cover all phases of the testing cycle for an average developer, particular a developer who has experience in some field of software but may be new to web applications. Our hope is that this thesis will serve as a starting point and guide to future web application developers.
 
 \todo{What goes here?}
-\todo{Info info info}
-
-\subsection{Why It Is Insufficient}
-% - No standard
-The problem with proprietary tools is that many of the tools attempt to remedy the same problems. A developer has to decide between a number of similar tools that all solve similar problems. Having to wade through a sea of similar tools is time-consuming, which can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
-
 \todo{Info info info}
 
 \section{Problems Still Faced/Why It's So Hard}
@@ -173,9 +169,9 @@ There is no overarching solution to these problems, but in order to understand t
 
 \section{Contributions of This Thesis}
 %- Framework
-The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers web application developers a toolkit for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of the testing spectrum as possible. 
+The goal of this thesis is to bring together tools that are already available for testing and combine them into a single framework that offers novice web application developers a toolkit for their testing needs. There are plenty of strong tools available and we hope to gather a subset of those tools to cover as much of the testing spectrum as possible. 
 
-In addition to creating a single framework, we've set out to weigh the options between the most popular frameworks so that a developer need not just blindly trust our recommendations. Since every project is unique, a single set of tools cannot possibly cover the gamut. In addition to the single set of recommendations, the most popular tools are discussed so that the developer is free to pick and choose as they see fit.
+In addition to creating a single framework, we have set out to weigh the options between the most popular frameworks so that a developer can make informed decisions about the needs of their projects and substitute appropriate technologies. Since every project is unique, a single set of tools cannot possibly cover the gamut. In addition to the single set of recommendations, the most popular tools are discussed so that the developer is free to pick and choose as they see fit.
 %- Wade through all the tools currently out there
 %-- Focus in, no need to have every developer check out all 10000 tools
 %-- Weigh options
@@ -188,20 +184,24 @@ In addition to creating a single framework, we've set out to weigh the options b
 %%% 	Appropriate terms and definitions
 %%%%%%%%%%%%%%%%%%
 \chapter{Background}
-In an effort to make the rest of the paper more understandable and to define the terms used in the remainder of the paper, we will outline the various concepts and technologies surrounding the web.
+To make the rest of the paper more understandable and to define the terms used in the remainder of the paper, we will outline the various concepts and technologies surrounding the web.
 If one is familiar with HTML5, JavaScript, and Testing concepts and statistics, it will likely be safe to skip this background section.
 
 \section{Web Application Strengths}
 Web applications are great for both developers and consumers. They have a number of characteristics that make them more desirable than shrink-wrap software. These attributes include versioning, availability, platform independence, and the ability to rapidly prototype.
 
 \subsection{Versioning}
-Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like an operating system that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security.
+Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like Microsoft Office that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. For example, Google Docs is becoming incredibly popular as an online document editing suite. Updates to Google Docs are rolled out frequently and require little to no input from the user. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security. There is no need to support legacy systems that may contain serious bugs.
 
 \subsection{Availability}
-Web application are available anywhere there's internet. There is no need to install anything on a given device. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user all the time. This instant and continuous availability means that users only have to know how to use a web browser in order to access the application.
+Web applications are available anywhere there's internet. There is rarely need to install anything on a given device. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user at all times. This instant and continuous availability means that users only have to know how to use a web browser in order to access the application.
+
+A recent push in the web application community is toward offline versions of applications that merely cache changes until the user can connect to the internet once again and all changes are pushed online. This increases the availability of web applications even further.
 
 \subsection{Multi-platform}
-Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems. This also means that the developer need not, generally, worry about hardware configurations, conflicting software, and other problems that can arise in desktop applications.
+Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems. This also means that the developer need not, generally, worry about hardware configurations, conflicting software, and other problems that can arise in desktop applications. 
+
+The developer is not free from all worry as they must still consider differing web browsers. This problem, however, is almost fully remedied by a number of online APIs that will rework underlying code based on browser versions and types. 
 
 \subsection{Rapid Prototyping}
 Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will record where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
@@ -212,7 +212,7 @@ Here we'll discuss some of the prevalent technologies that recently appeared in 
 \subsection{HTML5}
 The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009. \cite{EvolutionOfWeb} HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014. \cite{Plan2014} What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
 
-HTML5 brings a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming.
+The HTML5 specification brings with it a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming. HTML5 is a collection of new HTML elements and markup as well as libraries written in Javascript.
 
 As the web is being increasingly used on mobile devices, HTML5 also introduces geolocation functionality. This functionality requires user approval, but once that approval is gained, the web application has access to a rough idea of where the user is located. When used on devices that have GPS, such as phones and tablets, this area is more defined and a stronger lock on the user's position can be obtained. This geolocation functionality has opened the door for brand new types of web applications that can much more closely tie in with what the user is seeing or the area that they are in. For example, advertisements can be more targeted or an application can display distances to nearby points of interest.
 
@@ -223,6 +223,8 @@ JavaScript, though not the only scripting language with web use, is the primary 
 As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation application. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
+
+One of the biggest draws of Node.js is the ability to write all of one's code, client and server, in a single programming language, Javascript. This leads to better understanding of the codebase as well as the opportunity for code reuse between client and server.
 
 
 \todo{TIE THIS CLIENT/SERVER STUFF into Web Applications, be specific, not generic}
@@ -239,69 +241,88 @@ So now that the client has been clarified, what is the client-side portion of an
 Client-side programming is done in a language that the browser understands, most frequently JavaScript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
 
 \subsection{What is the Server-side Portion?}
-Once again, we'll outline a server and then delve into server-side programming. A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets, HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and a general number-crunching.
-
-The server-side portion of an application, then, stores all of the assets, accounts, and structure of the entire application. The server-side authenticates users, retrieves data from databases, processes large data, and send information, be it assets or results, back to the client to display to the user.
+A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets: HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and general number-crunching.
 
 \subsection{Client and Server Interactions}
 The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
 
 Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
 
+One example of a client-server architecture that is popular for the web is Representational State Transfer, also known as REST, architecture. If a client-server architecture meets all of the REST criteria, it is said to be RESTful. \todo{Should I really explain all the constraints?} As this paper is not about Client Server interactions, we will not outline the constraints but instead outline how RESTful APIs look in web applications. The RESTful web APIs use: 1) a base URI, 2) an internet media type, and 3) the standard HTTP methods.
+
+A base URI is simple, in the context of a web application, it is just a URL such as ``http://myrestapi.com/entities''.
+
+An internet media type is a way to represent and store data that may need to be sent with a request going either direction, from client to server or server to client. Most web APIs use JavaScript Object Notation, known as JSON, to store data.
+
+The standard HTTP methods are GET, PUT, POST, and DELETE. These methods define what the request is intending to do. For example, a GET request sent to ``http://myrestapi.com/entities'' would tell the server that the client wants to get information regarding all entities. A PUT request would tell the server that the client wishes to replace the entire entity collection with another collection that would be sent along with the request. A POST request would tell the server to create a new entity in the collection. Finally, a DELETE request would tell the server to delete the entities. The four methods take on slightly different, but very similar meanings when used with specific element URIs, such as ``http://myrestapi.com/entities/entity1''. A GET request asks the server for a displayable version of the entity and the client then displays it. A PUT request asks the server to replace the existing entity or create an entire new entity if one does not exist. A POST request is generally not used as that implies that this single entity is itself a collection. A DELETE request asks the server to remove this entity.
+
+An important part of being a RESTful API is that any change to a web page or element is done through a hypertext link and all actions on an element share a single URI. For example, all updates to ``entity1'' are done through ``http://myrestapi.com/entities/entity1'' using the various HTTP methods that can be called using hypertext links on the page. Compare this to a different way to handle functionality such as ``http://myrestapi.com/entities/UpdateEntity'' where the HTTP request contains information regarding the entity to update and all updates, regardless of which entity is changing, go through a single URI.
 
 \section{What is Testing?}
 IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
 
-There are a number of different types of tests and testing concepts, we will just focus on Unit Testing, Continuous Integration, and Acceptance Testing.
+There are a number of different types of tests and testing concepts, we will just focus on Unit Testing, Integration Testing, Continuous Integration, and Acceptance Testing.
 
 \subsection{Unit Testing}
-Unit testing is the testing of specific functions and functionality, or ``test units.'' Test units are ``A set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures that satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
+Unit testing is the testing of specific functions and functionality, or ``test units.'' According to IEEE, test units are ``A set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures that satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
 Here's a brief example:
 \begin{lstlisting}
-// Terribly useless code whose purpose is to eventually calculate a magic number
-function addTwo (numToAddTo) {
-	return numToAddTo + 2;
+function Word(startingWord) {
+  this.makePlural = function () { ... }
+
+  this.pastTense = function () { ... }
+
+  this.partOfSpeech = function () { ... }
 }
 
-function twoTimes (numToMultiply) {
-	var sum = 0;
+function Sentence(listOfWords) {
+  this.listOfWords = listOfWords;
 
-	for (var i = 0; i < numToMultiply; i++) {
-		sum = addTwo(sum);
-	}
+  this.isGrammaticallySound = function () { ... }
 
-	return sum;
+  this.wordCount = function () {
+    return this.listOfWords.length();
+  }
+
+  this.makePastTense = function () { ... }
+
+  this.pluralize = function () { ... }
 }
 
-.... // More functions
-
-function calculateMagicNumberPartOne (startingNum) {
-	var foo = 3 + addTwo(startingNum);
-
-	return twoTimes(foo);
+// Word Tests
+function testMakePluralWord() { // Unit Test
+  var myWord = new Word("cheese");
+  myWord.makePlural();
+  assert(myWord == "cheeses");
 }
 
-... // More functions
+function testPastTense () { ... } // Unit Test
+function testPartOfSpeech () { ... } // Unit Test
 
-function calculateMagicNumber (startingNum) {
-	var numSoFar = calculateMagicNumberPartOne(startingNum);
+function testMakePluralCheckPartOfSpeech () { ... } // Not a Unit test, testing multiple units
 
-	numSoFar = calculateMagicNumberPartTwo(numSoFar);
-	numSoFar = calculateMagicNumberPartThree(numSoFar);
-	... // More calculateMagicNumberPart(s)
+// Sentence Tests
+function testWordCount () { // Unit Test, no Word-specific functionality called
+  var myWords = [new Word("hello"), new Word("world"), new Word("cheese")];
+  var mySentence = new Sentence(myWords);
 
-	return numSoFar;
+  assert(mySentence.wordCount == 3);
 }
 
-function testAddTwo () ... // Unit Test
-function testTwoTimes () ... // Unit Test
-function testCalculateMagicNumberPartOne () ... // Still a Unit Test, just a whole module of functionality
+function testPluralize () { ... } // Integration Test, not Unit Test, would need to use Word.makePlural
+function testIsGrammaticallySound () { ... } // Another Integration Test, would need to call Word.partOfSpeech
 
-function testCalculateMagicNumber () ... // NOT a Unit Test because it's testing the whole system
 \end{lstlisting}
 
+In the above example there are two modules, Word and Sentence. Unit Testing the Word is relatively simple because it is self-contained and only runs functions on the string given to it. Unit Testing the Sentence module is tougher because of it's reliance on Words. The goal of a good set of Unit Tests is to test as much of a module as possible in isolation from all other modules. This includes interactions between modules. In our example, testing the wordCount function is a Unit Test because none of the Word functionality is actually required. The other methods of Sentence pose a problem because of their need to call Word functions. Although there are ways to Unit Test those functions, that is beyond the scope of this overview and would only serve to confuse the reader.
+
 Unit tests are important because they are done in isolation from one another. The purpose of a unit test is to ensure that once individual modules are put together, the developer need only focus on the interaction between them instead of their individual functionality. Without the assurances of prior unit tests, integration would be a more stressful and mysterious proposition.
+
+\subsection{Integration Testing}
+After writing Unit tests, a developer writes Integration tests. Integration tests are used to determine if modules work together to produce correct results. In our previous example, this would mean testing most of the Sentence functions to ensure that they properly use the Words that the Sentence contains. Integration Tests cover a wider variety of test situations from single methods to entire modules.
+
+Integration Testing is important because it gives the developer a sense of what modules are actually producing correct results, as opposed to which modules are functioning as anticipated. This distinction is critical to make. Unit Tests ensure that individual modules function. Integration tests are usually written in a way that is close to how they will actually be used in the final product, giving the developer a sense of which features are working and which are not.
 
 \subsection{Continuous Integration}
 The original definition of Continuous Integration involves the idea of developers committing from their  branches to a master branch daily so that changes are continuously integrated in an effort to make sure all branches can, in fact, be integrated. It has since evolved into a more general idea of a tool that runs commands after each commit to a repository. These commands generally encompass running unit tests, integration tests, user interface tests, and also often publishing and disseminating notifications to interested parties. This is invaluable feedback because the developer can see if they're making progress in the right direction as they write code, as opposed to a situation in which the developer finishes coding and finds out they've made a bad assumption or decision between this commit and the last. 
@@ -311,7 +332,7 @@ One of the most important aspects of a good piece of CI software is that it is a
 \subsection{Acceptance Testing}
 Acceptance testing is testing to confirm that the product meets a certain specification. Often this is making sure that the software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or customer that ordered the software, rather than the developers.
 
-In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a separate language that is more like English than code. The traditional User Story template is: ``As a <role>, I want <goal/desire> so that <benefit>.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
+In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a separate language that is more like English than code. The traditional User Story template is: ``As a \textless role\textgreater, I want \textless goal/desire\textgreater \space so that \textless benefit\textgreater.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
 
 \subsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -335,10 +356,11 @@ What we see here is that the earlier a defect is introduced the more it costs to
 %%% Sample App 
 %%%   Talk about test app
 %%%%%%%%%%%%%%%%%%%%%%
-\chapter{Sample App and Testing Frameworks}
+\chapter{Testing Frameworks Survey}
+In the following chapter we will discuss the testing frameworks that we looked at and the application we used to evaluate them.
 
-\section{Sample ToDo App}
-In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our evaluation application. After some searching, we decided upon a Todo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Here is a brief preview of the app:
+\section{ToDo App}
+In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, making tasks as completed, and viewing completed tasks. Here is a brief preview of the application:
 
 \begin{figure}
   \begin{center}
@@ -364,8 +386,8 @@ In order to evaluate the various frameworks that we found online, we needed a sm
 \end{center}
 \end{figure}
 
-This application was selected because it included Node.js and had enough functionality that tests wouldn't be completely trivial while also not being overwhelming.
-One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. Because of this headache, we will be discussing how the following frameworks deal with asynchronous test support as JavaScript is inherently asynchronous.
+In addition to the simplicity and ease of understanding, this application was selected because it included Node.js as we wanted to see if the tools would be able to handle our final evaluation application.
+One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. As many web application feature asynchronous calls, we will be discussing how the following frameworks deal with asynchronous test support.
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%% Testing Frameworks
