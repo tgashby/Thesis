@@ -960,6 +960,7 @@ Drone.io  & X    & X      & X           & X              & X      &      \\ \hli
 %%%   Scripts written to help out 
 %%%%%%%%%%%%%%%%%%%%%%
 \chapter{Implementation}
+In this chapter, we will outline our final choices for frameworks and why we chose them.
 
 \section{Chosen Toolset}
 After evaluating a number of different combinations and tools, we came to the following setup:
@@ -998,7 +999,7 @@ Drone.io, while offering a number of repository location options, did not offer 
 Overall, the CI frameworks were all impressive and usable. The main driving factor was simply that we didn't have our application on any of the more common repositories and at the time of this writing our application was closed-source. We have every intention of opening it to the public as soon as we get a version that is more polished.
 
 \subsection{Nightwatch}
-The choice for Nightwatch was an easy one. First and foremost there were not very many options and the options we did have sorted themselves out.
+The choice for Nightwatch was an easy one. First and foremost there were not many options and the options we did have sorted themselves out.
 
 Nightwatch, being a wrapper around Selenium already, was chosen over Selenium because of its concise way to express tests. We have yet to come across any situation that is not covered with Nightwatch as the developer of Nightwatch has seemed to implement nearly all WebDriver calls, even if some are undocumented.
 
@@ -1021,6 +1022,7 @@ NPM is the go-to choice for acquiring modules for Node.js applications.
 %%%   Usage
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Product}
+In this section we will mention our development setup, discuss how to set up the chosen tools, and outline our recommended workflow using the tools. It is our hope that after finishing this section, the reader will be able to install and run the chosen tools and have a good grasp of what the next steps are for their particular project.
 
 \section{Our Setup}
 The following are the specs of the laptop that we used for the entirely of this research and implementation:
@@ -1031,60 +1033,59 @@ The following are the specs of the laptop that we used for the entirely of this 
   \item Memory: 4 GB 1067 MHz DDR3
   \item Graphics: NVIDIA GeForce 9400M 256 MB
 \end{itemize}
-The point of listing the laptop specs is to show that our research and workflow can be used on a very run-of-the-mill laptop with generally sub-standard specs. Or at the very least, an average, everyday laptop.
+The point of listing the laptop specs is to show that our research and workflow was completed on an average, everyday laptop and does not require any kind of special hardware or software configurations.
 
-To carry out the development we used a combination of the OS X terminal, Sublime Text, and Netbeans. The terminal was used mainly for starting Node services, testing tools, Grunt scripts, and updating modules. Sublime Text was used to write the unit tests and the UI tests. Netbeans was used to look at the overall project as it had already been set up in Netbeans and was easy to browse therein.
+To carry out the development we used a combination of the OS X terminal, Sublime Text, and Netbeans. The terminal was used mainly for starting Node services, testing tools, Grunt scripts, and for updating modules. Sublime Text was used to write the unit tests and the UI tests. Netbeans was used to quickly navigate through the code as it had already been set up as a series of Netbeans projects.
 
 \section{Tool Setup}
 Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then knowing the right commands.
 
-We decided to install everything globally because it made writing our scripts easier, but it's not a requirement. Everything can be done with locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH_TO_REPO/node_modules/MODULE_NAME/bin/MODULE_NAME} or something similar.
+We decided to install the node modules globally because it made writing our scripts easier, but it's not a requirement. Tests can be executed using locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH_TO_REPO/node_modules/MODULE_NAME/bin/MODULE_NAME} \space .
 
 \subsection{Setting up Mocha}
-To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally.
+To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally. The developer need simply skip the \lstinline{-g} in all of the following install commands if they want the modules installed locally.
 
 Next, to install Chai, type into the terminal: \lstinline{npm install -g chai}.
 
-To get Chai running with Mocha, just \lstinline{require(...)} the appropriate chai assertion method in the test and start writing. For example, to get the Assert library: \lstinline{var assert = require('chai').assert;}
+To get Chai running with Mocha, just \lstinline{require(...)} the appropriate chai assertion method in a test file and start writing. For example, to get the Assert library: \lstinline{var assert = require('chai').assert;}
 
-After the tests have been written, the developer can run them using the \lstinline{mocha} command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being \lstinline{-R}. The \lstinline{-R} arguments allows the developer to specify how the test results will be formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters.
+After the tests have been written, the developer can run them using the \lstinline{mocha} command. There are a number of command-line arguments available to the mocha command which are well documented and which we won't talk about here. We will talk about the one that we used consistently, that being \lstinline{-R}. The \lstinline{-R} argument allows the developer to specify how the test results will be printed and formatted. Mocha offers seventeen different reporters with more reporters available online and the ability to create custom reporters. We used the \lstinline{spec} reporter because it gave us the information we wanted. All together, our mocha test command was \lstinline{mocha -R spec .}, the final \lstinline{.} being the directory where the tests are located.
 
 \subsection{Setting up MagnumCI}
-Setting up MagnumCI is painless. Visit ``magnum-ci.com'', create an account, sign in, click on ``Add a New Project''.
+Setting up MagnumCI is all done online. Visit ``magnum-ci.com'', create an account, sign in, click on ``Add a New Project''.
 
 Here is the new project page:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_new_project.png}
-
 \end{Figure}
 
 Fill out the fields with the appropriate values for a given project and click ``Create Project''. Depending on what the setup is for your project, you'll see slightly varying web pages after you create your project. One thing in common, though, is the button at the bottom of the steps list that says ``Customize Build''. After following the instructions, click ``Customize Build'':
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
-
 \end{Figure}
+
 There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecting the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
-
 \end{Figure}
-After that setup, our project is ready to go. Anytime we commit from then on, MagnumCI will run and notify us of successful and unsuccessful builds.
+
+After that setup, the project is ready to go. Anytime a commit is pushed from then on, MagnumCI will run and notify the developer of successful and unsuccessful builds.
 
 \subsection{Setting up Nightwatch}
 Installing Nightwatch consists of just installing another npm module. \lstinline{npm install -g nightwatch}. In addition to Nightwatch, the developer needs Selenium. The easiest way is to just download the jar straight from the Google repository here: ``http://selenium-release.storage.googleapis.com/index.html''. Once the developer has the JAR and places it somewhere, Nightwatch is ready to be configured and run. Nightwatch configuration happens in a json file that is pointed to when the developer executes Nightwatch. 
 
 The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src_folders} attribute to specify a source directory, and the \lstinline{test_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
-To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are available on their developer guide. \cite{NightwatchJS}
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are discussed in their developer guide. \cite{NightwatchJS}
 
 \subsection{Setting up Istanbul}
-As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests.
+As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests. For a more detailed view of possible commands and arguments, the developer can check out the Istanbul page. \cite{Istanbul}
 
 \subsection{Setting up Grunt}
-Getting Grunt set up just the way the developer wants it is likely the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a JavaScript file called ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''.
+Getting Grunt set up just the way the developer wants it is the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a JavaScript file named ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''. \cite{GruntJS}
 
 Here is an example Gruntfile:
 \begin{lstlisting}
@@ -1114,10 +1115,12 @@ module.exports = function(grunt) {
 };
 \end{lstlisting}
 
+In this simple Gruntfile, all that is happening is some configuration and the creation of an ``uglify'' task that will obscure the code when run.
+
 A more complicated Gruntfile simply consists of more tasks. Taken one at a time, it's easy to pick apart a Gruntfile. Task names can refer to one or more commands, so the command \lstinline{grunt testMyStuff} may run one command, or may run five commands. The task names are the ones that are used as the first parameter of the \lstinline{registerTask} call.
 
 \section{Workflow}
-In addition to just the a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of development.
+In addition to just a list of tools and installation instructions, we'd like to propose a way to use those tools that is efficient and nearly autonomous. Our goal is to bring testing tools into use with as little resistance as possible. With a bit of effort at the outset, testing can become a crucial and enjoyable part of development.
 
 What we recommend is a unit test suite that runs on save. While this may seem excessive, it provides invaluable, instant feedback for regression assurance and new functionality. The way to set this up with the above tools is have a grunt task that watches for changes in certain files and runs a script when the files change. Here's what our Grunt task looks like:
 \begin{lstlisting}
@@ -1144,6 +1147,7 @@ module.exports = function(grunt)
     }
   });
 
+  // Specify the test directory for Watch to keep track of
   var defaultTestSrc = grunt.config('mochaTest.test.src');
   grunt.event.on('watch', function(action, filepath) {
       grunt.config('mochaTest.test.src', defaultTestSrc);
@@ -1160,11 +1164,11 @@ module.exports = function(grunt)
 }
 \end{lstlisting}
 
-Our gruntfile is more complex than just that, but those are the parts that make the test-on-save functionality work. As we said earlier, Grunt has a lot of plugins that are available. We use one here to make our lives easier, \lstinline{grunt-mocha-test}. It is installed, once again, through npm and gives us access to the now-built-in task \lstinline{mochaTest}. The run-on-save functionality comes from the \lstinline{watch} tasks which has \lstinline{mochaTest} in its \lstinline{tasks} array.
+Our gruntfile is more complex than just that, but those are the parts that make the test-on-save functionality work. As we said earlier, Grunt has a lot of plugins that are available. We use one here to make our lives easier, \lstinline{grunt-mocha-test}. It is installed, once again, through npm and gives us access to the now-built-in task \lstinline{mochaTest}. The run-on-save functionality comes from the \lstinline{watch} task which has \lstinline{mochaTest} in its \lstinline{tasks} array.
 
 Once that setup is done, the developer just runs \lstinline{grunt --force test} once which will execute the tests and then watch for changes and continue testing on save. The \lstinline{--force} flag is used so that the grunt task continues after ``failure'' which would occur if any tests did not pass.
 
-For running the browser tests, we recommend using your CI tool. With some setup on your CI of choice, you can get Nightwatch running. Most CI setups have either Firefox pre-installed or Xvfb (a windowless X11 process) and all that's required is to install Firefox if needed and start the selenium server using Xvfb is needed. For the CI setup, after installing all the prerequisites, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} or something more suited to the developer's liking. Make sure the \lstinline{DISPLAY} environment variable is exported, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then start your selenium server, \lstinline{java -jar path/to/selenium.jar} and it's all set. Finally, run Nightwatch and rejoice.
+For running the browser tests, we recommend using the CI tool. With some setup on the CI of choice, the developer can get Nightwatch running. Most CI setups have either Firefox pre-installed or Xvfb (a windowless X11 process). All that's required is to install Firefox if needed and create an X11 window using Xvfb if needed. In the CI setup, after installing all the prerequisites, the developer should start their application. Next, export the \lstinline{DISPLAY} environment variable, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} to start the ``window'' that will be used. Finally, run Nightwatch, \lstinline{nightwatch -c path_to_nightwatch_config} and enjoy UI testing that doesn't take over the workstation.
 
 % - Unit Testing on save
 % - CI used for running browser tests
@@ -1176,20 +1180,21 @@ For running the browser tests, we recommend using your CI tool. With some setup 
 %%% PX Test metrics/results
 %%%%%%%%%%%%%%%%%%
 \chapter{Evaluation}
+After gathering the tools into a loose toolkit, we wanted to use that toolkit on an existing project of respectable size. We chose an application developed at Cal Poly called PolyXpress.
 
 \section{PolyXpress (PX)\cite{PX}}
-Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Because the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
+Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Since the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
 
 PolyXpress consists of three smaller application: 1) The Player. 2) The Author. 3) The PointFinder.
 
 The Player is what the user open to actively complete stories. Using the Player, the user travels around and get notification when things are within range and can explore the story further. When the user opens the Player they can choose which story they want to play, including any they've made. The Player also gives them access to the PX Marketplace where all other public stories are available for download.
 
-The Author is a tool to create one's own stories. Because our tests revolved around the Author, we'll be discussing it in depth in the following section, so to avoid redundancy, we'll say nothing else here.
+The Author is a tool to create one's own stories. Our tests revolved around the Author, so we'll be discussing it in depth in the following section.
 
-The PointFinder is a tool a user can use to select GPS points based on their current location. Setting points when authoring stories can be done by clicking on a map or using points saved in the PointFinder.
+The PointFinder is a tool for users to select GPS points based on their current location. Setting points when authoring stories can be done by clicking on a map or using points saved in the PointFinder.
 
 \subsection{PolyXpress Author}
-Our tests covered the Authoring portion of PolyXpress. PolyXpress is a completely open application where users can publish and share their stories with the world of just among friends. 
+Our tests covered the Authoring portion of PolyXpress. PolyXpress is a completely open application where users can publish and share their stories with the world. 
 
 PolyXpress is meant for the general public and so there's no convoluted programming involved to create a story, it's all done through the application's Authoring tool. Screen captures of the authoring tool are in the appendix once again. The flow for creating a story is to create the Events first, the Chapters second, and finally tie it all together and create a Story. The flow is this way because the tool offers lists of existing Events in the Chapter creation page and lists of existing Chapters in the Story creation page. Doing the flow out of order or backwards would require a lot of editing of elements already created.
 
@@ -1199,12 +1204,12 @@ A Chapter consists of almost all the same things as an Event with the addition o
 
 A Story consists of most of the same things as a Chapter except that the list of Events is a list of Chapters and the user chooses whether or not they want to publish this story. If the user chooses to share the story with the world, it is placed in the marketplace, otherwise it is stored within their own list of stories and is inaccessible to anyone else.
 
-In regards to the underlying code, the Author tool is made up of three parts, the Controller, the Model, and the Server. The Model is more-or-less just a list that stores events, chapters, and stories and has retrieval and insertion methods. The Controller orchestrates the interactions between the Server and Model and the web page. The Server stores and retrieves information from the backing database.
+In regards to the underlying code, the Author tool is made up of three parts, the Controller, the Model, and the Server. The Model is more-or-less just a list that stores events, chapters, and stories and has retrieval and insertion methods. The Controller orchestrates the interactions between the Server, Model and the web page. The Server stores and retrieves information from the backing database.
 
 \subsection{Writing Unit Tests for Web Applications}
 Writing unit tests for normal applications can be quite challenging. When there is the added overhead of network communication, it becomes exceptionally difficult to test units in isolation, i.e. without having to worry about bugs and time related to network code. There is also the issue of asynchronous calls that we talked about earlier. Although the testing frameworks offer solutions, the developer still must recognize and properly write tests for asynchronous calls.
 
-The goal of a unit test, is to test the function, module, or ``unit'' in isolation. While this sounds great in theory, things tend to get messier when it comes to the actual code. The method we used to alleviate this issue was to create mock functions and objects. Mocks are stand-in pieces of code that get called instead of the real implementation. Mocks are highly controlled and often just simply return the same value regardless of parameters or prior calls. Mock functions are just as their name implies, a function with a known return value regardless of parameters that is named the same things as what the unit is calling. Mock objects are objects with attributes and functions that the unit interacts with instead of the real object it will interact with in production.
+The goal of a unit test, is to test the function, module, or ``unit'' in isolation. While this sounds simple in theory, the situation is often more complicated when it comes to actual code. The method we used to alleviate this issue was to create mock functions and objects. Mocks are stand-in pieces of code that get called instead of the real implementation. Mocks are highly controlled and often just simply return the same value regardless of parameters or prior calls. Mock functions are just as their name implies, a function with a known return value regardless of parameters that is named the same things as what the unit is calling. Mock objects are objects with attributes and functions that the unit interacts with instead of the real object it will interact with in production.
 
 Most of our mocks were used in the Controller unit tests because the controller continually reaches into the Model and the Server. In order to test the Controller in isolation, we had to mock almost an entire new Model and new Server. This mock kept track of previous data, parameters, and calls in order to test that certain calls were made and made in the right order within the Controller.
 
@@ -1221,6 +1226,7 @@ We were unable to find any works that attempted to bring existing technologies t
 We also found research into common bugs, general testing techniques, and finding bugs that greatly improved our test cases and understanding.
 
 \section{Testing Frameworks}
+The following are papers that were written about creating proprietary testing frameworks.
 
 \subsection{``A Framework for Automated Testing of JavaScript Web Applications'' \cite{FrameworkForAutomatedTesting}}
 A collection of IBM Researchers and two university students came up with a framework called ``Artemis'' for testing web applications. What is novel about their tool is that it generates test cases automatically based on execution patterns and feedback. They have attempted to solve the problem that writing test cases by hand is both time-consuming and often difficult. Their automatic test generation lead to an average of 69\% test coverage with enough tests generated.
@@ -1291,8 +1297,6 @@ Three researchers at the Centre for Research on Evolution, Search \& Testing at 
 \subsection{``A Framework for Testing RESTful Web Services'' \cite{RESTfulFramework}}
 Two people from the University of Dakota School of Aerospace Studies outline a framework for testing RESTful web services. RESTful web services, short for Representation State Transfer, are, in the context of web applications, a name for web APIs that conform to a set of constraints. In particular they must offer four request methods: GET, POST, PUT, and DELETE. These methods generally connect to a database or other storage system in order to store, retrieve, or delete entries therein.
 
-\todo{Finish reading this paper... My bad Dr. Haungs.}
-
 \section{Writing Effective Test Cases}
 Although not too distinct from \emph{finding bugs}, writing effective test cases is its own art form. The important of writing concise, correct, productive test cases cannot be overstated. The difference between writing one test case that effective tests multiple things and writing a single test case for every little detail is the difference between developers wanting to write tests at all and skipping it due to time constraints or frustration.
 
@@ -1339,6 +1343,7 @@ Sauce Labs, the online web testing site, offered a phenomenal set of features th
 %%% Anything that needs an appendix
 %%%%%%%%%%%%%%%%%
 \chapter{Appendices}
+The following appendices include the test code for the ToDo application, screenshots of the various PolyXpress modules, and the PolyXpress test code.
 
 \section{ToDo App Test Code}
 
