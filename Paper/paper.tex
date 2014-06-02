@@ -100,7 +100,8 @@
 %%% Cover Page %%%
 %%%%%%%%%%%%%%%%%%
 
-\title{\todo{How's this title?}A Survey of Web Testing Frameworks and Workflow for Testing JavaScript Applications} %\vfill gives us the black space at the top of the page
+% A Survey of Web Testing Frameworks and Workflow for Testing JavaScript Applications, Developing A Workflow for new Web Developers, 
+\title{\todo{How's this title?}A Workflow for Developers New to Web Application Testing} %\vfill gives us the black space at the top of the page
 \author{Taggart Ashby}
 \degreemonth{June} \degreeyear{2014} \degree{Master of Science}
 \defensemonth{June} \defenseyear{2014}
@@ -226,7 +227,7 @@ Node is found in a number of popular sites including: PayPal, The New York Times
 One of the biggest draws of Node.js is the ability to write all of one's code, client and server, in a single programming language, Javascript. This leads to better understanding of the codebase as well as the opportunity for code reuse between client and server.
 
 \section{Client/Server Architecture}
-Web applications have a user-facing client-side and a ``rear-facing'' \todo{Is this the right term?} server-side.
+By their nature, web applications are distributed; they have a client-side and a server-side.
 
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
@@ -245,7 +246,7 @@ The client has limited access to resources on any given web application. This ac
 
 Clients communicate with the Server through a request-response architecture. Clients send a request to the server, sometimes with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
 
-One example of a client-server architecture that is popular for the web is Representational State Transfer, also known as REST, architecture. If a client-server architecture meets all of the REST criteria, it is said to be RESTful. \todo{Should I really explain all the constraints?} As this paper is not about Client Server interactions, we will not outline the constraints but instead outline how RESTful APIs look in web applications. The RESTful web APIs use: 1) a base URI, 2) an internet media type, and 3) the standard HTTP methods.
+One example of a client-server architecture that is popular for the web is Representational State Transfer, also known as REST, architecture. If a client-server architecture meets all of the REST criteria, it is said to be RESTful. As this paper is not about Client Server interactions, we will not outline the constraints but instead outline how RESTful APIs look in web applications. The RESTful web APIs use: 1) a base URI, 2) an internet media type, and 3) the standard HTTP methods.
 
 A base URI is simple, in the context of a web application, it is just a URL such as ``http://myrestapi.com/entities''.
 
@@ -717,7 +718,6 @@ Though a small feature, Nightwatch has the ability to either assert or verify te
 
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
-\todo{How important is having these? Mention as an option but don't go into detail?}
 \subsection{Headless Browsers}
 In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the enjoyment of watching the tests execute.
 
@@ -876,9 +876,9 @@ Node Inspector is a GitHub project for debugging Node.js server-side code. The i
 Currently Node Inspector only runs on Chrome and Opera but since those browsers are available on all OSes, it shouldn't be a problem for developers to use.
 
 \section{Framework Decision Matrices}
-\todo{These are terrible... I have no idea what to put in these tables for columns.}
+\todo{What to put in these tables for columns.}
 \FloatBarrier
-\begin{table}[h]
+\begin{table}[ht]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -897,7 +897,7 @@ Intern    & X             & X    & X               & X                & X       
 * Mocha requires a separate assertion, which leaves the options for assertion styles entirely up to the developer.
 
 \FloatBarrier
-\begin{table}[h]
+\begin{table}[ht]
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -1306,6 +1306,9 @@ Sauce Labs, the online web testing site, offered a phenomenal set of features th
 %%%%%%%%%%%%%%%%%
 \chapter{Appendices}
 The following appendices include the test code for the ToDo application, screenshots of the various PolyXpress modules, and the PolyXpress test code.
+
+\section{PolyXpress Tutorial}
+\todo{Put the link in with some explanation text}
 
 \section{ToDo App Test Code}
 
