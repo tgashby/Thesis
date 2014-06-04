@@ -189,19 +189,22 @@
 % supporting the title and approval pages.
 %
 % \tableofcontents:
-\def\contentsname{Contents}
+\def\contentsname{TABLE OF CONTENTS}
 %                 ~~~~~~~~
 %
 % \listoffigures:
-\def\listfigurename{List of Figures}
+\def\listfigurename{LIST OF FIGURES}
+\def\listfigurenamelower{List of Figures}
 %                   ~~~~~~~~~~~~~~~
 %
 % \listoftables:
-\def\listtablename{List of Tables}
+\def\listtablename{LIST OF TABLES}
+\def\listtablenamelower{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
 % \thebibliography:
-\def\bibname{Bibliography}
+\def\bibname{BIBLIOGRAPHY}
+\def\bibnamelower{Bibliography}
 %            ~~~~~~~~~~~~
 %
 % \theindex:
@@ -217,20 +220,22 @@
 %              ~~~~~
 %
 % \chapter:
-\def\chaptername{Chapter}
+\def\chaptername{CHAPTER}
+\def\chapternamelower{Chapter}
 %                ~~~~~~~
 % \appendix:
-\def\appendixname{Appendix}
+\def\appendixname{APPENDIX}
+\def\appendixnamelower{Appendix}
 %                 ~~~~~~~~
 % \part
 \def\partname{Part}
 %             ~~~~
 % abstract environment:
-\def\abstractname{Abstract}
+\def\abstractname{ABSTRACT}
 %                 ~~~~~~~~
 %
 % acknowledge environment:
-\def\acknowledgename{Acknowledgements}
+\def\acknowledgename{ACKNOWLEDGMENTS}
 %                    ~~~~~~~~~~~~~~~~
 % vitae environment:
 \def\vitaename{Curriculum Vit\ae}
@@ -462,12 +467,12 @@ ALL RIGHTS RESERVED
 
 \def\abstract{
 \begin{alwayssingle}
-%\pagestyle{plain}
+\pagestyle{plain}
 %\thispagestyle{plain}
 %\setcounter{page}{1}
 \begin{center}
 {\fmfont
-{\bfseries 
+{%\bfseries 
 \abstractname}\par
 \@title\par
 \vspace{.1in}
@@ -507,7 +512,7 @@ Thesis Committee Chair
 
 \newenvironment{acknowledgements}{\begin{alwayssingle}
 \begin{center}
-{\large \bfseries \acknowledgename}
+{\acknowledgename}
 \end{center}
 }{\end{alwayssingle}}
 
@@ -593,7 +598,7 @@ Thesis Committee Chair
 % various itemization levels.
 
 \def\labelitemi{$\m@th\bullet$}
-\def\labelitemii{\bfseries --}
+\def\labelitemii{ --}
 \def\labelitemiii{$\m@th\ast$}
 \def\labelitemiv{$\m@th\cdot$}
 
@@ -627,7 +632,7 @@ Thesis Committee Chair
 %  To change the formatting of the label, you must redefine
 %  \descriptionlabel.
 
-\def\descriptionlabel#1{\hspace\labelsep \bfseries #1}
+\def\descriptionlabel#1{\hspace\labelsep  #1}
 \def\description{\list{}{\labelwidth\z@ \itemindent-\leftmargin
        \let\makelabel\descriptionlabel}}
 
@@ -847,10 +852,10 @@ Thesis Committee Chair
    {\centering                       % %% added 19 Jan 88
     \interlinepenalty \@M            %% RmS added 11 Nov 91
     \ifnum \c@secnumdepth >-2\relax  % IF secnumdepth > -2
-      \huge\bfseries \partname~\thepart    %   THEN Print '\partname' and
+       \partname~\thepart    %   THEN Print '\partname' and
     \par                             %         number in \huge bold.
     \vskip 20\p@\fi                  %        Add space before title.
-    \Huge \bfseries                        % FI
+    
     #2\par}\@endpart}                % Print Title in \Huge bold.
                                      % Bug Fix 13 Nov 89: #1 -> #2
 
@@ -869,7 +874,7 @@ Thesis Committee Chair
 
 \def\@spart#1{{\centering      % %% added 19 Jan 88
    \interlinepenalty \@M       %% RmS added 11 Nov 91
-   \Huge \bfseries                   % Print title in \Huge boldface
+                      % Print title in \Huge boldface
    #1\par}\@endpart}
 
 
@@ -940,7 +945,7 @@ Thesis Committee Chair
    \@tempdima 3em         % width of box holding part number, used by
      \parindent \z@ \rightskip \@pnumwidth             %% \numberline
      \parfillskip -\@pnumwidth
-     {\large \bfseries          % set line in \large boldface
+     {%\large \bfseries          % set line in \large boldface
      \leavevmode          % TeX command to enter horizontal mode.
      #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
      \nobreak             % Never break after part entry
@@ -959,7 +964,7 @@ Thesis Committee Chair
    \begingroup
      \parindent \z@ \rightskip \@pnumwidth
      \parfillskip -\@pnumwidth
-     \bfseries                  % Boldface.
+     %\bfseries                  % Boldface.
      \leavevmode          % TeX command to enter horizontal mode.
       \advance\leftskip\@tempdima  %% added 5 Feb 88 to conform to
       \hskip -\leftskip            %% 25 Jan 88 change to \numberline
@@ -980,7 +985,7 @@ Thesis Committee Chair
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\listfigurename\@mkboth{\uppercase{\listfigurename}}%
 {\uppercase{\listfigurename}}}
-   \addcontentsline{toc}{chapter}{\listfigurename}
+   \addcontentsline{toc}{chapter}{\listfigurenamelower}
    {\ssp\@starttoc{lof}}\if@restonecol
     \twocolumn\fi}
 
@@ -997,7 +1002,7 @@ Thesis Committee Chair
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
 {\uppercase{\listtablename}}}
-   \addcontentsline{toc}{chapter}{\listtablename}
+   \addcontentsline{toc}{chapter}{\listtablenamelower}
    {\ssp\@starttoc{lot}}\if@restonecol
   \twocolumn\fi}
 
@@ -1027,18 +1032,25 @@ Thesis Committee Chair
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
+\let\@openbib@code\@empty
+
 \def\thebibliography#1{\chapter*{\bibname\@mkboth{%
 \uppercase{\bibname}}{\uppercase{\bibname}}}
-  \addcontentsline{toc}{chapter}{\bibname}
-  \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \usecounter{enumiv}%
-    \let\p@enumiv\@empty
-    \def\theenumiv{\arabic{enumiv}}}%
-    \def\newblock{\hskip .11em plus.33em minus.07em}%
+  \addcontentsline{toc}{chapter}{\bibnamelower}
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin20pt% change 20 pt according to your needs
+            \advance\leftmargin\labelsep
+            \setlength\itemindent{-20pt}% change using the inverse of the length used before
+            \@openbib@code
+            \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
     \sloppy\clubpenalty4000\widowpenalty4000
     \sfcode`\.=\@m}
+
 
 
 %% 91/08/26 FMI & RmS: introduced warning instead of error

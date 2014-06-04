@@ -59,22 +59,22 @@
   {\endminipage\par\medskip}
 
 \titleformat{\chapter}[display]% NEW
-    {\normalfont\begin{center}}{\chaptertitlename\ \thechapter}{12pt}{}% NEW
+    {\normalfont\centering}{\chaptertitlename\ \thechapter}{12pt}{}% NEW
 \titlespacing*{\chapter}{0pt}{30pt}{20pt}% NEW
 
-%\titleformat{\chapter}[block]{first}{label}{12pt}
+%\titleformat{\section}[block]{first}{label}{12pt}
 
-\titleformat{\chapter}{}{\thesection}{1em}{}
-\titleformat{\section}{}{\thesubsection}{1em}{}
-\titleformat{\subsection}{}{\thesubsubsection}{1em}{}
-\titleformat{\subsubsection}{}{\theparagraph}{1em}{}
+\titleformat{\section}{}{\thesection}{1em}{}
+\titleformat{\subsection}{}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{}{\theparagraph}{1em}{}
 
 % \setcounter{secnumdepth}{5}
 \setlength{\parindent}{0.25in} \setlength{\parskip}{6pt}
 
 \geometry{verbose,nohead,tmargin=1.25in,bmargin=1in,lmargin=1.5in,rmargin=1.3in}
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 
 \graphicspath{ {./images/} }
 
