@@ -6,7 +6,7 @@
 \usepackage{listings}
 \usepackage{placeins}
 \usepackage{caption}
-\usepackage{todonotes}
+\usepackage[disable]{todonotes}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -267,23 +267,17 @@ Here's a brief example:
 \begin{lstlisting}
 function Word(startingWord) {
   this.makePlural = function () { ... }
-
   this.pastTense = function () { ... }
-
   this.partOfSpeech = function () { ... }
 }
 
 function Sentence(listOfWords) {
   this.listOfWords = listOfWords;
-
   this.isGrammaticallySound = function () { ... }
-
   this.wordCount = function () {
     return this.listOfWords.length();
   }
-
   this.makePastTense = function () { ... }
-
   this.pluralize = function () { ... }
 }
 
@@ -412,13 +406,12 @@ The first of the unit testing frameworks that we looked at was Jasmine, a Behavi
 This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like English sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
 describe("Arithmetic Test", function () {
-  it("should be able to compute the addition of two numbers", function () {
+  it("should compute the addition of two numbers", function () {
     expect(1 + 2).toEqual(3);
   });
 
   it("should be able to subtract numbers", function () {
     var theAnswer = 10;
-
     expect(12 - 2).toEqual(theAnswer);
   });
 });
@@ -433,7 +426,7 @@ Asynchronous testing using Jasmine was a bit of a chore, but there is support bu
 describe("Asynchronous specs", function() {
   var value, flag;
 
-  it("should support async execution of test preparation and expectations", function() {
+  it("should support async execution", function() {
     runs(function() {
       flag = false;
       value = 0;
@@ -481,17 +474,14 @@ suite('TDD Suite', function () {
 // Exports
 module.exports = {
   'Exports Suite': {
-    
     'test 1': function () {
       ...
     }
-
   }
 };
 
 // QUnit
 suite('QUnit Suite');
-
 test('test 1', function () {
   ...
 });
@@ -501,10 +491,9 @@ The developer doesn't gain anything by using one interface over another except t
 Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is passed an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the asynchronous calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
-  it("look like this", function (done) {
-    myAsyncCall(param1, param2, function () {
-      // This callback expected to run when async returns
-
+  it("looks like this", function (done) {
+    myAsyncCall(param1, param2, function () { 
+      // This callback anonymous function expected to run when myAsyncCall returns
       // Test ...
       // Test ...
       // ...
@@ -532,7 +521,7 @@ An interesting feature that QUnit has that we'd not seen elsewhere is the abilit
 
 QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
 \begin{lstlisting}
-Qunit.module("Module A"); // All code following is grouped into Module A
+Qunit.module("Module A"); // All code following is grouped
 test("Addition", function () {
   equal(2 + 2, 4, "Two + Two = Four");
   equal(3 + 5, 8, "Three + Five = Eight");
@@ -545,8 +534,7 @@ test("Subtraction", function () {
 // More tests....
 
 QUnit.module("Module B");
-// Tests under Module B
-
+// Tests now grouped under Module B
 // ... Etc
 \end{lstlisting}
 It is difficult to visually see where one module starts and ends and so grouping and finding the right place to add a test can be a chore.
@@ -555,8 +543,7 @@ QUnit's handling of asynchronous tests is similar to Mocha's except instead of a
 \begin{lstlisting}
 asyncTest("Async Test", function () {
   myAsyncCall(param1, param2, function () {
-    // This callback expected to run when async returns
-
+    // This anonymous function expected to run when myAsyncCall returns
     // Test ...
     // Test ...
     // ...
@@ -621,10 +608,10 @@ describe('BDD Suite', function () {
 // Object
 registerSuite({
   name: 'Object Suite', 
-
   'test 1' : function () {
     ...
-  }
+  },
+  'test 2' : ...
 )
 \end{lstlisting}
 
@@ -752,8 +739,7 @@ browser.visit("http://localhost:3000/", function () {
       // Form submitted, new page loaded.
       assert.ok(browser.success);
       assert.equal(browser.text("title"), "Welcome To Brains Depot");
-
-    })
+    });
 });
 \end{lstlisting}
 
@@ -1018,19 +1004,19 @@ Setting up MagnumCI is all done online. Visit ``magnum-ci.com'', create an accou
 Here is the new project page:
 \begin{Figure}
   \centering
-  \includegraphics[width=0.95\linewidth]{magnumCI_new_project.png}
+  \includegraphics[width=0.75\linewidth]{magnumCI_new_project.png}
 \end{Figure}
 
 Fill out the fields with the appropriate values for a given project and click ``Create Project''. Depending on what the setup is for your project, you'll see slightly varying web pages after you create your project. One thing in common, though, is the button at the bottom of the steps list that says ``Customize Build''. After following the instructions, click ``Customize Build'':
 \begin{Figure}
   \centering
-  \includegraphics[width=0.95\linewidth]{magnumCI_customize_build.png}
+  \includegraphics[width=0.75\linewidth]{magnumCI_customize_build.png}
 \end{Figure}
 
 There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecting the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{npm install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
 \begin{Figure}
   \centering
-  \includegraphics[width=0.95\linewidth]{magnumCI_customize_build_filled.png}
+  \includegraphics[width=0.75\linewidth]{magnumCI_customize_build_filled.png}
 \end{Figure}
 
 After that setup, the project is ready to go. Anytime a commit is pushed from then on, MagnumCI will run and notify the developer of successful and unsuccessful builds.
@@ -1072,7 +1058,6 @@ module.exports = function(grunt) {
 
   // 4) Default task(s).
   grunt.registerTask('default', ['uglify']);
-
 };
 \end{lstlisting}
 
@@ -1316,7 +1301,7 @@ What should I show here? I have the same tests but for different frameworks... S
 \section{PolyXpress Player Screenshots}
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_stories.png}
+  \includegraphics[width=0.30\linewidth]{px_stories.png}
   
 \captionof{figure}{Story selection}
 
@@ -1324,7 +1309,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_chapter_pane.png}
+  \includegraphics[width=0.30\linewidth]{px_chapter_pane.png}
   
 \captionof{figure}{Chapter pane with approximate distances to each chapter}
 
@@ -1332,7 +1317,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_chap_instructions.png}
+  \includegraphics[width=0.30\linewidth]{px_chap_instructions.png}
   
 \captionof{figure}{Each page and element of PolyXpress has instructions, here they are for Chapters}
 
@@ -1340,7 +1325,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_chapter_locs.png}
+  \includegraphics[width=0.30\linewidth]{px_chapter_locs.png}
   
 \captionof{figure}{A map of the chapter location in relation to the player}
 
@@ -1348,7 +1333,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_marketplace.png}
+  \includegraphics[width=0.30\linewidth]{px_marketplace.png}
   
 \captionof{figure}{PolyXpress marketplace, to find other published stories}
 
@@ -1356,7 +1341,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_player_loc.png}
+  \includegraphics[width=0.30\linewidth]{px_player_loc.png}
   
 \captionof{figure}{A map centered around the player}
 
@@ -1365,7 +1350,7 @@ What should I show here? I have the same tests but for different frameworks... S
 \section{PolyXpress Author Screenshots}
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_author_home.png}
+  \includegraphics[width=0.30\linewidth]{px_author_home.png}
   
 \captionof{figure}{PolyXpress Authoring Tool}
 
@@ -1373,7 +1358,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_create_event.png}
+  \includegraphics[width=0.30\linewidth]{px_create_event.png}
   
 \captionof{figure}{Form to create an Event}
 
@@ -1381,7 +1366,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_create_event2.png}
+  \includegraphics[width=0.30\linewidth]{px_create_event2.png}
   
 \captionof{figure}{Bottom of form to create an Event}
 
@@ -1389,7 +1374,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_create_chap.png}
+  \includegraphics[width=0.30\linewidth]{px_create_chap.png}
   
 \captionof{figure}{Form for creating Chapters}
 
@@ -1397,7 +1382,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_create_chap2.png}
+  \includegraphics[width=0.30\linewidth]{px_create_chap2.png}
   
 \captionof{figure}{Events are selected manually for inclusion in Chapters}
 
@@ -1405,7 +1390,7 @@ What should I show here? I have the same tests but for different frameworks... S
 
 \begin{Figure}
   \centering
-  \includegraphics[width=0.65\linewidth]{px_create_story.png}
+  \includegraphics[width=0.30\linewidth]{px_create_story.png}
   
 \captionof{figure}{Story creation asks if the user wants their story published}
 
