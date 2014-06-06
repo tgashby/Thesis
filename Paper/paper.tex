@@ -6,7 +6,7 @@
 \usepackage{listings}
 \usepackage{placeins}
 \usepackage{caption}
-\usepackage[disable]{todonotes}
+\usepackage{todonotes}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -163,7 +163,7 @@ Testing web applications is difficult. The web offers an impressive set of featu
 In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It didn't matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
-The addition of JavaScript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads but is stuck with just the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
+The addition of JavaScript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads, they only have access to the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is the cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
 
 There is no overarching solution to these problems, but in order to understand the motivations behind this thesis, one must understand the problems facing web application developers.
 
@@ -191,7 +191,7 @@ If one is familiar with HTML5, JavaScript, and Testing concepts and statistics, 
 Web applications are great for both developers and consumers. They have a number of characteristics that make them more desirable than shrink-wrap software. These attributes include versioning, availability, platform independence, and the ability to rapidly prototype.
 
 \subsection{Versioning}
-Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like Microsoft Office that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more quickly than any other type of software. For example, Google Docs is becoming incredibly popular as an online document editing suite. Updates to Google Docs are rolled out frequently and require little to no input from the user. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it's a powerful gain for both feature improvement and application security. There is no need to support legacy systems that may contain serious bugs.
+Web applications can be updated at any time with instant roll-out and feedback. It requires absolutely no user interaction because the web page always serves the latest resources. In comparison to something like Microsoft Office that requires users to manually update, this feature leads to applications that can address problems quickly, roll-out security updates instantly, and incorporate consumer feedback much more often than any other type of software. For example, Google Docs is becoming incredibly popular as an online document editing suite. Updates to Google Docs are rolled out frequently and require little to no input from the user. Another perk is that users are not given a choice. This can lead to occasional customer outrage, but more often than not it is a powerful gain for both feature improvement and application security. There is no need to support legacy systems that may contain serious bugs.
 
 \subsection{Availability}
 Web applications are available anywhere there's internet. There is rarely need to install anything on a given device. Due to the ever-increasing popularity of mobile devices, most applications have both mobile and full versions of their software and so the application is ``with'' the user at all times. This instant and continuous availability means that users only have to know how to use a web browser in order to access the application.
@@ -201,7 +201,7 @@ A recent push in the web application community is toward offline versions of app
 \subsection{Multi-platform}
 Very similar to the availability strength, web applications are platform independent. Whether the user is on their phone, tablet, laptop, or PC, the application only requires a web browser with certain functionality and in this day and age all devices come equipped with browsers that should have no problems. This also means that the developer need not, generally, worry about hardware configurations, conflicting software, and other problems that can arise in desktop applications. 
 
-The developer is not free from all worry as they must still consider differing web browsers. This problem, however, is almost fully remedied by a number of online APIs that will rework underlying code based on browser versions and types. 
+The developer is not free from all worry as they must still consider differing web browsers. This problem, however, is almost fully remedied by a number of online APIs, such as jQuery\cite{jQuery}, that will rework underlying code based on browser versions and types. 
 
 \subsection{Rapid Prototyping}
 Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will record where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
@@ -218,7 +218,7 @@ As the web is being increasingly used on mobile devices, HTML5 also introduces g
 
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML5 when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
-\subsubsection{Node.JS}
+\subsection{Node.JS}
 As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation application. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
 Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
@@ -346,7 +346,7 @@ What we see here is that the earlier a defect is introduced the more it costs to
 %%%   Talk about test app
 %%%%%%%%%%%%%%%%%%%%%%
 \chapter{Testing Frameworks Survey}
-In the following chapter we will discuss the testing frameworks that we looked at and the application we used to evaluate them.
+In the following chapter we will discuss the testing frameworks that we looked at and the application we used to evaluate them. This chapter will conclude with a set of decision matrices outlining the strengths of each individual framework and where they overlap.
 
 \section{ToDo Application}
 In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB. \cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, making tasks as completed, and viewing completed tasks. Here is a brief preview of the application:
@@ -379,16 +379,18 @@ In addition to the simplicity and ease of understanding, this application was se
 One of the challenges in testing that we quickly came across was the asynchronous nature of the MongoDB calls that were made in the sample app. As many web application feature asynchronous calls, we will be discussing how the following frameworks deal with asynchronous test support.
 
 \subsection{The Average Web Application}
-In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, JavaScript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
+\todo{Re-write this section}
 
-\todo{THIS IS LAME}
-Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with.
+% In an effort to create a good workflow and collection of tools, we have chosen to focus on web applications that uses Node.js, JavaScript, Cloud Services, and a backing Database when searching for our tools. This choice was made because of the popularity of that kind of set up, as well as the fact that our evaluation application was set up in that way.
 
-JavaScript was chosen because it used in over 87\% of all websites. \cite{JSUsage} We also chose JavaScript because the rest of our application was written in JavaScript and we wanted to keep things as constant as possible.
+% \todo{THIS IS LAME}
+% Although there are multiple languages and tools available for creating a backing server, we chose Node.js because of it's wide use and because it is what we're most familiar with.
 
-Many web applications use Cloud Services for a number of things, most often they're used for storage of the web content that's being hosted.
+% JavaScript was chosen because it used in over 87\% of all websites. \cite{JSUsage} We also chose JavaScript because the rest of our application was written in JavaScript and we wanted to keep things as constant as possible.
 
-Web applications tend to keep track of users which most often constitutes the use of a database behind the scenes to store users and update them as necessary.
+% Many web applications use Cloud Services for a number of things, most often they're used for storage of the web content that's being hosted.
+
+% Web applications tend to keep track of users which most often constitutes the use of a database behind the scenes to store users and update them as necessary.
 
 \subsection{Tool Requirements}
 Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. 
@@ -398,10 +400,10 @@ Occasionally the cost of tools will be discussed but in general we did not revie
 \section{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
-An important distinction that needs to be made is that in web applications there is functionality behind the scenes and there is the UI element of the web page. Unit testing frameworks are aimed at the functionality behind the scenes.
+Web applications can be broken down into two general parts. There is functionality behind the scenes that drives the web page and there is the user interface of the web page that conveys the information to the user. Unit testing frameworks are aimed at the functionality the drives the web page, not what the user sees.
 
-\subsection{Jasmine \cite{Jasmine}}
-The first of the unit testing frameworks that we looked at was Jasmine, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
+\subsection{Jasmine}
+The first of the unit testing frameworks that we looked at was Jasmine\cite{Jasmine}, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do.
 
 This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind jasmine tests is that they read, as much as possible, like English sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
@@ -416,11 +418,11 @@ describe("Arithmetic Test", function () {
   });
 });
 \end{lstlisting}
-The \lstinline{describe} statement creates a test suite to collect related tests under. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. It may not be particularly pretty, but the above code is quite readable even to someone with no coding experience.
+The \lstinline{describe} statement creates a test suite to collect related tests under. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience.
 
-The default Jasmine package had some ineptitudes in dealing with Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
+The default Jasmine did not support Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
-Asynchronous testing using Jasmine was a bit of a chore, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. This method requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+Asynchronous testing using Jasmine is a bit of a chore because it requires a series of functions that are not straightforward, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. These functions will be outlined in an example below. This method of asynchronous testing requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
 \begin{lstlisting}
 describe("Asynchronous specs", function() {
@@ -450,12 +452,12 @@ describe("Asynchronous specs", function() {
 
 The above test merely sets the \lstinline{flag} to true after half of a second, thus fulfilling the \lstinline{waitsFor} function and finally the assertions are run in the final \lstinline{runs} function.
 
-Jasmine is an interesting take on testing that we'd not see before, the BDD system in particular. We like the way assertions and tests are written in such a stylized manner. The asynchronous support is there but a bit tedious.
+Jasmine's BDD testing is something that we'd not see before. Having come from a more structured and developer-oriented testing background, it was interesting to see assertions and tests written in this different manner. The idea behind writing tests in this style is that requirements and customer feedback can be more easily translated into tests or even written by customers or other non-technical stakeholders. Jasmine does have asynchronous support but the three-function system is a bit tedious.
 
-\subsection{Mocha \cite{Mocha}}
-Mocha is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
+\subsection{Mocha}
+Mocha\cite{Mocha} is another BDD testing framework that is almost identical to Jasmine. Unlike Jasmine, however, Mocha is not completely self-contained and requires an additional assertion library of one's choosing. We will outline our choice of Chai.js below.
 
-Mocha, by default, also uses the \lstinline{describe -> it("should..."} pattern to create tests. Mocha offers a variety of other test interfaces for developer's to write their test code as well as a custom, nearly unstructured variety. A few of the testing interfaces are outlined here:
+Mocha, by default, also uses the \lstinline{describe -> it("should..."} pattern to create tests. Mocha offers a variety of other test interfaces for developers to write their test code. A few of the testing interfaces are outlined here:
 \begin{lstlisting}
 // BDD (default)
 describe('BDD Suite', function () {
@@ -485,6 +487,15 @@ suite('QUnit Suite');
 test('test 1', function () {
   ...
 });
+
+// Require, allows the developer to structure and call tests what they want
+var testCase = require('mocha').describe
+
+testCase('Require Suite', function(){
+  testCase('test 1', function(){
+    ...
+  });
+});
 \end{lstlisting}
 The developer doesn't gain anything by using one interface over another except the ability to write tests in a way that makes sense to them. There is no standard for writing assertions, as each assertion library is likely to be slightly different.
 
@@ -503,23 +514,23 @@ describe("Asynch Mocha Test", function () {
 });
 \end{lstlisting}
 
-Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select our own testing interface and assertion library so that our tests looked the way we wanted them. The cost of that was the need to find our own assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
+Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select a testing interface and assertion library so that tests could be written in the way a developer wants. The cost of the flexibilty was the need to find an assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
 
-\subsubsection{Chai.js \cite{Chaijs}}
-For the assertion library we chose Chai.js.  It offers the most flexibility for writing assertions that we'd found. It provides access to an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
+\subsubsection{Chai.js}
+For the assertion library we chose Chai.js\cite{Chaijs}. It contains three different assertion APIs: an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
 
 
-\subsection{QUnit \cite{QUnit}}
-QUnit is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, an immensely popular framework for DOM manipulation and access. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
+\subsection{QUnit}
+QUnit\cite{QUnit} is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, a popular framework for DOM manipulation and access\cite{jQuery}. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
 \begin{Figure}
   \centering
   \includegraphics[width=\linewidth]{qunitrunner.png}
   \captionof{figure}{Each individual spec is further broken down into the assertions within it.}
 \end{Figure}
 
-An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
+An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. Silent failure can happen if the developer forgets to specify that a test is asynchronous or if there are synchronous callbacks. If a function in the test has a callback that runs the assertions, the test framework may finish executing the test and move on to the next test before ever running the assertions in the callback. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
 
-QUnit isn't perfect however, QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
+QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
 \begin{lstlisting}
 Qunit.module("Module A"); // All code following is grouped
 test("Addition", function () {
@@ -537,7 +548,7 @@ QUnit.module("Module B");
 // Tests now grouped under Module B
 // ... Etc
 \end{lstlisting}
-It is difficult to visually see where one module starts and ends and so grouping and finding the right place to add a test can be a chore.
+It can be difficult to visually see where one module starts and ends, resulting in additional time spent finding the right place to add a test.
 
 QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the \lstinline{it} function, the developer calls the \lstinline{asyncTest} function instead. Finally, the developer calls \lstinline{start()} when the asynchronous test is finished. Example:
 \begin{lstlisting}
@@ -552,22 +563,23 @@ asyncTest("Async Test", function () {
 });
 \end{lstlisting}
 
-QUnit was a particularly strong contender when we saw the table that was produced after running the tests but its shortcomings led us to keep looking elsewhere. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself.
+QUnit provides another style of writing tests and grouping modules. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself.
 
-\subsection{Intern\cite{InternIO}}
-Intern is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a separate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of the inability to set up cross-server communication easily and properly.
+\subsection{Intern}
+Intern\cite{InternIO} is a hybrid unit testing and browser testing framework that aims to be an all-in-one testing framework. Intern has unit testing, browser testing, and code coverage information all built into the same tool. It is our intention to build a testing framework with all of these components, so finding a framework with all of them built-in was promising. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a separate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of our inability to set up cross-server communication due to inexperience.
 
 %-AMD
-Intern uses Asynchronous Module Definition (AMD) form which is something we'd not seen before. Where this comes into play is merely in what used to be \lstinline{require(...)}. Instead of separately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
+Intern uses Asynchronous Module Definition (AMD) form. This is merely a change in how modules are included in a piece of code, instead of separately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
 \begin{lstlisting}
 // Intern
-define([
+define([ // Here's the AMD
     'intern!object',
     'intern/chai!assert',
     'app/hello'
 ], function (registerSuite, assert, hello) {
   // Test code here
 });
+
 
 // CommonJS, what Node.js uses 
 var registerSuite = require('intern/object');
@@ -586,7 +598,7 @@ var hello = require('app/hello');
 } ());
 \end{lstlisting}
 
-Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because of the maturity of the evaluation project.
+Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because that is what Node.JS uses, which is used by our evaluation applications.
 
 %- TDD, BDD, Object methods
 Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces effect how the general layout of test code looks. Here's a very quick example of the different layouts:
@@ -626,15 +638,15 @@ Intern's unit-test versus browser test separation is termed, by Intern, nonfunct
 %- Code Coverage!
 Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
-Intern offered a one-stop shop for all of our testing needs but fell short when it came to configuring it for our Node.js server setup. If we had a more traditional web application setup with a separate server that served normal HTML pages, Intern would have likely been our go-to tool for all of our testing needs.
+Intern offers a fully-featured framework for all testing needs but was difficult to configure for a Node.js server setup. If a developer had a more traditional web application setup with a separate server that served normal HTML pages, Intern would be a go-to framework for all testing needs.
 
 \section{Browser and UI Testing}
 Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
 
 What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
 
-\subsection{Selenium\cite{Selenium}}
-Selenium is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
+\subsection{Selenium}
+Selenium\cite{Selenium} is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
 Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for the web testing tools that will follow this description.
 
@@ -642,14 +654,15 @@ Selenium has support for running a number of different browsers. Out of the box 
 
 Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run without the need for developers to manually click all of the HTML elements and input information in the relevant places.
 
-Selenium's Node incarnation is out-of-date and as such we had to change the Selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the JavaScript files that ran Selenium from the console using Node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
+% This is talked about in the tutorial
+% Selenium's Node incarnation is out-of-date and as such we had to change the Selenium package to use the latest version of Selenium that works with the latest version of browsers. This required us to edit some of the JavaScript files that ran Selenium from the console using Node. At the time of this writing, the Selenium node package was using Selenium 2.20 from over two years ago. The latest Selenium version is 2.40.
 
 Selenium was written with maximum functionality and language flexibility in mind and therefore can be incredibly verbose.
 
 The Selenium WebDriver has APIs for a variety of programming languages including: JavaScript, C, Java, and Python.
 
-\subsection{Nightwatchjs\cite{NightwatchJS}}
-Nightwatch is a JavaScript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+\subsection{Nightwatchjs}
+Nightwatch\cite{NightwatchJS} is a JavaScript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
 
 Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to Google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
 \begin{lstlisting}
@@ -696,7 +709,7 @@ test.describe('Google Search', function() {
 });
 \end{lstlisting}
 
-In addition to being more verbose, I've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command.
+In addition to being more verbose, we've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command. By default, Selenium does not come with its own assertion library. We chose Mocha with Chai.js because we were most familiar with it.
 
 Nightwatch is a Node.js module, and as such can easily installed and run via npm and the commandline.
 
@@ -709,15 +722,15 @@ In an attempt to speed up UI testing, which is notoriously slow, there have been
 
 Nonetheless, we still looked at two options that we will outline briefly below for other developer's reference.
 
-\subsubsection{PhantomJS\cite{PhantomJS}}
-The reigning king of headless browsers is PhantomJS. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
+\subsubsection{PhantomJS}
+The reigning king of headless browsers is PhantomJS\cite{PhantomJS}. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
 
 There are, however, a couple problems with PhantomJS. It is generally fairly verbose when it comes to writing the scripts that run your commands. It is also not a testing tool, it is a headless WebKit. The distinction here is that PhantomJS does not have any assert functionality built-in and thus requires the developer to find and use their own assertion library.
 
 The difference between PhantomJS and ZombieJS, which I talk about in the next section, is akin to the difference between Selenium and Nightwatch. PhantomJS is heavier duty and requires an additional set of testing tools whereas ZombieJS is lightweight and has assertions built-in.
 
-\subsubsection{ZombieJS\cite{ZombieJS}}
-ZombieJS is often the other go-to for headless browsers. ZombieJS is not a WebKit implementation but rather a simple DOM emulator. This means that certain tests may not be as accurate as they could be with PhantomJS.
+\subsubsection{ZombieJS}
+ZombieJS\cite{ZombieJS} is often the other go-to for headless browsers. ZombieJS is not a WebKit implementation but rather a simple DOM emulator. This means that certain tests may not be as accurate as they could be with PhantomJS.
 
 Where ZombieJS shines is in its simplicity and brevity. Much like Nightwatch, calls are chained together to create a flow of calls that generally end with assertions.
 
@@ -752,8 +765,8 @@ Continuous Integration frameworks attempt to make development easier by running 
 
 Continuous Integration frameworks, therefore, need to be flexible in the type of project they support, customizable in their chosen environments to support differing projects, and have a simple way to connect to repositories or file systems.
 
-\subsection{Jenkins \cite{Jenkins}}
-Jenkins is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
+\subsection{Jenkins}
+Jenkins\cite{Jenkins} is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
 Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
 \begin{Figure}[!ht]
@@ -773,8 +786,8 @@ The other use for a tool like Jenkins is the ability to start services like cron
 
 Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run a project in. However, once the server has the necessary applications and libraries, the builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
 
-\subsection{Travis \cite{Travis}}
-Travis is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
+\subsection{Travis}
+Travis\cite{Travis} is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
 
 Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects if needed. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
@@ -788,8 +801,8 @@ In order to get access to private repositories, Travis offers several pricing pl
 
 From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require it's own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
 
-\subsection{Semaphore \cite{Semaphore}}
-Semaphore is another online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
+\subsection{Semaphore}
+Semaphore\cite{Semaphore} is another online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
 Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
@@ -799,8 +812,8 @@ Semaphore's pricing scheme is different than Travis' as it focuses on an individ
 
 Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
 
-\subsection{MagnumCI \cite{MagnumCI}}
-MagnumCI is another online CI framework, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
+\subsection{MagnumCI}
+MagnumCI\cite{MagnumCI} is another online CI framework, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
 
 MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a yml file.
 
@@ -810,8 +823,8 @@ Where MagnumCI shines is in support of different repositories. MagnumCI offers s
 
 Right now MagnumCI offers impressive features, private repositories, and extensive repository sources, all for free. It is hard to say that MagnumCI is the best because those features may end up costing money soon after this paper is completed. It is included in this review because it seems to be an up and comer that could prove quite strong.
 
-\subsection{Drone.io \cite{DroneIO}}
-Drone.io is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.
+\subsection{Drone.io}
+Drone.io\cite{DroneIO} is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.
 
 Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires the developer to specify language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate build commands.
 
@@ -827,15 +840,15 @@ Drone.io is a strong contender because of its language support, deployment optio
 \section{Miscellaneous Frameworks}
 In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that did not quite fit into any of the above categories.
 
-\subsection{Sauce Labs\cite{SauceLabs}}
-Sauce Labs is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, JavaScript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their JavaScript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
+\subsection{Sauce Labs}
+Sauce Labs\cite{SauceLabs} is an online service that gives you access to a variety of browsers and browser options. They outline the options available to the developer as follows: Selenium, JavaScript, Mobile, Manual. Sauce Labs will start up a Selenium server and run the developer's Selenium tests, they can run unit tests using their JavaScript service, they allow access to a variety of mobile device browsers and resolution, and they offer the ability to manually look at a web application in different browser configurations.
 
 Every CI framework we looked at had built-in configurations for Sauce Labs so that one of the CI steps could be running your tests on Sauce Labs.
 
 Sauce Labs is an incredibly helpful tool for making sure a web application behaves as expected on a wide spectrum of devices and configurations and saves the developer the hassle of acquiring multiple devices, operating systems, and browsers.
 
-\subsection{Istanbul\cite{Istanbul}}
-As already mentioned briefly, IStanbul is a tool used for code coverage metrics. It was built into Intern.io but getting it running with other frameworks is easy as well.
+\subsection{Istanbul}
+As already mentioned briefly, Istanbul\cite{Istanbul} is a tool used for code coverage metrics. It was built into Intern.io but getting it running with other frameworks is easy as well.
 
 Getting Istanbul to output code coverage is as easy as installing it and then calling the \lstinline{istanbul} function from the commandline with your test executable.
 For example: \lstinline{istanbul cover mocha -- . -R spec} will run the mocha tests in the current directory and output coverage statistics. To break that down a little further:
@@ -848,15 +861,15 @@ Finally, \lstinline{. -R spec} is just the flags for the mocha command to run th
 
 Istanbul offers an incredibly easy way to get code-coverage on your tests and is painless to get working right away.
 
-\subsection{Grunt.js\cite{GruntJS}}
-Grunt.js is a task-runner for JavaScript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
+\subsection{Grunt.js}
+Grunt.js\cite{GruntJS} is a task-runner for JavaScript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
 
 Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
 
 Of particular interest is that last feature, \lstinline{watch}. We are particularly fond of grunt's \lstinline{watch} capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
-\subsection{Node Inspector\cite{NodeInspector}}
-Node Inspector is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running \lstinline{node-debug} instead of \lstinline{node} when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
+\subsection{Node Inspector}
+Node Inspector\cite{NodeInspector} is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running \lstinline{node-debug} instead of \lstinline{node} when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
 
 Currently Node Inspector only runs on Chrome and Opera but since those browsers are available on all OSes, it shouldn't be a problem for developers to use.
 
@@ -1128,8 +1141,8 @@ For running the browser tests, we recommend using the CI tool. With some setup o
 \chapter{Evaluation}
 After gathering the tools into a loose toolkit, we wanted to use that toolkit on an existing project of respectable size. We chose an application developed at Cal Poly called PolyXpress.
 
-\section{PolyXpress (PX)\cite{PX}}
-Our major evaluation application was an in-house application called PolyXpress (PX). As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Since the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
+\section{PolyXpress (PX)}
+Our major evaluation application was an in-house application called PolyXpress (PX)\cite{PX}. As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Since the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the appendix at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the appendix now.
 
 PolyXpress consists of three smaller application: 1) The Player. 2) The Author. 3) The PointFinder.
 
@@ -1174,80 +1187,80 @@ We also found research into common bugs, general testing techniques, and finding
 \section{Testing Frameworks}
 The following are papers that were written about creating proprietary testing frameworks.
 
-\subsection{``A Framework for Automated Testing of JavaScript Web Applications'' \cite{FrameworkForAutomatedTesting}}
-A collection of IBM Researchers and two university students came up with a framework called ``Artemis'' for testing web applications. What is novel about their tool is that it generates test cases automatically based on execution patterns and feedback. They have attempted to solve the problem that writing test cases by hand is both time-consuming and often difficult. Their automatic test generation lead to an average of 69\% test coverage with enough tests generated.
+\subsection{``A Framework for Automated Testing of JavaScript Web Applications''}
+A collection of IBM Researchers and two university students came up with a framework called ``Artemis'' for testing web applications\cite{FrameworkForAutomatedTesting}. What is novel about their tool is that it generates test cases automatically based on execution patterns and feedback. They have attempted to solve the problem that writing test cases by hand is both time-consuming and often difficult. Their automatic test generation lead to an average of 69\% test coverage with enough tests generated.
 
 Though it was an interesting and somewhat effective method, 69\% coverage is not great and this particular framework only covers the client-side, so it was incomplete for our purposes.
 
-\subsection{``A Multi-Agent Software Environment for Testing Web-based Applications'' \cite{MultiAgentSoftwareEnvironment}}
-Two students and a person from Lanware Limited brought AI into the web testing world with an agent-based environment for testing web applications. In order to split testing into manageable tasks for agents to carry out, they created an ontology for web testing using XML. Each agent is set up to handle one particular kind of testing with certain test data, i.e., a unit tester with data for one or two functions. This agent may then communicate with another agent who needs the results from that test, such as a test coverage agent or agent that is keeping track of test success and failure. This communication is done through a message-passing intermediary layer and a set of brokers who shuffle messages between agents.
+\subsection{``A Multi-Agent Software Environment for Testing Web-based Applications''}
+Two students and a person from Lanware Limited brought AI into the web testing world with an agent-based environment for testing web applications\cite{MultiAgentSoftwareEnvironment}. In order to split testing into manageable tasks for agents to carry out, they created an ontology for web testing using XML. Each agent is set up to handle one particular kind of testing with certain test data, i.e., a unit tester with data for one or two functions. This agent may then communicate with another agent who needs the results from that test, such as a test coverage agent or agent that is keeping track of test success and failure. This communication is done through a message-passing intermediary layer and a set of brokers who shuffle messages between agents.
 
 This system is exciting and intricate but far too complex for a general web testing toolkit that just about any developer could pick up. It was important to weed techniques like this out as we wanted a fairly easy to use and understand toolkit.
 
-\subsection{``A 2-Layer Model for the White-Box Testing of Web Applications'' \cite{2LayerModel}}
-A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came with a model for white-box testing of web applications. (White box testing is when the developer is given access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
+\subsection{``A 2-Layer Model for the White-Box Testing of Web Applications''}
+A couple of gentlemen at the Center for Scientific Research and Technology in Povo, Italy came up with a model for white-box testing of web applications\cite{2LayerModel}. (White box testing is when the developer is given access to the underlying code.) This paper breaks up the testing process into two abstraction levels, the navigation model, the way in which a webpage goes from page to page, and the control flow model, the way in which information is passed and stored on a given page or between pages. These constitute the 2-layers in the title. The navigation model represents high-level test cases, like asserting that a given link redirects to the correct location, while control flow represents low-level test cases, like making sure data is persisted between pages. 
 
 This 2-layer approach is interesting and provided us with some insight, but the system was made for PHP applications and we weren't looking to implement a brand-new system and test PolyXpress with it all in one year.
 
-\subsection{``Invariant-Based Automatic Testing of AJAX User Interfaces'' \cite{InvariantBasedUseInterfaces}}
-Two individuals from the SOftware Engineering Research Group at Delft University in the Netherlands came up with a way to automatically test AJAX UI. The core of this idea is using a crawler to infer a flow graph. This paper outlines an plugin for an automated tool, ATUSA, for creating state validators and test suites for covering paths discovered during crawling (with a separate tool, CRAWLJAX). Their tests show that with minimal manual effort, the use of ATUSA can lead to high code coverage and error discovery. 
+\subsection{``Invariant-Based Automatic Testing of AJAX User Interfaces''}
+Two individuals from the Software Engineering Research Group at Delft University in the Netherlands came up with a way to automatically test AJAX UI\cite{InvariantBasedUseInterfaces}. The core of this idea is using a crawler to infer a flow graph. This paper outlines an plugin for an automated tool, ATUSA, for creating state validators and test suites for covering paths discovered during crawling (with a separate tool, CRAWLJAX). Their tests show that with minimal manual effort, the use of ATUSA can lead to high code coverage and error discovery. 
 
 This tool showed promise as an AJAX testing tool, but we wanted something more generic. Their crawler, CRAWLJAX, however, was very interesting and while we didn't use it, the techniques it used are used in other tools we have.
 
-\subsection{``JSART: JavaScript Assertion-based Regression Testing'' \cite{JSART}}
-Two students from the University of British Columbia created a tool called JSART that uses run-time code instrumentation and analysis to infer invariants that can be used for regression testing. When the code runs, JSART creates a number of test cases that will be run the next time the code executes. The point being to catch any discrepancies between old code and new code. They ran their tool on nine web systems with fairly strong results. The tool was not perfect and occasionally created inappropriate tests, but generally the tests were appropriate and useful.
+\subsection{``JSART: JavaScript Assertion-based Regression Testing''}
+Two students from the University of British Columbia created a tool called JSART that uses run-time code instrumentation and analysis to infer invariants that can be used for regression testing\cite{JSART}. When the code runs, JSART creates a number of test cases that will be run the next time the code executes. The point being to catch any discrepancies between old code and new code. They ran their tool on nine web systems with fairly strong results. The tool was not perfect and occasionally created inappropriate tests, but generally the tests were appropriate and useful.
 
 This is a useful concept that could be integrated into the toolkit at a later time.
 
-\subsection{``DOM Transactions for Testing JavaScript'' \cite{DOMTransactions}}
-Three people from Albert Ludwigs University in Germany came up with a way to deal with test fixtures that are built and torn down frequently. When testing JavaScript, many of one's tests will change the underlying web page in some way. This is often different from testing traditional software where components are separated. In order to test JavaScript, test fixtures for setting up the page and tearing down the page are exceptionally important. Because these fixtures are being made and torn down frequently, this paper discusses a way to utilize transactional memory to quickly get the web page into the right state without constant setup and tear down.
+\subsection{``DOM Transactions for Testing JavaScript''}
+Three people from Albert Ludwigs University in Germany came up with a way to deal with test fixtures that are built and torn down frequently\cite{DOMTransactions}. When testing JavaScript, many of one's tests will change the underlying web page in some way. This is often different from testing traditional software where components are separated. In order to test JavaScript, test fixtures for setting up the page and tearing down the page are exceptionally important. Because these fixtures are being made and torn down frequently, this paper discusses a way to utilize transactional memory to quickly get the web page into the right state without constant setup and tear down.
 
 This could be integrated with one of the existing tools we will use, but our goal was to collect existing tools that did not need alteration.
 
-\subsection{``Testing Web Applications in Practice'' \cite{TestingInPractice}}
-Four students from the University of Seville, Spain published a paper with an overview of web testing. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, testing the client versus testing the server, and a few others. It also describes how to test an actual web application using PHPUnit, a library similar to JUnit, for those developers familiar with Java. When writing their tests, they suggest taking more abstract actions and breaking them up into their functional parts and testing each of those. As an example, inserting a customer into the database (albeit not that abstract) is broken into tests for the function that inserts the customer and tests for making sure the customer makes it into the database.
+\subsection{``Testing Web Applications in Practice''}
+Four students from the University of Seville, Spain published a paper with an overview of web testing\cite{TestingInPractice}. This paper was more of an introduction to testing, outlining the concepts of “Unit Testing”, “Integration Testing”, “Regression Testing”, testing the client versus testing the server, and a few others. It also describes how to test an actual web application using PHPUnit, a library similar to JUnit, for those developers familiar with Java. When writing their tests, they suggest taking more abstract actions and breaking them up into their functional parts and testing each of those. As an example, inserting a customer into the database (albeit not that abstract) is broken into tests for the function that inserts the customer and tests for making sure the customer makes it into the database.
 
 The paper was good refresher on testing concepts and a hands-on application of those concepts. There wasn't any new information or tools to put toward our toolkit, but it was a good reminder and outlined some testing procedures.
 
-\subsection{``Contract-Driven Testing of JavaScript Code'' \cite{ContractDrivenTesting}}
-Two individuals from the Albert Ludwigs University in Germany created a tool, JSConTest, that provides a framework for making contracts for a JavaScript program, allowing for guided random testing on inputs and outputs. Contracts in JSConTest are comments above each function that are of the form ``type -> type''. More complicated forms can introduce parenthesis for function types. In general, JSConTest is useful for detecting type errors on input or output based on the operations performed within a function on the input and the result being output. 
+\subsection{``Contract-Driven Testing of JavaScript Code''}
+Two individuals from the Albert Ludwigs University in Germany created a tool, JSConTest, that provides a framework for making contracts for a JavaScript program, allowing for guided random testing on inputs and outputs\cite{ContractDrivenTesting}. Contracts in JSConTest are comments above each function that are of the form ``type -> type''. More complicated forms can introduce parenthesis for function types. In general, JSConTest is useful for detecting type errors on input or output based on the operations performed within a function on the input and the result being output. 
 
 Although JSConTest could be useful in a toolkit, its source is no-where to be found and there were other, more robust, tools out there for our purposes.
 
-\subsection{``JAWS: A JavaScript API for the Efficient Testing and Integration of Semantic Web Services'' \cite{JAWS}}
-A researcher from Ford Motor Company published a paper regarding an API, called JAWS (JavaScript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that one visits personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
+\subsection{``JAWS: A JavaScript API for the Efficient Testing and Integration of Semantic Web Services''}
+A researcher from Ford Motor Company published a paper regarding an API, called JAWS (JavaScript, AJAX, Web Service), to facilitate testing and integration of Semantic Web Services\cite{JAWS}. Semantic Web Services (SWS) are the server side of machine-to-machine interaction via the internet. This is opposed to machine-to-human interaction such as web pages that one visits personally. SWS use markup that is detailed and sophisticated which conforms to certain standards but is not human-readable.
 
 Another interesting API and project, but we are not focusing on SWS and so including a tool or API like JAWS would be overkill and beyond trying to keep the toolkit as simple and robust as possible.
 
-\subsection{``WebMate: A Tool for Testing Web 2.0 Applications'' \cite{WebMate}}
-Four people from Saarland University in Germany created a tool, WebMate, for automatically navigating web-pages with dynamic content and data. WebMate's goal is to output a usage model for testing purposes. This usage model allows tests to be focused on navigation as well as functionality. This dual usage leads to the ability to test the experience as well as the functions. In addition, WebMate can be used for Cross-Browser testing by running it on multiple browsers and comparing the results. In essence, WebMate is a web application crawler seeking to automatically suss out the layout and interaction between web pages to provide a model to the tester, be it a developer or the automatic testing capabilities of WebMate.
+\subsection{``WebMate: A Tool for Testing Web 2.0 Applications''}
+Four people from Saarland University in Germany created a tool, WebMate, for automatically navigating web-pages with dynamic content and data\cite{WebMate}. WebMate's goal is to output a usage model for testing purposes. This usage model allows tests to be focused on navigation as well as functionality. This dual usage leads to the ability to test the experience as well as the functions. In addition, WebMate can be used for Cross-Browser testing by running it on multiple browsers and comparing the results. In essence, WebMate is a web application crawler seeking to automatically suss out the layout and interaction between web pages to provide a model to the tester, be it a developer or the automatic testing capabilities of WebMate.
 
 WebMate was another interesting project that could have seen use in our toolkit if crawlers weren't already available in other, more mainstream, tools.
 
-\subsection{``Continuous Testing with Ruby, Rails, and JavaScript'' \cite{BookContinuousTesting}}
-The well known book by Rady and Coffin talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of our testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussed writing effective tests, which is always important.
+\subsection{``Continuous Testing with Ruby, Rails, and JavaScript''}
+This well known book by Rady and Coffin\cite{BookContinuousTesting} talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of our testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussed writing effective tests, which is always important.
 
 Not all of those tools made it into the eventual final toolkit, but they were all important to look at in the context of making the overarching toolkit.
 
 \section{Finding Bugs}
 One of the most important aspects of testing is actually finding the bugs in the program. A number of sources provided guidelines and suggestions for finding bugs in web applications.
 
-\subsection{``Finding Bugs In Dynamic Web Applications'' \cite{FindingBugs}}
-Seven researchers from the MIT Computer Science and Artificial Intelligence Lab wrote a paper addressing testing in dynamic web applications. Common testing techniques were not made to work with dynamic content that can be generated at the drop of a hat or click of a button. Therefore, common testing techniques are inadequate for testing dynamic web applications. This paper discusses ways to find bugs in these new-fangled dynamic web applications. They use a new technique and extended a tool called Apollo. This technique generates dynamic test cases based on concrete and symbolic execution. ``The basic idea is to execute an application on an initial input (e.g., an unconstrained or randomly chosen input), and then on additional inputs obtained by solving constraints derived from exercised control flow paths.''
+\subsection{``Finding Bugs In Dynamic Web Applications''}
+Seven researchers from the MIT Computer Science and Artificial Intelligence Lab wrote a paper addressing testing in dynamic web applications\cite{FindingBugs}. Common testing techniques were not made to work with dynamic content that can be generated at the drop of a hat or click of a button. Therefore, common testing techniques are inadequate for testing dynamic web applications. This paper discusses ways to find bugs in these new-fangled dynamic web applications. They use a new technique and extended a tool called Apollo. This technique generates dynamic test cases based on concrete and symbolic execution. ``The basic idea is to execute an application on an initial input (e.g., an unconstrained or randomly chosen input), and then on additional inputs obtained by solving constraints derived from exercised control flow paths.''
 
 Although they test PHP applications, the extension to JavaScript is fairly straightforward. We didn't use Apollo, but the techniques described within allowed for more focused and productive testing.
 
-\subsection{``Testing Web Services: A Survey'' \cite{TestingWebServicesSurvey}}
-Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. What they note in particular is that when using web services, the developer rarely has access to the source code and must therefore black-box test them. Corollary to that is that the developer has to implicitly trust whoever made the service. They go through and discuss a number of frameworks and come to the conclusion that it's most certainly not a solved problem for the following reasons: The frequency of testing required, Testing without disrupting the operation of the service, Determining when testing is required and which operations need to be tested. Regarding the frequency of testing, web services often change in effort to make improvements, but those improvements can change the services and break tests. Testing without disrupting service is difficult because these services often limit accesses or simultaneous access of both a test and a running web application. Finally, determining when and what to test comes back to the trust issue. Some services provide their own testing metrics that include code coverage, number of tests, etc, but the developer must trust that the service is thoroughly tested, not just tested enough to provide interesting metrics.
+\subsection{``Testing Web Services: A Survey''}
+Three researchers at the Centre for Research on Evolution, Search \& Testing at King's College in London wrote a survey of web frameworks for testing web services\cite{TestingWebServicesSurvey}. Their focus is on Service-Oriented Computing, a paradigm in which web sites or applications provide small pieces of functionality usable by ``anyone''. These services are then combined to create more fully featured applications. What they note in particular is that when using web services, the developer rarely has access to the source code and must therefore black-box test them. Corollary to that is that the developer has to implicitly trust whoever made the service. They go through and discuss a number of frameworks and come to the conclusion that it's most certainly not a solved problem for the following reasons: The frequency of testing required, Testing without disrupting the operation of the service, Determining when testing is required and which operations need to be tested. Regarding the frequency of testing, web services often change in effort to make improvements, but those improvements can change the services and break tests. Testing without disrupting service is difficult because these services often limit accesses or simultaneous access of both a test and a running web application. Finally, determining when and what to test comes back to the trust issue. Some services provide their own testing metrics that include code coverage, number of tests, etc, but the developer must trust that the service is thoroughly tested, not just tested enough to provide interesting metrics.
 
-\subsection{``A Framework for Testing RESTful Web Services'' \cite{RESTfulFramework}}
-Two people from the University of Dakota School of Aerospace Studies outline a framework for testing RESTful web services. RESTful web services, short for Representation State Transfer, are, in the context of web applications, a name for web APIs that conform to a set of constraints. In particular they must offer four request methods: GET, POST, PUT, and DELETE. These methods generally connect to a database or other storage system in order to store, retrieve, or delete entries therein.
+\subsection{``A Framework for Testing RESTful Web Services''}
+Two people from the University of Dakota School of Aerospace Studies outline a framework for testing RESTful web services\cite{RESTfulFramework}. RESTful web services, short for Representation State Transfer, are, in the context of web applications, a name for web APIs that conform to a set of constraints. In particular they must offer four request methods: GET, POST, PUT, and DELETE. These methods generally connect to a database or other storage system in order to store, retrieve, or delete entries therein.
 
 \section{Writing Effective Test Cases}
 Although not too distinct from \emph{finding bugs}, writing effective test cases is its own art form. The important of writing concise, correct, productive test cases cannot be overstated. The difference between writing one test case that effective tests multiple things and writing a single test case for every little detail is the difference between developers wanting to write tests at all and skipping it due to time constraints or frustration.
 
-\subsection{``Going Faster: Testing The Web Application'' \cite{GoingFaster}}
-Two employees of Evant Software wrote an article for IEEE Software regarding the testing of web applications. Mostly this paper was an overview and implementation of Test Driven Development (TDD) and eXtreme Programming, but in the middle of the article was a good section about the difficulties of testing the web and how to deal them. A few of the remarks regarding the difficulty of web testing is that often the client-side and server-side portions of web applications are written in different languages. This wasn't an issue for our application, but is still an issue for many applications. Some of the most useful advice was: ``First, test those parts of the server-side code that are not directly concerned with being part of the Web application, without involving Web peculiarities. ... Second, test those parts of the client-side code that have no server interaction. This is typically code that contains little or no business logic. ... Third, write functional tests of a low grain in the server-side language (for example, Java or C++) that simulate the request/response Web environment. ... Using this framework you can write walk-through tests that simulate the user moving through the UI''.
+\subsection{``Going Faster: Testing The Web Application''}
+Two employees of Evant Software wrote an article for IEEE Software regarding the testing of web applications\cite{GoingFaster}. Mostly this paper was an overview and implementation of Test Driven Development (TDD) and eXtreme Programming, but in the middle of the article was a good section about the difficulties of testing the web and how to deal them. A few of the remarks regarding the difficulty of web testing is that often the client-side and server-side portions of web applications are written in different languages. This wasn't an issue for our application, but is still an issue for many applications. Some of the most useful advice was: ``First, test those parts of the server-side code that are not directly concerned with being part of the Web application, without involving Web peculiarities. ... Second, test those parts of the client-side code that have no server interaction. This is typically code that contains little or no business logic. ... Third, write functional tests of a low grain in the server-side language (for example, Java or C++) that simulate the request/response Web environment. ... Using this framework you can write walk-through tests that simulate the user moving through the UI''.
 
 This step-by-step walkthrough of how to test was an excellent starting point to look at different tools and how they handled this issue.
 
@@ -1399,25 +1412,1565 @@ What should I show here? I have the same tests but for different frameworks... S
 \section{PolyXpress Test Code}
 
 \subsection{Author Model Unit Test}
-...
+\begin{lstlisting}
+var assert = require("chai").assert;
+
+describe('PX Designer Model', function() {
+    var model = require('../src/js/peDesignerModel.js')();
+
+    before(function() {
+        model.storyMap.push({_id: "storyID", title: "Story Test"});
+        model.chapterMap.push({_id: "chapterID", title: "Chapter Test"});
+        model.eventMap.push({_id: "eventID", title: "Event Test"});
+    });
+    
+    after(function() {
+    });
+
+    /* Object Methods */
+
+    describe('stories', function () {
+      it('should be found by ID', function() {
+          // findStoryByID
+          assert.equal(model.findStoryByID("storyID").title, "Story Test");
+      });
+      
+      it('should not be found by bogus ID', function() {
+          // findStoryByID
+          assert.isUndefined(model.findStoryByID("bogusID")); 
+      });
+
+      it('should be updateable', function() {
+          // updateStory
+          var story = {_id: model.storyMap[0]._id, title: "New Story Test"};
+
+          model.updateStory(story);
+
+          assert.equal(model.storyMap[0].title, "New Story Test");
+      });
+
+      it('should be deleteable', function() {
+          // deleteStory
+          var storyID = model.storyMap[0]._id;
+
+          model.deleteStory(storyID);
+
+          assert.lengthOf(model.storyMap, 0);
+      });
+
+      it('should be able to be populated', function() {
+          // populateStoryMap
+          var stories = [{_id: "story1", title: "Story 1"}, 
+            {_id: "story2", title: "Story 2"}, 
+            {_id: "story3", title: "Story 3"}];
+
+          model.populateStoryMap(stories);
+
+          assert.lengthOf(model.storyMap, 3);
+
+          assert.equal(model.storyMap[0]._id, "story1");
+          assert.equal(model.storyMap[0].title, "Story 1");
+
+          assert.equal(model.storyMap[1]._id, "story2");
+          assert.equal(model.storyMap[1].title, "Story 2");
+
+          assert.equal(model.storyMap[2]._id, "story3");
+          assert.equal(model.storyMap[2].title, "Story 3");
+      });
+    });
+    
+    describe('chapters', function () {
+      it('should be found by ID', function() {
+          // findChapterByID
+          assert.equal(model.findChapterByID("chapterID").title, "Chapter Test");
+      });
+      
+      it('should not be found by bogus ID', function() {
+          // findChapterByID
+          assert.isUndefined(model.findChapterByID("bogusID")); 
+      });
+
+      it('should be updateable', function() {
+          // updateChapter
+          var chapter = {_id: model.chapterMap[0]._id, title: "New Chapter Test"};
+
+          model.updateChapter(chapter);
+
+          assert.equal(model.chapterMap[0].title, "New Chapter Test");
+      });
+
+      it('should be deleteable', function() {
+          // deleteChapter
+          var chapterID = model.chapterMap[0]._id;
+
+          model.deleteChapter(chapterID);
+
+          assert.lengthOf(model.chapterMap, 0);
+      });
+
+      it('should be able to be populated', function() {
+          // populateChapterMap
+          var chapters = [{_id: "chapter1", title: "Chapter 1"}, 
+            {_id: "chapter2", title: "Chapter 2"}, 
+            {_id: "chapter3", title: "Chapter 3"}];
+
+          model.populateChapterMap(chapters);
+
+          assert.lengthOf(model.chapterMap, 3);
+
+          assert.equal(model.chapterMap[0]._id, "chapter1");
+          assert.equal(model.chapterMap[0].title, "Chapter 1");
+
+          assert.equal(model.chapterMap[1]._id, "chapter2");
+          assert.equal(model.chapterMap[1].title, "Chapter 2");
+
+          assert.equal(model.chapterMap[2]._id, "chapter3");
+          assert.equal(model.chapterMap[2].title, "Chapter 3");
+      });
+    });
+
+
+    describe('events', function () {
+      it('should be found by ID', function() {
+          // findEventByID
+          assert.equal(model.findEventByID("eventID").title, "Event Test");
+      });
+      
+      it('should not be found by bogus ID', function() {
+          // findEventByID
+          assert.isUndefined(model.findEventByID("bogusID")); 
+      });
+
+      it('should be updateable', function() {
+          // updateEvent
+          var updated_event = {_id: model.eventMap[0]._id, title: "New Event Test"};
+
+          model.updateEvent(updated_event);
+
+          assert.equal(model.eventMap[0].title, "New Event Test");
+      });
+
+      it('should be deleteable', function() {
+          // deleteEvent
+          var eventID = model.eventMap[0]._id;
+
+          model.deleteEvent(eventID);
+
+          assert.lengthOf(model.eventMap, 0);
+      });
+
+      it('should be able to be populated', function() {
+          // populateEventMap
+          var events = [{_id: "event1", title: "Event 1"}, 
+            {_id: "event2", title: "Event 2"}, 
+            {_id: "event3", title: "Event 3"}];
+
+          model.populateEventMap(events);
+
+          assert.lengthOf(model.eventMap, 3);
+
+          assert.equal(model.eventMap[0]._id, "event1");
+          assert.equal(model.eventMap[0].title, "Event 1");
+
+          assert.equal(model.eventMap[1]._id, "event2");
+          assert.equal(model.eventMap[1].title, "Event 2");
+
+          assert.equal(model.eventMap[2]._id, "event3");
+          assert.equal(model.eventMap[2].title, "Event 3");
+      });
+    });
+});
+\end{lstlisting}
 
 \subsection{Author Controller Unit Test}
-...
+\begin{lstlisting}
+var assert = require('chai').assert;
+
+controllerStubs = {
+  elements: {},
+  createdElements: {}
+};
+
+// Stub
+document = {
+  getElementById: function (elementName) {
+    controllerStubs.elements[elementName] = {
+      name: elementName,
+      style: '',
+      firstChild: undefined,
+      children: [],
+      appendChild: function (child) {
+        this.children.push(child);
+        this.firstChild = child;
+      },
+      removeChild: function (child) {
+        if (this.children.length > 0) {
+          this.children.pop(child);
+          this.firstChild = this.children[0];
+        }
+      },
+      getElementsByTagName: function (element) {return [];}
+    }
+    return controllerStubs.elements[elementName];
+  },
+  createElement: function (elementType) {
+    controllerStubs.createdElements[elementType] = {
+      type: elementType,
+      firstChild: undefined,
+      children: [],
+      appendChild: function (child) {
+        this.children.push(child);
+        this.firstChild = child;
+      },
+      removeChild: function (child) {
+        if (this.children.length > 0) {
+          this.children.pop(child);
+          this.firstChild = this.children[0];
+        }
+      },
+      setAttribute: function (att, val) {}
+    }
+
+    return controllerStubs.createdElements[elementType];
+  },
+  createTextNode: function (text) {
+    return {
+      text: text
+    }
+  }
+};
+
+confirm = function (_) {return true};
+
+createStory = {
+  title: {}, authors: {}, version: {}, publish: {}, test: {}, 
+  keywords:{}, overview: {}, image: {}, music: {}, chapters: {}
+};
+
+createChapter = {
+  ctitle: {}, cauthors: {}, cversion: {}, ckeywords: {}, coverview: {},
+  cimage: {}, cmusic: {}, clat: {}, clng: {}, crange: {}, cevents: {}
+}
+
+createEvent = {
+  etitle: {}, eauthors: {}, eversion: {}, ekeywords: {},
+  erepeats: {}, elat: {}, elng: {}, erange: {}
+}
+
+window = {};
+
+alert = function(message) {
+  controllerStubs.alertMsg = message;
+}
+
+// Stub for JQM initialization in peDesignerController
+$ = function (_) {
+  return {
+    on: function (event, element, callback) {
+      controllerStubs.event = event;
+      controllerStubs.element = element;
+      controllerStubs.callback = callback;
+    },
+    trigger: function (event) {
+      controllerStubs.event = event;
+      controllerStubs.element = _;
+    },
+    checkboxradio: function (_) {},
+    hasClass: function (_) {},
+    listView: function (_) {}
+  }
+}
+
+$.mobile = {
+  changePage: function(newPage) {}
+}
+
+map_canvas = "map canvas";
+google = {maps: {event: {}}};
+google.maps.event.trigger = function (element, action) {
+  controllerStubs.google = {element: element, action: action};
+}
+
+// Need to overwrite peDesignerServer calls to isolate controller
+controllerDS = {
+  getAuthorData: function (authorDataCallback) {
+    this.authorData = {name: "controllerDS Author Data", _id: 0};
+    controllerStubs.controllerDSCall = true;
+
+    authorDataCallback(this.authorData);
+  },
+  submitNewStory: function(storyData, authorData, storyCallback) {
+    controllerDS.newStory = {storyData: storyData, authorData: authorData}
+  },
+  submitUpdateStory: function(storyID, storyData, storyCallback) {
+    controllerDS.updateStory = {storyID: storyID, storyData: storyData}
+  },
+  submitDeleteStory: function(updateStoryID, authorData, populateStoryList) {},
+  submitNewChapter: function(chapterData, authorData, chapterCallback) {
+    controllerDS.newChapter = {chapterData: chapterData, authorData: authorData}
+  },
+  submitUpdateChapter: function(chapterID, chapterData, chapterCallback) {
+    controllerDS.updateChapter = {chapterID: chapterID, chapterData: chapterData}
+  },
+  submitDeleteChapter: function(updateChapterID, authorData, populateChapterList) {},
+  submitNewEvent: function(eventData, eventCallback) {
+    controllerDS.newEvent = {eventData: eventData}
+  },
+  submitUpdateEvent: function(eventID, eventData, eventCallback) {
+    controllerDS.updateEvent = {eventID: eventID, eventData: eventData}
+  },
+  submitDeleteEvent: function(updateEventID, authorData, populateEventList) {}
+};
+
+controllerDM = {
+  storyMap: [
+    // First story built out to accomodate all tests
+    {title: 'Test Story 1', _id: '1', chapterList: [1, 2], keywords: ["test1", "test2"]}, 
+    {title: 'Test Story 2', _id: '2'}, 
+    {title: 'Test Story 3', _id: '3'}
+  ],
+  chapterMap: [
+    {title: 'Test Chapter 1', _id: '1', eventList: [1, 2], keywords: ["kw1", "kw2"], proximity: {}},
+    {title: 'Test Chapter 2', _id: '2'},
+    {title: 'Test Chapter 3', _id: '3'}
+  ],
+  eventMap: [
+    {title: 'Test Event 1', _id: '1', assetList: [{order: "Test Order 1", format: "Test Format 1", uri: "Test Data 1"}], keywords: ["kw1", "kw2"], proximity: {}},
+    {title: 'Test Event 2', _id: '2'},
+    {title: 'Test Event 3', _id: '3'}
+  ],
+  findStoryByID: function (id) {return this.storyMap[id - 1];},
+  findChapterByID: function (id) {return this.chapterMap[id - 1];},
+  findEventByID: function (id) {return this.eventMap[id - 1];}
+};
+
+// Test Spec Begins
+describe('PX Designer Controller', function () {
+  var controller = require('../src/js/peDesignerController.js')(controllerDS, controllerDM);
+
+  before(function () {
+    // For JQM Initialize
+    assert.equal(controllerStubs.event, 'pageshow');
+    assert.equal(controllerStubs.element, '#mapView');
+
+    controllerStubs.callback();
+    assert.equal(controllerStubs.google.element, 'map canvas');
+    assert.equal(controllerStubs.google.action, 'resize');
+  });
+
+  // // Documentation says unused, test here for future use, unfinished
+  // it('should set up page event handlers', function () {
+  //  // setupPageEventHandlers
+  //  assert.equal(controllerStubs.element, 'pageinit');
+  //  assert.equal(controllerStubs.event, '#mainMenu');
+
+  //  controllerStubs.callback();
+  // });
+
+  it('should show a main menu given existing author data', function () {
+    // showMainMenu
+
+    // Call to controllerDS
+    controller.showMainMenu();
+    assert.equal(controller.getAuthorData().name, 'controllerDS Author Data');
+    assert.isTrue(controllerStubs.controllerDSCall);
+    controllerStubs.controllerDSCall = false;
+
+    // No call to controllerDS
+    controller.showMainMenu();
+    assert.equal(controller.getAuthorData().name, 'controllerDS Author Data');
+    assert.isFalse(controllerStubs.controllerDSCall);
+  });
+
+  describe('Story Management', function () {
+    function assertClearStory() {
+      assert.equal(createStory.title.value, "");
+            assert.equal(createStory.authors.value, "");
+            assert.equal(createStory.version.value, "");
+            assert.equal(createStory.publish.checked, false);
+            assert.equal(createStory.test.checked, false);
+            assert.equal(createStory.keywords.value, "");
+            assert.equal(createStory.overview.value, "");
+            assert.equal(createStory.image.value, "");
+            assert.equal(createStory.music.value, "");
+            assert.equal(createStory.chapters.value, "");
+    }
+
+    it('should initialize the story manager', function () {
+      // initStoryManager, just calls populateStoryList()
+      controller.initStoryManager();
+      
+      // TODO: More tests here
+      var storyList = controllerStubs.elements["existingStoryList"].children;
+      assert.lengthOf(storyList, 3);
+      assert.equal(storyList[0].innerHTML, "<a href='#storyData'>Test Story 1</a>");
+      assert.equal(storyList[1].innerHTML, "<a href='#storyData'>Test Story 2</a>");
+      assert.equal(storyList[2].innerHTML, "<a href='#storyData'>Test Story 3</a>");
+    });
+    
+    it('should update a story', function () {
+      // updateStory, calls populateStoryChapterList with a story
+      controller.updateStory(1); // The 'full' story or it'll be unhappy
+
+      var checkboxElements = controllerStubs.elements["chapterCheckboxes"].children;
+      assert.lengthOf(checkboxElements, 6); // A label and input element for each chapter associated with the story
+
+      var chapter1Label = checkboxElements[0].firstChild;
+      var chapter2Label = checkboxElements[2].firstChild;
+      var chapter3Label = checkboxElements[4].firstChild;
+
+      var chapter1Checkbox = checkboxElements[1];
+      var chapter2Checkbox = checkboxElements[3];
+      var chapter3Checkbox = checkboxElements[5];
+
+      assert.equal(chapter1Label.text, "ID: 1, Title: Test Chapter 1");
+      assert.equal(chapter2Label.text, "ID: 2, Title: Test Chapter 2");
+      assert.equal(chapter3Label.text, "ID: 3, Title: Test Chapter 3");
+      
+      assert.isTrue(chapter1Checkbox.checked);
+      assert.isTrue(chapter2Checkbox.checked);
+
+      assert.isUndefined(chapter3Checkbox.checked); // Story 3 isn't a part of this chapter!
+    });
+
+    it('should create a story', function () {
+      // createStory
+      controller.createStory();
+
+      var checkboxElements = controllerStubs.elements["chapterCheckboxes"].children;
+      assert.lengthOf(checkboxElements, 6); // A label and input element for each chapter associated with the story
+
+      var chapter1Label = checkboxElements[0].firstChild;
+      var chapter2Label = checkboxElements[2].firstChild;
+      var chapter3Label = checkboxElements[4].firstChild;
+
+      var chapter1Checkbox = checkboxElements[1];
+      var chapter2Checkbox = checkboxElements[3];
+      var chapter3Checkbox = checkboxElements[5];
+
+      assert.equal(chapter1Label.text, "ID: 1, Title: Test Chapter 1");
+      assert.equal(chapter2Label.text, "ID: 2, Title: Test Chapter 2");
+      assert.equal(chapter3Label.text, "ID: 3, Title: Test Chapter 3");
+      
+      // A new story has no chapter boxes checked
+      assert.isUndefined(chapter1Checkbox.checked);
+      assert.isUndefined(chapter2Checkbox.checked);
+      assert.isUndefined(chapter3Checkbox.checked);
+    });
+
+    it('should submit a story', function () {
+      // submitStoryData
+      // Not the greatest because it relies on createStory and updateStory, but I can't change updateStoryID any other way, it's a private variable
+
+      // A brand new story
+      controller.createStory();
+
+      createStory.title.value = "New Story";
+      createStory.authors.value = "Author1 Author2";
+      createStory.chapters.value = "0 1";
+
+      controller.submitStoryData();
+
+      assert.equal(controllerDS.newStory.storyData.title, "New Story");
+      assert.deepEqual(controllerDS.newStory.storyData.authors, ["Author1", "Author2"]);
+      assert.deepEqual(controllerDS.newStory.storyData.chapterList, ["0", "1"]);
+
+      assert.equal(controllerStubs.alertMsg, "Adding story to server. \nHit \"ok\" to return to main menu!");
+
+      // Updates to a previous story
+      controller.updateStory(1);
+
+      createStory.title.value = "Updated Story";
+      createStory.authors.value = "Author3 Author4";
+      createStory.chapters.value = "1 2"; 
+
+      controller.submitStoryData();
+
+      assert.equal(controllerDS.updateStory.storyData.title, "Updated Story");
+      assert.deepEqual(controllerDS.updateStory.storyData.authors, ["Author3", "Author4"]);
+      assert.deepEqual(controllerDS.updateStory.storyData.chapterList, ["1", "2"]);
+
+      assert.equal(controllerStubs.alertMsg, "Updating story on server. \nHit \"ok\" to return to main menu!");
+    });
+
+    it('should validate a story', function () {
+      // validateStoryPublish
+      createStory.publish.checked = true;
+
+      // Invalid, no chapters
+      createStory.chapters.value = "";
+
+      assert.isFalse(controller.validateStoryPublish(undefined)); // Takes event param that isn't used
+
+      // Invalid, no events
+      createStory.chapters.value = "1 2";
+      var eventList = controllerDM.chapterMap[0].eventList.slice(0);
+      controllerDM.chapterMap[0].eventList = [];
+
+      assert.isFalse(controller.validateStoryPublish(undefined)); // Takes event param that isn't used
+
+      // Valid!
+      controllerDM.chapterMap[0].eventList = ["Event 1"];
+
+      assert.isTrue(controller.validateStoryPublish(undefined)); // Takes event param that isn't used
+    
+      controllerDM.chapterMap[0].eventList = eventList.slice(0);
+    });
+
+    it('should delete a story', function () {
+      // deleteStoryData
+      // Most of the work is done in the Designer Server, only thing to check is that it clears the current story
+      controller.deleteStoryData();
+
+      assertClearStory();
+    });
+
+    it('should clear a story', function () {
+      // cancelStoryData
+      // Just calls clearStoryData();
+      controller.cancelStoryData();
+
+      assertClearStory();
+    });
+  });
+  
+  describe('Chapter Management', function () {
+    function assertClearChapter() {
+      assert.equal(createChapter.ctitle.value, "");
+            assert.equal(createChapter.cauthors.value, "");
+            assert.equal(createChapter.cversion.value, "");
+            assert.equal(createChapter.ckeywords.value, "");
+            assert.equal(createChapter.coverview.value, "");
+            assert.equal(createChapter.cimage.value, "");
+            assert.equal(createChapter.cmusic.value, "");
+            assert.equal(createChapter.clat.value, "");
+            assert.equal(createChapter.clng.value, "");
+            assert.equal(createChapter.crange.value, "");
+            assert.equal(createChapter.cevents.value, "");
+    }
+
+    it('should initialize the chapter manager', function () {
+      // initChapterManager, just calls populateChapterList
+      controller.initChapterManager();
+
+      // TODO: More tests here
+      var chapterList = controllerStubs.elements["existingChapterList"].children;
+      assert.lengthOf(chapterList, 3);
+      assert.equal(chapterList[0].innerHTML, "<a href='#chapterData'>Test Chapter 1</a>");
+      assert.equal(chapterList[1].innerHTML, "<a href='#chapterData'>Test Chapter 2</a>");
+      assert.equal(chapterList[2].innerHTML, "<a href='#chapterData'>Test Chapter 3</a>");  
+    });
+
+    it('should update a chapter', function () {
+      // updateChapter
+      controller.updateChapter(1); // The 'full' chapter or it'll be unhappy
+
+      var checkboxElements = controllerStubs.elements["eventCheckboxes"].children;
+      assert.lengthOf(checkboxElements, 6); // A label and input element for each event associated with the chapter
+
+      var event1Label = checkboxElements[0].firstChild;
+      var event2Label = checkboxElements[2].firstChild;
+      var event3Label = checkboxElements[4].firstChild;
+
+      var event1Checkbox = checkboxElements[1];
+      var event2Checkbox = checkboxElements[3];
+      var event3Checkbox = checkboxElements[5];
+
+      assert.equal(event1Label.text, "ID: 1, Title: Test Event 1");
+      assert.equal(event2Label.text, "ID: 2, Title: Test Event 2");
+      assert.equal(event3Label.text, "ID: 3, Title: Test Event 3");
+      
+      assert.isTrue(event1Checkbox.checked);
+      assert.isTrue(event2Checkbox.checked);
+
+      assert.isUndefined(event3Checkbox.checked); // Chapter 3 isn't a part of this event!
+    });
+
+    it('should create a chapter', function () {
+      // createChapter
+      controller.createChapter();
+
+      var checkboxElements = controllerStubs.elements["eventCheckboxes"].children;
+      assert.lengthOf(checkboxElements, 6); // A label and input element for each event associated with the chapter
+
+      var event1Label = checkboxElements[0].firstChild;
+      var event2Label = checkboxElements[2].firstChild;
+      var event3Label = checkboxElements[4].firstChild;
+
+      var event1Checkbox = checkboxElements[1];
+      var event2Checkbox = checkboxElements[3];
+      var event3Checkbox = checkboxElements[5];
+
+      assert.equal(event1Label.text, "ID: 1, Title: Test Event 1");
+      assert.equal(event2Label.text, "ID: 2, Title: Test Event 2");
+      assert.equal(event3Label.text, "ID: 3, Title: Test Event 3");
+      
+      assert.isUndefined(event1Checkbox.checked);
+      assert.isUndefined(event2Checkbox.checked);
+      assert.isUndefined(event3Checkbox.checked);
+    });
+
+    it('should submit a chapter', function () {
+      // submitChapterData
+      // Not the greatest because it relies on createChapter and updateChapter, but I can't change updateChapterID any other way, it's a private variable
+
+      // A brand new story
+      controller.createChapter();
+
+      createChapter.ctitle.value = "New Chapter";
+      createChapter.cauthors.value = "Author1 Author2";
+      createChapter.cevents.value = "0 1";
+      createChapter.clat.value = 0;
+      createChapter.clng.value = 0;
+      createChapter.crange.value = 0;
+
+      controller.submitChapterData();
+
+      assert.equal(controllerDS.newChapter.chapterData.title, "New Chapter");
+      assert.deepEqual(controllerDS.newChapter.chapterData.authors, ["Author1", "Author2"]);
+      assert.deepEqual(controllerDS.newChapter.chapterData.eventList, ["0", "1"]);
+
+      assert.equal(controllerStubs.alertMsg, "Adding chapter to server. \nHit \"ok\" to return to main menu!");
+
+      // Updates to a previous chapter
+      controller.updateChapter(1);
+
+      createChapter.ctitle.value = "Updated Chapter";
+      createChapter.cauthors.value = "Author3 Author4";
+      createChapter.cevents.value = "1 2";  
+
+      controller.submitChapterData();
+
+      assert.equal(controllerDS.updateChapter.chapterData.title, "Updated Chapter");
+      assert.deepEqual(controllerDS.updateChapter.chapterData.authors, ["Author3", "Author4"]);
+      assert.deepEqual(controllerDS.updateChapter.chapterData.eventList, ["1", "2"]);
+
+      assert.equal(controllerStubs.alertMsg, "Updating chapter on server. \nHit \"ok\" to return to main menu!");
+    });
+
+    it('should validate a chapter list', function () {
+      // validateChaptersPublish
+      // A chapter list is valid if at least one chapter in it has at least one associated event
+
+      // Valid
+      assert.isTrue(controller.validateChaptersPublish([1, 2, 3]));
+
+      // Invalid
+      controllerDM.chapterMap[0].eventList = [];
+      assert.isFalse(controller.validateChaptersPublish([1, 2, 3]));
+    });
+
+    it('should delete a chapter', function () {
+      // deleteChapterData
+      controller.deleteChapterData();
+
+      assertClearChapter();
+    });
+
+    it('should clear a chapter', function () {
+      // cancelChapterData
+      controller.cancelChapterData();
+
+      assertClearChapter();
+    });
+  });
+
+  describe('Event Management', function () {
+    function assertClearEvent() {
+      assert.equal(createEvent.etitle.value, "");
+            assert.equal(createEvent.eauthors.value, "");
+            assert.equal(createEvent.eversion.value, "");
+            assert.equal(createEvent.ekeywords.value, "");
+            assert.equal(createEvent.erepeats.checked, false);
+            assert.equal(createEvent.elat.value, "");
+            assert.equal(createEvent.elng.value, "");
+            assert.equal(createEvent.erange.value, "");
+    }
+
+    it('should initialize the event manager', function () {
+      // initEventManager, just calls populateEventList
+      controller.initEventManager();
+
+      var eventList = controllerStubs.elements["existingEventList"].children;
+      assert.lengthOf(eventList, 3);
+      assert.equal(eventList[0].innerHTML, "<a href='#eventData'>Test Event 1</a>");
+      assert.equal(eventList[1].innerHTML, "<a href='#eventData'>Test Event 2</a>");
+      assert.equal(eventList[2].innerHTML, "<a href='#eventData'>Test Event 3</a>");
+    });
+
+    it('should update a event', function () {
+      // updateEvent
+      controller.updateEvent(1);
+
+      var assetList = controllerStubs.elements['eassetList'];
+
+      // TODO: Add more tests
+      assert.equal(assetList.children[0].innerHTML, "<a href=''>Order: Test Order 1, Type: Test Format 1, Data: Test%20Data%201</a>");
+
+      assert.equal(createEvent.etitle.value, "Test Event 1");
+    });
+
+    it('should create a event', function () {
+      // createEvent
+      // Not much to test.... populateChapterEventList is never called
+      controller.createEvent();
+      
+      assert.equal(controllerStubs.elements['eventDataTitle'].innerHTML, "Create Event");
+      assert.equal(createEvent.eauthors.value, "0");  
+    });
+
+    it('should submit an event', function () {
+      // submitEventData
+
+      // New Event
+      controller.createEvent();
+
+      createEvent.etitle.value = "New Event";
+      createEvent.eversion.value = "10";
+      createEvent.eauthors.value = "091823";
+      createEvent.elat.value = 0;
+      createEvent.elng.value = 0;
+      createEvent.erange.value = 0;
+
+      controller.submitEventData();
+
+      assert.equal(controllerDS.newEvent.eventData.title, "New Event");
+      assert.equal(controllerDS.newEvent.eventData.version, "10");
+
+      // Updated Event
+      controller.updateEvent(1);
+
+      createEvent.etitle.value = "Updated Event";
+      createEvent.eversion.value = "20";
+      createEvent.eauthors.value = "091823";
+      createEvent.elat.value = 0;
+      createEvent.elng.value = 0;
+      createEvent.erange.value = 0;
+
+      controller.submitEventData();
+
+      assert.equal(controllerDS.updateEvent.eventData.title, "Updated Event");
+      assert.equal(controllerDS.updateEvent.eventData.version, "20");
+    });
+
+    it('should delete an event', function () {
+      // deleteEventData
+      controller.deleteEventData();
+
+      assertClearEvent();
+    });
+
+    it('should clear an event', function () {
+      // cancelEventData
+      controller.cancelEventData();
+
+      assertClearEvent();
+    });
+  });
+
+  describe('Author Management', function () {
+    it('should initialize author management', function () {
+      // initAuthorManagement
+      var removeAuthor = function (li, ul) {};
+
+      createStory.authors.value = "CSA1 CSA2 CSA3";
+      controller.initAuthorManagement(createStory, removeAuthor);
+
+      var authors = controllerStubs.elements['currentAuthors'].children;
+
+      assert.equal(authors[0].innerHTML, "<a href=''>CSA1</a>");
+      assert.equal(authors[1].innerHTML, "<a href=''>CSA2</a>");
+      assert.equal(authors[2].innerHTML, "<a href=''>CSA3</a>");
+
+      createChapter.cauthors.value = "CCA1 CCA2 CCA3";
+      controller.initAuthorManagement(createChapter, removeAuthor);
+
+      authors = controllerStubs.elements['currentAuthors'].children;
+
+      assert.equal(authors[0].innerHTML, "<a href=''>CCA1</a>");
+      assert.equal(authors[1].innerHTML, "<a href=''>CCA2</a>");
+      assert.equal(authors[2].innerHTML, "<a href=''>CCA3</a>");
+
+      createEvent.eauthors.value = "CEA1 CEA2 CEA3";
+      controller.initAuthorManagement(createEvent, removeAuthor);
+
+      authors = controllerStubs.elements['currentAuthors'].children;
+
+      assert.equal(authors[0].innerHTML, "<a href=''>CEA1</a>");
+      assert.equal(authors[1].innerHTML, "<a href=''>CEA2</a>");
+      assert.equal(authors[2].innerHTML, "<a href=''>CEA3</a>");
+    });
+
+    // Only calls controllerDS stuff, no reason to test this here.
+    // it('should search for an author', function () {
+    //  // authorSearch
+    //  var event = {keycode: 13};
+    // });
+
+    it('should get the author data', function () {
+      // getAuthorData
+      var authorData = controller.getAuthorData();
+
+      assert.equal(authorData.name, "controllerDS Author Data");
+      assert.equal(authorData._id, 0);
+    });
+  });
+});
+\end{lstlisting}
 
 \subsection{Author Server Unit Test}
-...
+\begin{lstlisting}
+var assert = require('chai').assert;
+
+serverStubs = {};
+testResponseText = {};
+
+XMLHttpRequest = function () {
+  this.status = 200;
+  this.readyState = 4;
+  this.responseText = testResponseText;
+  
+  this.open = function (method, url) {
+    serverStubs.lastOpen = {method: method, url: url};
+  }
+
+  this.setRequestHeader = function (headerType, headerValue) {
+    serverStubs.headerType = headerType;
+    serverStubs.headerValue = headerValue;
+  }
+
+  this.send = function (_) {
+    if (this.onload) {
+      this.onload();
+    };
+
+    if (this.onreadystatechange) {
+      this.onreadystatechange();
+    };
+
+    serverStubs.sentData = _;
+  }
+
+  this.updateResponseText = function(newText) {
+    this.responseText = newText;
+  }
+}
+
+serverDM = {
+  storyMap: [],
+  chapterMap: [],
+  eventMap: [],
+  updateStory: function (story) {this.storyMap[0] = story;},
+  updateChapter: function (chapter) {this.chapterMap[0] = chapter;},
+  updateEvent: function (event) {this.eventMap[0] = event;},
+  deleteStory: function (id) {this.storyMap[0] = {title:"deleted"};},
+  deleteChapter: function (id) {this.chapterMap[0] = {title:"deleted"};},
+  deleteEvent: function (id) {this.eventMap[0] = {title:"deleted"};}
+};
+
+describe('PX Designer Server', function () {
+  var server = require('../src/js/peDesignerServer.js')(serverDM);
+
+  it('should check authorization', function () {
+    // checkAuth
+    var authorData = {};
+
+    var checkAuthCallBack = function (authData) {
+      authorData = authData;
+    }
+
+    testResponseText = '{"author": "Test Author", "data": 1337}';
+
+    server.checkAuth(checkAuthCallBack);
+
+    assert.equal(serverStubs.lastOpen.method, "GET");
+    assert.equal(serverStubs.lastOpen.url, "/peAPI/user/checkAuth");
+    assert.isNull(serverStubs.sentData);
+
+    assert.equal(authorData.author, "Test Author");
+    assert.equal(authorData.data, 1337);
+  });
+
+  describe('Story Backend', function () {
+    it('should submit a new story', function () {
+      // submitNewStory
+      testResponseText = '{"_id": 10, "title": "Test Story", "author": "Test Author"}';
+
+      var storyData = {title: "Test Title"};
+      var authorData = {authorList: []};
+      var storyDisplayCallback = function () {};
+
+      server.submitNewStory(storyData, authorData, storyDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "POST");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/story");
+      assert.equal(serverStubs.sentData, '{"title":"Test Title"}');
+
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+
+      assert.equal(serverDM.storyMap[0].title, "Test Story");
+      assert.equal(serverDM.storyMap[0].author, "Test Author");
+      assert.equal(authorData.authorList[0], 10);
+    });
+
+    it('should update a story', function () {
+      // submitUpdateStory      
+      testResponseText = '{"_id": 1, "title": "Test Update Story", "author": "Test Update Author"}';
+
+      var storyID = 1;
+      var storyData = {title: "Update Story Data"};
+      var storyDisplayCallback = function () {};
+
+      server.submitUpdateStory(storyID, storyData, storyDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "PUT");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/story/" + storyID);
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+      assert.equal(serverStubs.sentData, '{"title":"Update Story Data"}')
+
+      assert.equal(serverDM.storyMap[0].title, "Test Update Story");
+      assert.equal(serverDM.storyMap[0]._id, 1);
+      assert.equal(serverDM.storyMap[0].author, "Test Update Author");
+    });
+
+    it('should delete a story', function () {
+      // submitDeleteStory
+      testResponseText = '{"_id": 1}';
+
+      var storyID = 1;
+      var authorData = {authorList: [1]};
+      var storyDisplayCallback = function () {};
+
+      server.submitDeleteStory(storyID, authorData, storyDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "DELETE");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/story/" + storyID);
+      assert.isNull(serverStubs.sentData);
+
+      assert.lengthOf(authorData.authorList, 0);
+      assert.equal(serverDM.storyMap[0].title, "deleted");
+    });
+  });
+
+  describe('Chapter Backend', function () {
+    it('should submit a new chapter', function () {
+      // submitNewChapter
+      testResponseText = '{"_id": 10, "title": "Test Chapter", "author": "Test Author"}';
+
+      var chapterData = {title: "Test Title"};
+      var chapterDisplayCallback = function () {};
+
+      server.submitNewChapter(chapterData, chapterDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "POST");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/chapter");
+      assert.equal(serverStubs.sentData, '{"title":"Test Title"}');
+
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+
+      assert.equal(serverDM.chapterMap[0].title, "Test Chapter");
+      assert.equal(serverDM.chapterMap[0].author, "Test Author");
+    });
+
+    it('should update a chapter', function () {
+      // submitUpdateChapter      
+      testResponseText = '{"_id": 1, "title": "Test Update Chapter", "author": "Test Update Author"}';
+
+      var chapterID = 1;
+      var chapterData = {title: "Update Chapter Data"};
+      var chapterDisplayCallback = function () {};
+
+      server.submitUpdateChapter(chapterID, chapterData, chapterDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "PUT");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/chapter/" + chapterID);
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+      assert.equal(serverStubs.sentData, '{"title":"Update Chapter Data"}')
+
+      assert.equal(serverDM.chapterMap[0].title, "Test Update Chapter");
+      assert.equal(serverDM.chapterMap[0]._id, 1);
+      assert.equal(serverDM.chapterMap[0].author, "Test Update Author");
+    });
+
+    it('should delete a chapter', function () {
+      // submitDeleteChapter
+      testResponseText = '{"_id": 1}';
+
+      var chapterID = 1;
+      var chapterDisplayCallback = function () {};
+
+      server.submitDeleteChapter(chapterID, chapterDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "DELETE");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/chapter/" + chapterID);
+      assert.isNull(serverStubs.sentData);
+
+      assert.equal(serverDM.chapterMap[0].title, "deleted");
+    });
+  });
+
+  describe('Event Backend', function () {
+    it('should submit a new event', function () {
+      // submitNewEvent
+      testResponseText = '{"_id": 10, "title": "Test Event", "author": "Test Author"}';
+
+      var eventData = {title: "Test Title"};
+      var eventDisplayCallback = function () {};
+
+      server.submitNewEvent(eventData, eventDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "POST");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/event");
+      assert.equal(serverStubs.sentData, '{"title":"Test Title"}');
+
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+
+      assert.equal(serverDM.eventMap[0].title, "Test Event");
+      assert.equal(serverDM.eventMap[0].author, "Test Author");
+    });
+
+    it('should update a event', function () {
+      // submitUpdateEvent      
+      testResponseText = '{"_id": 1, "title": "Test Update Event", "author": "Test Update Author"}';
+
+      var eventID = 1;
+      var eventData = {title: "Update Event Data"};
+      var eventDisplayCallback = function () {};
+
+      server.submitUpdateEvent(eventID, eventData, eventDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "PUT");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/event/" + eventID);
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+      assert.equal(serverStubs.sentData, '{"title":"Update Event Data"}')
+
+      assert.equal(serverDM.eventMap[0].title, "Test Update Event");
+      assert.equal(serverDM.eventMap[0]._id, 1);
+      assert.equal(serverDM.eventMap[0].author, "Test Update Author");
+    });
+
+    it('should delete a event', function () {
+      // submitDeleteEvent
+      testResponseText = '{"_id": 1}';
+
+      var eventID = 1;
+      var eventDisplayCallback = function () {};
+
+      server.submitDeleteEvent(eventID, eventDisplayCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "DELETE");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/event/" + eventID);
+      assert.isNull(serverStubs.sentData);
+
+      assert.equal(serverDM.eventMap[0].title, "deleted");
+    });
+  });
+
+  describe('Author Backend', function () {
+    it('should search for a author', function () {
+      // authorSearch
+      testResponseText = '["a1", "a2", "a3"]';
+
+      var authorSearchText = "a1";
+
+      var authorList = [];
+      var setAuthorSearchCallback = function (authors) {
+        authorList = authors;
+      }
+
+      server.authorSearch(authorSearchText, setAuthorSearchCallback);
+
+      assert.equal(serverStubs.lastOpen.method, "GET");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/author/search/a1");
+      assert.isNull(serverStubs.sentData);
+
+      assert.lengthOf(authorList, 3);
+      assert.equal(authorList[0], "a1");
+      assert.equal(authorList[1], "a2");
+      assert.equal(authorList[2], "a3");
+    });
+
+    it('should update an author', function () {
+      // updateAuthor
+      testResponseText = '"Test User"';
+
+      var author = {_id: "TestAuthor"};
+
+      server.updateAuthor(author);
+
+      assert.equal(serverStubs.lastOpen.method, "PUT");
+      assert.equal(serverStubs.lastOpen.url, "/peAPI/user/TestAuthor");
+      assert.equal(serverStubs.headerType, "Content-Type");
+      assert.equal(serverStubs.headerValue, "application/json");
+      assert.equal(serverStubs.sentData, '{"_id":"TestAuthor"}')
+    });
+
+    // it('should get all author data', function () {
+    //  // getAuthorData
+    //  // There's no simple (or even complex for that matter) way I can test getAuthorData without actual HTTP Requests. This will have to wait until UI testing 
+    // });
+    
+  });
+});
+\end{lstlisting}
 
 \subsection{Author Home Page UI Test}
-...
+\begin{lstlisting}
+var login = require("./util/login.js");
+
+module.exports = {
+  // Homepage
+  "Login" : function (browser) {
+    login(browser);
+  },
+
+  "Designer Homepage" : function (browser) {
+    browser
+      .waitForElementVisible('#userGreeting', 1000)
+      .verify.containsText('#userGreeting', "Welcome, Pxtesttwo Two")
+      .verify.title("PolyXpress Designer (alpha)")
+      .assert.visible("#storyManagerButton")
+      .assert.visible("#chapterManagerButton")
+      .assert.visible("#eventManagerButton")
+      .end();
+  },
+}
+\end{lstlisting}
 
 \subsection{Author Event Page UI Test}
-...
+\begin{lstlisting}
+var login = require("./util/login.js");
+
+module.exports = {
+  "Event Homepage" : function (browser) {
+    login(browser)
+      .waitForElementVisible('#eventManagerButton', 1000)
+      .click("#eventManagerButton")
+      .waitForElementVisible('#eventDataButton', 1000)
+      .assert.visible('#eventDataButton')
+      .verify.visible('#eventManager div.containedList')
+      .verify.visible('#emHomeBtn');
+  },
+
+  "Create an event" : function (browser) {
+    browser
+      .click("#eventDataButton")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Test Event 1")
+      .setValue("#eauthors", "535d4c95d71e0de603000007")
+      .setValue("#eversion", "0.1")
+      .setValue("#ekeywords", "testeventkey1 testeventkey2")
+      .setValue("#elat", "35.303673")
+      .setValue("#elng", "-120.670901")
+      .setValue("#erange", "0.25")
+      .click("#addAssetButton")
+      .waitForElementVisible("#assetEditor", 1000)
+      .setValue("#assetDATA", "test data")
+      .click("#assetEditorSubmitButton")
+      .click("#submitEventButton")
+      .acceptAlert()
+      .waitForElementVisible("#eventManager div.containedList", 1000)
+      .assert.containsText("#eventManager div.containedList", "Test Event 1");
+  },
+
+  "Create a second event" : function (browser) {
+    browser
+      .waitForElementVisible("#eventDataButton", 1000)
+      .click("#eventDataButton")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Test Event 2")
+      .setValue("#eauthors", "535d4c95d71e0de603000007")
+      .setValue("#eversion", "0.2")
+      .setValue("#ekeywords", "testeventkw1 testeventkw2")
+      .setValue("#elat", "35.303673")
+      .setValue("#elng", "-110.670901")
+      .setValue("#erange", "0.25")
+      .click("#addAssetButton")
+      .waitForElementVisible("#assetEditor", 1000)
+      .setValue("#assetDATA", "test data")
+      .click("#assetEditorSubmitButton")
+      .click("#submitEventButton")
+      .acceptAlert()
+      .waitForElementVisible("#eventManager div.containedList", 1000)
+      .assert.containsText("#eventManager div.containedList", "Test Event 2");
+  },
+
+  "Check event filter" : function (browser) {
+    browser
+      .setValue("input", "Test Event 2")
+      .waitForElementPresent("li.ui-screen-hidden a[href='#eventData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#eventData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#eventData']", "innerHTML", "Test Event 1")
+      .clearValue("input")
+      .setValue("input", "Test Event 1")
+      .pause(1000)  // This is unfortunately necessary to offset the async calls, at least I haven't figured out anything else yet...
+      .waitForElementPresent("li.ui-screen-hidden a[href='#eventData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#eventData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#eventData']", "innerHTML", "Test Event 2");
+  },
+
+  "Check edit event" : function (browser) {
+    browser
+      .click("#existingEventList li.ui-first-child a[href='#eventData']")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Editted Event 1")
+      .click("#submitEventButton")
+      .acceptAlert()
+      .waitForElementVisible("#eventManager div.containedList", 1000)
+      .assert.containsText("#eventManager div.containedList", "Editted Event 1");
+  },
+
+  "Check delete event" : function (browser) {
+    browser
+      .click("#existingEventList li.ui-first-child a[href='#eventData']")
+      .waitForElementVisible("#deleteEventBtn", 1000)
+      .click("#deleteEventBtn")
+      .acceptAlert()
+      .waitForElementVisible("#existingEventList li.ui-first-child a[href='#eventData']", 1000)
+      .click("#existingEventList li.ui-first-child a[href='#eventData']")
+      .waitForElementVisible("#deleteEventBtn", 1000)
+      .click("#deleteEventBtn")
+      .acceptAlert()
+      .assert.elementNotPresent("#existingEventList li.ui-first-child a[href='#eventData']");
+  },
+
+  "Check cancel new event" : function (browser) {
+    browser
+      .waitForElementVisible("#eventDataButton", 1000)
+      .click("#eventDataButton")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Event 1")
+      .setValue("#eauthors", "535d4c95d71e0de603000007")
+      .setValue("#eversion", "0.1")
+      .setValue("#ekeywords", "eventkey1 eventkey2")
+      .setValue("#elat", "35.303673")
+      .setValue("#elng", "-120.670901")
+      .setValue("#erange", "0.25")
+      .click("#addAssetButton")
+      .waitForElementVisible("#assetEditor", 1000)
+      .setValue("#assetDATA", "test data")
+      .click("#assetEditorSubmitButton")
+      .click("#cancelEventButton")
+      .waitForElementVisible("#eventManager div.containedList", 1000)
+      .assert.elementNotPresent("#existingEventList li.ui-first-child a[href='#eventData']");
+  },
+
+  "Create event for use in future tests" : function (browser) {
+    browser
+      .waitForElementVisible("#eventDataButton", 1000)
+      .click("#eventDataButton")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Event 1")
+      .setValue("#eauthors", "535d4c95d71e0de603000007")
+      .setValue("#eversion", "0.1")
+      .setValue("#ekeywords", "eventkey1 eventkey2")
+      .setValue("#elat", "35.303673")
+      .setValue("#elng", "-120.670901")
+      .setValue("#erange", "0.25")
+      .click("#addAssetButton")
+      .waitForElementVisible("#assetEditor", 1000)
+      .setValue("#assetDATA", "test data")
+      .click("#assetEditorSubmitButton")
+      .click("#submitEventButton")
+      .acceptAlert();
+  },
+
+  "Check cancel saved event" : function (browser) {
+    browser
+      .click("#existingEventList li.ui-first-child a[href='#eventData']")
+      .waitForElementVisible("#etitle", 1000)
+      .setValue("#etitle", "Editted")
+      .click("#cancelEventButton")
+      .waitForElementVisible("#eventManager div.containedList", 1000)
+      .assert.containsText("#eventManager div.containedList", "Event 1");
+  },
+
+  "End Event Testing" : function (browser) {
+    browser.end();
+  }
+}
+\end{lstlisting}
 
 \subsection{Author Chapter Page UI Test}
-...
+\begin{lstlisting}
+var login = require("./util/login.js");
+
+module.exports = {
+  "Chapter Homepage" : function (browser) {
+    login(browser)
+      .waitForElementVisible('#chapterManagerButton', 1000)
+      .click("#chapterManagerButton")
+      .waitForElementVisible('#chapterDataButton', 1000)
+      .assert.visible('#chapterDataButton')
+      .verify.visible('#chapterManager div.containedList')
+      .verify.visible('#cmHomeBtn');
+  },
+
+  "Create a chapter" : function (browser) {
+    browser
+      .click("#chapterDataButton")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Test Chapter 1")
+      .setValue("#cauthors", "535d4c95d71e0de603000007")
+      .setValue("#cversion", "0.1")
+      .setValue("#coverview", "Test overview")
+      .setValue("#ckeywords", "testchapterkey1 testchapterkey2")
+      .setValue("#cimage", "https://drupal.org/files/test-all-the-things.jpg")
+      .setValue("#clat", "35.303673")
+      .setValue("#clng", "-120.670901")
+      .setValue("#crange", "0.25")
+      .click("label.ui-btn")
+      .click("#submitChapterButton")
+      .acceptAlert()
+      .waitForElementVisible("#chapterManager div.containedList", 1000)
+      .assert.containsText("#chapterManager div.containedList", "Test Chapter 1");
+  },
+
+  "Create a second chapter" : function (browser) {
+    browser
+      .waitForElementVisible("#chapterDataButton", 1000)
+      .click("#chapterDataButton")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Test Chapter 2")
+      .setValue("#cauthors", "535d4c95d71e0de603000007")
+      .setValue("#cversion", "0.1")
+      .setValue("#coverview", "Test overview")
+      .setValue("#ckeywords", "testchapterkey1 testchapterkey2")
+      .setValue("#cimage", "https://drupal.org/files/test-all-the-things.jpg")
+      .setValue("#clat", "35.303673")
+      .setValue("#clng", "-120.670901")
+      .setValue("#crange", "0.25")
+      .click("label.ui-btn")
+      .click("#submitChapterButton")
+      .acceptAlert()
+      .waitForElementVisible("#chapterManager div.containedList", 1000)
+      .assert.containsText("#chapterManager div.containedList", "Test Chapter 2");
+  },
+
+  "Check chapter filter" : function (browser) {
+    browser
+      .setValue("input", "Test Chapter 2")
+      .waitForElementPresent("li.ui-screen-hidden a[href='#chapterData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#chapterData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#chapterData']", "innerHTML", "Test Chapter 1")
+      .clearValue("input")
+      .setValue("input", "Test Chapter 1")
+      .pause(1000)
+      .waitForElementPresent("li.ui-screen-hidden a[href='#chapterData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#chapterData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#chapterData']", "innerHTML", "Test Chapter 2");
+  },
+
+  "Check edit chapter" : function (browser) {
+    browser
+      .click("#existingChapterList li.ui-first-child a[href='#chapterData']")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Editted Chapter 1")
+      .click("#submitChapterButton")
+      .acceptAlert()
+      .waitForElementVisible("#chapterManager div.containedList", 1000)
+      .assert.containsText("#chapterManager div.containedList", "Editted Chapter 1");
+  },
+
+  "Check delete chapter" : function (browser) {
+    browser
+      .click("#existingChapterList li.ui-first-child a[href='#chapterData']")
+      .waitForElementVisible("#deleteChapterBtn", 1000)
+      .click("#deleteChapterBtn")
+      .acceptAlert()
+      .waitForElementVisible("#existingChapterList li.ui-first-child a[href='#chapterData']", 1000)
+      .click("#existingChapterList li.ui-first-child a[href='#chapterData']")
+      .waitForElementVisible("#deleteChapterBtn", 1000)
+      .click("#deleteChapterBtn")
+      .acceptAlert()
+      .assert.elementNotPresent("#existingChapterList li.ui-first-child a[href='#chapterData']");
+  },
+
+  "Check cancel new chapter" : function (browser) {
+    browser
+      .waitForElementVisible("#chapterDataButton", 1000)
+      .click("#chapterDataButton")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Chapter 1")
+      .setValue("#cauthors", "535d4c95d71e0de603000007")
+      .setValue("#cversion", "0.1")
+      .setValue("#ckeywords", "chapterkey1 chapterkey2")
+      .setValue("#clat", "35.303673")
+      .setValue("#clng", "-120.670901")
+      .setValue("#crange", "0.25")
+      .click("#cancelChapterButton")
+      .waitForElementVisible("#chapterManager div.containedList", 1000)
+      .assert.elementNotPresent("#existingChapterList li.ui-first-child a[href='#chapterData']");
+  },
+
+  "Create chapter for use in future tests" : function (browser) {
+    browser
+      .waitForElementVisible("#chapterDataButton", 1000)
+      .click("#chapterDataButton")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Chapter 1")
+      .setValue("#cauthors", "535d4c95d71e0de603000007")
+      .setValue("#cversion", "0.1")
+      .setValue("#coverview", "Test overview")
+      .setValue("#ckeywords", "testchapterkey1 testchapterkey2")
+      .setValue("#cimage", "https://drupal.org/files/test-all-the-things.jpg")
+      .setValue("#clat", "35.303673")
+      .setValue("#clng", "-120.670901")
+      .setValue("#crange", "0.25")
+      .click("label.ui-btn")
+      .click("#submitChapterButton")
+      .acceptAlert()
+  },
+
+  "Check cancel saved chapter" : function (browser) {
+    browser
+      .click("#existingChapterList li.ui-first-child a[href='#chapterData']")
+      .waitForElementVisible("#ctitle", 1000)
+      .setValue("#ctitle", "Editted")
+      .click("#cancelChapterButton")
+      .waitForElementVisible("#chapterManager div.containedList", 1000)
+      .assert.containsText("#chapterManager div.containedList", "Chapter 1");
+  },
+
+  "End Chapter Testing" : function (browser) {
+    browser.end();
+  }
+}
+\end{lstlisting}
 
 \subsection{Author Story Page UI Test}
-...
+\begin{lstlisting}
+var login = require("./util/login.js");
+
+module.exports = {
+  "Story Homepage" : function (browser) {
+    login(browser)    
+      .waitForElementVisible('#storyManagerButton', 1000)
+      .click("#storyManagerButton")
+      .waitForElementVisible('#storyDataButton', 1000)
+      .assert.visible('#storyDataButton')
+      .verify.visible('#storyManager div.containedList')
+      .verify.visible('#smHomeBtn');
+  },
+
+  "Create a story" : function (browser) {
+    browser
+      .click("#storyDataButton")
+      .waitForElementVisible("#title", 1000)
+      .setValue("#title", "Test Story 1")
+      .setValue("#authors", "535d4c95d71e0de603000007")
+      .setValue("#version", "0.1")
+      .click("label[for='test']")
+      .setValue("#keywords", "teststorykey1 teststorykey2")
+      .setValue("#overview", "Story overview")
+      .setValue("#image", "https://drupal.org/files/test-all-the-things.jpg")
+      .click("label.ui-btn")
+      .click("#submitStoryButton")
+      .acceptAlert()
+      .waitForElementVisible("#storyManager div.containedList", 1000)
+      .assert.containsText("#storyManager div.containedList", "Test Story 1");
+  },
+
+  "Create a second story" : function (browser) {
+    browser
+      .waitForElementVisible("#storyDataButton", 1000)
+      .click("#storyDataButton")
+      .waitForElementVisible("#title", 1000)
+      .setValue("#title", "Test Story 2")
+      .setValue("#authors", "535d4c95d71e0de603000007")
+      .setValue("#version", "0.1")
+      .click("label[for='test']")
+      .setValue("#keywords", "teststorykey1 teststorykey2")
+      .setValue("#overview", "Story overview")
+      .setValue("#image", "https://drupal.org/files/test-all-the-things.jpg")
+      .click("label.ui-btn")
+      .click("#submitStoryButton")
+      .acceptAlert()
+      .waitForElementVisible("#storyManager div.containedList", 1000)
+      .assert.containsText("#storyManager div.containedList", "Test Story 2");
+  },
+
+  "Check story filter" : function (browser) {
+    browser
+      .setValue("input", "Test Story 2")
+      .waitForElementPresent("li.ui-screen-hidden a[href='#storyData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#storyData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#storyData']", "innerHTML", "Test Story 1")
+      .clearValue("input")
+      .setValue("input", "Test Story 1")
+      .pause(1000)
+      .waitForElementPresent("li.ui-screen-hidden a[href='#storyData']", 5000)
+      .assert.hidden("li.ui-screen-hidden a[href='#storyData']")
+      .assert.attributeEquals("li.ui-screen-hidden a[href='#storyData']", "innerHTML", "Test Story 2");
+  },
+
+  "Check edit story" : function (browser) {
+    browser
+      .click("#existingStoryList li.ui-first-child a[href='#storyData']")
+      .waitForElementVisible("#title", 1000)
+      .setValue("#title", "Editted Story 1")
+      .click("#submitStoryButton")
+      .acceptAlert()
+      .waitForElementVisible("#storyManager div.containedList", 1000)
+      .assert.containsText("#storyManager div.containedList", "Editted Story 1");
+  },
+
+  "Check delete story" : function (browser) {
+    browser
+      .click("#existingStoryList li.ui-first-child a[href='#storyData']")
+      .waitForElementVisible("#deleteStoryBtn", 1000)
+      .click("#deleteStoryBtn")
+      .acceptAlert()
+      .waitForElementVisible("#existingStoryList li.ui-first-child a[href='#storyData']", 1000)
+      .click("#existingStoryList li.ui-first-child a[href='#storyData']")
+      .waitForElementVisible("#deleteStoryBtn", 1000)
+      .click("#deleteStoryBtn")
+      .acceptAlert()
+      .assert.elementNotPresent("#existingStoryList li.ui-first-child a[href='#storyData']");
+  },
+
+  "Check cancel new story" : function (browser) {
+    browser
+      .waitForElementVisible("#storyDataButton", 1000)
+      .click("#storyDataButton")
+      .waitForElementVisible("#title", 1000)
+      .setValue("#title", "Story 1")
+      .setValue("#authors", "535d4c95d71e0de603000007")
+      .setValue("#version", "0.1")
+      .click("label[for='test']")
+      .setValue("#keywords", "teststorykey1 teststorykey2")
+      .setValue("#overview", "Story overview")
+      .setValue("#image", "https://drupal.org/files/test-all-the-things.jpg")
+      .click("#cancelStoryButton")
+      .waitForElementVisible("#storyManager div.containedList", 1000)
+      .assert.elementNotPresent("#existingStoryList li.ui-first-child a[href='#storyData']");
+  },
+
+  "End Story Testing" : function (browser) {
+    browser.end();
+  }
+}
+\end{lstlisting}
+
+\subsection{UI Test Helper}
+\begin{lstlisting}
+module.exports =  function (browser) {
+  return browser
+    .url("http://localhost:3500/PolyXpress/Author/peDesignerMain.html")
+    .waitForElementVisible('body', 10000)
+    .click("#loginButton")
+    .waitForElementVisible('body', 10000)
+    .setValue("#email.inputtext", "pxtesttwo_ixhgghp_two@tfbnw.net")
+    .setValue("#pass.inputpassword", "tag123")
+    .click("#u_0_1");
+}
+\end{lstlisting}
 
 % - Note OS X 'ulimit' issue with Grunt-watch
 
