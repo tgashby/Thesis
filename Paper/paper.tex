@@ -646,7 +646,7 @@ Web applications, for the most part, require user input in order to be useful. T
 What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
 
 \subsection{Selenium}
-Selenium\cite{Selenium} is an automated browser input runner. It is one of the only automated browser runners and certainly the most prominent. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
+Selenium\cite{Selenium} is an automated browser driver. It is one of the only automated browser drivers; in all of our searching, we did not find a single other browser automation tool, all other frameworks were built on top of Selenium. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
 Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for the web testing tools that will follow this description.
 
@@ -718,19 +718,19 @@ Though a small feature, Nightwatch has the ability to either assert or verify te
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
 
 \subsection{Headless Browsers}
-In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the enjoyment of watching the tests execute.
+In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the added complexity of running headless browsers.
 
-Nonetheless, we still looked at two options that we will outline briefly below for other developer's reference.
+Nonetheless, we still looked at two options that we will outline briefly below for other developers' reference. The two options outlined below by no means cover all of the headless browser options, they are simply the two that we saw most often discussed by the other testing tools.
 
 \subsubsection{PhantomJS}
-The reigning king of headless browsers is PhantomJS\cite{PhantomJS}. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
+PhantomJS\cite{PhantomJS} came up repeatedly in our searches for testing frameworks as an option for headless browsing; it is the reason we had the idea to look into headless browsers. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
 
 There are, however, a couple problems with PhantomJS. It is generally fairly verbose when it comes to writing the scripts that run your commands. It is also not a testing tool, it is a headless WebKit. The distinction here is that PhantomJS does not have any assert functionality built-in and thus requires the developer to find and use their own assertion library.
 
 The difference between PhantomJS and ZombieJS, which I talk about in the next section, is akin to the difference between Selenium and Nightwatch. PhantomJS is heavier duty and requires an additional set of testing tools whereas ZombieJS is lightweight and has assertions built-in.
 
 \subsubsection{ZombieJS}
-ZombieJS\cite{ZombieJS} is often the other go-to for headless browsers. ZombieJS is not a WebKit implementation but rather a simple DOM emulator. This means that certain tests may not be as accurate as they could be with PhantomJS.
+ZombieJS\cite{ZombieJS} is the other headless browser that we saw when searching for browser testing tools. ZombieJS is not a WebKit implementation but rather a simple DOM emulator. This means that certain tests may not be as accurate as they could be with PhantomJS.
 
 Where ZombieJS shines is in its simplicity and brevity. Much like Nightwatch, calls are chained together to create a flow of calls that generally end with assertions.
 
@@ -766,10 +766,10 @@ Continuous Integration frameworks attempt to make development easier by running 
 Continuous Integration frameworks, therefore, need to be flexible in the type of project they support, customizable in their chosen environments to support differing projects, and have a simple way to connect to repositories or file systems.
 
 \subsection{Jenkins}
-Jenkins\cite{Jenkins} is the first of the continuous integration frameworks that we tried out. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
+Jenkins\cite{Jenkins} is an offline Continuous Integration tool, the only offline tool that we found with active developement and support. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
 Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
-\begin{Figure}[!ht]
+\begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
 
@@ -780,14 +780,14 @@ Jenkins comes bare-boned but is highly customizable and has a wide array of plug
 
 Because Jenkins comes bare and runs on the system of the developer's choosing, it can run any project that is set up. The downside is that there is no support out-of-the-box unless the system already has the necessary compilers, interpreters, applications, and/or libraries installed.
 
-One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Any increase in computing power will be directly usable by Jenkins. Jenkins can run as many jobs as the server can handle at one time.
+One of the exceptional strengths of Jenkins is that the developer is only limited by the hardware of the machine running Jenkins. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on.
 
 The other use for a tool like Jenkins is the ability to start services like cron jobs or similarly long-running tools and status monitors and then collect the output for them and allow the developer to check on them at any time.
 
-Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run a project in. However, once the server has the necessary applications and libraries, the builds and tests will run without issue. Jenkins can run an ``unlimited'' number of builds, tests, and processes with the only limiting factor the hardware that it is running on. It is also 100\% free and can connect with public and private repositories alike.
+Jenkins is an exceptionally strong tool for CI, but requires immense overhead in setting up the environment to run a project in. However, once the server has the necessary applications and libraries, the developer can run builds and tests. Jenkins is 100\% free and can connect with public and private repositories alike.
 
 \subsection{Travis}
-Travis\cite{Travis} is an online continuous integration framework with 29 members and 64 repositories at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
+Travis\cite{Travis} is an online continuous integration framework with 29 active developers working to improve it and 64 repositories that support it at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
 
 Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects if needed. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
@@ -802,7 +802,7 @@ In order to get access to private repositories, Travis offers several pricing pl
 From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require it's own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
 
 \subsection{Semaphore}
-Semaphore\cite{Semaphore} is another online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
+Semaphore\cite{Semaphore} is an online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
 Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
@@ -813,7 +813,7 @@ Semaphore's pricing scheme is different than Travis' as it focuses on an individ
 Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
 
 \subsection{MagnumCI}
-MagnumCI\cite{MagnumCI} is another online CI framework, it appears that Jenkins is one of the only ``off-line'' CI systems. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects, and that's what we care about.
+MagnumCI\cite{MagnumCI} is another online CI framework. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects.
 
 MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a yml file.
 
@@ -828,7 +828,7 @@ Drone.io\cite{DroneIO} is an impressive online CI framework that offers substant
 
 Drone.io supports eleven languages including: C++, Dart, Go, Haskell, Java, Node.JS, Ruby, and others. Setup requires the developer to specify language, as opposed to the automatic tools provided by the previous two CI frameworks, but will auto-generate build commands.
 
-Drone.io offers support for most of the databases we've heard of, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
+Drone.io offers support for an impressive number of databases, has a variety of deployment options, and is entirely configurable from the online dashboard. It also offers the most browsers and headless browsers for use with web page testing tools such as Selenium and PhantomJS.
 
 Drone.io is able to connect to GitHub, BitBucket, and Google Code repositories to get projects automatically. Setup is simple, select the source of the repository (GitHub, BitBucket, or Google Code), select the repository from the list it gives once it connects, select the language of the repository, edit the default build script, and the project is ready to go.
 
@@ -866,7 +866,7 @@ Grunt.js\cite{GruntJS} is a task-runner for JavaScript. What Grunt does is autom
 
 Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
 
-Of particular interest is that last feature, \lstinline{watch}. We are particularly fond of grunt's \lstinline{watch} capability because it means that we have tests running near constantly that give immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
+Of particular interest is that last feature, \lstinline{watch}. We use grunt's \lstinline{watch} capability to run tests constantly. This feature gives immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
 \subsection{Node Inspector}
 Node Inspector\cite{NodeInspector} is a GitHub project for debugging Node.js server-side code. The inspector runs in the browser and is started by running \lstinline{node-debug} instead of \lstinline{node} when starting the application. Simple as that. Then you can set breakpoints using the normal browser developer tools.
@@ -919,10 +919,10 @@ Drone.io  & X    & X      & X           & X              & X      &      \\ \hli
 %%%   Why we chose the tools we chose
 %%%   Scripts written to help out 
 %%%%%%%%%%%%%%%%%%%%%%
-\chapter{Implementation}
+\chapter{Framework Selection}
 In this chapter, we will outline our final choices for frameworks and why we chose them.
 
-\section{Chosen Toolset}
+\section{Chosen Tools}
 After evaluating a number of different combinations and tools, we came to the following setup:
 \begin{itemize}
   \item Unit Testing: Mocha with Chai.js
@@ -941,34 +941,34 @@ Our choice of using Mocha with Chai.js was made because Mocha offers the flexibi
 
 Mocha was chosen over Jasmine because of Mocha's additional flexibility and the way that Mocha handles asynchronous tests.
 
-Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although we loved QUnit's output, the ability to scan code more efficiently won out in the end.
+Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although QUnit output a more thorough test summary, the ability to scan code more efficiently was of greater importance to us.
 
 The final decision came down to Mocha versus Intern. Mocha was eventually chosen over Intern because of the ability to choose an assertion library and because of the issues we had with Intern. Both frameworks offer impressive flexibility regarding the way in which tests can be structured and written. Mocha ended up allowing for a bit more flexibility and caused no problems for us. Perhaps with more time and patience we would have chosen Intern, but Mocha served our needs well.
 
 \subsection{MagnumCI}
-With all of the features that MagnumCI currently offers for free, we couldn't pass it up. We are still confident that the features needed by an open-source developer will continue to be free after MagnumCI ends its open-beta period.
+MagnumCI has all of the features that a developer might need for free. We are still confident that the features needed by an open-source developer will continue to be free after MagnumCI ends its open-beta period.
 
-Quite frankly, we did not have the time nor interest in setting up our own Jenkins server. Given enough resources and time, Jenkins will surely beat all of the rest of the CI frameworks. However, there's something to be said for ease of setup and total time to first use of a tool.
+Given enough resources and time, Jenkins will offer more support and functionality than the rest of the CI frameworks. However, there's something to be said for ease of setup and total time to first use of a tool. MagnumCI offered quick initialization through web pages and automatic repository connections that allow users to quickly configure and run the CI framework.
 
-MagnumCI was chosen over Travis because our evaluation application was not on GitHub. Travis is still an incredible CI framework that has some of the best documentation we've seen.
+MagnumCI was chosen over Travis because our evaluation application was not on GitHub. Travis is still an incredible CI framework that has some of the best documentation among the CI frameworks. If a developer has their project on GitHub, we would recommend Travis over MagnumCI.
 
-Semaphore was out of the running due to its lack of support for JavaScript and Node.js projects as well as the GitHub requirement.
+Semaphore's lack of support for JavaScript and Node.js projects as well as the GitHub requirement kept us from choosing it.
 
 Drone.io, while offering a number of repository location options, did not offer the ability for a repository to be hosted at a custom location.
 
-Overall, the CI frameworks were all impressive and usable. The main driving factor was simply that we didn't have our application on any of the more common repositories and at the time of this writing our application was closed-source. We have every intention of opening it to the public as soon as we get a version that is more polished.
+Overall, the CI frameworks were all impressive and usable. The main driving factor behind our decision was that our application used a custom repository and that at the time of this writing our application is closed-source. We have every intention of opening it to the public as soon as we get a version that is more polished.
 
 \subsection{Nightwatch}
 The choice for Nightwatch was an easy one. First and foremost there were not many options and the options we did have sorted themselves out.
 
 Nightwatch, being a wrapper around Selenium already, was chosen over Selenium because of its concise way to express tests. We have yet to come across any situation that is not covered with Nightwatch as the developer of Nightwatch has seemed to implement nearly all WebDriver calls, even if some are undocumented.
 
-Nightwatch was chosen over Intern's UI testing tool because of the issue with Intern running its own server. If Intern did not impose its own server for what it calls ``functional'' testing, we would probably have gone with Intern for both Unit and UI testing but it did not make sense for us to split up Intern's functionality since we couldn't use it all.
+Nightwatch was chosen over Intern's UI testing tool because of the issue with Intern running its own server. If Intern did not impose its own server for what it calls ``functional'' testing, we would probably have gone with Intern for both Unit and UI testing. Intern is a strong choice for an all-in-one testing tool.
 
 \subsection{Miscellaneous Tools}
 Generally the miscellaneous tools were chosen because they were already integrated into our project or were the obvious choices for other reasons.
 
-Istanbul was chosen because we had seen it in use with Intern and after minimal research found that it was easy to set up and get running.
+Istanbul was chosen because of the ease of set up in getting it running using our existing toolset and project. There are other code coverage tools but Istanbul required so little setup that we chose to not look further.
 
 Grunt was already a part of the evaluation application prior to the testing effort we set out on. With a bit of looking into Grunt, it was an obvious choice to keep it as our new functionality was easily integrated into the existing grunt scripts.
 
@@ -981,26 +981,26 @@ NPM is the go-to choice for acquiring modules for Node.js applications.
 %%%   Setup instructions
 %%%   Usage
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Product}
+\chapter{Testing and Development Workflow}
 In this section we will mention our development setup, discuss how to set up the chosen tools, and outline our recommended workflow using the tools. It is our hope that after finishing this section, the reader will be able to install and run the chosen tools and have a good grasp of what the next steps are for their particular project.
 
-\section{Our Setup}
+\section{Our Implementation Configuration}
 The following are the specs of the laptop that we used for the entirely of this research and implementation:
 \begin{itemize}
   \item Model: 15-inch Macbook Pro, Late 2008
   \item OS: OS X 10.9.2, Mavericks
-  \item Processor: 2.53 GHz Intel Core 2 Duo
-  \item Memory: 4 GB 1067 MHz DDR3
-  \item Graphics: NVIDIA GeForce 9400M 256 MB
+  % \item Processor: 2.53 GHz Intel Core 2 Duo
+  % \item Memory: 4 GB 1067 MHz DDR3
+  % \item Graphics: NVIDIA GeForce 9400M 256 MB
 \end{itemize}
-The point of listing the laptop specs is to show that our research and workflow was completed on an average, everyday laptop and does not require any kind of special hardware or software configurations.
+The point of listing the laptop specs is to show that our research and workflow was completed on an average, everyday laptop and does not require any kind of special hardware or software configurations. In addition, our setup instructions will be OS X based, but nearly all commands will work the same on another UNIX-based system.
 
 To carry out the development we used a combination of the OS X terminal, Sublime Text, and Netbeans. The terminal was used mainly for starting Node services, testing tools, Grunt scripts, and for updating modules. Sublime Text was used to write the unit tests and the UI tests. Netbeans was used to quickly navigate through the code as it had already been set up as a series of Netbeans projects.
 
 \section{Tool Setup}
-Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then knowing the right commands.
+Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then using the terminal commands for running the tests.
 
-We decided to install the node modules globally because it made writing our scripts easier, but it's not a requirement. Tests can be executed using locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{PATH_TO_REPO/node_modules/MODULE_NAME/bin/MODULE_NAME} \space .
+We decided to install the node modules globally, but it's not a requirement. Tests can be executed using locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{./node_modules/MODULE_NAME/bin/MODULE_NAME} \space instead of \lstinline{MODULE_NAME}. For example, a globally installed Mocha executable can be run with \lstinline{mocha ...} while a locally installed Mocha module is run with \lstinline{./node_modules/mocha/bin/mocha ...} \space .
 
 \subsection{Setting up Mocha}
 To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally. The developer need simply skip the \lstinline{-g} in all of the following install commands if they want the modules installed locally.
