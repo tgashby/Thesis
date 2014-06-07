@@ -1168,6 +1168,7 @@ Once that setup is done, the developer just runs \lstinline{grunt --force test} 
 For running the browser tests, we recommend using the CI tool. Most CI setups have Xvfb (a windowless X11 process) and some even have Firefox pre-installed. Nightwatch requires both to be installed. If Firefox needs to be installed, the developer can use the CI framework's package manager to install it. For example, if the package manager is \lstinline{apt-get}: ``\lstinline{apt-get install firefox}''. In the CI setup, after installing all the prerequisites, the developer should start their application. Next, export the \lstinline{DISPLAY} environment variable, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} to start the ``window'' that will be used. Finally, run Nightwatch, \lstinline{nightwatch -c path_to_nightwatch_config} and enjoy UI testing that doesn't take over the workstation.
 
 \subsection{Template Files}
+\todo{Flesh out this section}
 In order to get developers up and running as quickly as possible, we've included a couple template files below that will get them started out.
 
 The first file is the \lstinline{package.json} file that includes the dependencies for the unit testing, UI testing, and grunt portions of the workflow:
