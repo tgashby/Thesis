@@ -832,16 +832,16 @@ Drone.io offers unlimited free open-source repositories. The next step up offers
 
 Drone.io is a strong contender because of its language support, deployment options, and ease of setup. Where it lacks is in its notification options. The only notification option at present is email while other CI frameworks offer a number of other notification options for various messaging services.
 
-\subsection{CI By Hand}
-Most of what these CI frameworks accomplish can be done by hand.
-\todo{Finish this section}
+\subsection{Manual Continuous Integration}
+Most of what these CI frameworks accomplish can be done by hand with enough script writing. Continuous Integration tools are notified of updates by scripts that run after a commit is pushed. With the Continuous Integration scripts above, the post commit scripts are written without the knowledge of the developer. There is, however, no reason that a developer cannot hook into those scripts themselves.
 
-% Strengths
-- Similar to Jenkins
+Manual CI is incredibly similar to Jenkins in that its only limitations are the libraries and hardware that it's run on.
 
-% Weaknesses
-- Setup by hand
-- Uses your machine
+There are a few differences between Jenkins and Manual CI, the biggest being that Jenkins has a GUI. This GUI is used to configure the project while manual CI requires script and text editing. 
+
+Another big difference between Manual CI and all of the other CI frameworks is that the non-manual frameworks store information regarding the status of builds, the success and failure of builds, which files changed in each commit, and a lot of other information that can be quickly viewed. It is possible to store this information manually, but it would require considerable effort to make it as easy to use as the other CI frameworks.
+
+Finally, manual CI uses a developer's system, rendering it unusable to the developer, particularly during the UI testing phase. The developer must accept a productivity hit every time they commit to their repository.
 
 \section{Miscellaneous Frameworks}
 In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that did not quite fit into any of the above categories.
@@ -910,12 +910,12 @@ Intern    & X                 & X               & X         & X   & X           
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 Framework & GitHub & Other Repos & Multi-Language & Active Development** & GUI Configuration \\ \hline
-Jenkins   & X*     & X*          & X*             & X*                  & X                 \\ \hline
-Travis    & X      &             & X              &                     &                   \\ \hline
-Semaphore & X      &             & X              & X                   & X                 \\ \hline
-MagnumCI  & X      & X           & X              & X                   & X                 \\ \hline
-Drone.io  & X      & X           & X              & X                   & X                 \\ \hline
-Manual    &        & X           & X              & X                   &                   \\ \hline
+Jenkins   & X*     & X*          & X*             & X                    & X                 \\ \hline
+Travis    & X      &             & X              &                      &                   \\ \hline
+Semaphore & X      &             & X              & X                    & X                 \\ \hline
+MagnumCI  & X      & X           & X              & X                    & X                 \\ \hline
+Drone.io  & X      & X           & X              & X                    & X                 \\ \hline
+Manual    &        & X           & X              & X                    &                   \\ \hline
 \end{tabular}
 }
 \captionof{table}{Decision Matrix for Continuous Integration Frameworks}
@@ -970,6 +970,8 @@ Semaphore's lack of support for JavaScript and Node.js projects as well as the G
 
 Drone.io, while offering a number of repository location options, did not offer the ability for a repository to be hosted at a custom location.
 
+MagnumCI was chosen over manual CI for much the same reasons as it was chosen over Jenkins. Manual CI requires an extraordinary effort on the part of the developer if they wish to have all of the features and history of the other CI frameworks.
+
 Overall, the CI frameworks were all impressive and usable. The main driving factor behind our decision was that our application used a custom repository and that at the time of this writing our application is closed-source. We have every intention of opening it to the public as soon as we get a version that is more polished.
 
 \subsection{Nightwatch}
@@ -1015,6 +1017,8 @@ To carry out the development we used a combination of the OS X terminal, Sublime
 Getting the tools up and running is a fairly simple task. It involves installing modules with NPM, writing or copying a few configuration scripts, and then using the terminal commands for running the tests.
 
 We decided to install the node modules globally, but it's not a requirement. Tests can be executed using locally installed node modules. Instead of using the command by itself, the developer would just need to supply the full path to the executable, which is generally \lstinline{./node_modules/MODULE_NAME/bin/MODULE_NAME} \space instead of \lstinline{MODULE_NAME}. For example, a globally installed Mocha executable can be run with \lstinline{mocha ...} while a locally installed Mocha module is run with \lstinline{./node_modules/mocha/bin/mocha ...} \space .
+
+Following the setup instructions will be a more thorough Gruntfile that can serve as a template and starting point for developers. The Gruntfile will have tasks that will run the Unit Testing and the UI Testing.
 
 \subsection{Setting up Mocha}
 To install Mocha, type into the terminal: \lstinline{npm install -g mocha}. The \lstinline{-g} means to install the module globally. The developer need simply skip the \lstinline{-g} in all of the following install commands if they want the modules installed locally.
@@ -1162,6 +1166,102 @@ Our gruntfile is more complex than just that, but those are the parts that make 
 Once that setup is done, the developer just runs \lstinline{grunt --force test} once which will execute the tests and then watch for changes and continue testing on save. The \lstinline{--force} flag is used so that the grunt task continues after ``failure'' which would occur if any tests did not pass.
 
 For running the browser tests, we recommend using the CI tool. Most CI setups have Xvfb (a windowless X11 process) and some even have Firefox pre-installed. Nightwatch requires both to be installed. If Firefox needs to be installed, the developer can use the CI framework's package manager to install it. For example, if the package manager is \lstinline{apt-get}: ``\lstinline{apt-get install firefox}''. In the CI setup, after installing all the prerequisites, the developer should start their application. Next, export the \lstinline{DISPLAY} environment variable, \lstinline{export DISPLAY=:99} (the numbers need to match between the xvfb call and the export). Then, run \lstinline{Xvfb :99 -ac -screen 0 1280x1024x24 &} to start the ``window'' that will be used. Finally, run Nightwatch, \lstinline{nightwatch -c path_to_nightwatch_config} and enjoy UI testing that doesn't take over the workstation.
+
+\subsection{Template Files}
+In order to get developers up and running as quickly as possible, we've included a couple template files below that will get them started out.
+
+The first file is the \lstinline{package.json} file that includes the dependencies for the unit testing, UI testing, and grunt portions of the workflow:
+\begin{lstlisting}
+{
+  "name": "MODULE_NAME", // Edit Me
+  "version": "SOME_NUMBER", // Edit Me
+  "dependencies": {
+    "grunt": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-shell": "latest",
+    "grunt-mocha-test": "^0.10.2"
+    "mocha": "^1.18.2",
+    "istanbul": "^0.2.7",
+    "nightwatch": "^0.4.9",
+    "chai": "^1.9.1"
+  }
+}
+\end{lstlisting}
+
+Next is an example \lstinline{gruntfile.js} that will get grunt up and running quickly:
+\begin{lstlisting}
+module.exports = function(grunt)
+{
+    // Configure Grunt
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        shell: {
+            npm: {
+                command: 'npm update',
+                options: {
+                    stdout: true
+                }
+            },
+            istanbul: {
+                command: 'istanbul cover _mocha --  PATH_TO_TESTS -R spec', // Edit Me
+                options: {
+                    stdout: true
+                }
+            }
+        },
+        watch: {
+            test: {
+                options: {
+                    spawn: false // So watch actually works!
+                },
+                files: ['**/*.js'],
+                tasks: ['mochaTest']
+            },
+            coverage: {
+              options: {
+                    spawn: false // So watch actually works!
+                },
+                files: ['**/*.js'],
+                tasks: ['shell:istanbul']
+            }
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    clearRequireCache: true
+                },
+                src: ['ABSOLUTE_PATH_TO_TESTS'] // Edit Me
+            }
+        }
+    });
+
+    var defaultTestSrc = grunt.config('mochaTest.test.src');
+    grunt.event.on('watch', function(action, filepath) {
+        grunt.config('mochaTest.test.src', defaultTestSrc);
+        if (filepath.match('RELATIVE_PATH_TO_TESTS')) { // Edit Me
+          grunt.config('mochaTest.test.src', filepath);
+        }
+    });
+
+    // Load libs
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-shell');
+
+    // Register the default tasks
+    grunt.registerTask('default', ['mochaTest']);
+
+    // Register update task
+    grunt.registerTask('update', ['shell:npm']);
+
+    // Register the mocha test task
+    grunt.registerTask('test', ['mochaTest', 'watch:test']);
+
+    // Register the code coverage task
+    grunt.registerTask('test_with_coverage', ['shell:istanbul', 'watch:coverage']);
+};
+\end{lstlisting}
 
 % - Unit Testing on save
 % - CI used for running browser tests
