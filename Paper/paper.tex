@@ -636,16 +636,16 @@ Intern includes configurable code coverage metrics on tests by default. Running 
 Intern offers a fully-featured framework for all testing needs but was difficult to configure for a Node.js server setup. If a developer had a more traditional web application setup with a separate server that served normal HTML pages, Intern would be a go-to framework for all testing needs.
 
 \section{Browser and UI Testing}
-Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testings the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
+Web applications, for the most part, require user input in order to be useful. The way the user interacts is through the outward facing web pages. Testing of a web application would be incomplete without testing the interactions and elements of these web pages. It's important that the inner workings are running the right code and producing the right answer, but it's almost just as important that the parameters get passed correctly and from the right places on the web pages. Also, it is important that navigation work as expected or a user will become frustrated and lose interest in the application.
 
 What's important in browser testing is repeatability and being able to test on multiple browsers. Without the ability to automatically repeat tests, developers are left manually clicking through web pages every time anything changes. In addition, because there are so many different browsers and browser versions in the wild, it's important that the web pages run correctly (and predictably) on as many of them as possible.
 
 \subsection{Selenium}
-Selenium\cite{Selenium} is an automated browser driver. It is one of the only automated browser drivers; in all of our searching, we did not find a single other browser automation tool, all other frameworks were built on top of Selenium. A developer can write code that will cause Selenium to drive a browser's input and assert expectations. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
+Selenium\cite{Selenium} is an automated browser driver. It is one of the only automated browser drivers; in all of our searching, we did not find a single other browser automation tool, all other frameworks were built on top of Selenium. A developer can write code that will cause Selenium to drive a browser. On its own Selenium has very minimal testing usage. It lacks a test reporting mechanism and only offers output in two forms: 1) No output at all, a browser window will open, input will be generated, and the window will close, or 2) the browser will exit with a cryptic error printed to the console. It is up to the developer to include print statements as to what is happening at any given time, what test is being run, and what the results are.
 
-Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for the web testing tools that will follow this description.
+Generally, all browser testing tools will be using Selenium behind the scenes and doing the housekeeping automatically. This is the case for the web testing tool that will follow this description.
 
-Selenium has support for running a number of different browsers. Out of the box it comes with support for Firefox but getting Chrome and Safari running takes minimal effort.
+Selenium has support for running a number of different browsers. Out of the box it comes with support for Firefox but getting Chrome, Safari, and Internet Explorer running takes minimal effort.
 
 Having the ability to automatically run browser tests at any point takes a huge burden off of the web developer and allows for UI testing in addition to behind the scenes functionality testing. Whenever code is changed that may affect the UI flow or functionality, Selenium tests can be run without the need for developers to manually click all of the HTML elements and input information in the relevant places.
 
@@ -657,7 +657,7 @@ Selenium was written with maximum functionality and language flexibility in mind
 The Selenium WebDriver has APIs for a variety of programming languages including: JavaScript, C, Java, and Python.
 
 \subsection{Nightwatchjs}
-Nightwatch\cite{NightwatchJS} is a JavaScript testing library that wraps Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
+Nightwatch\cite{NightwatchJS} is a JavaScript testing library built on top of Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
 
 Tests are written as a long chain of function calls that produce an easy-to-read series of browser events. For example, the following code segment opens a browser, goes to Google.com, makes some assertions, writes ``nightwatch'' in the search box, clicks the search button, and then makes a few more assertions:
 \begin{lstlisting}
@@ -713,7 +713,7 @@ Though a small feature, Nightwatch has the ability to either assert or verify te
 Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%\cite{BrowserStats}. Together that accounts for 91.86\% of all internet users.
 
 \subsection{Headless Browsers}
-In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the added complexity of running headless browsers.
+In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to the added complexity of running headless browsers.
 
 Nonetheless, we still looked at two options that we will outline briefly below for other developers' reference. The two options outlined below by no means cover all of the headless browser options, they are simply the two that we saw most often discussed by the other testing tools.
 
@@ -729,6 +729,7 @@ ZombieJS\cite{ZombieJS} is the other headless browser that we saw when searching
 
 Where ZombieJS shines is in its simplicity and brevity. Much like Nightwatch, calls are chained together to create a flow of calls that generally end with assertions.
 
+The following is an excerpt from ZombieJS's examples:
 \begin{lstlisting}
 // Zombie.js website's example code
 var Browser = require("zombie");
@@ -763,7 +764,7 @@ Continuous Integration frameworks, therefore, need to be flexible in the type of
 \subsection{Jenkins}
 Jenkins\cite{Jenkins} is an offline Continuous Integration tool, the only offline tool that we found with active developement and support. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members\cite{JenkinsGitHub}. Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
-Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
+Jenkins is a series of web pages that are set up to run on a given server. This is what Jenkins looks like:
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
@@ -771,7 +772,7 @@ Jenkins is a series of web pages that are set up to run on a given server. This 
 \end{Figure}
 Most companies give Jenkins a sub-domain on their web pages.
 
-Jenkins comes bare-boned but is highly customizable and has a wide array of plugins. The plugins available integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
+Jenkins comes without many features but is highly customizable and has a wide array of plugins. The plugins integrate Jenkins with various services, integrate Jenkins with source control systems, and even just change the look of the Jenkins page or how it behaves. As an example, Jenkins can integrate with GitHub to run builds and tests when changes are pushed to a branch.
 
 Because Jenkins comes bare and runs on the system of the developer's choosing, it can run any project that is set up. The downside is that there is no support out-of-the-box unless the system already has the necessary compilers, interpreters, applications, and/or libraries installed.
 
@@ -784,28 +785,28 @@ Jenkins is an exceptionally strong tool for CI, but requires immense overhead in
 \subsection{Travis}
 Travis\cite{Travis} is an online continuous integration framework with 29 active developers working to improve it and 64 repositories that support it at the time of this writing. Unlike Jenkins, Travis is all online and includes a dashboard from which the developer can monitor builds and processes. Travis has a free version which is fully-featured but requires the project to be open-source and a paid version which gives the developer more processing power and access to private repositories.
 
-Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects if needed. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySql, PostgreSql, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment to just about every sort of provider there is, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
+Travis comes with internal support for eleven different languages including Node.JS, Ruby, Java, and Python. Travis has incredibly thorough documentation and a wealth of built-in services to work with projects. Theses services include databases, notifications, deployment options, and GUI/Headless browsers. Travis supports all of the most popular databases: MySQL, PostgreSQL, MongoDB, CouchDB, and a myriad of others. It offers a number of notification options ranging from Email to IRC to HipChat (a chat service from Atlassian). Travis also offers deployment options, from Heroku to AWS S3 to RubyGems and also provides the ability to create custom web hooks to deploy to a provider not supported natively.
 
-If at any point the project requires something that Travis does not support natively, Travis gives the permissions necessary to install any sort of libraries or services that can be installed with apt-get on an Ubuntu machine.
+If at any point the project requires something that Travis does not support natively, Travis gives the developer permissions necessary to install any sort of libraries or services that can be installed with apt-get on an Ubuntu machine.
 
 Travis requires that projects be hosted on GitHub, but by doing so the setup is incredibly easy. The developer signs into Travis using GitHub credentials and Travis pulls up all of the developer's repositories automatically. 
 
 Getting a project running with Travis is fairly easy; just create a yml file in the repository with certain lines pertaining to the language, needed services, commands to run, etc. We were able to set up everything we needed in six simple lines.
 
-In order to get access to private repositories, Travis offers several pricing plans, the cheapest of which is \$129\cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
+In order to get access to private repositories, Travis offers several pricing plans, the cheapest of which is \$129 for their ``Startup'' plan\cite{TravisPricing}. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
 
-From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require it's own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
+From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require its own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
 
 \subsection{Semaphore}
 Semaphore\cite{Semaphore} is an online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
 Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects\cite{SemaphoreBlog}. These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
-Semaphore supports most databases and has a number of testing frameworks built-in. Once again any missing libraries or dependencies can be installed using apt-get. It would appear that deployment support is only available for Ruby projects.
+Semaphore supports most databases and has a number of testing frameworks built-in. Once again any missing libraries or dependencies can be installed using apt-get. Deployment support is only available for Ruby projects as of this writing.
 
 Semaphore's pricing scheme is different than Travis' as it focuses on an individual, not a company. Their lowest cost subscription is one project (public or private) for \$14 per month. They offer more subscriptions with the ability to have more projects and concurrent processes in higher tiers.
 
-Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it's well-known and fairly established, especially in the ruby community.
+Semaphore is still ruby-centric and requires a subscription. As our goal is to find a framework that is free for open-source projects, Semaphore was out automatically. It is included here because it is well-known and fairly established, especially in the ruby community.
 
 \subsection{MagnumCI}
 MagnumCI\cite{MagnumCI} is another online CI framework. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects.
@@ -832,15 +833,15 @@ Drone.io offers unlimited free open-source repositories. The next step up offers
 Drone.io is a strong contender because of its language support, deployment options, and ease of setup. Where it lacks is in its notification options. The only notification option at present is email while other CI frameworks offer a number of other notification options for various messaging services.
 
 \subsection{Manual Continuous Integration}
-Most of what these CI frameworks accomplish can be done by hand with enough script writing. Continuous Integration tools are notified of updates by scripts that run after a commit is pushed. With the Continuous Integration scripts above, the post commit scripts are written without the knowledge of the developer. There is, however, no reason that a developer cannot hook into those scripts themselves.
+Most of what these CI frameworks accomplish can be done by hand with enough script writing. Continuous Integration tools are notified of updates by scripts that run after a commit is pushed. The Continuous Integration tools above write these ``post-commit'' scripts without the knowledge of the developer. There is, however, no reason that a developer cannot write those scripts themselves.
 
-Manual CI is incredibly similar to Jenkins in that its only limitations are the libraries and hardware that it's run on.
+Manual CI is incredibly similar to Jenkins in that its only limitations are the libraries and hardware that the scripts are run on.
 
 There are a few differences between Jenkins and Manual CI, the biggest being that Jenkins has a GUI. This GUI is used to configure the project while manual CI requires script and text editing. 
 
 Another big difference between Manual CI and all of the other CI frameworks is that the non-manual frameworks store information regarding the status of builds, the success and failure of builds, which files changed in each commit, and a lot of other information that can be quickly viewed. It is possible to store this information manually, but it would require considerable effort to make it as easy to use as the other CI frameworks.
 
-Finally, manual CI uses a developer's system, rendering it unusable to the developer, particularly during the UI testing phase. The developer must accept a productivity hit every time they commit to their repository.
+Finally, Manual CI uses a developer's system, rendering it unusable to the developer, particularly during the UI testing phase. The developer must accept a productivity hit every time they commit to their repository.
 
 \section{Miscellaneous Frameworks}
 In addition to the Unit Testing, Continuous Integration, and Browser Testing frameworks outlined above, we came across a number of incredibly helpful frameworks that did not quite fit into any of the above categories.
@@ -869,7 +870,7 @@ Istanbul offers an incredibly easy way to get code-coverage on your tests and is
 \subsection{Grunt.js}
 Grunt.js\cite{GruntJS} is a task-runner for JavaScript. What Grunt does is automate routine tasks like linting, testing, copying files, and updating modules. The developer writes Grunt scripts that outline the necessary tasks and then can run them on the commandline with the \lstinline{grunt} command.
 
-Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration and they're ready to be used.
+Grunt is widely supported and has all kinds of built-in or installable plugins that make writing common tasks nearly trivial. As an example, a few built-in grunt tasks that we use include: \lstinline{jshint} for linting, \lstinline{uglify} for code minimization, and \lstinline{watch} for automatically re-running tests when certain files change. Each of those plugins requires very little configuration before they are ready to be used.
 
 Of particular interest is that last feature, \lstinline{watch}. We use grunt's \lstinline{watch} capability to run tests constantly. This feature gives immediate feedback to the developer when they change existing code or write new code after having written a test for it. As long as all the tests are passing, the developer has a good idea that the changes made are regression-tested as well as freshly tested and are ready for publishing or integration.
 
