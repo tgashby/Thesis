@@ -141,11 +141,11 @@ We then took an existing web application, PolyXpress, and augmented its developm
 %%% More detailed, but still general, description of problem and why we want to solve it
 %%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
-Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others. \cite{EvolutionOfWeb} In that same time period, the number of global internet users has grown to somewhere around two and a half billion. \cite{EvolutionOfWeb} The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
+Since the advent of the internet, the web has undergone an impressive evolution from plain-text webpages to the highly stylized and functional pages that we see today. In the last four to six years there has been an explosion of new web technologies that make applications more functional: HTML5, CSS3, WebGL, Touch APIs, Geo-location, and a host of others\cite{EvolutionOfWeb}. In that same time period, the number of global internet users has grown to somewhere around two and a half billion\cite{EvolutionOfWeb}. The combination of these new technologies and the ever-increasing usage of the internet has led to a significant growth in the number and complexity of web applications.
 
 Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices for testing them. Their dynamic and distributed nature require a different testing toolkit than their predecessors. In addition, web applications are being produced in high volume and with quick development times, leading to a need for rapid testing.
 
-We have found that this is not a solved problem by looking at some of the biggest web applications around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on. \cite{ErrorsInTheWild} That may seem like a incredibly small amount for such monoliths but every error is an opportunity for malfunction and customer dissatisfaction.
+We have found that this is not a solved problem by looking at some of the biggest web applications around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on\cite{ErrorsInTheWild}. That may seem like a incredibly small amount for such monoliths but every error is an opportunity for malfunction and customer dissatisfaction.
 
 \section{What Already Exists}
 Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
@@ -160,7 +160,7 @@ There needs to be a framework in place for testing these multi-layer, multi-face
 % - A lot of products to test against (browsers)
 Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
 
-In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It did not matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed, individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
+In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It did not matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed, individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators\cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
 The addition of JavaScript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads, they only have access to the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is a cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
@@ -208,7 +208,7 @@ Web applications are fantastic for rapid prototyping because of all of the stren
 Here we'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones.
 
 \subsection{HTML5}
-The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009. \cite{EvolutionOfWeb} HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014. \cite{Plan2014} What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
+The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009\cite{EvolutionOfWeb}. HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014\cite{Plan2014}. What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
 
 The HTML5 specification brings with it a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming. HTML5 is a collection of new HTML elements and markup as well as libraries written in Javascript.
 
@@ -217,9 +217,9 @@ As the web is being increasingly used on mobile devices, HTML5 also introduces g
 JavaScript, though not the only scripting language with web use, is the primary language used to compliment HTML5 when making web applications. It is an interpreted language that is most often associated with client-side functionality, but in recent times has extended to the server-side. JavaScript is a prototype based object oriented scripting language with dynamic typing and first-class functions. Much of JavaScript's popularity stems from this dynamic nature that allows for quick, and often dirty, implementation of features in an iterative environment.
 
 \subsection{Node.JS}
-As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation application. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.'' \cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
+As a quick aside, it will be useful to have information about Node.JS as it is used in the sample application and the evaluation application. Node.JS, often called simply Node, is a JavaScript API for creating and running servers. ``Node's goal is to provide an easy way to build scalable network programs.''\cite{Node} Node was created in 2009 and is sponsored by Joyent. Node does not use thread-based networking, instead opting for a single-threaded event loop and non-blocking I/O. Node allows developers to create and control web servers without the need for external software, such as Apache, commonly found in other sites.
 
-Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others. \cite{Node}
+Node is found in a number of popular sites including: PayPal, The New York Times, Yahoo!, Uber, LinkedIn, Microsoft Azure, and a number of others\cite{Node}.
 
 One of the biggest draws of Node.js is the ability to write all of one's code, client and server, in a single programming language, Javascript. This leads to better understanding of the codebase as well as the opportunity for code reuse between client and server.
 
@@ -254,7 +254,7 @@ The standard HTTP methods are GET, PUT, POST, and DELETE. These methods define w
 An important part of being a RESTful API is that any change to a web page or element is done through a hypertext link and all actions on an element share a single URI. For example, all updates to ``entity1'' are done through ``http://myrestapi.com/entities/entity1'' using the various HTTP methods that can be called using hypertext links on the page. Compare this to a different way to handle that functionality such as ``http://myrestapi.com/entities/UpdateEntity'' where the HTTP request contains information regarding the entity to update. This method handles all updates, regardless of which entity is changing, through a single URI.
 
 \section{Defining Testing}
-IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.'' \cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
+IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.''\cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
 
 There are a number of different types of tests and testing concepts. We will focus on Unit Testing, Integration Testing, Continuous Integration, and Acceptance Testing.
 
@@ -324,7 +324,7 @@ Acceptance testing is testing to confirm that the product meets a certain specif
 In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a separate language that is more like English than code. The traditional User Story template is: ``As a \textless role\textgreater, I want \textless goal/desire\textgreater \space so that \textless benefit\textgreater.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
 
 \subsection{Testing Statistics}
-It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
+It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell\cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
 
 \begin{Figure}
   \centering
@@ -347,7 +347,7 @@ What we see here is that the earlier a defect is introduced the more it costs to
 In the following chapter we will discuss the testing frameworks that we looked at and the application we used to evaluate them. This chapter will conclude with a set of decision matrices outlining the strengths of each individual framework and where they overlap.
 
 \section{ToDo Application}
-In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB.\cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, marking tasks as completed, and viewing completed tasks. Here is a brief preview of the application's UI:
+In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB\cite{ToDoAppHomePage}. Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, marking tasks as completed, and viewing completed tasks. Here is a brief preview of the application's UI:
 
 \begin{Figure}
   \centering
@@ -414,7 +414,7 @@ describe("Arithmetic Test", function () {
 \end{lstlisting}
 The \lstinline{describe} statement creates a test suite to organize related tests. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience.
 
-The default Jasmine did not support Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
+The default Jasmine did not support Node.js but there was a package available through npm called jasmine-node\cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
 Asynchronous testing using Jasmine is a bit of a chore because it requires a series of functions that are not straightforward. The asynchronous support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. These functions will be outlined in an example below. This method of asynchronous testing requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
@@ -593,7 +593,7 @@ var hello = require('app/hello');
 } ());
 \end{lstlisting}
 
-Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas. \cite{AMDInfo} Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because that is what Node.JS uses, which is used by our evaluation applications.
+Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas\cite{AMDInfo}. Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because that is what Node.JS uses, which is used by our evaluation applications.
 
 %- TDD, BDD, Object methods
 Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces effect how the general layout of test code looks. Here's a very quick example of the different layouts:
@@ -631,7 +631,7 @@ Intern uses the WebDriver API to communicate with Selenium to drive the automate
 Intern's unit-test versus browser test separation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
-Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+Intern includes configurable code coverage metrics on tests by default. Running unit tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran\cite{Istanbul}.
 
 Intern offers a fully-featured framework for all testing needs but was difficult to configure for a Node.js server setup. If a developer had a more traditional web application setup with a separate server that served normal HTML pages, Intern would be a go-to framework for all testing needs.
 
@@ -710,7 +710,7 @@ Nightwatch is a Node.js module, and as such can easily installed and run via npm
 
 Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if the developer wants to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
 
-Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%.\cite{BrowserStats} Together that accounts for 91.86\% of all internet users.
+Nightwatch, as of this writing, has the ability to open Firefox, Chrome, and Internet Explorer. As of February 2014, Chrome is used by 46.69\% of internet users, Internet Explorer is used by 24.39\% and Firefox is used by 20.78\%\cite{BrowserStats}. Together that accounts for 91.86\% of all internet users.
 
 \subsection{Headless Browsers}
 In an attempt to speed up UI testing, which is notoriously slow, there have been efforts to create ``headless'' browsers which behave like normal browsers except that there's no display element. They emulate the DOM and skip the display phase. We opted to stick with visual browsers due to time constraints and the added complexity of running headless browsers.
@@ -751,7 +751,7 @@ browser.visit("http://localhost:3000/", function () {
 });
 \end{lstlisting}
 
-Developers like ZombieJS syntax so much that there exists a wrapper that uses ZombieJS's API around PhantomJS. \cite{ZombiePhantom}
+Developers like ZombieJS syntax so much that there exists a wrapper that uses ZombieJS's API around PhantomJS\cite{ZombiePhantom}.
 
 ZombieJS offers a lightweight solution to headless browser testing, but does not have the same depth of features as PhantomJS or the same assurances that your tests do exactly what they would do in a browser with a head.
 
@@ -761,7 +761,7 @@ Continuous Integration frameworks attempt to make development easier by running 
 Continuous Integration frameworks, therefore, need to be flexible in the type of project they support, customizable in their chosen environments to support differing projects, and have a simple way to connect to repositories or file systems.
 
 \subsection{Jenkins}
-Jenkins\cite{Jenkins} is an offline Continuous Integration tool, the only offline tool that we found with active developement and support. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members. \cite{JenkinsGitHub} Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
+Jenkins\cite{Jenkins} is an offline Continuous Integration tool, the only offline tool that we found with active developement and support. It was created by developers of a previous tool called Hudson when a dispute with Oracle led them to fork the Hudson project and rename it Jenkins. As of February 2014, the Jenkins organization has over 1,100 public repositories and 570 members\cite{JenkinsGitHub}. Jenkins has, according to their website, two main focuses: (1) building and testing software continuously and (2) monitoring executions of externally-run jobs. The first focus is the general goal for any CI framework. The second focus is of note and will be discussed after the initial evaluation. 
 
 Jenkins is a series of web pages that are set up to run on a given server. This is what it looks like:
 \begin{Figure}
@@ -792,14 +792,14 @@ Travis requires that projects be hosted on GitHub, but by doing so the setup is 
 
 Getting a project running with Travis is fairly easy; just create a yml file in the repository with certain lines pertaining to the language, needed services, commands to run, etc. We were able to set up everything we needed in six simple lines.
 
-In order to get access to private repositories, Travis offers several pricing plans, the cheapest of which is \$129 \cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
+In order to get access to private repositories, Travis offers several pricing plans, the cheapest of which is \$129\cite{TravisPricing} for their ``Startup'' plan. That's a bit steep, but it does offer unlimited private repositories, unlimited collaborators, and two concurrent jobs. 
 
 From what we gathered, Travis appears to be targeted at companies, not individual developers. Travis requires developers to host their projects on GitHub and only supports one process running at a time. However, Travis is incredibly easy to set up, does not require it's own server, comes with impressive built-in features, and works wonderfully with open-source repositories on GitHub.
 
 \subsection{Semaphore}
 Semaphore\cite{Semaphore} is an online CI framework that connects to GitHub to bring in projects. Semaphore is made by RenderedText, a software consulting team. Semaphore connects with public and private repositories but requires a subscription after 30 days no matter which repositories are used.
 
-Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects.\cite{SemaphoreBlog} These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
+Semaphore was originally designed for only Ruby applications but in January of 2014 they announced official support for Node.js and JavaScript and as of February 26th they now offer official support for Clojure projects\cite{SemaphoreBlog}. These types of projects require no setup or files in the repository, Semaphore automatically detects project type and auto-fills build steps. Their ``supported stack'' page also lists C/C++, Java, Perl, and Python, but those must be configured manually. 
 
 Semaphore supports most databases and has a number of testing frameworks built-in. Once again any missing libraries or dependencies can be installed using apt-get. It would appear that deployment support is only available for Ruby projects.
 
@@ -1076,13 +1076,13 @@ Installing Nightwatch consists of just installing another npm module. \lstinline
 
 The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants, some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src_folders} attribute to specify a source directory, and the \lstinline{test_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
-To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are discussed in their developer guide. \cite{NightwatchJS}
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are discussed in their developer guide\cite{NightwatchJS}.
 
 \subsection{Setting up Istanbul}
-As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests. For a more detailed view of possible commands and arguments, the developer can check out the Istanbul page. \cite{Istanbul}
+As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with npm: \lstinline{npm install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha unit tests. For a more detailed view of possible commands and arguments, the developer can check out the Istanbul page\cite{Istanbul}.
 
 \subsection{Setting up Grunt}
-Getting Grunt set up just the way the developer wants it is the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a JavaScript file named ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''. \cite{GruntJS}
+Getting Grunt set up just the way the developer wants it is the most involved, but there are a myriad of examples and sample scripts to help them through. Installation is the same as we've seen before, \lstinline{npm install -g grunt-cli}. After installation the developer will need to create a ``Gruntfile'' which is just a JavaScript file named ``Gruntfile.js''. Inside the Gruntfile are all of the command names and procedures that the developer wants. As the documentation outlines: ``A Gruntfile is comprised of the following parts: 1) The \"wrapper\" function 2) Project and task configuration 3) Loading Grunt plugins and tasks 4) Custom tasks''\cite{GruntJS}.
 
 Here is an example Gruntfile:
 \begin{lstlisting}
