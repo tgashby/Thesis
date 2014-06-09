@@ -259,7 +259,7 @@ IEEE defines software testing as ``the dynamic verification of the behavior of a
 There are a number of different types of tests and testing concepts. We will focus on Unit Testing, Integration Testing, Continuous Integration, and Acceptance Testing.
 
 \subsection{Unit Testing}
-Unit testing is the testing of specific functions and functionality, or ``test units.'' According to IEEE, test units are ``[a] set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures that satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.'' \cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
+Unit testing is the testing of specific functions and functionality, or ``test units.'' According to IEEE, test units are ``[a] set of one or more computer program modules together with associated control data, [...] usage procedures, and operating procedures that satisfy the following conditions: 1) All modules are from a single computer program. 2) At least one of the new or changed modules in the set has not completed the unit test. 3) The set of modules together with its associated data and procedures are the sole object of a testing process.''\cite{UnitTestDefinition} Generally this means the testing of individual functions but can extend to a set of functions that produce a single module of functionality. What sets Unit Testing apart from other types of testing is that tests focus on one portion of the code or system rather than interactions between modules or the entire system.
 
 Here's a brief example:
 \begin{lstlisting}
@@ -347,7 +347,7 @@ What we see here is that the earlier a defect is introduced the more it costs to
 In the following chapter we will discuss the testing frameworks that we looked at and the application we used to evaluate them. This chapter will conclude with a set of decision matrices outlining the strengths of each individual framework and where they overlap.
 
 \section{ToDo Application}
-In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB.\cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, marking tasks as completed, and viewing completed tasks. Here is a brief preview of the application:
+In order to evaluate the various frameworks that we found online, we needed a small application with some functionality, but without the inherent complexity that was going to come with our final evaluation application. We chose a ToDo application made with Express.js, Node.js, and MongoDB.\cite{ToDoAppHomePage} Our choice of this application comes from its limited functionality and the ease of understanding the interactions that take place within the application, i.e. adding tasks to a ToDo list, marking tasks as completed, and viewing completed tasks. Here is a brief preview of the application's UI:
 
 \begin{Figure}
   \centering
@@ -382,17 +382,17 @@ In an effort to create a detailed and in-depth workflow and collection of tools,
 
 Node.js is in wide use and because it is written in JavaScript we were able to test our client and server code using the same frameworks. Node.js also offers an incredible package manager, NPM, that allows for a smooth and efficient workflow.
 
-JavaScript is the language of HTML5 and Node.js. It used in over 87\% of all websites\cite{JSUsage} and as such allows us to create a workflow to cover a majority of web applications.
+JavaScript is the language of HTML5 and Node.js. It is used in over 87\% of all websites\cite{JSUsage} and as such allows us to create a workflow to cover a majority of web applications.
 
 Many websites use databases to store user records, items in stock, and a number of other pieces of information. We wanted to make sure that the testing frameworks could support database functionality as it is often pivotal in running web applications.
 
 \subsection{Tool Requirements}
-Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools love open-source projects but are far less willing to provide free functionality to private or closed-source projects. 
+Our requirements for the selection of testing tools was relatively simple. In addition to meeting the requirements of our ``average web application'', the only other requirement was that the tool was free. What ``free'' means is that the developer would have access to at least the minimum functionality needed to use the tool on \emph{one} application that is \emph{open-source}. What we quickly found is that web testing tools support open-source projects for free but are far less willing to provide free functionality to private or closed-source projects. 
 
 Occasionally the cost of tools will be discussed but in general we did not review tools that only offered paid options.
 
 \section{Unit Testing Frameworks}
-The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a longer section regarding the final decision will be made where comparisons will be drawn between all of them. 
+The following frameworks are reviewed in chronological order of our evaluation. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
 Web applications can be broken down into two general parts. There is functionality behind the scenes that drives the web page and there is the user interface of the web page that conveys the information to the user. Unit testing frameworks are aimed at the functionality the drives the web page, not what the user sees.
 
@@ -412,11 +412,11 @@ describe("Arithmetic Test", function () {
   });
 });
 \end{lstlisting}
-The \lstinline{describe} statement creates a test suite to collect related tests under. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience.
+The \lstinline{describe} statement creates a test suite to organize related tests. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience.
 
 The default Jasmine did not support Node.js but there was a package available through npm called jasmine-node \cite{JasmineNode} that gave jasmine access to the node package and functions. 
 
-Asynchronous testing using Jasmine is a bit of a chore because it requires a series of functions that are not straightforward, but there is support built in. This support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. These functions will be outlined in an example below. This method of asynchronous testing requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
+Asynchronous testing using Jasmine is a bit of a chore because it requires a series of functions that are not straightforward. The asynchronous support comes in the form of a three-set function progression. The first function, \lstinline!runs(function () { .... })!, runs the asynchronous code. The second function, \lstinline!waitsFor(function () { ... })!, waits for a true value from a flag or other system. Finally, the third function, another \lstinline{runs(...)}, houses the assertions to determine if the code ran properly or not. These functions will be outlined in an example below. This method of asynchronous testing requires a fairly substantial amount of typing as well as complicated function chains when more than one asynchronous call is required.
 
 \begin{lstlisting}
 describe("Asynchronous specs", function() {
@@ -427,6 +427,7 @@ describe("Asynchronous specs", function() {
       flag = false;
       value = 0;
 
+      // Create an asynchronous function to run in half a second
       setTimeout(function() {
         flag = true;
       }, 500);
@@ -493,12 +494,12 @@ testCase('Require Suite', function(){
 \end{lstlisting}
 The developer doesn't gain anything by using one interface over another except the ability to write tests in a way that makes sense to them. There is no standard for writing assertions, as each assertion library is likely to be slightly different.
 
-Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is passed an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the asynchronous calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
+Mocha's approach to asynchronous testing is quite a bit more straightforward than Jasmine's. In the \lstinline{it(...)} anonymous function, there is an additional parameter called \lstinline{done} which is then called when the asynchronous call has finished. This required us to edit the code we were testing to make all the asynchronous calls accept an additional callback, but it was a very small price to pay for extended testability. An example asynchronous test would look like this:
 \begin{lstlisting}
 describe("Asynch Mocha Test", function () {
   it("looks like this", function (done) {
     myAsyncCall(param1, param2, function () { 
-      // This callback anonymous function expected to run when myAsyncCall returns
+      // This callback expected to run when myAsyncCall finishes
       // Test ...
       // Test ...
       // ...
@@ -511,8 +512,7 @@ describe("Asynch Mocha Test", function () {
 Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select a testing interface and assertion library so that tests could be written in the way a developer wants. The cost of the flexibilty was the need to find an assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
 
 \subsubsection{Chai.js}
-For the assertion library we chose Chai.js\cite{Chaijs}. It contains three different assertion APIs: an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions in the form of \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to a nice developer experience that can appeal to a variety of different developers.
-
+For the assertion library we chose Chai.js\cite{Chaijs}. It contains three different assertion APIs: an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions of the form \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to an experience that can appeal to a variety of different developers.
 
 \subsection{QUnit}
 QUnit\cite{QUnit} is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, a popular framework for DOM manipulation and access\cite{jQuery}. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
@@ -522,7 +522,7 @@ QUnit\cite{QUnit} is an Assertion style framework developed by the jQuery Founda
   \captionof{figure}{Each individual spec is further broken down into the assertions within it.}
 \end{Figure}
 
-An interesting feature that QUnit has that we'd not seen elsewhere is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. Silent failure can happen if the developer forgets to specify that a test is asynchronous or if there are synchronous callbacks. If a function in the test has a callback that runs the assertions, the test framework may finish executing the test and move on to the next test before ever running the assertions in the callback. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
+An interesting feature that QUnit has is the ability to specify how many assertions are expected to run in the test. This is incredibly useful for callbacks. By setting an expected number of assertions, tests can no longer fail silently just because an assertion was never run. Silent failure can happen if the developer forgets to specify that a test is asynchronous or if there are synchronous callbacks. If a function in the test has a callback that runs the assertions, the test framework may finish executing the test and move on to the next test before ever running the assertions in the callback. If the QUnit test finishes and the assertion count is not what was specified, it will fail the test and let the developer know fewer assertions were called than expected.
 
 QUnit tests are not grouped into suites by default and the syntax for grouping them leaves much to be desired. In order to group tests into ``modules'', as QUnit calls them, the developer writes code like the following:
 \begin{lstlisting}
@@ -542,13 +542,13 @@ QUnit.module("Module B");
 // Tests now grouped under Module B
 // ... Etc
 \end{lstlisting}
-It can be difficult to visually see where one module starts and ends, resulting in additional time spent finding the right place to add a test.
+It can be difficult to visually determine where one module starts and ends, resulting in additional time spent finding the right place to add a test.
 
 QUnit's handling of asynchronous tests is similar to Mocha's except instead of adding a parameter to the \lstinline{it} function, the developer calls the \lstinline{asyncTest} function instead. Finally, the developer calls \lstinline{start()} when the asynchronous test is finished. Example:
 \begin{lstlisting}
 asyncTest("Async Test", function () {
   myAsyncCall(param1, param2, function () {
-    // This anonymous function expected to run when myAsyncCall returns
+    // This callback expected to run when myAsyncCall finishes
     // Test ...
     // Test ...
     // ...
@@ -581,6 +581,7 @@ var assert = require('intern/chai/assert');
 var hello = require('app/hello');
 
 // Test code here
+
 
 // Another way to write CommonJS so that it's not global scope, used frequently
 (function () {
