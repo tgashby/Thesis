@@ -1,0 +1,14 @@
+{
+	"name": "MODULE_NAME", // Edit Me
+	"version": "SOME_NUMBER", // Edit Me
+	"dependencies": {
+		"grunt": "latest",
+		"grunt-contrib-watch": "latest",
+		"grunt-shell": "latest",
+		"grunt-mocha-test": "^0.10.2"
+		"mocha": "^1.18.2",
+		"istanbul": "^0.2.7",
+		"nightwatch": "^0.4.9",
+		"chai": "^1.9.1"
+	}
+}
