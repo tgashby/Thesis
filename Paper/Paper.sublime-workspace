@@ -1,0 +1,460 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"expecte",
+				"expected_result"
+			],
+			[
+				"des",
+				"describe"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "paper.tex",
+			"settings":
+			{
+				"buffer_size": 191891,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "paper.bib",
+			"settings":
+			{
+				"buffer_size": 10790,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"int",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.aux",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.tex",
+		"/C/Users/Tag/Downloads/main.tex",
+		"/C/Users/Tag/Desktop/main.tex",
+		"/C/Users/Tag/Desktop/ucthesis.cls",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 481/Assign3/jessrules.txt",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.bbl",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 509/proj_pres/selenium/googletest.js",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Thesis/Paper/Paper.sublime-project",
+		"/Users/tgashby/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Thesis/Paper/paper.tex",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Thesis/Paper/work.todo",
+		"/Users/tgashby/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/tgashby/Library/Application Support/Sublime Text 3/Packages/TodoManager/TodoManager.sublime-settings",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Thesis/Paper/paper[Conflict].tex",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Fifth Year/CSC 530/RubyInference/Paper/paper.bib",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Fifth Year/CSC 530/RubyInference/Paper/paper.tex",
+		"/Users/tgashby/Google Drive/Cal Poly Classes/Fifth Year/CSC 530/RubyInference/paper/paper.tex",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/thesis.sublime-project",
+		"/C/Users/Tag/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/.git/config",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Winter/CSC300/Term Paper/paper.tex",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.log",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/Term Paper/IEEEannot.bst",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/termpaper.sublime-workspace",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OOConcepts.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/TypeDecl.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/String.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/String.h",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/stl2.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/stl1.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/REFS.CPP",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OwnerStandard.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OwnerLazy.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OwnerIrresp.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OverloadRes.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OVERLOAD.CPP",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/ListMainTempl.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/ListTempl.h",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/List.h",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/List.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/List2.h",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/List2.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/ListMain2.cpp",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/OManip.h",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/CASTING1.CPP",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fourth Year/Fall/CSC305/Slides/CASTING2.CPP",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 480/wumpusGreenfoot/Wumpus/Maps/Reflex.sbm",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 480/wumpusGreenfoot/README.TXT",
+		"/C/Users/Tag/Downloads/CPE480-Lab4-AStarSearch.sbm",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 480/wumpusGreenfoot/Maps/Dumb.sbm",
+		"/C/Users/Tag/Downloads/CPE480-Lab3-BaseCode0/CPE480-Lab3-BaseCode0/testmaps/CPE480-Lab3-BFSearch.sbm",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Fifth Year/CSC 480/wumpusGreenfoot/Maps/Table.sbm",
+		"/C/Program Files (x86)/Greenfoot/lib/bluej.defs",
+		"/C/cygwin/home/Tag/.zshrc",
+		"/F/.zshrc",
+		"/C/Users/Tag/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Tag/AppData/Roaming/Sublime Text 3/Packages/SublimeRailsNav/Default (Windows).sublime-keymap",
+		"/C/Users/Tag/AppData/Roaming/Sublime Text 3/Packages/SublimeRailsNav/SublimeRailsNav.sublime-settings",
+		"/C/Users/Tag/AppData/Roaming/Sublime Text 3/Packages/Rails File Switcher/README.md"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"point",
+			"todo",
+			"somewhere",
+			"code",
+			"lame",
+			"chapter",
+			"subsection",
+			"chapter",
+			"your",
+			".\n",
+			"tools",
+			"todo",
+			"captionof",
+			"\\\\caption\\[(\\w+)\\]",
+			"\\captionfonts",
+			"\\end{center}",
+			"\\begin{center}",
+			"\\end{figure}",
+			"\\begin{figure}",
+			"\\_",
+			"\\'",
+			"\\\"",
+			".\n",
+			"The dynamic",
+			"javascript",
+			"Javascript",
+			"Zombie",
+			"1",
+			"Intern",
+			"code",
+			".\n",
+			"toolkit",
+			"you",
+			"'re",
+			"<<<<<<<",
+			".\n",
+			"\\\\paragraph\\{Cons\\}\\n\\n",
+			"\\\\paragraph\\{Pros\\}\\n",
+			"\\\\paragraph{Pros}\\n",
+			"\\paragraph{Pros}",
+			"For",
+			")",
+			"(",
+			"\\n",
+			" "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\\\captionof\\{$1\\}",
+			"\\\\caption\\{$1\\}",
+			"",
+			"\\centering",
+			"\\end{Figure}",
+			"\\begin{Figure}",
+			"_",
+			"JavaScript",
+			"",
+			"\\)",
+			"\\(",
+			"",
+			"\\ ",
+			"^ "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "paper.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 191891,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33931,
+								33931
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_bottom_top": false,
+								"action": null,
+								"action_digits":
+								[
+								],
+								"cancel_action": false,
+								"expecting_register": false,
+								"expecting_user_input": false,
+								"mode": 2,
+								"motion": null,
+								"motion_digits":
+								[
+								],
+								"next_mode": 2,
+								"next_mode_command": null,
+								"register": null,
+								"stashed_action": null,
+								"user_action_input": null,
+								"user_input": null,
+								"user_motion_input": null,
+								"xpos": 161
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 8655.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "paper.bib",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10790,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10619,
+								10619
+							]
+						],
+						"settings":
+						{
+							"highlight_line": false,
+							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_bottom_top": false,
+								"_vintageous_glue_until_normal_mode": true,
+								"_vintageous_input_parsers":
+								[
+								],
+								"action": null,
+								"action_count": "",
+								"action_digits":
+								[
+								],
+								"cancel_action": false,
+								"capture_register": false,
+								"expecting_register": false,
+								"expecting_user_input": false,
+								"mode": 2,
+								"motion": null,
+								"motion_count": "",
+								"motion_digits":
+								[
+								],
+								"next_mode": 2,
+								"next_mode_command": null,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": null,
+								"repeat_data":
+								[
+									"vi",
+									"o",
+									"mode_insert",
+									null
+								],
+								"sequence": "",
+								"stashed_action": null,
+								"user_action_input": null,
+								"user_input": null,
+								"user_motion_input": null,
+								"xpos": 8
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 4848.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 161.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "Paper.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+		"_vintageous_last_character_search": "T",
+		"_vintageous_last_character_search_forward": true,
+		"_vintageous_reset_during_init": true,
+		"vintage":
+		{
+			"_cmdline_cd": "C:\\Users\\Tag\\Google Drive\\Cal Poly Classes\\Thesis\\Paper"
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 187.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

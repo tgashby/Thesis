@@ -1,0 +1,112 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
+The style file: IEEEannot.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: paper.bib
+-- IEEEtranS.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting version - not for use with work to be submitted to the IEEE.
+Name 1 in "Frolin S. Ocasriza Jr., Karthik Pattabiraman, and Benjamin Zorn" has a comma at the end for entry ErrorsInTheWild
+while executing---line 5215 of file IEEEannot.bst
+Warning--to sort, need author or key in TestingDefinition
+Warning--to sort, need author or key in UnitTestDefinition
+Name 1 in "Shay Artzi, Julian Dolby, Simon Holm Jensen, Anders Moller, and Frank Tip" has a comma at the end for entry FrameworkForAutomatedTesting
+while executing---line 5215 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Julian Dolby, Simon Holm Jensen, Anders Moller, and Frank Tip" for entry FrameworkForAutomatedTesting
+while executing---line 5215 of file IEEEannot.bst
+Name 1 in "Qingning Huo, Hong Zhu, and Sue Greenwood" has a comma at the end for entry MultiAgentSoftwareEnvironment
+while executing---line 5215 of file IEEEannot.bst
+Name 1 in "Phillip Heidegger, Annette Bieniusa, and Peter Thiemann" has a comma at the end for entry DOMTransactions
+while executing---line 5215 of file IEEEannot.bst
+Too many commas in name 1 of "Javier Jesús Gutiérrez, Maria José Escalona, Manuel Mejías, Jesús Torres" for entry TestingInPractice
+while executing---line 5215 of file IEEEannot.bst
+Name 1 in "Valentin Dallmeier, Martin Burger, Tobian Orth, and Andreas Zeller" has a comma at the end for entry WebMate
+while executing---line 5215 of file IEEEannot.bst
+Name 1 in "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" has a comma at the end for entry FindingBugs
+while executing---line 5215 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5215 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5215 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5215 of file IEEEannot.bst
+Name 1 in "Mustafa Bozkurt, Mark Harman, and Youssef Hassoun" has a comma at the end for entry TestingWebServicesSurvey
+while executing---line 5215 of file IEEEannot.bst
+Warning--to sort, need author or key in IEEETestingConcepts
+Warning--empty author in UnitTestDefinition
+Warning--empty author in TestingDefinition
+Warning--empty author in IEEETestingConcepts
+Name 1 in "Frolin S. Ocasriza Jr., Karthik Pattabiraman, and Benjamin Zorn" has a comma at the end for entry ErrorsInTheWild
+while executing---line 5239 of file IEEEannot.bst
+Too many commas in name 1 of "Javier Jesús Gutiérrez, Maria José Escalona, Manuel Mejías, Jesús Torres" for entry TestingInPractice
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Mustafa Bozkurt, Mark Harman, and Youssef Hassoun" has a comma at the end for entry TestingWebServicesSurvey
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Phillip Heidegger, Annette Bieniusa, and Peter Thiemann" has a comma at the end for entry DOMTransactions
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Qingning Huo, Hong Zhu, and Sue Greenwood" has a comma at the end for entry MultiAgentSoftwareEnvironment
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" has a comma at the end for entry FindingBugs
+while executing---line 5239 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5239 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5239 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Adam Kiezun, Julian Dolby, Frank Tip, Danny Dig, Amit Paradkar, and Michael D. Ernst" for entry FindingBugs
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Shay Artzi, Julian Dolby, Simon Holm Jensen, Anders Moller, and Frank Tip" has a comma at the end for entry FrameworkForAutomatedTesting
+while executing---line 5239 of file IEEEannot.bst
+Too many commas in name 1 of "Shay Artzi, Julian Dolby, Simon Holm Jensen, Anders Moller, and Frank Tip" for entry FrameworkForAutomatedTesting
+while executing---line 5239 of file IEEEannot.bst
+Name 1 in "Valentin Dallmeier, Martin Burger, Tobian Orth, and Andreas Zeller" has a comma at the end for entry WebMate
+while executing---line 5239 of file IEEEannot.bst
+
+Done.
+You've used 54 entries,
+            4480 wiz_defined-function locations,
+            1150 strings with 14289 characters,
+and the built_in function-call counts, 24405 in all, are:
+= -- 2116
+> -- 373
+< -- 12
++ -- 182
+- -- 98
+* -- 1054
+:= -- 4238
+add.period$ -- 108
+call.type$ -- 54
+change.case$ -- 228
+chr.to.int$ -- 27
+cite$ -- 60
+duplicate$ -- 1791
+empty$ -- 2265
+format.name$ -- 114
+if$ -- 5139
+int.to.chr$ -- 0
+int.to.str$ -- 54
+missing$ -- 368
+newline$ -- 332
+num.names$ -- 66
+pop$ -- 1386
+preamble$ -- 1
+purify$ -- 175
+quote$ -- 2
+skip$ -- 1724
+stack$ -- 0
+substring$ -- 408
+swap$ -- 878
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 436
+warning$ -- 6
+while$ -- 72
+width$ -- 56
+write$ -- 573
+(There were 24 error messages)
