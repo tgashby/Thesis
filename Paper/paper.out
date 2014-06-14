@@ -58,7 +58,7 @@
 \BOOKMARK [2][-]{subsection.4.1.3}{Nightwatch}{section.4.1}% 58
 \BOOKMARK [2][-]{subsection.4.1.4}{Miscellaneous Tools}{section.4.1}% 59
 \BOOKMARK [0][-]{chapter.5}{Testing and Development Workflow}{}% 60
-\BOOKMARK [1][-]{section.5.1}{Our Implementation Configuration}{chapter.5}% 61
+\BOOKMARK [1][-]{section.5.1}{Implementation Configuration}{chapter.5}% 61
 \BOOKMARK [1][-]{section.5.2}{Tool Setup}{chapter.5}% 62
 \BOOKMARK [2][-]{subsection.5.2.1}{Setting up Mocha}{section.5.2}% 63
 \BOOKMARK [2][-]{subsection.5.2.2}{Setting up MagnumCI}{section.5.2}% 64

@@ -19,7 +19,7 @@
 			"file": "paper.tex",
 			"settings":
 			{
-				"buffer_size": 191891,
+				"buffer_size": 134288,
 				"line_ending": "Windows"
 			}
 		},
@@ -27,7 +27,15 @@
 			"file": "paper.bib",
 			"settings":
 			{
-				"buffer_size": 10790,
+				"buffer_size": 11760,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "FinalRevisions.txt",
+			"settings":
+			{
+				"buffer_size": 122,
 				"line_ending": "Windows"
 			}
 		}
@@ -83,7 +91,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/Paper.sublime-project",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/FinalRevisions.txt",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/IEEEannot.bst",
 		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.aux",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.pdf",
+		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.bib",
 		"/C/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.tex",
 		"/C/Users/Tag/Downloads/main.tex",
 		"/C/Users/Tag/Desktop/main.tex",
@@ -160,6 +173,40 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Our",
+			"Steve",
+			"appendix",
+			"}\n",
+			"grunt ",
+			"grunt'",
+			"grunt ",
+			"grunt",
+			"Grunt",
+			"Gruntfile",
+			"incredibly ",
+			"YML",
+			"DOM",
+			"jasmine",
+			"npm",
+			"url = \\{(.+)\\}",
+			"#",
+			"url =",
+			"title = \\{(.+)\\}",
+			"capitalize",
+			"change.case",
+			"capitalization",
+			"integration test",
+			"Integration test",
+			"unit test",
+			"Unit test",
+			"Javascript",
+			"(\\w)\\\\cite",
+			"are",
+			".\\cite",
+			"\\.\\\\cite\\{(\\w+)\\}",
+			"\\.\\\\cite\\{\\w+\\}",
+			"\\\\cite\\{\\w+\\}\\.",
+			"\\s\\\\cite",
 			"point",
 			"todo",
 			"somewhere",
@@ -212,6 +259,23 @@
 		"regex": true,
 		"replace_history":
 		[
+			"Grunt ",
+			"Grunt'",
+			"Grunt",
+			"gruntfile",
+			"",
+			"Jasmine",
+			"NPM",
+			"howpublished = \\{\\\\url\\{$1\\}\\}",
+			"howpublished = \\{\\url\\{$1\\}\\}",
+			"howpublished =",
+			"title = \\{\\{$1\\}\\}",
+			"Integration Test",
+			"Unit Test",
+			"JavaScript",
+			"$1 \\\\cite",
+			"\\\\cite\\{$1\\}\\.",
+			"\\\\cite",
 			"\\\\captionof\\{$1\\}",
 			"\\\\caption\\{$1\\}",
 			"",
@@ -245,19 +309,20 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 191891,
+						"buffer_size": 134288,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								33931,
-								33931
+								32499,
+								32499
 							]
 						],
 						"settings":
 						{
+							"highlight_line": false,
 							"spell_check": true,
 							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
 							"tab_size": 2,
@@ -272,7 +337,7 @@
 								"cancel_action": false,
 								"expecting_register": false,
 								"expecting_user_input": false,
-								"mode": 2,
+								"mode": 1,
 								"motion": null,
 								"motion_digits":
 								[
@@ -284,11 +349,11 @@
 								"user_action_input": null,
 								"user_input": null,
 								"user_motion_input": null,
-								"xpos": 161
+								"xpos": 0
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 8655.0,
+						"translation.y": 9236.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -300,70 +365,104 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10790,
+						"buffer_size": 11760,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10619,
-								10619
+								1783,
+								1783
 							]
 						],
 						"settings":
 						{
-							"highlight_line": false,
 							"syntax": "Packages/LaTeX/Bibtex.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
 								"_bottom_top": false,
-								"_vintageous_glue_until_normal_mode": true,
-								"_vintageous_input_parsers":
-								[
-								],
 								"action": null,
-								"action_count": "",
 								"action_digits":
 								[
 								],
 								"cancel_action": false,
-								"capture_register": false,
 								"expecting_register": false,
 								"expecting_user_input": false,
 								"mode": 2,
 								"motion": null,
-								"motion_count": "",
 								"motion_digits":
 								[
 								],
 								"next_mode": 2,
 								"next_mode_command": null,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
 								"register": null,
-								"repeat_data":
-								[
-									"vi",
-									"o",
-									"mode_insert",
-									null
-								],
-								"sequence": "",
 								"stashed_action": null,
 								"user_action_input": null,
 								"user_input": null,
 								"user_motion_input": null,
-								"xpos": 8
+								"xpos": 44
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 4848.0,
+						"translation.y": 671.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "FinalRevisions.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								122,
+								122
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"vintage":
+							{
+								"_bottom_top": false,
+								"action": null,
+								"action_digits":
+								[
+								],
+								"cancel_action": false,
+								"expecting_register": false,
+								"expecting_user_input": false,
+								"mode": 1,
+								"motion": null,
+								"motion_digits":
+								[
+								],
+								"next_mode": 2,
+								"next_mode_command": null,
+								"register": null,
+								"stashed_action": null,
+								"user_action_input": null,
+								"user_input": null,
+								"user_motion_input": null,
+								"xpos": 0
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -451,7 +550,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 187.0,
 	"status_bar_visible": true,
 	"template_settings":

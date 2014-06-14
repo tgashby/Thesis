@@ -131,7 +131,7 @@
 \begin{abstract}
 Web applications are quickly replacing standalone applications for everyday tasks. These web applications need to be tested to ensure proper functionality and reliability. There have been substantial efforts to create tools that assist with the testing of web applications, but there is no standard set of tools or a recommended workflow to ensure speed of development and strength of application.
 
-We have used and outlined the merits of a number of existing testing tools and brought together the best among them to create what we feel is a fully-featured, easy to use, testing framework and workflow for web application development.
+We have used and outlined the merits of a number of existing testing tools and brought together the best among them to create what we believe is a fully-featured, easy to use, testing framework and workflow for web application development.
 
 We then took an existing web application, PolyXpress, and augmented its development process to include our workflow suggestions in order to incorporate testing at all levels. PolyXpress is a web application that ``allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} After incorporating our testing procedures, we immediately detected previously unknown bugs in the software. In addition, there is now a workflow in place for future developers to use which will expedite their testing and development.
 \end{abstract}
@@ -153,22 +153,22 @@ Since the advent of the internet, the web has undergone an impressive evolution 
 
 Like any piece of software, these web applications require testing in order to determine their correctness and give their users the best experience possible. Unfortunately, web applications are new and there are no standard practices for testing them. Their dynamic and distributed nature require a different testing toolkit than their predecessors. In addition, web applications are being produced in high volume and with quick development times, leading to a need for rapid testing.
 
-We have found that this is not a solved problem by looking at some of the biggest web applications and websites around. A 2011 study showed that YouTube has at least eight errors, Apple has at least seven, Microsoft at least four, and the list goes on \cite{ErrorsInTheWild}. That may seem like a small amount for such large sites, but every error is an opportunity for malfunction and customer dissatisfaction.
+We have found that this is not a solved problem by looking at some of the biggest web applications and websites around. A 2011 study showed that YouTube has at least eight errors, Apple.com has at least seven, Microsoft.com at least four, and the list goes on \cite{ErrorsInTheWild}. That may seem like a small amount for such large sites, but every error is an opportunity for malfunction and customer dissatisfaction.
 
 \section{What Already Exists}
-Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
+Web developers are not clueless, they understand that there is a need for testing of web applications. Unfortunately, web development is still a relatively new domain, and developers have not come together to work on the problem of testing but rather have come up with their own proprietary solutions in isolation or merely on a per-project basis. Some of these tools have gained traction and become larger, more general, tools.
 
 Many of these tools are targeted at solving one or two aspects of complete testing but do not cover everything. In addition, some of the tools overlap or require tight coupling that prevents them from being used in combination with one another. Having to wade through a sea of similar tools or try to force tools to work together is time-consuming, which can be the death of a cutting-edge application. The more time an application is off the market, the more time competitors have to develop their own versions. Yet another problem is that deciding between similar tools can be discouraging to the developer that just wants to write their application and test it quickly.
 
 Even the tools that already exist suffer from additional problems regarding their stages of development and amount of support. As will be discussed later, we've found tools that are in their beta stages that show incredible promise as well as mature tools that are widely used but leave much to be desired. These problems affect both industry tools as well as independent developers.
 
-There needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, allows for quick development, and is thorough in its coverage. This thesis will explore some of the most popular tools with the end goal of gathering the best tools out there and collecting them in one place. We will attempt to gather tools that work well together and cover all aspects of testing for an average developer, particular a developer who has experience in some field of software but may be new to web applications. Our hope is that this thesis will serve as a starting point and guide to future web application developers.
+There needs to be a framework in place for testing these multi-layer, multi-faceted web applications that is easy to use, allows for quick development of both features and tests, and is thorough in its coverage. This thesis will explore some of the most popular tools with the end goal of gathering the best tools out there and collecting them in one place. We will attempt to gather tools that work well together and cover all aspects of testing for an average developer, particularly a developer who has experience in some field of software but may be new to web applications. Our hope is that this thesis will serve as a starting point and guide to future web application developers.
 
 \section{Problems Still Faced}
 % - A lot of products to test against (browsers)
 Testing web applications is difficult. The web offers an impressive set of features, but with those features come some draw-backs. Two of the most frustrating drawbacks for developers are the number of platforms and the web's asynchronous nature.
 
-In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It did not matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed, individual browsers began offering additional features and web applications became more rich but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
+In the very beginning, web applications were easy to write and test because the only code was plain HTML with a common set of HTML tags. It did not matter what browser was used to view the content because the viewer was always a home computer rendering plain HTML. As time progressed, individual browsers began offering additional features and web applications became more rich, but harder to test because the developer would need to run their code on multiple browsers to make sure they all behaved similarly. In today's technological world, it is nearly impossible to run one's web application on all of the possible browser versions, configurations, and platforms that are available. Web applications are on home computers, phones, tablets, MP3 players, refrigerators \cite{SamsungFridge}, and a variety of other devices of varying sizes and capabilities. As a developer, one wants to target as many of those platforms as possible with a single code-base to save time and effort. A naive developer might just release an application on all platforms and hope for the best, but releasing on all platforms without testing will likely drive consumers away if the application fails on their given platform.
 
 % - Asynchronous shennanigans
 The addition of JavaScript to web applications led to a golden age of feature-rich applications with exciting user interface (UI) features that had not before been seen. This set of features and UI improvements came with the complication of asynchronous execution. Unlike traditional multi-threaded software, however, the developer is not given access to individual threads, they only have access to the main thread. This sort of implementation is essential for dealing with asynchronous events like button clicks, loading data separately so as not to hold up the web page, and a variety of other niceties, but is a cause of major headaches in testing. Without access to individual threads, the developer has to either write synchronous code that will be slow and not user-friendly, or rely on other mechanisms that allow code to be sequenced. Often it is hard to get code properly sequenced and it requires changing straightforward functions to a hideous amalgamation of callbacks.
@@ -216,10 +216,10 @@ The developer is not free from all worry as they must still consider differing w
 Web applications are fantastic for rapid prototyping because of all of the strengths discussed above. An idea can be prototyped and posted on a website quickly and rapid iteration can occur without the user even necessarily noticing. There are a number of web tools that will record where users are clicking, what features they're using, how long they're spending on a given page or step of a process, and a number of other metrics that can make iterations more directed and effective.
 
 \section{Web Features}
-Here we'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones.
+Here we'll discuss some of the prevalent technologies that recently appeared in web applications and development. By no means is this an exhaustive list, just a sampling of the more prominent ones, particularly those that are integral to our evaluation application.
 
 \subsection{HTML5}
-The latest revision of HTML is HTML5 which first debuted on Firefox back in 2009 \cite{EvolutionOfWeb}. HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014 \cite{Plan2014}. What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
+The latest revision of HTML is HTML5 which first debuted on Firefox in 2009 \cite{EvolutionOfWeb}. HTML5 has not been officially recommended by the W3C (World Wide Web Consortium) who is the official keeper and recommender of web standards, however, there is a plan for final recommendation this year, 2014, called Plan 2014 \cite{Plan2014}. What this means is that in 2014 the W3C will release a stable HTML5 Recommendation which will make HTML5 an official standard and help universalize all the separate implementations.
 
 The HTML5 specification brings with it a number of new features including: audio and video tags, the canvas element, drag-and-drop functionality, web storage, offline page support, and a number of other modern web features. A lot of HTML5's features revolve around the inclusion of multimedia in web pages and stronger graphical processing and programming. HTML5 is a collection of new HTML elements and markup as well as libraries written in JavaScript.
 
@@ -234,15 +234,17 @@ Node is found in a number of popular sites including: PayPal, The New York Times
 
 One of the biggest draws of Node.js is the ability to write all of one's code, client and server, in a single programming language, JavaScript. This leads to better understanding of the codebase as well as the opportunity for code reuse between client and server.
 
+Node.js does have some drawbacks though. The biggest problem with Node.js is that it does not handle heavy computation well. Any CPU-intensive code will cause an application to hang where other server frameworks can offload tasks much more judiciously. This is due to Node.js' single threaded event loop. Another drawback is that Node.js is still immature in relation to other server frameworks such as Apache. It is not yet regarded as an enterprise framework.
+
 \section{Client/Server Architecture}
 By their nature, web applications are distributed; they have a client-side and a server-side.
 
 Here we'll discuss what the client-side is and does, what the server-side is and does, and how they communicate.
 
 \subsection{Client-side}
-First, we'll address what a client is. The simple answer is: The User. The User's phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service being using to communicate with the web is the client. 
+First, we'll address what a client is. The simple answer is: The User. The User's phone, computer, tablet, or other device communicating with a given website or application is the client. More specifically, the browser or service being used to communicate with the web is the client. 
 
-The client-side portion of an application interacts with the browser to request assets from the server and then displaying them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server.
+The client-side portion of an application interacts with the browser to request assets from the server and then displays them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server.
 
 Client-side programming is done in a language that the browser understands, most frequently JavaScript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
 
@@ -252,7 +254,7 @@ A server is the entity, be it machine, person, or cloud service, that stores the
 \subsection{Client and Server Interactions}
 The client has limited access to resources on any given web application. This access is restricted by the server. Without such restrictions in place, someone could access user databases, credit card information, order reports, etc. In addition, there would be an overwhelming amount of content for a client to parse through, even if they have no malicious intent.
 
-Clients communicate with the server through a request-response architecture. Clients send a request to the server, often with information attached, such as a form submittal or login, and the server returns a response with either a success/failure message, or additional data.
+Clients communicate with the server through a request-response architecture. Clients send a request to the server, often with information attached, such as a form submittal or login, and the server returns a response with either a success message, a failure message, or additional data.
 
 One example of a client-server architecture that is popular for the web is the Representational State Transfer, also known as REST, architecture. If a client-server architecture meets all of the REST criteria, it is said to be RESTful. As this paper is not about Client Server interactions, we will not outline the constraints but instead outline how RESTful APIs look in web applications. The RESTful web APIs use: 1) a base uniform resource identifier (URI), 2) an internet media type, and 3) the standard HTTP methods.
 
@@ -315,14 +317,14 @@ function testIsGrammaticallySound () { ... } // Another Integration Test, would 
 
 \end{lstlisting}
 
-In the above example there are two modules, \lstinline{Word} and \lstinline{Sentence}. Unit Testing the \lstinline{Word} is relatively simple because it is self-contained and only runs functions on the string given to it. Unit Testing the \lstinline{Sentence} module is tougher because of its reliance on \lstinline{Word}s. The goal of a good set of Unit Tests is to test as much of a module as possible in isolation from all other modules. This includes interactions between modules. In our example, testing the \lstinline{wordCount} function is a Unit Test because none of the \lstinline{Word} functionality is actually required. The other methods of \lstinline{Sentence} pose a problem because of their need to call \lstinline{Word} functions. Although there are ways to Unit Test those functions, that is beyond the scope of this overview and would only serve to confuse the reader.
+In the above example there are two modules, \lstinline{Word} and \lstinline{Sentence}. Unit Testing the \lstinline{Word} is relatively simple because it is self-contained and only runs functions on the string given to it. Unit Testing the \lstinline{Sentence} module is tougher because of its reliance on \lstinline{Word}s. The goal of a good set of Unit Tests is to test as much of a module as possible in isolation from all other modules. This includes interactions between modules. In our example, testing the \lstinline{wordCount} function is a Unit Test because none of the \lstinline{Word} functionality is actually required. The other methods of \lstinline{Sentence} pose a problem because of their need to call \lstinline{Word} functions. There are ways to Unit Test these more complicated modules that have to do with creating ``mock objects.'' Mock objects are very simple objects whose behaviors and methods are entirely predictable. In our example, we would want to create a MockWord which would always return the same word or part of speech regardless of its arguments. In this way, we are not testing the MockWord functions in addition to the Sentence functions because we know exactly what to expect from the MockWord object. 
 
 Unit Tests are important because they are done in isolation from one another. The purpose of a Unit Test is to ensure that once individual modules are put together, the developer need only focus on the interaction between them instead of their individual functionality. Without the assurances of prior Unit Tests, integration would be a more stressful and mysterious proposition.
 
 \subsection{Integration Testing}
 After writing Unit Tests, a developer writes Integration Tests. Integration Tests are used to determine if modules work together to produce correct results. In our previous example, this would mean testing most of the \lstinline{Sentence} functions to ensure that they properly use the \lstinline{Word}s that the \lstinline{Sentence} contains. Integration Tests cover a wider variety of test situations from single methods to entire modules.
 
-Integration Testing is important because it gives the developer a sense of what modules are actually producing correct results, as opposed to which modules are functioning as anticipated. This distinction is critical to make. Unit Tests ensure that individual modules function. Integration Tests are usually written in a way that is close to how they will actually be used in the final product, giving the developer a sense of which features are working and which are not.
+Integration Testing is important because it gives the developer a sense of what real features are working, as opposed to which individual modules are producing acceptable results. This distinction is critical to make. Unit Tests ensure that individual modules function. Integration Tests are usually written in a way that is close to how they will actually be used in the final product, giving the developer a sense of which real features are working and which are not as opposed to just knowing that a small part of the total result is right.
 
 \subsection{Continuous Integration}
 The original definition of Continuous Integration (CI) involves the idea of developers committing from their  branches to a master branch daily so that changes are continuously integrated in an effort to make sure all branches can, in fact, be integrated. It has since evolved into a more general idea of a tool that runs commands after each commit to a repository. These commands generally encompass running Unit Tests, Integration Tests, user interface tests, and also often publishing and disseminating notifications to interested parties. This is invaluable feedback because the developer can see if they're making progress in the right direction as they write code, as opposed to a situation in which the developer finishes coding and finds out they've made a bad assumption or decision between this commit and the last. 
@@ -332,7 +334,7 @@ One of the most important aspects of a good piece of CI software is that it is a
 \subsection{Acceptance Testing}
 Acceptance Testing is testing to confirm that the product meets a certain specification. Often this is making sure that the software meets an SRS (Software Requirements Specification) or a customer's outlined expectations. Often this testing is performed by the user of the software or customer that ordered the software, rather than the developers.
 
-In an effort to automate this, some developers create ``User Stories'' which are automated tests that run a series of functions described by customers or an SRS. These User Stories are often written in a separate language that is more like English than code. The traditional User Story template is: ``As a \textless role\textgreater, I want \textless goal/desire\textgreater \space so that \textless benefit\textgreater.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down into more specific steps that can be automated.
+Some developers and non-technical project members create ``User Stories'' which are short descriptions of desired functionality. The traditional User Story template is: ``As a \textless role\textgreater, I want \textless goal/desire\textgreater \space so that \textless benefit\textgreater.'' For example: ``As a supervisor, I want to find my employees by their employee ID.'' These user stories are then broken down by developers to specific steps that can be tested automatically.
 
 \subsection{Testing Statistics}
 It is widely accepted that the earlier a developer detects a defect, the easier it is to fix that defect. A famous book, ``Code Complete'' by Steve McConnell \cite{DefectPic}, includes the following figure, showing this statistic on a rough graph.
@@ -344,6 +346,8 @@ It is widely accepted that the earlier a developer detects a defect, the easier 
 \end{Figure}
 
 What we see here is that the earlier a defect is introduced the more it costs to fix it later. Of particular note is that the costs are roughly exponential, not linear. It's relatively easy to fix a bug that was introduced in the same stage that it is found, e.g. introducing a coding bug during ``Construction'' and fixing it while still writing code, prior to the ``System Test'' phase. The longer a bug lies undetected, the increasingly harder it becomes to fix that bug. 
+
+We are setting out to give developers a framework for running tests from the start of development. Our hope is that developers will take on a Test-Driven Development style in which they write tests first and then write the functionality so that bugs are detected soon after introduction. With the combination of Unit Testing and Continuous Integration, our workflow will give quick feedback so that the developer knows exactly what state their project is in at all times.
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%% Sample App 
@@ -394,12 +398,12 @@ Occasionally the cost of tools will be discussed but in general we did not revie
 \section{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of our evaluation. There was no determined order in whcih we evaluated them. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
-Web applications can be broken down into two general parts. There is functionality behind the scenes that drives the web page and there is the user interface of the web page that conveys the information to the user. Unit Testing frameworks are aimed at the functionality that drives the web page, not what the user sees.
+Web applications can be broken down into two general parts. There is functionality behind the scenes that drives the web page and there is the user interface of the web page that conveys the information to the user. Unit Testing frameworks are aimed at the functionality that drives the web page, not what the user sees. This means that the Unit Testing frameworks were used to run both Unit Tests and Integration Tests for our ToDo application.
 
 \subsection{Jasmine}
 The first of the Unit Testing frameworks that we looked at was Jasmine \cite{Jasmine}, a Behavior Driven Development (BDD) testing framework. BDD is based on Test Driven Development and adds some simplifications and patterns that attempt to bring both developers and businessmen into the software testing process \cite{BDD}. The idea behind Behavior Driven Development is that input from non-technical stakeholders as well as technical stakeholders can come together so that everyone understands what the project should do \cite{BDD}.
 
-This relates to Jasmine is the way that the developer writes Jasmine tests. The idea behind Jasmine tests is that they read, as much as possible, like English sentences. As an example, the following is a valid Jasmine test:
+This relates to Jasmine in the way that the developer writes Jasmine tests. The idea behind Jasmine tests is that they read, as much as possible, like English sentences. As an example, the following is a valid Jasmine test:
 \begin{lstlisting}
 describe("Arithmetic Test", function () {
   it("should compute the addition of two numbers", function () {
@@ -412,7 +416,7 @@ describe("Arithmetic Test", function () {
   });
 });
 \end{lstlisting}
-The \lstinline{describe} statement creates a test suite to organize related tests. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience.
+The \lstinline{describe} statement creates a test suite to organize related tests. Each \lstinline{it} statement is generally one test with some number of \lstinline{expect} statements. The above code is quite readable even to someone with no coding experience. Jasmine's Expect assertion come with 12 default assertions that can all be negated, meaning 24 assertions in all. The Expect API can be extended with custom assertions if needed.
 
 The default Jasmine did not support Node.js but there was a package available through NPM called jasmine-node \cite{JasmineNode} that gave Jasmine access to the node package and functions. 
 
@@ -512,7 +516,9 @@ describe("Asynch Mocha Test", function () {
 Overall Mocha offered more flexibility and better asynchronous support at the cost of additional setup. This increased flexibility came in the way of being able to select a testing interface and assertion library so that tests could be written in the way a developer wants. The cost of the flexibilty was the need to find an assertion library among the dozen that are out there. We prefer Mocha's method of asynchronous testing because it required considerably less typing on our part and was more easy to follow and read than the Jasmine chain of method calls.
 
 \subsubsection{Chai.js}
-For the assertion library we chose Chai.js \cite{Chaijs}. It contains three different assertion APIs: an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions of the form \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to an experience that can appeal to a variety of different developers.
+For the assertion library we chose Chai.js \cite{Chaijs}. It contains three different assertion APIs: an Expect API, a Should API, and a more general Assert API. The Expect API provides assertions of the form \lstinline{expect(myVar).to.equal(10);} or \lstinline{expect(myArr).to.have.length(10);}. The Should API has assertions of the form \lstinline{myVar.should.be.a('number');} or \lstinline{myArr.should.have.length(10);}. Finally, the Assert API has the more tried and true \lstinline{assert.equal(myVar, 10);} and \newline \lstinline{assert.lengthOf(myArr, 10);}. The various APIs combined with Mocha's flexibility led to an experience that can appeal to a variety of different developers.
+
+Chai.js' Assert library has 50 different assertions to cover a wide range of tests. The Expect and Should APIs have around 33 standard assertions but because of the various ways to chain functions together, there are many more than just 33.
 
 \subsection{QUnit}
 QUnit \cite{QUnit} is an Assertion style framework developed by the jQuery Foundation, the makers of jQuery, a popular framework for Document Object Model (DOM) manipulation and access \cite{jQuery}. The DOM is a convention for interacting with objects in HTML, XHTML, and XML documents. QUnit is a bit more developer-centered and not as ``feel-good'' as the other frameworks but has, so far, been the most easy to use and has the most thorough test reporting of any framework out of the box. Mocha and Jasmine show how many ``specs'', the \lstinline{it} functions, have passed, which is great information, but QUnit takes it a step further and breaks down each spec into the asserts contained within:
@@ -557,10 +563,10 @@ asyncTest("Async Test", function () {
 });
 \end{lstlisting}
 
-QUnit provides another style of writing tests and grouping modules. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself.
+QUnit provides another style of writing tests and grouping modules. QUnit's handling of asynchronous tests is nice because they are more explicitly stated for the casual read-through instead of an extra parameter or set of functions within the test itself. QUnit's built-in assertions only offer 10 different types, but their generic nature allows them to be flexible.
 
 \subsection{Intern}
-Intern \cite{InternIO} is a hybrid Unit Testing and browser testing framework that aims to be an all-in-one testing framework. Intern has Unit Testing, browser testing, and code coverage information all built into the same tool. It is our intention to build a testing framework with all of these components, so finding a framework with all of them built-in was promising. Intern runs on its own server which give it access to the internals of the project, but caused problems when attempting to interact with a separate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of our inability to set up cross-server communication due to inexperience.
+Intern \cite{InternIO} is a hybrid Unit Testing and browser testing framework that aims to be an all-in-one testing framework. Intern has Unit Testing, browser testing, and code coverage information all built into the same tool. It is our intention to build a testing framework with all of these components, so finding a framework with all of them built-in was promising. Intern runs on its own server which gives it access to the internals of the project, but caused problems when attempting to interact with a separate server running the Node.js application. We were unable to get the browser testing portion of Intern to work because of our inability to set up cross-server communication due to inexperience.
 
 %-AMD
 Intern uses Asynchronous Module Definition (AMD) form. This is merely a change in how modules are included in a piece of code, instead of separately requiring modules, the entire program is wrapped in a \lstinline{define([...])} block that passes modules as parameters to an overarching function. That will make more sense after an example:
@@ -592,11 +598,12 @@ var hello = require('app/hello');
   // Test code here
 } ());
 \end{lstlisting}
+There are no assertions in the example because the focus is on how the modules are being loaded. Intern offers a variety of testing interfaces and so showing assertions without detailing that will lead to confusion.
 
 Using either style you get access to the modules outlined. AMD form offers a tighter, more straightforward way to look at module loading in addition to being better supported and having fewer gotchas \cite{AMDInfo}. Intern offers support for CommonJS modules but strongly recommends switching to AMD styles for your project. We chose to keep our CommonJS format because that is what Node.JS uses, which is used by our evaluation applications.
 
 %- TDD, BDD, Object methods
-Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces effect how the general layout of test code looks. Here's a very quick example of the different layouts:
+Intern uses Chai.js for assertion methods but has it built-in as opposed to Mocha in which the developer had to get it themselves. This gives the developer access to Expect, Assert, and Should testing methods. In addition to the various assertion styles, Intern offers three different testing interfaces: TDD, BDD, and Object. These testing interfaces affect how the general layout of test code looks. Here's a very quick example of the different layouts:
 \begin{lstlisting}
 // TDD
 suite('TDD Suite', function () {
@@ -622,7 +629,7 @@ registerSuite({
 )
 \end{lstlisting}
 
-The ability to mix assertion styles with testing interfaces provides a diverse way of writing tests. Some testing interfaces seems to fit better with certain assertion styles, but there's no restrictions on which can be used with which.
+The ability to mix assertion styles with testing interfaces provides a diverse way of writing tests. Some testing interfaces seem to fit better with certain assertion styles, but there are no restrictions on which can be used with which.
 
 %- Integration with Selenium
 Intern uses the WebDriver API to communicate with Selenium to drive the automated browser testing portion of Intern. Selenium and the WebDriver API will be discussed in more detail in the next section ``Browser and UI Testing''.
@@ -631,7 +638,7 @@ Intern uses the WebDriver API to communicate with Selenium to drive the automate
 Intern's unit-test versus browser test separation is termed, by Intern, nonfunctional versus functional testing. Nonfunctional tests are those that run without a browser while functional tests are WebDriver tests.
 
 %- Code Coverage!
-Intern includes configurable code coverage metrics on tests by default. Running Unit Tests gives the number of lines covered (ran) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
+Intern includes configurable code coverage metrics on tests by default. Running Unit Tests gives the number of lines covered (run) by the tests. Code coverage is provided by another JavaScript library, Istanbul, created by Krishnan Anantheswaran \cite{Istanbul}.
 
 Intern offers a fully-featured framework for all testing needs but was difficult to configure for a Node.js server setup. If a developer had a more traditional web application setup with a separate server that served normal HTML pages, Intern would be a go-to framework for all testing needs.
 
@@ -655,6 +662,8 @@ Having the ability to automatically run browser tests at any point takes a huge 
 Selenium was written with maximum functionality and language flexibility in mind and therefore can be verbose.
 
 The Selenium WebDriver has APIs for a variety of programming languages including: JavaScript, C, Java, and Python.
+
+An example of one wrapper around Selenium is Nightwatch, which is outlined in the next section with example code included.
 
 \subsection{Nightwatchjs}
 Nightwatch \cite{NightwatchJS} is a JavaScript testing library built on top of Selenium in an effort to make browser testing more concise and straightforward. Nightwatch uses Node.js' assertion library paired with Selenium's WebDriver to both run browser automation and also report test results.
@@ -706,7 +715,7 @@ test.describe('Google Search', function() {
 
 In addition to being more verbose, we've had to add an assertion library and this code has to be run using Node.js and the Mocha module instead of using the Selenium command. By default, Selenium does not come with its own assertion library. We chose Mocha with Chai.js because we were most familiar with it.
 
-Nightwatch is a Node.js module, and as such can easily installed and run via NPM and the commandline.
+Nightwatch is a Node.js module, and as such can be easily installed and run via NPM and the commandline.
 
 Though a small feature, Nightwatch has the ability to either assert or verify tests. The difference is that assertions will stop execution while verifications will merely log the failure and continue on. Verification can be useful if the developer wants to get an update on how many things are currently failing as opposed to having the entire test stop executing immediately after a single failure.
 
@@ -718,7 +727,7 @@ In an attempt to speed up UI testing, which is notoriously slow, there have been
 Nonetheless, we still looked at two options that we will outline briefly below for other developers' reference. The two options outlined below by no means cover all of the headless browser options, they are simply the two that we saw most often discussed by the other testing tools.
 
 \subsubsection{PhantomJS}
-PhantomJS \cite{PhantomJS} came up repeatedly in our searches for testing frameworks as an option for headless browsing; it is the reason we had the idea to look into headless browsers. PhantomJS is a headless browser written using WebKit, which is what most of the web is based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
+PhantomJS \cite{PhantomJS} came up repeatedly in our searches for testing frameworks as an option for headless browsing; it is the reason we had the idea to look into headless browsers. PhantomJS is a headless browser written using WebKit, which is what most web browsers are based on. This means that running PhantomJS is nearly indistinguishable from a normal browser to any testing code.
 
 There are, however, a couple of problems with PhantomJS. It is generally fairly verbose when it comes to writing the scripts that run your commands. It is also not a testing tool, it is a headless WebKit. The distinction here is that PhantomJS does not have any assert functionality built-in and thus requires the developer to find and use their own assertion library.
 
@@ -954,7 +963,7 @@ Our choice of using Mocha with Chai.js was made because Mocha offers the flexibi
 
 Mocha was chosen over Jasmine because of Mocha's additional flexibility and the way that Mocha handles asynchronous tests.
 
-Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although QUnit output a more thorough test summary, the ability to scan code more efficiently was of greater importance to us.
+Mocha was chosen over QUnit because of the ability to structurally portray test suites. Although QUnit produced a more thorough test summary, the ability to scan code more efficiently was of greater importance to us.
 
 The final decision came down to Mocha versus Intern. Mocha was eventually chosen over Intern because of the ability to choose an assertion library and because of the issues we had with Intern. Both frameworks offer impressive flexibility regarding the way in which tests can be structured and written. Mocha ended up allowing for a bit more flexibility and caused no problems for us. Perhaps with more time and patience we would have chosen Intern, but Mocha served our needs well.
 
@@ -999,7 +1008,7 @@ NPM is the go-to choice for acquiring modules for Node.js applications.
 \chapter{Testing and Development Workflow}
 In this section we will mention our development setup, discuss how to set up the chosen tools, and outline our recommended workflow using the tools. It is our hope that after finishing this section, the reader will be able to install and run the chosen tools and have a good grasp of what the next steps are for their particular project.
 
-\section{Our Implementation Configuration}
+\section{Implementation Configuration}
 The following are the specs of the laptop that we used for the entirely of this research and implementation:
 \begin{itemize}
   \item Model: 15-inch Macbook Pro, Late 2008
@@ -1072,7 +1081,7 @@ There are a number of configuration options and panes that can be accessed on th
 After that setup, the project is ready to go. Anytime a commit is pushed from then on, MagnumCI will run and notify the developer of successful and unsuccessful builds.
 
 \subsection{Setting up Nightwatch}
-Installing Nightwatch consists of just installing another NPM module. \lstinline{NPM install -g nightwatch}. In addition to Nightwatch, the developer needs Selenium. The easiest way is to just download the ``selenium-server-standalone'' JAR straight from the Google repository here: ``http://selenium-release.storage.googleapis.com/index.html''. Our tests ran using ``selenium-server-standalone-2.40.0'' but any version 2.40+ should work. Once the developer has the JAR and places it in a location they will remember, generally along with other similar executables in a bin or library directory, Nightwatch is ready to be configured and run. Nightwatch configuration happens in a JSON file that is pointed to when the developer executes Nightwatch. 
+Installing Nightwatch consists of just installing another NPM module. \lstinline{NPM install -g nightwatch}. In addition to Nightwatch, the developer needs Selenium. The easiest way is to just download the ``selenium-server-standalone'' JAR straight from the Google repository here: \newline http://selenium-release.storage.googleapis.com/index.html. Our tests ran using ``selenium-server-standalone-2.40.0'' but any version 2.40+ should work. Once the developer has the JAR and places it in a location they will remember, generally along with other similar executables in a bin or library directory, Nightwatch is ready to be configured and run. Nightwatch configuration happens in a JSON file that is pointed to when the developer executes Nightwatch. 
 
 The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants. Some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src_folders} attribute to specify a source directory, and the \lstinline{test_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
@@ -1138,7 +1147,7 @@ module.exports = function(grunt)
               reporter: 'spec',
               clearRequireCache: true
           },
-          src: ['../../../../NetBeans/PolyXpressAuthor/test/unit/functional/*.js']
+          src: ['PolyXpressAuthor/test/unit/functional/*.js']
       }
     }
   });
@@ -1279,7 +1288,7 @@ With these two files, the developer will have a testing workflow set up with min
 After gathering the tools into a loose toolkit, we wanted to use that toolkit on an existing project of respectable size. We chose an application developed at Cal Poly called PolyXpress.
 
 \section{PolyXpress (PX)}
-Our major evaluation application was an in-house application called PolyXpress (PX)\cite{PX}. As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally give the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Since the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the~\nameref{sec:appendix} at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the~\nameref{sec:appendix} now.
+Our major evaluation application was an in-house application called PolyXpress (PX)\cite{PX}. As the About page says, ``PolyXpress allows you to create location-based stories, build eTours, or create restaurant guides. It is the tool that will bring people to locations in order to entertain, educate, or provide amazing deals.''\cite{PX} Users can play or create ``Stories'', each of which consists of ``Chapters''. Each chapter consists of various ``Events''. Each ``Event'' generally gives the user some sort of information, in the form of text, video, audio, or a picture. After the player has chosen a story, they must physically reach certain checkpoints to unlock chapters and events. Since the application requires physical movement, it works solely on devices with GPS, generally phones and tablets. Rather than put a series of pictures showing PolyXpress here, we will put them in the~\nameref{sec:appendix} at the end of the paper. To get a better sense of what PolyXpress does and looks like, we recommend looking at the~\nameref{sec:appendix} now.
 
 PolyXpress consists of three smaller application: 1) The Player. 2) The Author. 3) The PointFinder.
 
@@ -1360,7 +1369,7 @@ Four students from the University of Seville, Spain published a paper with an ov
 The paper was good refresher on testing concepts and a hands-on application of those concepts. There wasn't any new information or tools to put toward our toolkit, but it was a good reminder and outlined some testing procedures.
 
 \subsection{``Contract-Driven Testing of JavaScript Code''}
-Two individuals from the Albert Ludwigs University in Germany created a tool, JSConTest, that provides a framework for making contracts for a JavaScript program, allowing for guided random testing on inputs and outputs \cite{ContractDrivenTesting}. Contracts in JSConTest are comments above each function that are of the form ``type -> type''. More complicated forms can introduce parenthesis for function types. In general, JSConTest is useful for detecting type errors on input or output based on the operations performed within a function on the input and the result being output. 
+Two individuals from the Albert Ludwigs University in Germany created a tool, JSConTest, that provides a framework for making contracts for a JavaScript program, allowing for guided random testing on inputs and outputs \cite{ContractDrivenTesting}. Contracts in JSConTest are comments above each function that are of the form ``type -\textgreater \space type''. More complicated forms can introduce parenthesis for function types. In general, JSConTest is useful for detecting type errors on input or output based on the operations performed within a function on the input and the result being output. 
 
 Although JSConTest could be useful in a toolkit, its source is nowhere to be found and there were other, more robust, tools out there for our purposes.
 

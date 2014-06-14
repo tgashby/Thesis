@@ -1,395 +1,277 @@
 \begin{thebibliography}{10}
-\providecommand{\url}[1]{#1}
-\csname url@rmstyle\endcsname
-\providecommand{\newblock}{\relax}
-\providecommand{\bibinfo}[2]{#2}
-\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
-\providecommand\BIBentryALTinterwordstretchfactor{4}
-\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
-  \fontdimen4\font\relax}
-\providecommand\BIBforeignlanguage[2]{{%
-\expandafter\ifx\csname l@#1\endcsname\relax
-\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
-\typeout{** loaded for the language `#1'. Using the pattern for}%
-\typeout{** the default language instead.}%
-\else
-\language=\csname l@#1\endcsname
-\fi
-#2}}
-
-\bibitem{UnitTestDefinition}
-``Ieee standard for software unit testing,'' \emph{ANSI/IEEE Std 1008-1987},
-  1986.
-
-
-\bibitem{TestingDefinition}
-``Systems and software engineering -- vocabulary,'' \emph{ISO/IEC/IEEE
-  24765:2010(E)}, pp. 1--418, Dec 2010.
-
-
-\bibitem{IEEETestingConcepts}
-``Software and systems engineering software testing part 1:concepts and
-  definitions,'' \emph{ISO/IEC/IEEE 29119-1:2013(E)}, pp. 1--64, Sept 2013.
-
-
-\bibitem{Istanbul}
-\BIBentryALTinterwordspacing
-K.~Anantheswaran, ``Istanbul.'' [Online]. Available:
-  \url{https://github.com/gotwarlost/istanbul}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{ZombieJS}
-\BIBentryALTinterwordspacing
-A.~Arkin, ``Zombiejs.'' [Online]. Available: \url{http://zombie.labnotes.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{GruntJS}
-\BIBentryALTinterwordspacing
-``Grunt: The javascript task runner,'' Bocoup. [Online]. Available:
-  \url{http://gruntjs.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Chaijs}
-\BIBentryALTinterwordspacing
-``Chaijs,'' chaijs. [Online]. Available: \url{http://chaijs.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Travis}
-\BIBentryALTinterwordspacing
-T.~CI, ``Travis.'' [Online]. Available: \url{https://travis-ci.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{TravisPricing}
-\BIBentryALTinterwordspacing
-------, ``Travis plans.'' [Online]. Available:
-  \url{https://travis-ci.com/plans}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{NodeInspector}
-\BIBentryALTinterwordspacing
-D.~Coates, ``Node inspector.'' [Online]. Available:
-  \url{https://github.com/node-inspector/node-inspector}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Plan2014}
-\BIBentryALTinterwordspacing
-W.~W.~W. Consortium, ``Plan 2014,'' 2012. [Online]. Available:
-  \url{http://dev.w3.org/html5/decision-policy/html5-2014-plan.html}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{PX}
-\BIBentryALTinterwordspacing
-``Polyxpress,'' Expressive Technologies. [Online]. Available:
-  \url{http://pxdev.cfapps.io/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{ErrorsInTheWild}
-\BIBentryALTinterwordspacing
-K.~P. Frolin S. Ocasriza~Jr. and B.~Zorn, ``Javascript errors in the wild: An
-  empirical study,'' 2011. [Online]. Available:
-  \url{http://ece.ubc.ca/~frolino/projects/jser/tech_report.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{ContractDrivenTesting}
-\BIBentryALTinterwordspacing
-P.~Heidegger and P.~Thiemann, ``Contract-driven testing of javascript code,''
-  2010. [Online]. Available:
-  \url{https://proglang.informatik.uni-freiburg.de/jscontest/jscontest/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{JasmineNode}
-\BIBentryALTinterwordspacing
-M.~Hevery, ``jasmine-node.'' [Online]. Available:
-  \url{https://github.com/mhevery/jasmine-node}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{PhantomJS}
-\BIBentryALTinterwordspacing
-A.~Hidayat, ``Phantomjs.'' [Online]. Available: \url{http://phantomjs.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{GoingFaster}
-\BIBentryALTinterwordspacing
-E.~Hieatt and R.~Mee, ``Going faster: Testing the web application,'' \emph{IEEE
-  Software}, 2002. [Online]. Available:
-  \url{http://www.ecs.csun.edu/~rlingard/COMP595VAV/GoingFaster.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{EvolutionOfWeb}
-\BIBentryALTinterwordspacing
-Hyperakt and Vizzuality, ``The evolution of the web.'' [Online]. Available:
-  \url{http://www.evolutionoftheweb.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{TestingInPractice}
-\BIBentryALTinterwordspacing
-M.~M. J.~T. Javier Jesús~Gutiérrez, Maria José~Escalona, ``Testing web
-  application in practice,'' in \emph{First International Workshopl, WWV},
-  2005. [Online]. Available:
-  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.3910&rep=rep1&type=pdf#page=75}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{JenkinsGitHub}
-\BIBentryALTinterwordspacing
-``Jenkins organization,'' Jenkins CI. [Online]. Available:
-  \url{https://github.com/jenkinsci}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Node}
-\BIBentryALTinterwordspacing
-I.~Joyent, ``Node.js.'' [Online]. Available: \url{http://nodejs.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{jQuery}
-\BIBentryALTinterwordspacing
-``jquery,'' The jQuery Foundation. [Online]. Available:
-  \url{http://jquery.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{QUnit}
-\BIBentryALTinterwordspacing
-``Qunit,'' The jQuery Foundation. [Online]. Available:
-  \url{http://qunitjs.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Jenkins}
-\BIBentryALTinterwordspacing
-K.~Kawaguchi, ``Jenkins.'' [Online]. Available: \url{http://jenkins-ci.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{SecuritySelenium}
-\BIBentryALTinterwordspacing
-V.~Kongsli, ``Security testing with selenium,'' 2007. [Online]. Available:
-  \url{http://www.kongsli.net/oopsla/OOPSLA'07%20Security%20Testing%20with%20Selenium%20v1.0.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{MagnumCI}
-\BIBentryALTinterwordspacing
-``Magnumci,'' Magnum CI. [Online]. Available: \url{https://magnum-ci.com}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{ToDoAppHomePage}
-\BIBentryALTinterwordspacing
-A.~Mardanov, ``Todo app with express.js/node.js and mongodb.'' [Online].
-  Available:
-  \url{http://webapplog.com/todo-app-with-express-jsnode-js-and-mongodb/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{DefectPic}
-S.~McConnell, ``Code complete, 2nd edition,'' 2004.
-
-
-\bibitem{InvariantBasedUseInterfaces}
-\BIBentryALTinterwordspacing
-A.~Mesbah and A.~van Deursen, ``Invariant-based automatic testing of ajax user
-  interfaces,'' 2009. [Online]. Available:
-  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.152.9899&rep=rep1&type=pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{JSART}
-\BIBentryALTinterwordspacing
-S.~Mirshokraie and A.~Mesbah, ``Jsart: Javascript assertion-based regression
-  testing,'' 2012. [Online]. Available:
-  \url{http://www.ece.ubc.ca/~amesbah/docs/icwe12.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{TestingWebServicesSurvey}
-\BIBentryALTinterwordspacing
-M.~H. Mustafa~Bozkurt and Y.~Hassoun, ``Testing web services: A survey,''
-  King's College London, Tech. Rep., 2010. [Online]. Available:
-  \url{http://www.dcs.kcl.ac.uk/technical-reports/papers/TR-10-01.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{JAWS}
-\BIBentryALTinterwordspacing
-D.~A. Ostrowski, ``Jaws: A javascript api for the efficient testing and
-  integration of semantic web services,'' 2007. [Online]. Available:
-  \url{http://ftp.informatik.rwth-aachen.de/Publications/CEUR-WS/Vol-248/paper9.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{DOMTransactions}
-\BIBentryALTinterwordspacing
-A.~B. Phillip~Heidegger and P.~Thiemann, ``Dom transactions for testing
-  javascript,'' 2010. [Online]. Available:
-  \url{https://proglang.informatik.uni-freiburg.de/jscontest/trans.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Jasmine}
-\BIBentryALTinterwordspacing
-``Jasmine,'' Pivotal Labs. [Online]. Available: \url{http://jasmine.github.io/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{MultiAgentSoftwareEnvironment}
-\BIBentryALTinterwordspacing
-H.~Z. Qingning~Huo and S.~Greenwood, ``A multi-agent software environment for
-  testing web-based applications,'' in \emph{International Computer Software
-  and Applications Conference}, 2003. [Online]. Available:
-  \url{http://student.cse.fau.edu/~jsloan11/CEN6076/002_MasArch4Test.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{BookContinuousTesting}
-B.~Rady and R.~Coffin, \emph{Continuous Testing with Ruby, Rails, and
-  JavaScript}.\hskip 1em plus 0.5em minus 0.4em\relax The Pragmatic Bookshelf,
-  2011, ch. Creating a JavaScript CT Environment.
-
-
-\bibitem{Semaphore}
-\BIBentryALTinterwordspacing
-``Semaphore,'' RenderedText. [Online]. Available:
-  \url{https://semaphoreapp.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{SemaphoreBlog}
-\BIBentryALTinterwordspacing
-``Semaphore blog,'' RenderedText. [Online]. Available:
-  \url{https://semaphoreapp.com/blog/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{AMDInfo}
-\BIBentryALTinterwordspacing
-``Why amd?'' RequireJS. [Online]. Available:
-  \url{http://requirejs.org/docs/whyamd.html}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{RESTfulFramework}
-\BIBentryALTinterwordspacing
-H.~Reza and D.~V. Gilst, ``A framework for testing restful web services,'' in
-  \emph{Seventh International Conference on Information Technology}, 2010.
-  [Online]. Available:
-  \url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5501468}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{NightwatchJS}
-\BIBentryALTinterwordspacing
-A.~Rusu, ``Nightwatchjs.'' [Online]. Available: \url{http://nightwatchjs.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{DroneIO}
-\BIBentryALTinterwordspacing
-B.~Rydzewski and T.~Burke, ``Drone.io.'' [Online]. Available:
-  \url{https://drone.io/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{SamsungFridge}
-\BIBentryALTinterwordspacing
-``Samsung rf4289hars,'' Samsung. [Online]. Available:
-  \url{http://www.samsung.com/us/appliances/refrigerators/RF4289HARS/XAA}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{SauceLabs}
-\BIBentryALTinterwordspacing
-``Sauce labs,'' Sauce Labs. [Online]. Available: \url{https://saucelabs.com/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{Selenium}
-\BIBentryALTinterwordspacing
-``Selenium,'' SeleniumHQ. [Online]. Available:
-  \url{http://docs.seleniumhq.org/}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{FindingBugs}
-\BIBentryALTinterwordspacing
-J.~D. F. T. D. D. A.~P. Shay~Artzi, Adam~Kiezun and M.~D. Ernst, ``Finding bugs
-  in dynamic web applications,'' 2008. [Online]. Available:
-  \url{http://dspace.mit.edu/bitstream/handle/1721.1/40249/MIT-CSAIL-TR-2008-006.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{FrameworkForAutomatedTesting}
-\BIBentryALTinterwordspacing
-S.~H. J. A.~M. Shay~Artzi, Julian~Dolby and F.~Tip, ``A framework for automated
-  testing of javascript web applications,'' 2011. [Online]. Available:
-  \url{https://cs.uwaterloo.ca/~ftip/pubs/icse2011artemis.pdf}
-\BIBentrySTDinterwordspacing
-
-
-\bibitem{InternIO}
-\BIBentryALTinterwordspacing
-``intern,'' SitePen Labs. [Online]. Available: \url{theintern.io}
-\BIBentrySTDinterwordspacing
-
 
 \bibitem{BrowserStats}
-\BIBentryALTinterwordspacing
-``Browser usage statistics,'' StatCounter. [Online]. Available:
-  \url{http://gs.statcounter.com/#desktop-browser-ww-monthly-201402-201402-bar}
-\BIBentrySTDinterwordspacing
+{Browser Usage Statistics}.
+\newblock
+  \url{http://gs.statcounter.com/#desktop-browser-ww-monthly-201402-201402-bar}.
 
+\bibitem{Chaijs}
+{ChaiJS}.
+\newblock \url{http://chaijs.com/}.
 
-\bibitem{ZombiePhantom}
-\BIBentryALTinterwordspacing
-T.~Tidwell, ``Zombie phantom.'' [Online]. Available:
-  \url{https://github.com/travist/zombie-phantom}
-\BIBentrySTDinterwordspacing
+\bibitem{GruntJS}
+{Grunt: The Javascript Task Runner}.
+\newblock \url{http://gruntjs.com/}.
 
+\bibitem{InternIO}
+intern.
 
-\bibitem{2LayerModel}
-P.~Tonella and F.~Ricca, ``A 2-layer model for the white-box testing of web
-  applications,'' in \emph{Telecommunications Energy Conference, 2004. INTELEC
-  2004. 26th Annual International}, 2004.
+\bibitem{Jasmine}
+{Jasmine}.
+\newblock \url{http://jasmine.github.io/}.
 
+\bibitem{JenkinsGitHub}
+{Jenkins Organization}.
+\newblock \url{https://github.com/jenkinsci}.
 
-\bibitem{WebMate}
-\BIBentryALTinterwordspacing
-T.~O. Valentin~Dallmeier, Martin~Burger and A.~Zeller, ``Webmate: A tool for
-  testing web 2.0 applications,'' 2012. [Online]. Available:
-  \url{http://www.testfabrik.com/assets/pdf/webmate-jstools12.pdf}
-\BIBentrySTDinterwordspacing
+\bibitem{jQuery}
+{jQuery}.
+\newblock \url{http://jquery.com/}.
 
+\bibitem{MagnumCI}
+{MagnumCI}.
+\newblock \url{https://magnum-ci.com}.
 
 \bibitem{Mocha}
-\BIBentryALTinterwordspacing
-``Mocha,'' VisionMedia. [Online]. Available:
-  \url{http://visionmedia.github.io/mocha/}
-\BIBentrySTDinterwordspacing
+{Mocha}.
+\newblock \url{http://visionmedia.github.io/mocha/}.
 
+\bibitem{PX}
+{PolyXpress}.
+\newblock \url{http://pxdev.cfapps.io/}.
+
+\bibitem{QUnit}
+{QUnit}.
+\newblock \url{http://qunitjs.com/}.
+
+\bibitem{SamsungFridge}
+{Samsung RF4289HARS}.
+\newblock
+  \url{http://www.samsung.com/us/appliances/refrigerators/RF4289HARS/XAA}.
+
+\bibitem{SauceLabs}
+{Sauce Labs}.
+\newblock \url{https://saucelabs.com/}.
+
+\bibitem{Selenium}
+{Selenium}.
+\newblock \url{http://docs.seleniumhq.org/}.
+
+\bibitem{Semaphore}
+{Semaphore}.
+\newblock \url{https://semaphoreapp.com/}.
+
+\bibitem{SemaphoreBlog}
+{Semaphore Blog}.
+\newblock \url{https://semaphoreapp.com/blog/}.
 
 \bibitem{JSUsage}
-\BIBentryALTinterwordspacing
-``Usage of javascript for websites,'' W3Techs. [Online]. Available:
-  \url{http://w3techs.com/technologies/details/cp-javascript/all/all}
-\BIBentrySTDinterwordspacing
+{Usage of JavaScript for websites}.
+\newblock \url{http://w3techs.com/technologies/details/cp-javascript/all/all}.
 
+\bibitem{AMDInfo}
+{Why AMD?}
+\newblock \url{http://requirejs.org/docs/whyamd.html}.
+
+\bibitem{UnitTestDefinition}
+Ieee standard for software unit testing.
+\newblock {\em ANSI/IEEE Std 1008-1987}, 1986.
+
+\bibitem{TestingDefinition}
+Systems and software engineering -- vocabulary.
+\newblock {\em ISO/IEC/IEEE 24765:2010(E)}, pages 1--418, Dec 2010.
+
+\bibitem{IEEETestingConcepts}
+Software and systems engineering software testing part 1:concepts and
+  definitions.
+\newblock {\em ISO/IEC/IEEE 29119-1:2013(E)}, pages 1--64, Sept 2013.
+
+\bibitem{Istanbul}
+Krishnan Anantheswaran.
+\newblock {Istanbul}.
+\newblock \url{https://github.com/gotwarlost/istanbul}.
+
+\bibitem{ZombieJS}
+Assaf Arkin.
+\newblock {Zombiejs}.
+\newblock \url{http://zombie.labnotes.org/}.
+
+\bibitem{BDD}
+Scott Bellware.
+\newblock {Behavior-Driven Development}, June 2008.
+
+\bibitem{Travis}
+Travis CI.
+\newblock {Travis}.
+\newblock \url{https://travis-ci.org/}.
+
+\bibitem{TravisPricing}
+Travis CI.
+\newblock {Travis Plans}.
+\newblock \url{https://travis-ci.com/plans}.
+
+\bibitem{NodeInspector}
+Danny Coates.
+\newblock {Node Inspector}.
+\newblock \url{https://github.com/node-inspector/node-inspector}.
+
+\bibitem{Plan2014}
+World Wide~Web Consortium.
+\newblock {Plan 2014}.
+\newblock \url{http://dev.w3.org/html5/decision-policy/html5-2014-plan.html},
+  2012.
+
+\bibitem{ErrorsInTheWild}
+Karthik~Pattabiraman Frolin S. Ocasriza~Jr. and Benjamin Zorn.
+\newblock {JavaScript Errors in the Wild: An Empirical Study}.
+\newblock \url{http://ece.ubc.ca/~frolino/projects/jser/tech_report.pdf}, 2011.
+
+\bibitem{ContractDrivenTesting}
+Phillip Heidegger and Peter Thiemann.
+\newblock {Contract-Driven Testing of JavaScript Code}.
+\newblock
+  \url{https://proglang.informatik.uni-freiburg.de/jscontest/jscontest/}, 2010.
+
+\bibitem{JasmineNode}
+Miško Hevery.
+\newblock {jasmine-node}.
+\newblock \url{https://github.com/mhevery/jasmine-node}.
+
+\bibitem{PhantomJS}
+Ariya Hidayat.
+\newblock {Phantomjs}.
+\newblock \url{http://phantomjs.org/}.
+
+\bibitem{GoingFaster}
+Edward Hieatt and Robert Mee.
+\newblock {Going Faster: Testing The Web Application}.
+\newblock {\em IEEE Software}, pages 60--65, 2002.
+
+\bibitem{EvolutionOfWeb}
+Hyperakt and Vizzuality.
+\newblock {The Evolution of the Web}.
+\newblock \url{http://www.evolutionoftheweb.com/}.
+
+\bibitem{TestingInPractice}
+Manuel Mejías Jesús~Torres Javier Jesús~Gutiérrez, Maria José~Escalona.
+\newblock {Testing web application in practice}.
+\newblock In {\em {First International Workshopl, WWV}}, 2005.
+
+\bibitem{Node}
+Inc. Joyent.
+\newblock {Node.JS}.
+\newblock \url{http://nodejs.org/}.
+
+\bibitem{Jenkins}
+Kohsuke Kawaguchi.
+\newblock {Jenkins}.
+\newblock \url{http://jenkins-ci.org/}.
+
+\bibitem{SecuritySelenium}
+Vidar Kongsli.
+\newblock {Security Testing with Selenium}.
+\newblock
+  \url{http://www.kongsli.net/oopsla/OOPSLA'07%20Security%20Testing%20with%20Selenium%20v1.0.pdf},
+  2007.
+
+\bibitem{ToDoAppHomePage}
+Azat Mardanov.
+\newblock {Todo App with Express.js/Node.js and MongoDB}.
+\newblock
+  \url{http://webapplog.com/todo-app-with-express-jsnode-js-and-mongodb/}.
+
+\bibitem{DefectPic}
+Steve McConnell.
+\newblock {Code Complete, 2nd Edition}, 2004.
+
+\bibitem{InvariantBasedUseInterfaces}
+Ali Mesbah and Arie van Deursen.
+\newblock {Invariant-Based Automatic Testing of AJAX User Interfaces}.
+\newblock
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.152.9899&rep=rep1&type=pdf},
+  2009.
+
+\bibitem{JSART}
+Shabnam Mirshokraie and Ali Mesbah.
+\newblock {JSART: JavaScript Assertion-based Regression Testing}.
+\newblock \url{http://www.ece.ubc.ca/~amesbah/docs/icwe12.pdf}, 2012.
+
+\bibitem{TestingWebServicesSurvey}
+Mark~Harman Mustafa~Bozkurt and Youssef Hassoun.
+\newblock {Testing Web Services: A Survey}.
+\newblock Technical report, King's College London, 2010.
+
+\bibitem{JAWS}
+David~A. Ostrowski.
+\newblock {JAWS: A Javascript API for the Efficient Testing and Integration of
+  Semantic Web Services}.
+\newblock
+  \url{http://ftp.informatik.rwth-aachen.de/Publications/CEUR-WS/Vol-248/paper9.pdf},
+  2007.
+
+\bibitem{DOMTransactions}
+Annette~Bieniusa Phillip~Heidegger and Peter Thiemann.
+\newblock {DOM Transactions for Testing Javascript}.
+\newblock
+  \url{https://proglang.informatik.uni-freiburg.de/jscontest/trans.pdf}, 2010.
+
+\bibitem{MultiAgentSoftwareEnvironment}
+Hong~Zhu Qingning~Huo and Sue Greenwood.
+\newblock {A Multi-Agent Software Environment for Testing Web-based
+  Applications}.
+\newblock In {\em {International Computer Software and Applications
+  Conference}}, 2003.
+
+\bibitem{BookContinuousTesting}
+Ben Rady and Rod Coffin.
+\newblock {\em {Continuous Testing with Ruby, Rails, and JavaScript}}, chapter
+  Creating a JavaScript CT Environment.
+\newblock The Pragmatic Bookshelf, 2011.
+
+\bibitem{RESTfulFramework}
+Hassan Reza and David~Van Gilst.
+\newblock {A Framework for Testing RESTful Web Services}.
+\newblock In {\em {Seventh International Conference on Information
+  Technology}}, 2010.
+
+\bibitem{NightwatchJS}
+Andrei Rusu.
+\newblock Nightwatchjs.
+\newblock \url{http://nightwatchjs.org/}.
+
+\bibitem{DroneIO}
+Brad Rydzewski and Thomas Burke.
+\newblock {Drone.io}.
+\newblock \url{https://drone.io/}.
+
+\bibitem{FindingBugs}
+Julian Dolby Frank Tip Danny Dig Amit~Paradkar Shay~Artzi, Adam~Kiezun and
+  Michael~D. Ernst.
+\newblock {Finding Bugs In Dynamic Web Applications}.
+\newblock
+  \url{http://dspace.mit.edu/bitstream/handle/1721.1/40249/MIT-CSAIL-TR-2008-006.pdf},
+  2008.
+
+\bibitem{FrameworkForAutomatedTesting}
+Simon Holm Jensen Anders~Moller Shay~Artzi, Julian~Dolby and Frank Tip.
+\newblock {A Framework for Automated Testing of JavaScript Web Applications}.
+\newblock \url{https://cs.uwaterloo.ca/~ftip/pubs/icse2011artemis.pdf}, 2011.
+
+\bibitem{ZombiePhantom}
+Travis Tidwell.
+\newblock {Zombie Phantom}.
+\newblock \url{https://github.com/travist/zombie-phantom}.
+
+\bibitem{2LayerModel}
+P.~Tonella and F.~Ricca.
+\newblock A 2-layer model for the white-box testing of web applications.
+\newblock In {\em Telecommunications Energy Conference, 2004. INTELEC 2004.
+  26th Annual International}, 2004.
+
+\bibitem{WebMate}
+Tobian~Orth Valentin~Dallmeier, Martin~Burger and Andreas Zeller.
+\newblock {WebMate: A Tool for Testing Web 2.0 Applications}.
+\newblock \url{http://www.testfabrik.com/assets/pdf/webmate-jstools12.pdf},
+  2012.
 
 \end{thebibliography}

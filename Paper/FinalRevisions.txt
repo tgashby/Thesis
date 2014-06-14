@@ -1,0 +1,7 @@
+Background: 2.1 Web Application Definition
+Node.js: Final paragraph, drawbacks
+Unit Testing: Final paragraph, Mock Objects
+Acceptance Testing: Second paragraph
+Testing Statistics: New final paragraph
+
+Added number of assertions to each framework
