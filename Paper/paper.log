@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.1.9)  14 JUN 2014 09:39
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.1.9)  14 JUN 2014 12:49
 entering extended mode
 **C:/Users/Tag/Google*Drive/Cal*Poly*Classes/Thesis/Paper/paper.tex
 ("C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/paper.tex"
@@ -800,7 +800,7 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 337.
  [16]
-<./images/defectcost.jpg, id=701, 489.69156pt x 367.58017pt>
+<./images/defectcost.jpg, id=711, 489.69156pt x 367.58017pt>
 File: ./images/defectcost.jpg Graphic file (type jpg)
 
 <use ./images/defectcost.jpg>
@@ -815,7 +815,7 @@ See the caption package documentation for explanation.
 [17 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/defectcost.
 jpg>]
 CHAPTER 3.
-<./images/todo_home.png, id=711, 672.5125pt x 424.58624pt>
+<./images/todo_home.png, id=721, 672.5125pt x 424.58624pt>
 File: ./images/todo_home.png Graphic file (type png)
 
 <use ./images/todo_home.png>
@@ -829,7 +829,7 @@ See the caption package documentation for explanation.
 
 [18
 
-] <./images/todo_some_tasks.png, id=717, 574.145pt x 446.66875pt>
+] <./images/todo_some_tasks.png, id=727, 574.145pt x 446.66875pt>
 File: ./images/todo_some_tasks.png Graphic file (type png)
 
 <use ./images/todo_some_tasks.png>
@@ -841,7 +841,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 371.
 See the caption package documentation for explanation.
 
-<./images/todo_completed.png, id=718, 593.21625pt x 390.45876pt>
+<./images/todo_completed.png, id=728, 593.21625pt x 390.45876pt>
 File: ./images/todo_completed.png Graphic file (type png)
 
 <use ./images/todo_completed.png>
@@ -857,88 +857,88 @@ See the caption package documentation for explanation.
 ng> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/todo_some_t
 asks.png>] [20 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/
 todo_completed.png>] [21] [22]
-Overfull \hbox (14.92416pt too wide) in paragraph at lines 423--424
+Overfull \hbox (14.92416pt too wide) in paragraph at lines 426--427
 [][][][][][][][][][][]\OT1/cmr/m/n/12 , runs the asyn-chronous code. The sec-on
 d func-tion, [][][][][][][][]
  []
 
 [23] [24] [25] [26] [27]
-<./images/qunitrunner.png, id=861, 817.0525pt x 365.365pt>
+<./images/qunitrunner.png, id=871, 817.0525pt x 365.365pt>
 File: ./images/qunitrunner.png Graphic file (type png)
 
 <use ./images/qunitrunner.png>
-Package pdftex.def Info: ./images/qunitrunner.png used on input line 527.
+Package pdftex.def Info: ./images/qunitrunner.png used on input line 530.
 (pdftex.def)             Requested size: 411.93878pt x 184.2096pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 528.
+(caption)                particular \caption on input line 531.
 See the caption package documentation for explanation.
 
-[28 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/qunitrunner
-.png>] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
-<./images/jenkins.png, id=1068, 920.43875pt x 433.62pt>
+[28] [29 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/qunitr
+unner.png>] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]
+<./images/jenkins.png, id=1084, 920.43875pt x 433.62pt>
 File: ./images/jenkins.png Graphic file (type png)
 
 <use ./images/jenkins.png>
-Package pdftex.def Info: ./images/jenkins.png used on input line 779.
+Package pdftex.def Info: ./images/jenkins.png used on input line 782.
 (pdftex.def)             Requested size: 391.34058pt x 184.36215pt.
- [40] [41 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/jenki
-ns.png>] [42] [43] [44] [45] [46] [47] [48] [49]
+ [41 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/jenkins.pn
+g>] [42] [43] [44] [45] [46] [47] [48] [49] [50]
 CHAPTER 4.
-[50
+[51
 
-] [51] [52] [53]
+] [52] [53] [54]
 CHAPTER 5.
-[54
+[55
 
-] [55] [56]
-<./images/magnumCI_new_project.png, id=1180, 410.2828pt x 336.50719pt>
+] [56] [57]
+<./images/magnumCI_new_project.png, id=1194, 410.2828pt x 336.50719pt>
 File: ./images/magnumCI_new_project.png Graphic file (type png)
 
 <use ./images/magnumCI_new_project.png>
 Package pdftex.def Info: ./images/magnumCI_new_project.png used on input line 1
-066.
+069.
 (pdftex.def)             Requested size: 308.95409pt x 253.39642pt.
- [57 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_n
+ [58 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_n
 ew_project.png>]
-<./images/magnumCI_customize_build.png, id=1185, 743.77875pt x 609.77812pt>
+<./images/magnumCI_customize_build.png, id=1199, 743.77875pt x 609.77812pt>
 File: ./images/magnumCI_customize_build.png Graphic file (type png)
 
 <use ./images/magnumCI_customize_build.png>
 Package pdftex.def Info: ./images/magnumCI_customize_build.png used on input li
-ne 1072.
+ne 1075.
 (pdftex.def)             Requested size: 308.95409pt x 253.29512pt.
 
-<./images/magnumCI_customize_build_filled.png, id=1186, 607.51968pt x 657.95813
+<./images/magnumCI_customize_build_filled.png, id=1200, 607.51968pt x 657.95813
 pt>
 File: ./images/magnumCI_customize_build_filled.png Graphic file (type png)
  <use ./images/magnumCI_customize_build_filled.png>
 Package pdftex.def Info: ./images/magnumCI_customize_build_filled.png used on i
-nput line 1078.
+nput line 1081.
 (pdftex.def)             Requested size: 308.95409pt x 334.61049pt.
- [58 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_c
+ [59 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_c
 ustomize_build.png>]
-[59 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_cu
-stomize_build_filled.png>] [60] [61] [62] [63]
+[60 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/magnumCI_cu
+stomize_build_filled.png>] [61] [62] [63] [64]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1176.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1179.
 
- [64] [65] [66] [67] [68]
-Overfull \hbox (0.20718pt too wide) in paragraph at lines 1274--1275
+ [65] [66] [67] [68] [69]
+Overfull \hbox (0.20718pt too wide) in paragraph at lines 1277--1278
 \OT1/cmr/m/n/12 The de-vel-oper will want to put the grunt-file in the same fol
 der as the [][][][][][][][][]
  []
 
-[69]
+[70]
 CHAPTER 6.
-[70
+[71
 
-] [71] [72] [73]
+] [72] [73] [74] [75] [76]
 CHAPTER 7.
-[74
+[77
 
-] [75] [76] [77]
+] [78] [79] [80]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -957,23 +957,23 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [78] [79] [80] [81] [82] [83]
+ [81] [82] [83] [84] [85] [86]
 CHAPTER 8.
-[84
+[87
 
 ]
 CHAPTER 9.
 
 Package hyperref Warning: Difference (3) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1428.
+(hyperref)                than one, level fixed on input line 1595.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1431.
+(hyperref)                than one, level fixed on input line 1598.
 
-[85
+[88
 
-] [86] ("C:\Users\Tag\Google Drive\Cal Poly Classes\Thesis\Paper\paper.bbl"
+] [89] ("C:\Users\Tag\Google Drive\Cal Poly Classes\Thesis\Paper\paper.bbl"
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []\OT1/cmr/m/n/12 Browser Us-age Statis-tics.  [][]$\OT1/cmtt/m/n/12 http : / /
  gs . statcounter . com /$
@@ -985,7 +985,7 @@ Underfull \hbox (badness 4913) in paragraph at lines 48--51
 amsung . com / us / appliances /$
  []
 
-[87
+[90
 
 ]
 Underfull \hbox (badness 4713) in paragraph at lines 81--83
@@ -993,7 +993,7 @@ Underfull \hbox (badness 4713) in paragraph at lines 81--83
 cmr/m/it/12 ISO/IEC/IEEE
  []
 
-[88]
+[91]
 Underfull \hbox (badness 1354) in paragraph at lines 130--134
 []\OT1/cmr/m/n/12 Phillip Hei-deg-ger and Pe-ter Thie-mann.  Contract-Driven Te
 st-ing of
@@ -1023,7 +1023,7 @@ $\OT1/cmtt/m/n/12 oopsla / OOPSLA '[] 07 % 20Security % 20Testing % 20with % 20
 Selenium %$
  []
 
-[89]
+[92]
 Underfull \hbox (badness 10000) in paragraph at lines 205--211
 $\OT1/cmtt/m/n/12 rwth-[]aachen . de / Publications / CEUR-[]WS / Vol-[]248 / p
 aper9 . pdf$[][]\OT1/cmr/m/n/12 ,
@@ -1035,7 +1035,7 @@ Underfull \hbox (badness 2726) in paragraph at lines 213--217
 : / / proglang . informatik .$
  []
 
-[90]
+[93]
 Underfull \hbox (badness 1194) in paragraph at lines 248--254
 \OT1/cmr/m/n/12 tions.  [][]$\OT1/cmtt/m/n/12 http : / / dspace . mit . edu / b
 itstream / handle / 1721 . 1 / 40249 /$
@@ -1053,186 +1053,187 @@ Underfull \hbox (badness 1072) in paragraph at lines 272--276
 mtt/m/n/12 http : / / www .$
  []
 
-) [91]
+) [94]
 CHAPTER 10.
-<./images/px_stories.png, id=1583, 1084.05pt x 1927.2pt>
+<./images/px_stories.png, id=1610, 1084.05pt x 1927.2pt>
 File: ./images/px_stories.png Graphic file (type png)
 
 <use ./images/px_stories.png>
-Package pdftex.def Info: ./images/px_stories.png used on input line 1477.
+Package pdftex.def Info: ./images/px_stories.png used on input line 1644.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1478.
+(caption)                particular \caption on input line 1645.
 See the caption package documentation for explanation.
 
-[92
+[95
 
-] <./images/px_chapter_pane.png, id=1589, 1084.05pt x 1927.2pt>
+] <./images/px_chapter_pane.png, id=1617, 1084.05pt x 1927.2pt>
 File: ./images/px_chapter_pane.png Graphic file (type png)
 
 <use ./images/px_chapter_pane.png>
-Package pdftex.def Info: ./images/px_chapter_pane.png used on input line 1483.
+Package pdftex.def Info: ./images/px_chapter_pane.png used on input line 1650.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1484.
+(caption)                particular \caption on input line 1651.
 See the caption package documentation for explanation.
 
-<./images/px_chap_instructions.png, id=1590, 1084.05pt x 1927.2pt>
+<./images/px_chap_instructions.png, id=1618, 1084.05pt x 1927.2pt>
 File: ./images/px_chap_instructions.png Graphic file (type png)
 
 <use ./images/px_chap_instructions.png>
 Package pdftex.def Info: ./images/px_chap_instructions.png used on input line 1
-489.
+656.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1490.
+(caption)                particular \caption on input line 1657.
 See the caption package documentation for explanation.
 
-[93 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_stories.
+[96 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_stories.
 png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_chapter
-_pane.png>] <./images/px_chapter_locs.png, id=1597, 1084.05pt x 1927.2pt>
+_pane.png>] <./images/px_chapter_locs.png, id=1625, 1084.05pt x 1927.2pt>
 File: ./images/px_chapter_locs.png Graphic file (type png)
 
 <use ./images/px_chapter_locs.png>
-Package pdftex.def Info: ./images/px_chapter_locs.png used on input line 1495.
+Package pdftex.def Info: ./images/px_chapter_locs.png used on input line 1662.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1496.
+(caption)                particular \caption on input line 1663.
 See the caption package documentation for explanation.
 
-<./images/px_marketplace.png, id=1598, 1084.05pt x 1927.2pt>
+<./images/px_marketplace.png, id=1626, 1084.05pt x 1927.2pt>
 File: ./images/px_marketplace.png Graphic file (type png)
 
 <use ./images/px_marketplace.png>
-Package pdftex.def Info: ./images/px_marketplace.png used on input line 1501.
+Package pdftex.def Info: ./images/px_marketplace.png used on input line 1668.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1502.
+(caption)                particular \caption on input line 1669.
 See the caption package documentation for explanation.
 
-[94 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_chap_ins
+[97 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_chap_ins
 tructions.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/
 px_chapter_locs.png>]
-<./images/px_player_loc.png, id=1605, 1084.05pt x 1927.2pt>
+<./images/px_player_loc.png, id=1633, 1084.05pt x 1927.2pt>
 File: ./images/px_player_loc.png Graphic file (type png)
 
 <use ./images/px_player_loc.png>
-Package pdftex.def Info: ./images/px_player_loc.png used on input line 1507.
+Package pdftex.def Info: ./images/px_player_loc.png used on input line 1674.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1508.
+(caption)                particular \caption on input line 1675.
 See the caption package documentation for explanation.
 
-<./images/px_author_home.png, id=1606, 1084.05pt x 1927.2pt>
+<./images/px_author_home.png, id=1634, 1084.05pt x 1927.2pt>
 File: ./images/px_author_home.png Graphic file (type png)
 
 <use ./images/px_author_home.png>
-Package pdftex.def Info: ./images/px_author_home.png used on input line 1514.
+Package pdftex.def Info: ./images/px_author_home.png used on input line 1681.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1515.
+(caption)                particular \caption on input line 1682.
 See the caption package documentation for explanation.
 
-[95 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_marketpl
+[98 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_marketpl
 ace.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_pla
-yer_loc.png>] <./images/px_create_event.png, id=1614, 1084.05pt x 1927.2pt>
+yer_loc.png>] <./images/px_create_event.png, id=1641, 1084.05pt x 1927.2pt>
 File: ./images/px_create_event.png Graphic file (type png)
 
 <use ./images/px_create_event.png>
-Package pdftex.def Info: ./images/px_create_event.png used on input line 1520.
+Package pdftex.def Info: ./images/px_create_event.png used on input line 1687.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1521.
+(caption)                particular \caption on input line 1688.
 See the caption package documentation for explanation.
 
-<./images/px_create_event2.png, id=1615, 1084.05pt x 1927.2pt>
+<./images/px_create_event2.png, id=1642, 1084.05pt x 1927.2pt>
 File: ./images/px_create_event2.png Graphic file (type png)
 
 <use ./images/px_create_event2.png>
-Package pdftex.def Info: ./images/px_create_event2.png used on input line 1526.
+Package pdftex.def Info: ./images/px_create_event2.png used on input line 1693.
 
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1527.
+(caption)                particular \caption on input line 1694.
 See the caption package documentation for explanation.
 
-[96 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_author_h
+[99 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_author_h
 ome.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_cre
-ate_event.png>] <./images/px_create_chap.png, id=1622, 1084.05pt x 1927.2pt>
+ate_event.png>] <./images/px_create_chap.png, id=1649, 1084.05pt x 1927.2pt>
 File: ./images/px_create_chap.png Graphic file (type png)
 
 <use ./images/px_create_chap.png>
-Package pdftex.def Info: ./images/px_create_chap.png used on input line 1532.
+Package pdftex.def Info: ./images/px_create_chap.png used on input line 1699.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1533.
+(caption)                particular \caption on input line 1700.
 See the caption package documentation for explanation.
 
-<./images/px_create_chap2.png, id=1623, 1084.05pt x 1927.2pt>
+<./images/px_create_chap2.png, id=1650, 1084.05pt x 1927.2pt>
 File: ./images/px_create_chap2.png Graphic file (type png)
 
 <use ./images/px_create_chap2.png>
-Package pdftex.def Info: ./images/px_create_chap2.png used on input line 1538.
+Package pdftex.def Info: ./images/px_create_chap2.png used on input line 1705.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1539.
+(caption)                particular \caption on input line 1706.
 See the caption package documentation for explanation.
 
-[97 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_create_e
-vent2.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_c
-reate_chap.png>] <./images/px_create_story.png, id=1630, 1084.05pt x 1927.2pt>
+[100 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_create_
+event2.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_
+create_chap.png>]
+<./images/px_create_story.png, id=1657, 1084.05pt x 1927.2pt>
 File: ./images/px_create_story.png Graphic file (type png)
 
 <use ./images/px_create_story.png>
-Package pdftex.def Info: ./images/px_create_story.png used on input line 1544.
+Package pdftex.def Info: ./images/px_create_story.png used on input line 1711.
 (pdftex.def)             Requested size: 123.58289pt x 219.6972pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1545.
+(caption)                particular \caption on input line 1712.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1549.
-[98 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_create_c
-hap2.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_cr
-eate_story.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1549.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1716.
+[101 <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_create_
+chap2.png> <C:/Users/Tag/Google Drive/Cal Poly Classes/Thesis/Paper/images/px_c
+reate_story.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1716.
 
 ("C:\Users\Tag\Google Drive\Cal Poly Classes\Thesis\Paper\paper.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1549.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1549.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1716.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1716.
 
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 46292AD8F96A6B1BFB00B5FC8B5546C3;7642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1549.
+(rerunfilecheck)             Checksum: ACC6BEEFCFC4B727EA92467CCD5D3DF5;7779.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1716.
  ) 
 Here is how much of TeX's memory you used:
- 18726 strings out of 494045
- 325603 string characters out of 3148394
+ 18738 strings out of 494045
+ 325767 string characters out of 3148394
  429504 words of memory out of 3000000
- 20973 multiletter control sequences out of 15000+200000
+ 20975 multiletter control sequences out of 15000+200000
  12188 words of font info for 48 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  63i,9n,72p,1696b,1739s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1245,9 +1246,9 @@ ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on paper.pdf (106 pages, 3701205 bytes).
+Output written on paper.pdf (109 pages, 3710871 bytes).
 PDF statistics:
- 1818 PDF objects out of 2073 (max. 8388607)
- 710 named destinations out of 1000 (max. 500000)
- 950 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1848 PDF objects out of 2073 (max. 8388607)
+ 720 named destinations out of 1000 (max. 500000)
+ 966 words of extra memory for PDF output out of 10000 (max. 10000000)
 

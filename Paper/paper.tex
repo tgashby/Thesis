@@ -395,6 +395,9 @@ Our requirements for the selection of testing tools was relatively simple. In ad
 
 Occasionally the cost of tools will be discussed but in general we did not review tools that only offered paid options.
 
+\subsection{Choosing Tools}
+In order to find suitable tools, we wanted to take several approaches. First, we looked at existing research paper in the domain of web application testing and selected tools that were mentioned that still had active projects. We looked at the related works sections of those papers and chose tools from related papers as well. We then looked at major web applications like jQuery, LinkedIn, Twitter, and Facebook to what tools they were using and found a few tools that way. We looked at a number of projects that were internal and external to Google that were discussed at Google I/O 2013. Finally, we searched online for the latest open-source tools that may be in beta or new to the testing scene.
+
 \section{Unit Testing Frameworks}
 The following frameworks are reviewed in chronological order of our evaluation. There was no determined order in whcih we evaluated them. As such, comparisons will generally only be drawn between a framework and its predecessors in paper order. After all of the frameworks are outlined and evaluated, a section regarding the final decision will be made where comparisons will be drawn between all of them. 
 
@@ -1319,6 +1322,170 @@ The goal of a Unit Test is to test the function, module, or ``unit'' in isolatio
 Most of our mocks were used in the Controller Unit Tests because the controller continually reaches into the Model and the Server. In order to test the Controller in isolation, we had to mock almost an entire new Model and new Server. This mock kept track of previous data, parameters, and calls in order to test that certain calls were made and made in the right order within the Controller.
 
 All of the Unit Testing code for the PolyXpress Author is available in the appendix. The mocks are at the top of each test file, though the Model does not have any mocks.
+
+\section{Test Metrics}
+Below are several tables of metrics we collected after completing our tests. The tables are: Lines of Code, Code Coverage, Separate Tests, Asserts, and Mock Objects and Functions.
+
+The Lines of Code table measures how many lines of test code were written per line of source code. The Code Coverage table shows the coverage statistics for our tests including statement, branch, function, and line coverage. The Separate Tests table shows how many tests were written for each part of the Authoring tool we tested. The Asserts table breaks down the tests even further into how many asserts were written for each part of the Authoring tool. Finally, the Mock Objects and Functions table shows how many mock objects and stubbed functions we had to create to ensure proper Unit Testing of the Controller and Server modules. The Model was self-contained enough that we did not need to create mock objects or functions for it.
+
+% Test LOC vs Production LOC
+% peDesignerModel
+% T: 104 
+% S: 93
+
+% peDesignerController
+% T: 438 
+% S: 862
+
+% peDesignerServer
+% T: 206 
+% S: 321
+
+% UI:
+% DesignerMain: 16
+% Event: 140
+% Chapter: 133
+% Story: 102
+% Cleanup: 46
+
+\FloatBarrier
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+                & Source LOC & Test LOC & Test LOC per Source LOC \\ \hline
+Unit Tests      &          &       &                     \\ \hline
+Model      & 93         & 104      & 1.11                    \\ \hline
+Controller & 862        & 438      & 0.51                    \\ \hline
+Server     & 321        & 206      & 0.64                    \\ \hline
+UI Tests      &         &      &                     \\ \hline
+Main          & N/A*       & 16       & N/A*                    \\ \hline
+Event         & N/A*       & 140      & N/A*                    \\ \hline
+Chapter       & N/A*       & 133      & N/A*                    \\ \hline
+Story         & N/A*       & 102      & N/A*                    \\ \hline
+Cleanup**    & N/A*       & 46       & N/A*                    \\ \hline
+\end{tabular}
+\captionof{table}{Lines of Code}
+\end{table}
+\FloatBarrier
+
+\footnotesize
+* The source for the UI is dynamic based and so no measurement is possible.
+
+** Though not direct testing, the Cleanup code was important to bring the application back to its starting state.
+\normalsize
+
+% Test coverage
+% Statement: 98.78\% 565 / 572
+% Branch: 50\% 4/8
+% Function: 96\% 120/125
+% Line: 98.77\% 564/571
+
+\FloatBarrier
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+          & Coverage & Elements Covered / Total Elements \\ \hline
+Statement & 98.78\%  & 565 / 572                         \\ \hline
+Branch    & 50\%*     & 4 / 8                             \\ \hline
+Function  & 96\%     & 120 / 125                         \\ \hline
+Line      & 98.77\%  & 564 / 571                                  \\ \hline
+\end{tabular}
+\captionof{table}{Code Coverage}
+\end{table}
+\FloatBarrier
+
+\footnotesize
+* Branches not covered were diagnostic in nature.
+\normalsize
+
+% # Tests
+% Unit: 50
+% peDesignerModel: 15
+% peDesignerController: 23
+% peDesignerServer: 12
+
+% UI: 29
+% Main: 1
+% Event: 9
+% Chapter: 9
+% Story: 7
+% Cleanup: 3
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+     &            & Tests \\ \hline
+Unit Tests &            & 50          \\ \hline
+     & Model      & 15          \\ \hline
+     & Controller & 23          \\ \hline
+     & Server     & 12          \\ \hline
+UI Tests   &            & 29          \\ \hline
+     & Main       & 1           \\ \hline
+     & Event      & 9           \\ \hline
+     & Chapter    & 9           \\ \hline
+     & Story      & 7           \\ \hline
+     & Cleanup    & 3           \\ \hline
+\end{tabular}
+\captionof{table}{Separate Tests}
+\end{table}
+
+% # Asserts
+% Unit: 237
+% peDesignerModel: 33
+% peDesignerController: 128
+% peDesignerServer: 76
+
+% UI: 43
+% Main: 5
+% Event: 13
+% Chapter: 13
+% Story: 12
+% Cleanup: 0
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+           &                 & Asserts \\ \hline
+Unit Tests &                 & 237     \\ \hline
+           & Model      & 33      \\ \hline
+           & Controller & 128     \\ \hline
+           & Server     & 76      \\ \hline
+UI Tests   &                 & 43      \\ \hline
+           & Main         & 5       \\ \hline
+           & Event        & 13      \\ \hline
+           & Chapter      & 13      \\ \hline
+           & Story        & 12      \\ \hline
+           & Cleanup      & 0       \\ \hline
+\end{tabular}
+\captionof{table}{Asserts}
+\end{table}
+
+% # Mock objects
+% peDesignerController:
+%   Objects: 13
+%   Functions: 32
+
+% peDesignerServer:
+%   Objects: 4
+%   Functions: 11
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+                     & Mock Objects & Mock Functions \\ \hline
+Controller Unit Test & 13           & 32              \\ \hline
+Server Unit Test     & 4            & 11              \\ \hline
+\end{tabular}
+\captionof{table}{Mock Objects and Functions}
+\end{table}
+
+% Bugs Uncovered
+
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Related Work 

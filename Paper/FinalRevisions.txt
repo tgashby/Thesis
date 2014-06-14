@@ -3,5 +3,7 @@ Node.js: Final paragraph, drawbacks
 Unit Testing: Final paragraph, Mock Objects
 Acceptance Testing: Second paragraph
 Testing Statistics: New final paragraph
+Choosing Tools: New section, under Tool Requirements
+Test Metrics
 
 Added number of assertions to each framework
