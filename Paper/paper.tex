@@ -113,7 +113,7 @@
 \author{Taggart Ashby}
 \degreemonth{June} \degreeyear{2014} \degree{Master of Science}
 \defensemonth{June} \defenseyear{2014}
-\numberofmembers{3} \chair{Michael Haungs, Ph.D.} \othermemberA{Franz Kurfess, Ph.D.} \othermemberB{David Janzen, Ph.D.} \field{Computer Science} \campus{San Luis Obispo}
+\numberofmembers{3} \chair{Michael Haungs, Ph.D.\newline Professor of Computer Science} \othermemberA{Franz Kurfess, Ph.D.\newline Professor of Computer Science} \othermemberB{David Janzen, Ph.D.\newline Professor of Computer Science} \field{Computer Science} \campus{San Luis Obispo}
 \copyrightyears{seven}
 
 \maketitle
@@ -137,6 +137,9 @@ We then took an existing web application, PolyXpress, and augmented its developm
 \end{abstract}
 
 \tableofcontents
+
+\listoftables
+\listoffigures
 
 \end{frontmatter}
 
@@ -264,7 +267,7 @@ An internet media type is a way to represent and store data that may need to be 
 
 The standard HTTP methods are GET, PUT, POST, and DELETE. These methods define what the request is intending to do. For example, a GET request sent to ``http://myrestapi.com/entities'' would indicate to the server that the client wants to get information regarding all entities. A PUT request would indicate that the client wishes to replace the entire entity collection with another collection that would be sent along with the request. A POST request would ask the server to create a new entity in the collection. Finally, a DELETE request would tell the server to delete the entities. The four methods take on slightly different, but very similar meanings when used with specific element URIs, such as ``http://myrestapi.com/entities/entity1''. A GET request asks the server for a displayable version of the entity and the client then displays it. A PUT request asks the server to replace the existing entity or create an entire new entity if one does not exist. A POST request is generally not used as that implies that this single entity is itself a collection. A DELETE request asks the server to remove this entity.
 
-An important part of being a RESTful API is that any change to a web page or element is done through a hypertext link and all actions on an element share a single URI. For example, all updates to ``entity1'' are done through ``http://myrestapi.com/entities/entity1'' using the various HTTP methods that can be called using hypertext links on the page. Compare this to a different way to handle that functionality such as ``http://myrestapi.com/entities/UpdateEntity'' where the HTTP request contains information regarding the entity to update. This method handles all updates, regardless of which entity is changing, through a single URI.
+An important part of being a RESTful API is that any change to a web page or element is done through a hypertext link and all actions on an element share a single URI. For example, all updates to ``entity1'' are done through ``http://myrestapi.com/entities/ entity1'' using the various HTTP methods that can be called using hypertext links on the page. Compare this to a different way to handle that functionality such as ``http://myrestapi.com/entities/UpdateEntity'' where the HTTP request contains information regarding the entity to update. This method handles all updates, regardless of which entity is changing, through a single URI.
 
 \section{Defining Testing}
 IEEE defines software testing as ``the dynamic verification of the behavior of a program on a finite set of test cases, suitably selected from the usually infinite executions domain, against the expected behavior.''\cite{TestingDefinition} Put a bit more simply, software testing is the process of making sure the program does what it is supposed to.
@@ -780,6 +783,7 @@ Jenkins is a series of web pages that are set up to run on a given server. This 
 \begin{Figure}
   \centering
   \includegraphics[width=0.95\linewidth]{jenkins.png}
+  \captionof{figure}{Jenkins main screen}
 \end{Figure}
 Most companies give Jenkins a sub-domain on their web pages.
 
@@ -822,13 +826,13 @@ Semaphore is still ruby-centric and requires a subscription. As our goal is to f
 \subsection{MagnumCI}
 MagnumCI \cite{MagnumCI} is another online CI framework. MagnumCI has every feature available for free, however, it's still in public beta and although prices haven't been released, the team making MagnumCI has already stated that there will be price tiers. It is not unreasonable, though, to believe that MagnumCI will be free for open-source projects.
 
-MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a yml file.
+MagnumCI offers support for Ruby, PHP, Node.JS, and Go. MagnumCI, much like Semaphore, will attempt to auto-detect commands that it should run based on the project structure and language. All settings are able to be overridden in a file.
 
 MagnumCI has all the popular databases built-in, many of which run automatically on startup. MagnumCI also has two headless browser frameworks built in for running any browser testing that needs to be done. The developer can, again, use apt-get to install missing packages. MagnumCI does not, at current, provide automatic deployment options given a successful build.
 
-Where MagnumCI shines is in support of different repositories. MagnumCI offers support for pulling from GitHub, BitBucket, GitLab, and a few others. It does require a bit more setup to get repositories connected, but what it comes down to is a couple lines of copied and pasted text within the repositories' settings.
+MagnumCI offers support for pulling from GitHub, BitBucket, GitLab, and a few others. It does require a bit more setup to get repositories connected, but what it comes down to is a couple lines of copied and pasted text within the repositories' settings.
 
-Right now MagnumCI offers impressive features, private repositories, and extensive repository sources, all for free. It is hard to say that MagnumCI is the best because those features may end up costing money soon after this paper is completed. It is included in this review because it seems to be an up and comer that could prove quite strong.
+Right now MagnumCI offers impressive features, private repositories, and extensive repository sources, all for free. It is hard to say that MagnumCI is the best because those features may end up costing money soon after this paper is completed.
 
 \subsection{Drone.io}
 Drone.io \cite{DroneIO} is an impressive online CI framework that offers substantial language support, is free for open-source projects, and offers the most reasonable pricing scheme for private repositories.

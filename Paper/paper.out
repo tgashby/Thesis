@@ -1,106 +1,108 @@
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{What Already Exists}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Problems Still Faced}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Contributions of This Thesis}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Web Application Definition}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Web Application Strengths}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{Versioning}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.2}{Availability}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.3}{Multi-device}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.4}{Rapid Prototyping}{section.2.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Web Features}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.3.1}{HTML5}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.2}{Node.JS}{section.2.3}% 14
-\BOOKMARK [1][-]{section.2.4}{Client/Server Architecture}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.4.1}{Client-side}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.2}{Server-side}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.3}{Client and Server Interactions}{section.2.4}% 18
-\BOOKMARK [1][-]{section.2.5}{Defining Testing}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.5.1}{Unit Testing}{section.2.5}% 20
-\BOOKMARK [2][-]{subsection.2.5.2}{Integration Testing}{section.2.5}% 21
-\BOOKMARK [2][-]{subsection.2.5.3}{Continuous Integration}{section.2.5}% 22
-\BOOKMARK [2][-]{subsection.2.5.4}{Acceptance Testing}{section.2.5}% 23
-\BOOKMARK [2][-]{subsection.2.5.5}{Testing Statistics}{section.2.5}% 24
-\BOOKMARK [0][-]{chapter.3}{Testing Frameworks Survey}{}% 25
-\BOOKMARK [1][-]{section.3.1}{ToDo Application}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.1.1}{The Average Web Application}{section.3.1}% 27
-\BOOKMARK [2][-]{subsection.3.1.2}{Tool Requirements}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.3}{Choosing Tools}{section.3.1}% 29
-\BOOKMARK [1][-]{section.3.2}{Unit Testing Frameworks}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.2.1}{Jasmine}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.2}{Mocha}{section.3.2}% 32
-\BOOKMARK [3][-]{subsubsection*.2}{Chai.js}{subsection.3.2.2}% 33
-\BOOKMARK [2][-]{subsection.3.2.3}{QUnit}{section.3.2}% 34
-\BOOKMARK [2][-]{subsection.3.2.4}{Intern}{section.3.2}% 35
-\BOOKMARK [1][-]{section.3.3}{Browser and UI Testing}{chapter.3}% 36
-\BOOKMARK [2][-]{subsection.3.3.1}{Selenium}{section.3.3}% 37
-\BOOKMARK [2][-]{subsection.3.3.2}{Nightwatchjs}{section.3.3}% 38
-\BOOKMARK [2][-]{subsection.3.3.3}{Headless Browsers}{section.3.3}% 39
-\BOOKMARK [3][-]{subsubsection*.3}{PhantomJS}{subsection.3.3.3}% 40
-\BOOKMARK [3][-]{subsubsection*.4}{ZombieJS}{subsection.3.3.3}% 41
-\BOOKMARK [1][-]{section.3.4}{Continuous Integration Frameworks}{chapter.3}% 42
-\BOOKMARK [2][-]{subsection.3.4.1}{Jenkins}{section.3.4}% 43
-\BOOKMARK [2][-]{subsection.3.4.2}{Travis}{section.3.4}% 44
-\BOOKMARK [2][-]{subsection.3.4.3}{Semaphore}{section.3.4}% 45
-\BOOKMARK [2][-]{subsection.3.4.4}{MagnumCI}{section.3.4}% 46
-\BOOKMARK [2][-]{subsection.3.4.5}{Drone.io}{section.3.4}% 47
-\BOOKMARK [2][-]{subsection.3.4.6}{Manual Continuous Integration}{section.3.4}% 48
-\BOOKMARK [1][-]{section.3.5}{Miscellaneous Frameworks}{chapter.3}% 49
-\BOOKMARK [2][-]{subsection.3.5.1}{Sauce Labs}{section.3.5}% 50
-\BOOKMARK [2][-]{subsection.3.5.2}{Istanbul}{section.3.5}% 51
-\BOOKMARK [2][-]{subsection.3.5.3}{Grunt.js}{section.3.5}% 52
-\BOOKMARK [2][-]{subsection.3.5.4}{Node Inspector}{section.3.5}% 53
-\BOOKMARK [1][-]{section.3.6}{Framework Decision Matrices}{chapter.3}% 54
-\BOOKMARK [0][-]{chapter.4}{Framework Selection}{}% 55
-\BOOKMARK [1][-]{section.4.1}{Chosen Tools}{chapter.4}% 56
-\BOOKMARK [2][-]{subsection.4.1.1}{Mocha with Chai.js}{section.4.1}% 57
-\BOOKMARK [2][-]{subsection.4.1.2}{MagnumCI}{section.4.1}% 58
-\BOOKMARK [2][-]{subsection.4.1.3}{Nightwatch}{section.4.1}% 59
-\BOOKMARK [2][-]{subsection.4.1.4}{Miscellaneous Tools}{section.4.1}% 60
-\BOOKMARK [0][-]{chapter.5}{Testing and Development Workflow}{}% 61
-\BOOKMARK [1][-]{section.5.1}{Implementation Configuration}{chapter.5}% 62
-\BOOKMARK [1][-]{section.5.2}{Tool Setup}{chapter.5}% 63
-\BOOKMARK [2][-]{subsection.5.2.1}{Setting up Mocha}{section.5.2}% 64
-\BOOKMARK [2][-]{subsection.5.2.2}{Setting up MagnumCI}{section.5.2}% 65
-\BOOKMARK [2][-]{subsection.5.2.3}{Setting up Nightwatch}{section.5.2}% 66
-\BOOKMARK [2][-]{subsection.5.2.4}{Setting up Istanbul}{section.5.2}% 67
-\BOOKMARK [2][-]{subsection.5.2.5}{Setting up Grunt}{section.5.2}% 68
-\BOOKMARK [1][-]{section.5.3}{Suggested Workflow}{chapter.5}% 69
-\BOOKMARK [2][-]{subsection.5.3.1}{Template Files}{section.5.3}% 70
-\BOOKMARK [0][-]{chapter.6}{Evaluation}{}% 71
-\BOOKMARK [1][-]{section.6.1}{PolyXpress \(PX\)}{chapter.6}% 72
-\BOOKMARK [2][-]{subsection.6.1.1}{PolyXpress Author}{section.6.1}% 73
-\BOOKMARK [2][-]{subsection.6.1.2}{Writing Unit Tests for Web Applications}{section.6.1}% 74
-\BOOKMARK [1][-]{section.6.2}{Test Metrics}{chapter.6}% 75
-\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 76
-\BOOKMARK [1][-]{section.7.1}{Testing Frameworks}{chapter.7}% 77
-\BOOKMARK [2][-]{subsection.7.1.1}{``A Framework for Automated Testing of JavaScript Web Applications''}{section.7.1}% 78
-\BOOKMARK [2][-]{subsection.7.1.2}{``A Multi-Agent Software Environment for Testing Web-based Applications''}{section.7.1}% 79
-\BOOKMARK [2][-]{subsection.7.1.3}{``A 2-Layer Model for the White-Box Testing of Web Applications''}{section.7.1}% 80
-\BOOKMARK [2][-]{subsection.7.1.4}{``Invariant-Based Automatic Testing of AJAX User Interfaces''}{section.7.1}% 81
-\BOOKMARK [2][-]{subsection.7.1.5}{``JSART: JavaScript Assertion-based Regression Testing''}{section.7.1}% 82
-\BOOKMARK [2][-]{subsection.7.1.6}{``DOM Transactions for Testing JavaScript''}{section.7.1}% 83
-\BOOKMARK [2][-]{subsection.7.1.7}{``Testing Web Applications in Practice''}{section.7.1}% 84
-\BOOKMARK [2][-]{subsection.7.1.8}{``Contract-Driven Testing of JavaScript Code''}{section.7.1}% 85
-\BOOKMARK [2][-]{subsection.7.1.9}{``JAWS: A JavaScript API for the Efficient Testing and Integration of Semantic Web Services''}{section.7.1}% 86
-\BOOKMARK [2][-]{subsection.7.1.10}{``WebMate: A Tool for Testing Web 2.0 Applications''}{section.7.1}% 87
-\BOOKMARK [2][-]{subsection.7.1.11}{``Continuous Testing with Ruby, Rails, and JavaScript''}{section.7.1}% 88
-\BOOKMARK [1][-]{section.7.2}{Finding Bugs}{chapter.7}% 89
-\BOOKMARK [2][-]{subsection.7.2.1}{``Finding Bugs In Dynamic Web Applications''}{section.7.2}% 90
-\BOOKMARK [2][-]{subsection.7.2.2}{``Testing Web Services: A Survey''}{section.7.2}% 91
-\BOOKMARK [2][-]{subsection.7.2.3}{``A Framework for Testing RESTful Web Services''}{section.7.2}% 92
-\BOOKMARK [1][-]{section.7.3}{Writing Effective Test Cases}{chapter.7}% 93
-\BOOKMARK [2][-]{subsection.7.3.1}{``Going Faster: Testing The Web Application''}{section.7.3}% 94
-\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 95
-\BOOKMARK [0][-]{chapter.9}{Future Work}{}% 96
-\BOOKMARK [1][-]{subsubsection*.12}{Full PX coverage}{chapter.9}% 97
-\BOOKMARK [2][-]{subsubsection*.13}{``Real-world'' Evaluation}{subsubsection*.12}% 98
-\BOOKMARK [3][-]{subsubsection*.14}{Headless Browsers}{subsubsection*.13}% 99
-\BOOKMARK [3][-]{subsubsection*.15}{Sauce Labs}{subsubsection*.13}% 100
-\BOOKMARK [0][-]{chapter*.16}{Bibliography}{}% 101
-\BOOKMARK [0][-]{chapter.10}{Appendices}{}% 102
-\BOOKMARK [1][-]{section.10.1}{PolyXpress Tutorial}{chapter.10}% 103
-\BOOKMARK [1][-]{section.10.2}{ToDo App Test Code}{chapter.10}% 104
-\BOOKMARK [1][-]{section.10.3}{PolyXpress Player Screenshots}{chapter.10}% 105
-\BOOKMARK [1][-]{section.10.4}{PolyXpress Author Screenshots}{chapter.10}% 106
+\BOOKMARK [0][-]{chapter*.2}{List of Tables}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{List of Figures}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [1][-]{section.1.1}{What Already Exists}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Problems Still Faced}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.3}{Contributions of This Thesis}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Web Application Definition}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Web Application Strengths}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Versioning}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Availability}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Multi-device}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Rapid Prototyping}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Web Features}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{HTML5}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.2}{Node.JS}{section.2.3}% 16
+\BOOKMARK [1][-]{section.2.4}{Client/Server Architecture}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.4.1}{Client-side}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.2}{Server-side}{section.2.4}% 19
+\BOOKMARK [2][-]{subsection.2.4.3}{Client and Server Interactions}{section.2.4}% 20
+\BOOKMARK [1][-]{section.2.5}{Defining Testing}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.5.1}{Unit Testing}{section.2.5}% 22
+\BOOKMARK [2][-]{subsection.2.5.2}{Integration Testing}{section.2.5}% 23
+\BOOKMARK [2][-]{subsection.2.5.3}{Continuous Integration}{section.2.5}% 24
+\BOOKMARK [2][-]{subsection.2.5.4}{Acceptance Testing}{section.2.5}% 25
+\BOOKMARK [2][-]{subsection.2.5.5}{Testing Statistics}{section.2.5}% 26
+\BOOKMARK [0][-]{chapter.3}{Testing Frameworks Survey}{}% 27
+\BOOKMARK [1][-]{section.3.1}{ToDo Application}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.1.1}{The Average Web Application}{section.3.1}% 29
+\BOOKMARK [2][-]{subsection.3.1.2}{Tool Requirements}{section.3.1}% 30
+\BOOKMARK [2][-]{subsection.3.1.3}{Choosing Tools}{section.3.1}% 31
+\BOOKMARK [1][-]{section.3.2}{Unit Testing Frameworks}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.2.1}{Jasmine}{section.3.2}% 33
+\BOOKMARK [2][-]{subsection.3.2.2}{Mocha}{section.3.2}% 34
+\BOOKMARK [3][-]{subsubsection*.4}{Chai.js}{subsection.3.2.2}% 35
+\BOOKMARK [2][-]{subsection.3.2.3}{QUnit}{section.3.2}% 36
+\BOOKMARK [2][-]{subsection.3.2.4}{Intern}{section.3.2}% 37
+\BOOKMARK [1][-]{section.3.3}{Browser and UI Testing}{chapter.3}% 38
+\BOOKMARK [2][-]{subsection.3.3.1}{Selenium}{section.3.3}% 39
+\BOOKMARK [2][-]{subsection.3.3.2}{Nightwatchjs}{section.3.3}% 40
+\BOOKMARK [2][-]{subsection.3.3.3}{Headless Browsers}{section.3.3}% 41
+\BOOKMARK [3][-]{subsubsection*.5}{PhantomJS}{subsection.3.3.3}% 42
+\BOOKMARK [3][-]{subsubsection*.6}{ZombieJS}{subsection.3.3.3}% 43
+\BOOKMARK [1][-]{section.3.4}{Continuous Integration Frameworks}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.4.1}{Jenkins}{section.3.4}% 45
+\BOOKMARK [2][-]{subsection.3.4.2}{Travis}{section.3.4}% 46
+\BOOKMARK [2][-]{subsection.3.4.3}{Semaphore}{section.3.4}% 47
+\BOOKMARK [2][-]{subsection.3.4.4}{MagnumCI}{section.3.4}% 48
+\BOOKMARK [2][-]{subsection.3.4.5}{Drone.io}{section.3.4}% 49
+\BOOKMARK [2][-]{subsection.3.4.6}{Manual Continuous Integration}{section.3.4}% 50
+\BOOKMARK [1][-]{section.3.5}{Miscellaneous Frameworks}{chapter.3}% 51
+\BOOKMARK [2][-]{subsection.3.5.1}{Sauce Labs}{section.3.5}% 52
+\BOOKMARK [2][-]{subsection.3.5.2}{Istanbul}{section.3.5}% 53
+\BOOKMARK [2][-]{subsection.3.5.3}{Grunt.js}{section.3.5}% 54
+\BOOKMARK [2][-]{subsection.3.5.4}{Node Inspector}{section.3.5}% 55
+\BOOKMARK [1][-]{section.3.6}{Framework Decision Matrices}{chapter.3}% 56
+\BOOKMARK [0][-]{chapter.4}{Framework Selection}{}% 57
+\BOOKMARK [1][-]{section.4.1}{Chosen Tools}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.1.1}{Mocha with Chai.js}{section.4.1}% 59
+\BOOKMARK [2][-]{subsection.4.1.2}{MagnumCI}{section.4.1}% 60
+\BOOKMARK [2][-]{subsection.4.1.3}{Nightwatch}{section.4.1}% 61
+\BOOKMARK [2][-]{subsection.4.1.4}{Miscellaneous Tools}{section.4.1}% 62
+\BOOKMARK [0][-]{chapter.5}{Testing and Development Workflow}{}% 63
+\BOOKMARK [1][-]{section.5.1}{Implementation Configuration}{chapter.5}% 64
+\BOOKMARK [1][-]{section.5.2}{Tool Setup}{chapter.5}% 65
+\BOOKMARK [2][-]{subsection.5.2.1}{Setting up Mocha}{section.5.2}% 66
+\BOOKMARK [2][-]{subsection.5.2.2}{Setting up MagnumCI}{section.5.2}% 67
+\BOOKMARK [2][-]{subsection.5.2.3}{Setting up Nightwatch}{section.5.2}% 68
+\BOOKMARK [2][-]{subsection.5.2.4}{Setting up Istanbul}{section.5.2}% 69
+\BOOKMARK [2][-]{subsection.5.2.5}{Setting up Grunt}{section.5.2}% 70
+\BOOKMARK [1][-]{section.5.3}{Suggested Workflow}{chapter.5}% 71
+\BOOKMARK [2][-]{subsection.5.3.1}{Template Files}{section.5.3}% 72
+\BOOKMARK [0][-]{chapter.6}{Evaluation}{}% 73
+\BOOKMARK [1][-]{section.6.1}{PolyXpress \(PX\)}{chapter.6}% 74
+\BOOKMARK [2][-]{subsection.6.1.1}{PolyXpress Author}{section.6.1}% 75
+\BOOKMARK [2][-]{subsection.6.1.2}{Writing Unit Tests for Web Applications}{section.6.1}% 76
+\BOOKMARK [1][-]{section.6.2}{Test Metrics}{chapter.6}% 77
+\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 78
+\BOOKMARK [1][-]{section.7.1}{Testing Frameworks}{chapter.7}% 79
+\BOOKMARK [2][-]{subsection.7.1.1}{``A Framework for Automated Testing of JavaScript Web Applications''}{section.7.1}% 80
+\BOOKMARK [2][-]{subsection.7.1.2}{``A Multi-Agent Software Environment for Testing Web-based Applications''}{section.7.1}% 81
+\BOOKMARK [2][-]{subsection.7.1.3}{``A 2-Layer Model for the White-Box Testing of Web Applications''}{section.7.1}% 82
+\BOOKMARK [2][-]{subsection.7.1.4}{``Invariant-Based Automatic Testing of AJAX User Interfaces''}{section.7.1}% 83
+\BOOKMARK [2][-]{subsection.7.1.5}{``JSART: JavaScript Assertion-based Regression Testing''}{section.7.1}% 84
+\BOOKMARK [2][-]{subsection.7.1.6}{``DOM Transactions for Testing JavaScript''}{section.7.1}% 85
+\BOOKMARK [2][-]{subsection.7.1.7}{``Testing Web Applications in Practice''}{section.7.1}% 86
+\BOOKMARK [2][-]{subsection.7.1.8}{``Contract-Driven Testing of JavaScript Code''}{section.7.1}% 87
+\BOOKMARK [2][-]{subsection.7.1.9}{``JAWS: A JavaScript API for the Efficient Testing and Integration of Semantic Web Services''}{section.7.1}% 88
+\BOOKMARK [2][-]{subsection.7.1.10}{``WebMate: A Tool for Testing Web 2.0 Applications''}{section.7.1}% 89
+\BOOKMARK [2][-]{subsection.7.1.11}{``Continuous Testing with Ruby, Rails, and JavaScript''}{section.7.1}% 90
+\BOOKMARK [1][-]{section.7.2}{Finding Bugs}{chapter.7}% 91
+\BOOKMARK [2][-]{subsection.7.2.1}{``Finding Bugs In Dynamic Web Applications''}{section.7.2}% 92
+\BOOKMARK [2][-]{subsection.7.2.2}{``Testing Web Services: A Survey''}{section.7.2}% 93
+\BOOKMARK [2][-]{subsection.7.2.3}{``A Framework for Testing RESTful Web Services''}{section.7.2}% 94
+\BOOKMARK [1][-]{section.7.3}{Writing Effective Test Cases}{chapter.7}% 95
+\BOOKMARK [2][-]{subsection.7.3.1}{``Going Faster: Testing The Web Application''}{section.7.3}% 96
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 97
+\BOOKMARK [0][-]{chapter.9}{Future Work}{}% 98
+\BOOKMARK [1][-]{subsubsection*.14}{Full PX coverage}{chapter.9}% 99
+\BOOKMARK [2][-]{subsubsection*.15}{``Real-world'' Evaluation}{subsubsection*.14}% 100
+\BOOKMARK [3][-]{subsubsection*.16}{Headless Browsers}{subsubsection*.15}% 101
+\BOOKMARK [3][-]{subsubsection*.17}{Sauce Labs}{subsubsection*.15}% 102
+\BOOKMARK [0][-]{chapter*.18}{Bibliography}{}% 103
+\BOOKMARK [0][-]{chapter.10}{Appendices}{}% 104
+\BOOKMARK [1][-]{section.10.1}{PolyXpress Tutorial}{chapter.10}% 105
+\BOOKMARK [1][-]{section.10.2}{ToDo App Test Code}{chapter.10}% 106
+\BOOKMARK [1][-]{section.10.3}{PolyXpress Player Screenshots}{chapter.10}% 107
+\BOOKMARK [1][-]{section.10.4}{PolyXpress Author Screenshots}{chapter.10}% 108
