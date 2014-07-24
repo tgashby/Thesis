@@ -113,7 +113,7 @@
 \author{Taggart Ashby}
 \degreemonth{June} \degreeyear{2014} \degree{Master of Science}
 \defensemonth{June} \defenseyear{2014}
-\numberofmembers{3} \chair{Michael Haungs, Ph.D.\newline Professor of Computer Science} \othermemberA{Franz Kurfess, Ph.D.\newline Professor of Computer Science} \othermemberB{David Janzen, Ph.D.\newline Professor of Computer Science} \field{Computer Science} \campus{San Luis Obispo}
+\numberofmembers{3} \chair{Michael Haungs, Ph.D.\newline Associate Professor of Computer Science} \othermemberA{Franz Kurfess, Ph.D.\newline Professor of Computer Science} \othermemberB{David Janzen, Ph.D.\newline Professor of Computer Science} \field{Computer Science} \campus{San Luis Obispo}
 \copyrightyears{seven}
 
 \maketitle
@@ -249,7 +249,7 @@ First, we'll address what a client is. The simple answer is: The User. The User'
 
 The client-side portion of an application interacts with the browser to request assets from the server and then displays them in a human-readable way. The client-side also deals with the user interface and interactivity of a web page, e.g., the client-side displays a web form, the client fills in the information and clicks ``submit'' and the client-side packages up the data and sends it to the server.
 
-Client-side programming is done in a language that the browser understands, most frequently JavaScript. Though not technically programming languages, client-side programming is also done through HTML and CSS which control the look and feel of web pages.
+Client-side programming is done in a language that the browser understands, most frequently JavaScript. Though not technically programming languages, client-side programming is also done through HTML and CSS.
 
 \subsection{Server-side}
 A server is the entity, be it machine, person, or cloud service, that stores the information about a given web page or application. The server stores all assets: HTML pages, images, videos, databases, etc, and provides them upon request to the client. The server also handles all of the processing for interactivity, accounts, and general number-crunching.
@@ -365,7 +365,7 @@ In order to evaluate the various frameworks that we found online, we needed a sm
 \begin{Figure}
   \centering
   \includegraphics[width=0.75\linewidth]{todo_home.png} 
-  \captionof{figure}{ToDo app home page, simple three-button naviagation} 
+  \captionof{figure}{ToDo app home page, simple three-button navigation} 
 \end{Figure}
 
 \begin{Figure}
@@ -1071,18 +1071,21 @@ Here is the new project page:
 \begin{Figure}
   \centering
   \includegraphics[width=0.75\linewidth]{magnumCI_new_project.png}
+  \captionof{figure}{MagnumCI new project screen}
 \end{Figure}
 
 Fill out the fields with the appropriate values for a given project and click ``Create Project''. Depending on what the setup is for your project, you'll see slightly varying web pages after you create your project. One thing in common, though, is the button at the bottom of the steps list that says ``Customize Build''. After following the instructions, click ``Customize Build'':
 \begin{Figure}
   \centering
   \includegraphics[width=0.75\linewidth]{magnumCI_customize_build.png}
+  \captionof{figure}{MagnumCI build customization}
 \end{Figure}
 
 There are a number of configuration options and panes that can be accessed on the left side. Our focus was making sure the ``Build Configuration'' tab was properly set up. This involved selecting the correct branch, the correct Node.js runtime version, the correct database from the ``Resources'' area, and adding the appropriate commands in the build steps. In our case we wanted ``mongoDB'' and ``Xvfb'' for UI testing, and then \lstinline{NPM install -g} in the ``Dependencies Installation'' to make sure our modules are available when we need them. Finally, we run Nightwatch using \lstinline{nightwatch -c nightwatch.json} (the nightwatch flags will be outlined in the next section) in the ``Test suite commands'' box. All of that makes our build configuration page look like this:
 \begin{Figure}
   \centering
   \includegraphics[width=0.75\linewidth]{magnumCI_customize_build_filled.png}
+  \captionof{figure}{MagnumCI example build}
 \end{Figure}
 
 After that setup, the project is ready to go. Anytime a commit is pushed from then on, MagnumCI will run and notify the developer of successful and unsuccessful builds.
@@ -1092,7 +1095,7 @@ Installing Nightwatch consists of just installing another NPM module. \lstinline
 
 The configuration file has plenty of options to get Nightwatch to do exactly what the developer wants. Some of the more important ones include the \lstinline{selenium} object that holds information about where the executable is located and what ports to run on, the \lstinline{src_folders} attribute to specify a source directory, and the \lstinline{test_settings} object that contains configurations for default web pages, differing environments, and some desired capabilities. 
 
-To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are discussed in their developer guide \cite{NightwatchJS}.
+To run Nightwatch, navigate to the project folder and run \lstinline{nightwatch -c} \newline \lstinline{path_to_nightwatch_config}. This will use the \lstinline{src_folders} attribute to determine where to look for the tests, start the Selenium server, and run the tests. When debugging certain functions of even test cases, tests can be isolated with the \lstinline{-t} flag: \lstinline{nightwatch -c nightwatch.json -t folder1/test1.js}. Nightwatch offers a number of other command-line arguments that are discussed in their developer guide \cite{NightwatchJS}.
 
 \subsection{Setting up Istanbul}
 As mentioned in the Istanbul section, getting it running is simple. Install Istanbul with NPM: \lstinline{NPM install -g istanbul} and then run the istanbul command along with any others needed. In our case, we ran \lstinline{istanbul cover mocha -- . -R spec} to run Istanbul on our Mocha Unit Tests. For a more detailed view of possible commands and arguments, the developer can check out the Istanbul page \cite{Istanbul}.
@@ -1557,8 +1560,6 @@ WebMate was another interesting project that could have seen use in our toolkit 
 \subsection{``Continuous Testing with Ruby, Rails, and JavaScript''}
 This well known book by Rady and Coffin \cite{BookContinuousTesting} talks about Continuous Testing and has lots of examples. The last two chapters of the book, six and seven, talk about setting up a Continuous Testing environment for JavaScript using Node.js and a number of other tools. It fit almost perfectly with our project and was used as the basis of our testing setup. They use JSLint for linting, Jasmine for test cases, and Watchr for running the tests continuously. Lastly it discussed writing effective tests, which is always important.
 
-Not all of those tools made it into the eventual final toolkit, but they were all important to look at in the context of making the overarching toolkit.
-
 \section{Finding Bugs}
 One of the most important aspects of testing is actually finding the bugs in the program. A number of sources provided guidelines and suggestions for finding bugs in web applications.
 
@@ -1578,8 +1579,6 @@ Although not too distinct from \emph{finding bugs}, writing effective test cases
 
 \subsection{``Going Faster: Testing The Web Application''}
 Two employees of Evant Software wrote an article for IEEE Software regarding the testing of web applications \cite{GoingFaster}. Mostly this paper was an overview and implementation of Test Driven Development (TDD) and eXtreme Programming, but in the middle of the article was a good section about the difficulties of testing the web and how to deal them. A few of the remarks regarding the difficulty of web testing is that often the client-side and server-side portions of web applications are written in different languages. This wasn't an issue for our application, but is still an issue for many applications. Some of the most useful advice was: ``First, test those parts of the server-side code that are not directly concerned with being part of the Web application, without involving Web peculiarities. ... Second, test those parts of the client-side code that have no server interaction. This is typically code that contains little or no business logic. ... Third, write functional tests of a low grain in the server-side language (for example, Java or C++) that simulate the request/response Web environment. ... Using this framework you can write walk-through tests that simulate the user moving through the UI''.
-
-This step-by-step walkthrough of how to test was an excellent starting point to look at different tools and how they handled this issue.
 
 %%%%%%%%%%%%%%%%%%
 %%% Conclusion 

@@ -2,27 +2,30 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration relating phase bug found in with effort required to fix.\relax }}{16}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces ToDo app home page, simple three-button naviagation\relax }}{18}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ToDo app home page, simple three-button navigation\relax }}{18}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces ToDo app task page\relax }}{18}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces ToDo app completed tasks page\relax }}{19}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Each individual spec is further broken down into the assertions within it.\relax }}{27}{figure.3.4}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Jenkins main screen\relax }}{39}{figure.3.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces MagnumCI new project screen\relax }}{55}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces MagnumCI build customization\relax }}{56}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces MagnumCI example build\relax }}{57}{figure.5.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {10.1}{\ignorespaces Story selection\relax }}{93}{figure.10.1}
-\contentsline {figure}{\numberline {10.2}{\ignorespaces Chapter pane with approximate distances to each chapter\relax }}{93}{figure.10.2}
-\contentsline {figure}{\numberline {10.3}{\ignorespaces Each page and element of PolyXpress has instructions, here they are for Chapters\relax }}{94}{figure.10.3}
-\contentsline {figure}{\numberline {10.4}{\ignorespaces A map of the chapter location in relation to the player\relax }}{94}{figure.10.4}
-\contentsline {figure}{\numberline {10.5}{\ignorespaces PolyXpress marketplace, to find other published stories\relax }}{95}{figure.10.5}
-\contentsline {figure}{\numberline {10.6}{\ignorespaces A map centered around the player\relax }}{95}{figure.10.6}
-\contentsline {figure}{\numberline {10.7}{\ignorespaces PolyXpress Authoring Tool\relax }}{96}{figure.10.7}
-\contentsline {figure}{\numberline {10.8}{\ignorespaces Form to create an Event\relax }}{96}{figure.10.8}
-\contentsline {figure}{\numberline {10.9}{\ignorespaces Bottom of form to create an Event\relax }}{97}{figure.10.9}
-\contentsline {figure}{\numberline {10.10}{\ignorespaces Form for creating Chapters\relax }}{97}{figure.10.10}
-\contentsline {figure}{\numberline {10.11}{\ignorespaces Events are selected manually for inclusion in Chapters\relax }}{98}{figure.10.11}
-\contentsline {figure}{\numberline {10.12}{\ignorespaces Story creation asks if the user wants their story published\relax }}{98}{figure.10.12}
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Story selection\relax }}{92}{figure.10.1}
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Chapter pane with approximate distances to each chapter\relax }}{92}{figure.10.2}
+\contentsline {figure}{\numberline {10.3}{\ignorespaces Each page and element of PolyXpress has instructions, here they are for Chapters\relax }}{93}{figure.10.3}
+\contentsline {figure}{\numberline {10.4}{\ignorespaces A map of the chapter location in relation to the player\relax }}{93}{figure.10.4}
+\contentsline {figure}{\numberline {10.5}{\ignorespaces PolyXpress marketplace, to find other published stories\relax }}{94}{figure.10.5}
+\contentsline {figure}{\numberline {10.6}{\ignorespaces A map centered around the player\relax }}{94}{figure.10.6}
+\contentsline {figure}{\numberline {10.7}{\ignorespaces PolyXpress Authoring Tool\relax }}{95}{figure.10.7}
+\contentsline {figure}{\numberline {10.8}{\ignorespaces Form to create an Event\relax }}{95}{figure.10.8}
+\contentsline {figure}{\numberline {10.9}{\ignorespaces Bottom of form to create an Event\relax }}{96}{figure.10.9}
+\contentsline {figure}{\numberline {10.10}{\ignorespaces Form for creating Chapters\relax }}{96}{figure.10.10}
+\contentsline {figure}{\numberline {10.11}{\ignorespaces Events are selected manually for inclusion in Chapters\relax }}{97}{figure.10.11}
+\contentsline {figure}{\numberline {10.12}{\ignorespaces Story creation asks if the user wants their story published\relax }}{97}{figure.10.12}

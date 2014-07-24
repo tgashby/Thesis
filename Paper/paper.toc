@@ -67,7 +67,7 @@
 \contentsline {subsection}{\numberline {5.2.2}Setting up MagnumCI}{55}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Setting up Nightwatch}{57}{subsection.5.2.3}
 \contentsline {subsection}{\numberline {5.2.4}Setting up Istanbul}{58}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Setting up Grunt}{58}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.5}Setting up Grunt}{59}{subsection.5.2.5}
 \contentsline {section}{\numberline {5.3}Suggested Workflow}{60}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Template Files}{63}{subsection.5.3.1}
 \contentsline {chapter}{\numberline {6}Evaluation}{68}{chapter.6}
@@ -90,19 +90,19 @@
 \contentsline {subsection}{\numberline {7.1.11}``Continuous Testing with Ruby, Rails, and JavaScript''}{79}{subsection.7.1.11}
 \contentsline {section}{\numberline {7.2}Finding Bugs}{80}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}``Finding Bugs In Dynamic Web Applications''}{80}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}``Testing Web Services: A Survey''}{81}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.2}``Testing Web Services: A Survey''}{80}{subsection.7.2.2}
 \contentsline {subsection}{\numberline {7.2.3}``A Framework for Testing RESTful Web Services''}{81}{subsection.7.2.3}
 \contentsline {section}{\numberline {7.3}Writing Effective Test Cases}{82}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}``Going Faster: Testing The Web Application''}{82}{subsection.7.3.1}
-\contentsline {chapter}{\numberline {8}Conclusion}{84}{chapter.8}
-\contentsline {chapter}{\numberline {9}Future Work}{85}{chapter.9}
-\contentsline {subsubsection}{Full PX coverage}{85}{subsubsection*.14}
-\contentsline {subsubsection}{``Real-world'' Evaluation}{85}{subsubsection*.15}
-\contentsline {subsubsection}{Headless Browsers}{85}{subsubsection*.16}
-\contentsline {subsubsection}{Sauce Labs}{86}{subsubsection*.17}
-\contentsline {chapter}{Bibliography}{87}{chapter*.18}
-\contentsline {chapter}{\numberline {10}Appendices}{92}{chapter.10}
-\contentsline {section}{\numberline {10.1}PolyXpress Tutorial}{92}{section.10.1}
-\contentsline {section}{\numberline {10.2}ToDo App Test Code}{92}{section.10.2}
-\contentsline {section}{\numberline {10.3}PolyXpress Player Screenshots}{93}{section.10.3}
-\contentsline {section}{\numberline {10.4}PolyXpress Author Screenshots}{96}{section.10.4}
+\contentsline {chapter}{\numberline {8}Conclusion}{83}{chapter.8}
+\contentsline {chapter}{\numberline {9}Future Work}{84}{chapter.9}
+\contentsline {subsubsection}{Full PX coverage}{84}{subsubsection*.14}
+\contentsline {subsubsection}{``Real-world'' Evaluation}{84}{subsubsection*.15}
+\contentsline {subsubsection}{Headless Browsers}{84}{subsubsection*.16}
+\contentsline {subsubsection}{Sauce Labs}{85}{subsubsection*.17}
+\contentsline {chapter}{Bibliography}{86}{chapter*.18}
+\contentsline {chapter}{\numberline {10}Appendices}{91}{chapter.10}
+\contentsline {section}{\numberline {10.1}PolyXpress Tutorial}{91}{section.10.1}
+\contentsline {section}{\numberline {10.2}ToDo App Test Code}{91}{section.10.2}
+\contentsline {section}{\numberline {10.3}PolyXpress Player Screenshots}{92}{section.10.3}
+\contentsline {section}{\numberline {10.4}PolyXpress Author Screenshots}{95}{section.10.4}
