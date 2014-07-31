@@ -19,16 +19,8 @@
 			"file": "paper.tex",
 			"settings":
 			{
-				"buffer_size": 141289,
+				"buffer_size": 141383,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "paper.bib",
-			"settings":
-			{
-				"buffer_size": 11760,
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -36,6 +28,14 @@
 			"settings":
 			{
 				"buffer_size": 49131,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "paper.bib",
+			"settings":
+			{
+				"buffer_size": 11760,
 				"line_ending": "Windows"
 			}
 		},
@@ -185,6 +185,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"listoffigures",
 			"client-side",
 			"magnum",
 			"nav",
@@ -335,15 +336,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 141289,
+						"buffer_size": 141383,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23115,
-								23115
+								1705,
+								1705
 							]
 						],
 						"settings":
@@ -375,11 +376,11 @@
 								"user_action_input": null,
 								"user_input": null,
 								"user_motion_input": null,
-								"xpos": 3
+								"xpos": 0
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 6116.0,
+						"translation.y": 705.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -387,6 +388,59 @@
 				},
 				{
 					"buffer": 1,
+					"file": "ucthesis.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33594,
+								33594
+							]
+						],
+						"settings":
+						{
+							"highlight_line": false,
+							"syntax": "Packages/LaTeX/TeX.tmLanguage",
+							"vintage":
+							{
+								"_bottom_top": false,
+								"action": null,
+								"action_digits":
+								[
+								],
+								"cancel_action": false,
+								"expecting_register": false,
+								"expecting_user_input": false,
+								"mode": 2,
+								"motion": null,
+								"motion_digits":
+								[
+								],
+								"next_mode": 2,
+								"next_mode_command": null,
+								"register": null,
+								"stashed_action": null,
+								"user_action_input": null,
+								"user_input": null,
+								"user_motion_input": null,
+								"xpos": 38
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 14426.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "paper.bib",
 					"semi_transient": false,
 					"settings":
@@ -437,59 +491,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "ucthesis.cls",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34411,
-								34413
-							]
-						],
-						"settings":
-						{
-							"highlight_line": false,
-							"syntax": "Packages/LaTeX/TeX.tmLanguage",
-							"vintage":
-							{
-								"_bottom_top": false,
-								"action": null,
-								"action_digits":
-								[
-								],
-								"cancel_action": false,
-								"expecting_register": false,
-								"expecting_user_input": false,
-								"mode": 2,
-								"motion": null,
-								"motion_digits":
-								[
-								],
-								"next_mode": 2,
-								"next_mode_command": null,
-								"register": null,
-								"stashed_action": null,
-								"user_action_input": null,
-								"user_input": null,
-								"user_motion_input": null,
-								"xpos": 42
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 14921.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				},
 				{

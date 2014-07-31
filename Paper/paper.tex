@@ -62,6 +62,12 @@
   tabsize=3
 }
 
+\makeatletter
+\renewcommand*{\numberline}[1]{%
+  \hb@xt@\@tempdima{\hfil#1 }%
+}
+\makeatother
+
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
   {\endminipage\par\medskip}
